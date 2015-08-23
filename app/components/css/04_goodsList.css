@@ -1,0 +1,12 @@
+.goodsCart-btn{
+    width:25px;
+    height:25px;
+    right: 10px;
+    bottom: 15px;
+    background: url("../images/goodscart.png") no-repeat center center;
+    -webkit-background-size: 25px;
+    background-size: 25px;
+}
+.gL-totalCost{
+    padding-left:75px;
+}

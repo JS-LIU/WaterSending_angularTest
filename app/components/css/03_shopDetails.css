@@ -1,0 +1,58 @@
+.L-header img{
+    width:25px;
+
+}
+.sD-star{
+    top: 9px;
+    right:50px;
+}
+.sD-share{
+    top: 11px;
+    right:15px;
+}
+.piao,
+.quan,
+.hui{
+    padding:4px 6px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 16px;
+}
+.sD-waterticket,
+.sD-ticket{
+    background: url("../images/arrow-right.png") no-repeat right center;
+    -webkit-background-size: 20px;
+    background-size: 15px;
+}
+.sD-sendTime{
+    background: url("../images/clock.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 25px;
+}
+.sD-sendRange{
+    background: url("../images/trumpet.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 25px;
+}
+.sD-sendAddress{
+    background: url("../images/address-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.sD-phoneNumber{
+    background: url("../images/phone-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.sD-introduceDetails{
+    line-height:22px;
+}
+.sD-introduce-title{
+    height:44px;
+    line-height: 44px;
+    border-bottom: 1px solid #E2E2E2;
+}
+.sD-introduce{
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}

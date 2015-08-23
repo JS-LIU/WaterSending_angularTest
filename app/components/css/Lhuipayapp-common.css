@@ -1,0 +1,304 @@
+.blue{
+    background-color: #14abf0;
+}
+.cblue{
+    color: #14abf0;
+}
+.cfff{
+    color:#FFF;
+}
+.cred{
+    color: #EE304F;
+}
+.red{
+    background-color: #EE304F;
+}
+.orange{
+    background-color: #fd7d21;
+}
+.c000{
+    color:#000;
+}
+.L-header{
+    height:44px;
+}
+.L-header-back{
+    width:35px;
+    background: url("../images/header-back.png") no-repeat center center;
+    background-size: 18px;
+}
+.L-header-searchbox{
+    top:7px;
+    height:30px;
+    border-radius: 4px;
+    background:#FFF url("../images/search-icon.png") no-repeat 5px center;
+    background-size:20px;
+    overflow: hidden;
+}
+.L-header-searchbox input{
+    outline: none;
+}
+.L-header-title{
+    line-height:44px;
+}
+.common-list-01 li{
+    height:105px;
+    border-bottom: 1px solid #E2E2E2;
+    overflow: hidden;
+}
+.common-list-02{
+    border-top: 1px solid #E2E2E2;
+}
+.common-list-02 li{
+    height:105px;
+    border-bottom: 1px solid #E2E2E2;
+}
+.common-list-03{
+    border-top:1px solid #E2E2E2;
+}
+.common-list-03 li{
+    height:44px;
+    line-height: 44px;
+    border-bottom:1px solid #E2E2E2;
+}
+.common-list-04{
+    border-top: 1px solid #E2E2E2;
+    border-bottom:1px solid #E2E2E2;
+}
+.common-list-04 li{
+    height:25px;
+    line-height: 25px;
+}
+.common-list-05{
+    border-top:1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
+.common-list-06{
+    width: 100%;
+    height:44px;
+    line-height: 44px;
+    border-bottom: 1px solid #E2E2E2;
+    border-top: 1px solid #E2E2E2;
+}
+.common-list-06-con50{
+    margin-left:-23px;
+    width:50%;
+    border-right:1px solid #E2E2E2;
+    overflow: hidden;
+}
+.common-list-06-ml23{
+    padding-right: 22px;
+    margin-left: 22px;
+    background: url("../images/arrow-down.png") no-repeat right center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+}
+.common-list-06-btn{
+    width:44px;
+    height: 44px;
+    background:url("../images/changeicon.png") no-repeat center center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+}
+.common-list-06-box50 ul{
+    width: 50%;
+    height: 133px;
+    margin-left: -1px;
+    border-right: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+    overflow-y: auto;
+}
+.common-list-06-box100{
+    width: 100%;
+    height: 133px;
+    border-bottom: 1px solid #E2E2E2;
+    overflow-y: auto;
+}
+.common-list-06-box100 li{
+    padding-left: 15px;
+}
+.common-list-07{
+    border-top: 1px solid #E2E2E2;
+}
+.common-list-07 li{
+    width: 50%;
+    border-bottom: 1px solid #E2E2E2;
+    border-right: 1px solid #E2E2E2;
+    margin-left: -1px;
+}
+.common-list-07 p{
+    line-height: 25px;
+}
+.common-list-07-pic{
+    height:160px;
+    overflow: hidden;
+}
+.common-list-08{
+    padding: 7px 15px;
+    border-bottom: 1px solid #E2E2E2;
+}
+.common-list-09{
+    border-top:1px solid #E2E2E2;
+}
+.common-list-09 li{
+    height:49px;
+    line-height: 72px;
+    width: 33.3%;
+}
+.common-list-08-ul{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border:1px solid #14abf0;
+}
+.common-list-08 li{
+    height:30px;
+    line-height: 30px;
+    width:50%;
+}
+.common-list-05-list-1{
+    height:44px;
+    line-height:44px;
+    border-bottom:1px solid #E2E2E2;
+}
+.common-list-05-p-2{
+    padding-left: 55px;
+}
+.common-list-05-pic-2{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #E2E2E2;
+    overflow: hidden;
+}
+.common-list-05-pic-1{
+    width:40px;
+    height: 40px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.common-list-01{
+    border-top:1px solid #E2E2E2;
+}
+.common-list-01 a{
+    height:101px;
+}
+.common-picproduct-01{
+    top:15px;
+    left:15px;
+    width:100px;
+    height:75px;
+    overflow: hidden;
+    border: 1px solid #E2E2E2;
+    border-radius: 2px;
+}
+.common-detailbox-01{
+    top:10px;
+    left:130px;
+    height:80px;
+}
+.common-detailbox-01-name{
+    display:block;
+    padding-right: 15px;
+    height:24px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.common-receiver-01{
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
+.common-receiver-01-number{
+    padding-left:40px;
+    line-height: 10px;
+}
+.oD-receiver-msg{
+    line-height: 22px;
+}
+.common-receiver-01-name{
+    padding-left:40px;
+}
+.common-receiver-01-address{
+    padding-left: 40px;
+    line-height: 22px;
+    background: url("../images/address.png") no-repeat 15px 4px;
+    -webkit-background-size:14px 18px;
+    background-size: 14px 18px;
+}
+.address{
+    padding:0px 15px;
+    overflow: hidden;
+    background: url("../images/address.png") no-repeat 0px 3px;
+    -webkit-background-size: 13px;
+    background-size: 13px;
+}
+.distance{
+    position: absolute;
+    right:15px;
+}
+.evaluate{
+    position:absolute;
+    bottom:0px;
+}
+.common-picproduct-02{
+    top:15px;
+    left:15px;
+    right:15px;
+    width:75px;
+    height:75px;
+    border:1px solid #E2E2E2;
+}
+.common-detailbox-02{
+    top:10px;
+    left:110px;
+    height:80px;
+}
+.common-detailbox-02-name{
+}
+.L-carousel{
+    position:relative;
+    height:220px;
+    overflow:hidden;
+}
+.L-footer-01{
+    position: fixed;
+    bottom: 0px;
+    height: 44px;
+    line-height: 44px;
+}
+.L-footer-01-r{
+    width:110px;
+}
+.L-footer-01-l{
+    margin-right: -110px;
+    background:#3E4349;
+}
+.L-footer-01-btn1{
+    left:15px;
+    bottom:15px;
+    width: 43px;
+    height: 43px;
+    background: #33363D url("../images/white-cart.png") no-repeat center center;
+    -webkit-background-size: 25px;
+    background-size: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+.L-footer-01-btn-label{
+    top:-3px;
+    left:30px;
+    padding:0 5px;
+    height:17px;
+    line-height: 17px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 10px;
+}
+.slide-mfooter{
+    position:fixed;
+    width: 100%;
+    bottom: 0px;
+}

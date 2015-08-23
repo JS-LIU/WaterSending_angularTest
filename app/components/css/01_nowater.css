@@ -1,0 +1,9 @@
+.nw-nwbox{
+    height:105px;
+    background: #ececec url("../images/hb-icon.png") no-repeat 25px center;
+    background-size: 75px 55px;
+}
+.nw-nwbox p{
+    padding-left: 110px;
+    line-height: 20px;
+}
