@@ -1,11 +1,13 @@
 /**
  * Created by µочи on 2015/8/23.
  */
-var changePages = angular.module('main',[]);
-changePages.controller('changePages',function($rootScope,$scope){
-    $rootScope.wrapShow = true;
-    $rootScope.wrapHide = false;
-    $scope.showMe = function(target){
-        console.log(target);
-    }
-})
+angular.module('myApp', ['ngRoute'])
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/',{
+            templateUrl:'06-01-map.html'
+        }).when('/order',{
+            templateUrl:'06-02-order.html'
+        }).when('/my',{
+            templateUrl:'06-03-my.html'
+        })
+    }]);
