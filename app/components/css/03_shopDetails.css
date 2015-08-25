@@ -44,6 +44,9 @@
     -webkit-background-size: 15px;
     background-size: 20px;
 }
+.sD-introduce{
+    background:#FFF;
+}
 .sD-introduceDetails{
     line-height:22px;
 }

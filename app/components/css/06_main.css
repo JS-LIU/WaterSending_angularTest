@@ -16,3 +16,65 @@
     -webkit-background-size: 20px;
     background-size: 20px;
 }
+.my-myMoney{
+    height:100px;
+    background:#5e656f;
+}
+.my-myRMB,
+.my-myHB{
+    width: 50%;
+    height:100px;
+    line-height: 140px;
+    overflow: hidden;
+}
+.my-myRMB{
+    background: #5e656f url("../images/payway-01.png") no-repeat center 20px;
+    -webkit-background-size: 35px;
+    background-size: 35px;
+}
+.my-myHB{
+    background: #5e656f url("../images/payway-01.png") no-repeat center 20px;
+    -webkit-background-size: 35px;
+    background-size: 35px;
+}
+.piao,
+.quan,
+.hui{
+    padding:4px 6px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 16px;
+}
+.my-address{
+    background: url("../images/address-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.my-collect{
+    background: url("../images/address-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.my-share{
+    background: url("../images/address-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.my-set{
+    background: url("../images/address-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 20px;
+}
+.my-callSeller{
+    height:44px;
+    line-height: 44px;
+    border-top:1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+    background:#FFF;
+}
+.my-callSeller span{
+    padding:5px 0px 5px 25px;
+    background: url("../images/phone-icon.png") no-repeat left center;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+}
