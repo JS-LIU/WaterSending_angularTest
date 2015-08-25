@@ -4,7 +4,8 @@
 angular.module('myApp', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/',{
-            templateUrl:'06-01-map.html'
+            templateUrl:'06-01-map.html',
+            controller:J_carouselImages
         }).when('/order',{
             templateUrl:'06-02-order.html'
         }).when('/my',{

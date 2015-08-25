@@ -2,7 +2,11 @@
     <p class="tc L-header-title cfff f16">汇贝送水</p>
 </div>
 <div class="L-slide-center" ng-show="true">
-    页面1-1
+    <div class="L-carousel">
+        <div class="L-carouselBox">
+            <img class="w fl" ng-repeat="img in imgs" src="{{img.src}}" alt="{{img.text}}"/>
+        </div>
+    </div>
 </div>
 <div class="L-slide-center" ng-show="false">
     页面1-2
