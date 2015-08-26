@@ -1,14 +1,16 @@
 /**
  * Created by µочи on 2015/8/23.
  */
-angular.module('myApp', ['ngRoute'])
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/',{
-            templateUrl:'06-01-map.html',
-            controller:J_carouselImages
-        }).when('/order',{
-            templateUrl:'06-02-order.html'
-        }).when('/my',{
-            templateUrl:'06-03-my.html'
-        })
-    }]);
+
+var main = angular.module('myApp', ['ngRoute','ngAnimate']);
+
+main.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/',{
+        templateUrl:'06-01-map.html',
+        controller:carousel
+    }).when('/order',{
+        templateUrl:'06-02-order.html'
+    }).when('/my',{
+        templateUrl:'06-03-my.html'
+    })
+}]);
