@@ -173,6 +173,12 @@ body{
     line-height: 72px;
     width: 33.3%;
 }
+.common-singlerow-1{
+    height:44px;
+    line-height: 44px;
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
 .common-list-08-ul{
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -337,6 +343,13 @@ body{
     -webkit-background-size: 20px;
     background-size: 15px;
 }
-
+.common-btn-01{
+    height:44px;
+    line-height: 44px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin:10px 15px 70px 15px;
+}
 
 

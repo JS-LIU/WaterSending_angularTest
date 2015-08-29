@@ -50,6 +50,12 @@
     -webkit-background-size: 15px;
     background-size: 20px;
 }
+.my-address-3{
+    padding-left:40px;
+    background: url("../images/address-03.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 15px;
+}
 .my-collect{
     background: url("../images/address-02.png") no-repeat 15px center;
     -webkit-background-size: 15px;

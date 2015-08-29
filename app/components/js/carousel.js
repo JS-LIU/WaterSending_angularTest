@@ -1,25 +1,8 @@
 /**
  * Created by 殿麒 on 2015/8/25.
+ * 这个js文件可以分割为2-4份 待考虑优化
  */
-
-var obj = new Object();
-
-obj.triggerOnce = function(fn) { //控制让函数只触发一次
-    return function() {
-        try {
-            fn.apply(this, arguments);
-        }
-        catch (e) {
-            var txt = "There was an error on this page.\n\n";
-            txt += "Error message: " + e.message + "\n\n";
-            txt += "Error name: " + e.name + "\n\n";
-        }
-        finally {
-            fn = null;
-        }
-    }
-}
-
+//  改为factory 将directive注入进来
 main.service('carouselTrack',function(){
     var self = this;
     var window_width = window.screen.availWidth;
@@ -29,24 +12,27 @@ main.service('carouselTrack',function(){
         $_carouselAnimate.animate({
             marginLeft:'-=' + window_width + 'px'
         },300,function(){
-            var mL = parseFloat($_carouselAnimate.css('marginLeft'));
+            var mL = getcarouselBoxMl($_carouselAnimate);
             if( mL - 2 * window_width < -$_carouselAnimateWidth){
-                $_carouselAnimate.css('marginLeft','0px');
+                $_carouselAnimate.css('marginLeft',-window_width + 'px');
             }
         })
     }
     this.slideRight = function(){
         var $_carouselAnimate =  $('.carousel-animation');
+        var $_carouselAnimateWidth = parseFloat($_carouselAnimate.css('width'))-2*window_width;
         $_carouselAnimate.animate({
             marginLeft:'+=' + window_width + 'px'
         },300,function(){
-            var mL = parseFloat($_carouselAnimate.css('marginLeft'));
-            if( mL - 2 * window_width > 0){
-                $_carouselAnimate.css('marginLeft','0px');
+            var mL = getcarouselBoxMl($_carouselAnimate);
+            if( mL > -window_width){
+                $_carouselAnimate.css('marginLeft',-$_carouselAnimateWidth+'px');
             }
         })
     }
-
+    function getcarouselBoxMl(carouselBox){
+        return parseFloat(carouselBox.css('marginLeft'));
+    }
 });
 
 main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTrack){
@@ -54,9 +40,7 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
         var imgLen = $scope.imgs.length,
             window_width = window.screen.availWidth,
             bigWidth = imgLen * window_width,
-            moveEle = ele.children();
-
-        $scope.w = bigWidth;
+            moveEle = ele.children().css('marginLeft',-window_width+'px');
 
         ele.css({'width':window_width + 'px','display':'block'});
         moveEle.css({height:'395px',width:bigWidth + 'px'});
@@ -65,21 +49,21 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
         $swipe.bind(ele, {
             'start': function(coords) {
                 x = coords.x;
+                //  停止轮播
             },
             'move': function(coords) {
-                x = x1 || coords.x;
+                //  等待优化
+            },
+            'end': function(coords) {
                 x1 = coords.x;
                 var dif = x - x1;
                 //  swipe-left
-                if(dif > 0){
+                if(dif > 10){
                     carouselTrack.slideLeft();
+                }else if(dif < -9){
+                    carouselTrack.slideRight();
+                    //  开始轮播
                 }
-            },
-            'end': function() {
-                console.log(1);
-            },
-            'cancel': function() {
-                console.log(2);
             }
         });
     }
@@ -92,16 +76,21 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
 }])
 
 main.controller('myInterval',function($scope,$interval,carouselTrack){
-    //$interval(carouselTrack.slideLeft,$scope.myInterval);
+    $interval(carouselTrack.slideLeft,$scope.myInterval);
 })
 
 
 function carousel($scope){
+    //  第一张的和最后一张可以用程序推入 待优化
     $scope.imgs = [
+        //  这张是最后一张的复刻
+        {src:'components/images/images-395-02.jpg',text:'sec'},
+        //  图片数据
         {src:'components/images/images-395-01.png',text:'first'},
         {src:'components/images/images-395-02.jpg',text:'sec'},
+        //  这张是第一张的复刻
         {src:'components/images/images-395-01.png',text:'first'}
     ];
-    $scope.myInterval = 1000;
+    $scope.myInterval = 5000;
 }
 
