@@ -80,7 +80,7 @@ main.controller('myInterval',function($scope,$interval,carouselTrack){
 })
 
 
-function carousel($scope){
+main.controller("carousel",function($scope){
     //  第一张的和最后一张可以用程序推入 待优化
     $scope.imgs = [
         //  这张是最后一张的复刻
@@ -92,5 +92,5 @@ function carousel($scope){
         {src:'components/images/images-395-01.png',text:'first'}
     ];
     $scope.myInterval = 5000;
-}
+});
 

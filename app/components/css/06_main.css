@@ -87,3 +87,9 @@
 .L-carousel{
     height:395px;
 }
+.my-cutMap{
+    top:0px;
+    right:15px;
+    color:#FFF;
+    line-height: 44px;
+}

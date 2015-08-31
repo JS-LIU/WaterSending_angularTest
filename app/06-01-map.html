@@ -1,18 +1,21 @@
-<div class="L-header w pr blue slide-header">
+<div class="L-header w pr blue slide-header" ng-controller="cutView">
     <p class="tc L-header-title cfff f16">汇贝送水</p>
+    <div class="po my-cutMap" ng-click="toggleView()">去地图</div>
 </div>
-<div class="L-slide-center" ng-show="true">
-    <carousel class="L-carousel" ng-controller="myInterval">
-        <img class="h fl" ng-repeat="img in imgs" src="{{img.src}}" alt="{{img.text}}"/>
-    </carousel>
-    <div class="common-singlerow-1">
-        <a href="#">
-            <span class="my-address-3 p10">送水地址：</span>
-            <span>金水区经三路财富路</span>
-        </a>
+<div class="L-slide-center" ng-controller="mapView">
+    <div ng-show="isshow" ng-controller="carousel">
+        <carousel class="L-carousel" ng-controller="myInterval">
+            <img class="h fl" ng-repeat="img in imgs" src="{{img.src}}" alt="{{img.text}}"/>
+        </carousel>
+        <div class="common-singlerow-1">
+            <a href="#">
+                <span class="my-address-3 p10">送水地址：</span>
+                <span>金水区经三路财富路</span>
+            </a>
+        </div>
+        <a href="#" class="common-btn-01 tc cfff blue mb100 mt10 f14">我要订水</a>
     </div>
-    <a href="#" class="common-btn-01 tc cfff blue mb100 mt10 f14">我要订水</a>
-</div>
-<div class="L-slide-center" ng-show="false">
-    页面1-2
+    <div ng-hide="isshow">
+        页面1-2
+    </div>
 </div>
