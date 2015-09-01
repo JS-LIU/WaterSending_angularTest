@@ -3,6 +3,7 @@
     <div class="po my-cutMap" ng-click="toggleView()">去地图</div>
 </div>
 <div class="L-slide-center" ng-controller="mapView">
+    <!--轮播页面-->
     <div ng-show="isshow" ng-controller="carousel">
         <carousel class="L-carousel" ng-controller="myInterval">
             <img class="h fl" ng-repeat="img in imgs" src="{{img.src}}" alt="{{img.text}}"/>
@@ -15,7 +16,8 @@
         </div>
         <a href="#" class="common-btn-01 tc cfff blue mb100 mt10 f14">我要订水</a>
     </div>
+    <!--地图页面-->
     <div ng-hide="isshow">
-        页面1-2
+        <div id="mapContainer"></div>
     </div>
 </div>

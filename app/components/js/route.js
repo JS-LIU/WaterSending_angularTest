@@ -230,7 +230,7 @@ function $RouteProvider() {
    * is matched.
    *
    * @param {Object|string} params Mapping information to be assigned to `$route.current`.
-   * If called with a string, the value maps to `redirectTo`.
+   * If called with a string, the value maps.js to `redirectTo`.
    * @returns {Object} self
    */
   this.otherwise = function(params) {

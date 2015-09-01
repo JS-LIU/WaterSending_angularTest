@@ -6,7 +6,8 @@ var main = angular.module('myApp', ['ngRoute','ngTouch']);
 
 main.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/',{
-        templateUrl:'06-01-map.html'
+        templateUrl:'06-01-map.html',
+        controller:myLocation
     }).when('/order',{
         templateUrl:'06-02-order.html'
     }).when('/my',{

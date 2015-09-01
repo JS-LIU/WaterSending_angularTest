@@ -93,3 +93,8 @@
     color:#FFF;
     line-height: 44px;
 }
+#mapContainer{
+    top: 44px!important;
+    height:441px!important;
+    overflow: hidden;
+}
