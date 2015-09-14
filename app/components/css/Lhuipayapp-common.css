@@ -1,6 +1,9 @@
 body{
     background: #EEEFF3;
 }
+.fff{
+    background: #ffffff;
+}
 .blue{
     background-color: #14abf0;
 }
@@ -66,7 +69,9 @@ body{
 .common-list-06,
 .common-list-07,
 .common-list-08,
-.common-list-09{
+.common-list-09,
+.common-list-10,
+.common-list-11{
     background:#FFF;
 }
 .common-list-01 li{
@@ -77,10 +82,12 @@ body{
 .common-list-02{
     border-top: 1px solid #E2E2E2;
 }
-.common-list-02 li{
+.common-list-02 li,
+.common-list-10-center{
     height:105px;
     border-bottom: 1px solid #E2E2E2;
 }
+
 .common-list-03{
     border-top:1px solid #E2E2E2;
 }
@@ -351,5 +358,11 @@ body{
     border-radius: 3px;
     margin:10px 15px 70px 15px;
 }
-
-
+.common-list-10-top{
+    height: 44px;
+    line-height: 44px;
+}
+.common-list-10-bottom{
+    height: 44px;
+    line-height: 44px;
+}

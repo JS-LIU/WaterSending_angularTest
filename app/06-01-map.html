@@ -6,18 +6,18 @@
     <!--轮播页面-->
     <div ng-show="isshow" ng-controller="carousel">
         <carousel class="L-carousel" ng-controller="myInterval">
-            <img class="h fl" ng-repeat="img in imgs" src="{{img.src}}" alt="{{img.text}}"/>
+            <img class="h fl" ng-repeat="img in imgs" src="{{img.src}}" alt="{{img.text}}"style="width:{{img.width}};"/>
         </carousel>
         <div class="common-singlerow-1">
             <a href="#">
                 <span class="my-address-3 p10">送水地址：</span>
-                <span>金水区经三路财富路</span>
+                <span id="a">正在定位...</span>
             </a>
         </div>
-        <a href="#" class="common-btn-01 tc cfff blue mb100 mt10 f14">我要订水</a>
+        <a href="#" class="common-btn-01 tc cfff blue f14">我要订水</a>
     </div>
     <!--地图页面-->
     <div ng-hide="isshow">
-        <div id="mapContainer"></div>
+        <div ng-controller="mapAPI" id="mapContainer">{{map()}}</div>
     </div>
 </div>

@@ -1,20 +1,20 @@
 .mainf-ds{
-    padding-top: 30px;
-    background: url("../images/bottom-icon.png") no-repeat center 10px;
+    background: url("../images/bottom-icon.png") no-repeat center 15px;
     -webkit-background-size: 20px;
     background-size: 20px;
+    line-height: 90px;
 }
 .mainf-dd{
-    padding-top: 30px;
-    background: url("../images/bottom-icon.png") no-repeat center 10px;
+    background: url("../images/bottom-icon.png") no-repeat center 15px;
     -webkit-background-size: 20px;
     background-size: 20px;
+    line-height: 90px;
 }
 .mainf-wd{
-    padding-top: 30px;
-    background: url("../images/bottom-icon.png") no-repeat center 10px;
+    background: url("../images/bottom-icon.png") no-repeat center 15px;
     -webkit-background-size: 20px;
     background-size: 20px;
+    line-height: 90px;
 }
 .my-myMoney{
     height:100px;
@@ -97,4 +97,48 @@
     top: 44px!important;
     height:441px!important;
     overflow: hidden;
+}
+.common-list-09{
+    border-bottom:1px solid #E2E2E2;
+}
+.common-list-09 li{
+    height:60px;
+}
+.order-goods-noPay{
+    height: 60px;
+    background:#FFF url("../images/noPay.png") no-repeat center 15px;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+    line-height: 90px;
+}
+.order-goods-noReciving{
+    height: 60px;
+    background:#FFF url("../images/noReceiving.png") no-repeat center 15px;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+    line-height: 90px;
+}
+.order-goods-noEvaluate{
+    height: 60px;
+    background:#FFF url("../images/noEvaluate.png") no-repeat center 15px;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+    line-height: 90px;
+}
+.order-toPay{
+    height: 22px;
+    width:60px;
+    line-height: 22px;
+    border:2px solid #43b4ef;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.order-shop-icon{
+    background:#FFF url("../images/merchant-icon.png") no-repeat 15px center;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+}
+.order-main-list{
+    margin-bottom: 70px;
 }

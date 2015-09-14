@@ -3,6 +3,7 @@
  * 这个js文件可以分割为2-4份 待考虑优化
  */
 //  改为factory 将directive注入进来
+//  轮播轨迹
 main.service('carouselTrack',function(){
     var self = this;
     var window_width = window.screen.availWidth;
@@ -44,6 +45,7 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
 
         ele.css({'width':window_width + 'px','display':'block'});
         moveEle.css({height:'395px',width:bigWidth + 'px'});
+        //moveEle.find('img').css('width',window_width+'px');
         var x,x1;
 
         $swipe.bind(ele, {
@@ -75,21 +77,22 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
     }
 }])
 
-main.controller('myInterval',function($scope,$interval,carouselTrack){
-    $interval(carouselTrack.slideLeft,$scope.myInterval);
+main.controller('myInterval',function($scope,carouselTrack){
+    var t = setInterval(carouselTrack.slideLeft,$scope.myInterval);
 })
 
 
 main.controller("carousel",function($scope){
     //  第一张的和最后一张可以用程序推入 待优化
+    var imgW = window.screen.availWidth + 'px';
     $scope.imgs = [
         //  这张是最后一张的复刻
-        {src:'components/images/images-395-02.jpg',text:'sec'},
+        {src:'components/images/images-395-02.jpg',text:'sec',width:imgW},
         //  图片数据
-        {src:'components/images/images-395-01.png',text:'first'},
-        {src:'components/images/images-395-02.jpg',text:'sec'},
+        {src:'components/images/images-395-01.png',text:'first',width:imgW},
+        {src:'components/images/images-395-02.jpg',text:'sec',width:imgW},
         //  这张是第一张的复刻
-        {src:'components/images/images-395-01.png',text:'first'}
+        {src:'components/images/images-395-01.png',text:'first',width:imgW}
     ];
     $scope.myInterval = 5000;
 });
