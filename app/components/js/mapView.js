@@ -18,7 +18,7 @@ main.controller("mapAPI",['$scope','myLocation',function($scope,myLocation){
 main.factory("myLocation",function(){
     //  代码来源：http://lbs.amap.com/api/javascript-api/example/g/0704-2/
     return function myLocation(){
-        var map, geolocation,latX,latY,lnglatXY,address;
+        var map, geolocation,latX,latY,lnglatXY;
         //  加载地图，调用浏览器定位服务
         map = new AMap.Map('mapContainer', {
             resizeEnable: true
@@ -82,10 +82,12 @@ main.factory("myLocation",function(){
         //回调函数
         function geocoder_CallBack(data) {
             //返回地址描述
-            address = data.regeocode.formattedAddress;
+            var address = data.regeocode.formattedAddress;
             $('#a').html(address);
+            var $_aHeight = parseFloat($('#a').css('height'));
+            var $_aTop = (44- $_aHeight)/2;
+            $('#a').css({'top':$_aTop + 'px'});
         }
-        return address;
     }
 });
 

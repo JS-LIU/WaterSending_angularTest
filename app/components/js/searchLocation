@@ -1,0 +1,47 @@
+//  代码来源：http://lbs.amap.com/api/javascript-api/example/l/1207-2/
+function searchLocation(){
+
+    $("#keyword").keydown(function(){
+        autoSearch();
+    });
+
+    //输入提示
+    function autoSearch() {
+        var keywords = document.getElementById("keyword").value;
+        var auto;
+        //加载输入提示插件
+        AMap.service(["AMap.Autocomplete"], function() {
+            var autoOptions = {
+                city: "" //城市，默认全国
+            };
+            auto = new AMap.Autocomplete(autoOptions);
+            //查询成功时返回查询结果
+            if (keywords.length > 0) {
+                auto.search(keywords, function(status, result) {
+                    autocomplete_CallBack(result);
+                });
+            }
+            else {
+                document.getElementById("result1").style.display = "none";
+            }
+        });
+    }
+
+    //输出输入提示结果的回调函数
+    function autocomplete_CallBack(data) {
+        var resultStr = "";
+        var tipArr = data.tips;
+        if (tipArr && tipArr.length > 0) {
+            for (var i = 0; i < tipArr.length; i++) {
+                resultStr += "<div style=\"font-size: 13px;padding:0px 15px;border-bottom:1px solid #E2E2E2; line-height:44px;height:44px;overflow:hidden;\"" + ">" + tipArr[i].name + "<span style='color:#C1C1C1;'>" + tipArr[i].district + "</span></div>";
+            }
+        }
+        else {
+            resultStr = "I CANT FIND THIS ADDRESS PLEASE TRY OTHER,FUCK!";
+        }
+        document.getElementById("result1").innerHTML = resultStr;
+        document.getElementById("result1").style.display = "block";
+    }
+
+
+}

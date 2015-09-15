@@ -55,7 +55,22 @@ body{
     background-size:20px;
     overflow: hidden;
 }
-.L-header-searchbox input{
+.L-header-searchbox-01{
+    top:7px;
+    height:30px;
+    margin-right:60px;
+    border-radius: 4px;
+    background:#FFF url("../images/search-icon.png") no-repeat 5px center;
+    background-size:20px;
+    overflow: hidden;
+}
+.L-header-searchbox-01-btn{
+    top:0px;
+    right: 15px;
+    line-height: 44px;
+}
+.L-header-searchbox input,
+.L-header-searchbox-01 input{
     outline: none;
 }
 .L-header-title{
@@ -185,6 +200,17 @@ body{
     line-height: 44px;
     border-top: 1px solid #E2E2E2;
     border-bottom: 1px solid #E2E2E2;
+}
+.common-multyrow-1{
+    background:#FFF;
+    border:1px solid #E2E2E2;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.common-multyrow-1 li{
+    height:44px;
+    overflow: hidden;
 }
 .common-list-08-ul{
     -webkit-border-radius: 3px;

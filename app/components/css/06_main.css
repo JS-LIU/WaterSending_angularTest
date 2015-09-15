@@ -50,11 +50,13 @@
     -webkit-background-size: 15px;
     background-size: 20px;
 }
-.my-address-3{
+.map-address-3{
     padding-left:40px;
+    height:44px;
     background: url("../images/address-03.png") no-repeat 15px center;
     -webkit-background-size: 15px;
     background-size: 15px;
+    line-height: 44px;
 }
 .my-collect{
     background: url("../images/address-02.png") no-repeat 15px center;
@@ -90,8 +92,12 @@
 .my-cutMap{
     top:0px;
     right:15px;
-    color:#FFF;
+    width:35px;
+    height: 44px;
     line-height: 44px;
+    background:url("../images/address-04.png") no-repeat right center;
+    -webkit-background-size: 15px;
+    background-size: 15px;
 }
 #mapContainer{
     top: 44px!important;
@@ -141,4 +147,27 @@
 }
 .order-main-list{
     margin-bottom: 70px;
+}
+.map-myLocation{
+    height:44px;
+}
+.map-a{
+    top:13px;
+    left:100px;
+}
+.map-shopinfo{
+    height:50px;
+}
+.map-shopname{
+    height:20px;
+    line-height:20px;
+}
+.map-shopLocation{
+    padding-left:40px;
+}
+.map-mapview-orderbtn{
+    margin-top:451px;
+}
+#result1 {
+    max-height: 300px;
 }

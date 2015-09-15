@@ -11,5 +11,8 @@ main.config(['$routeProvider', function($routeProvider) {
         templateUrl:'06-02-order.html'
     }).when('/my',{
         templateUrl:'06-03-my.html'
+    }).when('/customLocation',{
+        templateUrl:'06-04-customLocation.html',
+        controller:searchLocation
     })
 }]);
