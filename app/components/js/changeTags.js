@@ -12,7 +12,6 @@ main.config(['$routeProvider', function($routeProvider) {
     }).when('/my',{
         templateUrl:'06-03-my.html'
     }).when('/customLocation',{
-        templateUrl:'06-04-customLocation.html',
-        controller:searchLocation
+        templateUrl:'06-04-customLocation.html'
     })
 }]);

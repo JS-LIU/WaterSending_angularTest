@@ -171,3 +171,9 @@
 #result1 {
     max-height: 300px;
 }
+.custom-location{
+    height:44px;
+    line-height:44px;
+    padding:0px 15px;
+    border-bottom:1px solid #E2E2E2;
+}
