@@ -51,10 +51,10 @@ main.controller('search', ['$scope','searchLocation',function($scope,searchLocat
     $scope.searchLoc = function(){
         searchLocation.search();
     }
-    $scope.location = searchLocation.location();
-
 }])
 
 main.controller('getLocation',['$scope','searchLocation',function($scope,searchLocation){
-    $scope.location = searchLocation.location();
+    $('#keyword').keydown(function(){
+        $scope.location = searchLocation.location();
+    })
 }])

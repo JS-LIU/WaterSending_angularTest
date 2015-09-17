@@ -43,6 +43,7 @@ body{
     overflow: hidden;
 }
 .L-header-back{
+    top:0px;
     width:35px;
     background: url("../images/header-back.png") no-repeat center center;
     background-size: 18px;
@@ -76,6 +77,12 @@ body{
 .L-header-title{
     line-height:44px;
 }
+.L-header-right{
+    top:0px;
+    width:35px;
+    right:15px;
+    line-height: 44px;
+}
 .common-list-01,
 .common-list-02,
 .common-list-03,
@@ -86,7 +93,8 @@ body{
 .common-list-08,
 .common-list-09,
 .common-list-10,
-.common-list-11{
+.common-list-11,
+.common-list-12{
     background:#FFF;
 }
 .common-list-01 li{
@@ -103,10 +111,12 @@ body{
     border-bottom: 1px solid #E2E2E2;
 }
 
-.common-list-03{
+.common-list-03,
+.common-list-12{
     border-top:1px solid #E2E2E2;
 }
-.common-list-03 li{
+.common-list-03 li,
+.common-list-12 li{
     height:44px;
     line-height: 44px;
     border-bottom:1px solid #E2E2E2;
@@ -382,7 +392,6 @@ body{
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    margin:10px 15px 70px 15px;
 }
 .common-list-10-top{
     height: 44px;
@@ -391,4 +400,14 @@ body{
 .common-list-10-bottom{
     height: 44px;
     line-height: 44px;
+}
+.common-list-12-content{
+    top:0px;
+    left:100px;
+    right:15px;
+    line-height:44px;
+    overflow: hidden;
+}
+.common-list-12-content input{
+    outline: none;
 }

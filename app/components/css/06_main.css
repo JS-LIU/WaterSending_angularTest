@@ -168,6 +168,9 @@
 .map-mapview-orderbtn{
     margin-top:451px;
 }
+.map-main-orderbtn{
+    margin:10px 15px 70px 15px;
+}
 #result1 {
     max-height: 300px;
 }
