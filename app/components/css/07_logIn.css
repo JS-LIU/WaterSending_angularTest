@@ -4,6 +4,7 @@
 .findPassword-time{
     border-left:1px solid #E2E2E2;
     line-height: 44px;
+    width:90px;
     color: #cdcdcd;
 }
 .fillCheckcode-prompt{

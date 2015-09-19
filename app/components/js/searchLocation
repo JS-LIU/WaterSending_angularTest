@@ -24,6 +24,7 @@ main.factory('searchLocation',function(){
 
     //输出输入提示结果的回调函数
     function autocomplete_CallBack(data) {
+
         var tipArr = data.tips;
         if (tipArr && tipArr.length > 0) {
             for (var i = 0; i < tipArr.length; i++) {

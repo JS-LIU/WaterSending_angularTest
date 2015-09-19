@@ -3,9 +3,9 @@
  */
 logIn.controller('fillCheckcode',function($scope){
 
-    $scope.isresend = '秒后发';
+    $scope.isresend = '秒后重发';
     $scope.t = function(){
-        $scope.time = 10;
+        $scope.time = 60;
         var t = $scope.t;
         $scope.t = function(){
             return  false;

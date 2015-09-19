@@ -395,6 +395,7 @@ body{
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    margin:0px 15px;
 }
 .common-list-10-top{
     height: 44px;
