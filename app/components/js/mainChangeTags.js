@@ -1,5 +1,5 @@
 /**
- * Created by µî÷è on 2015/8/23.
+ * Created by æ®¿éº’ on 2015/8/23.
  */
 
 var main = angular.module('myApp', ['ngRoute','ngTouch']);

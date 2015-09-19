@@ -1,0 +1,20 @@
+<div class="L-header w pr blue">
+    <p class="tc L-header-title cfff f16">填写校验码</p>
+    <a href="#/register" class="L-header-back h po"></a>
+</div>
+<div class="L-center" ng-controller="fillCheckcode">
+    <p class="fillCheckcode-prompt tc">已向{{phoneNum}}发送短信，请在输入框内填写验证码</p>
+    <ul class="common-list-12 mt10">
+        <li class="pr">
+            <span class="common-list-03-title pl15 fb">验证码</span>
+            <div class="common-list-12-content po h findPassword-yzm">
+                <input type="text" class="w h mr100" placeholder="短信校验码"/>
+            </div>
+            <div class="findPassword-time fr pr15" ng-click="t()">
+                <span class="pl15" ng-init="time=10">{{time}}</span>
+                <span>{{isresend}}</span>
+            </div>
+        </li>
+    </ul>
+    <a href="#/setPassword" class="common-btn-01 tc cfff blue f14 mt10 mr15 ml15">下一步</a>
+</div>

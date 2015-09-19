@@ -1,19 +1,19 @@
-//  ´úÂëÀ´Ô´£ºhttp://lbs.amap.com/api/javascript-api/example/l/1207-2/
+//  ä»£ç æ¥æºï¼šhttp://lbs.amap.com/api/javascript-api/example/l/1207-2/
 main.factory('searchLocation',function(){
     var location = [];
     var detailsLocation = [];
 
-    //ÊäÈëÌáÊ¾
+    //è¾“å…¥æç¤º
     function autoSearch(){
         var keywords = document.getElementById("keyword").value;
         var auto;
-        //¼ÓÔØÊäÈëÌáÊ¾²å¼þ
+        //åŠ è½½è¾“å…¥æç¤ºæ’ä»¶
         AMap.service(["AMap.Autocomplete"], function() {
             var autoOptions = {
-                city: "" //³ÇÊÐ£¬Ä¬ÈÏÈ«¹ú
+                city: "" //åŸŽå¸‚ï¼Œé»˜è®¤å…¨å›½
             };
             auto = new AMap.Autocomplete(autoOptions);
-            //²éÑ¯³É¹¦Ê±·µ»Ø²éÑ¯½á¹û
+            //æŸ¥è¯¢æˆåŠŸæ—¶è¿”å›žæŸ¥è¯¢ç»“æžœ
             if (keywords.length > 0) {
                 auto.search(keywords, function(status, result) {
                     autocomplete_CallBack(result);
@@ -22,7 +22,7 @@ main.factory('searchLocation',function(){
         });
     }
 
-    //Êä³öÊäÈëÌáÊ¾½á¹ûµÄ»Øµ÷º¯Êý
+    //è¾“å‡ºè¾“å…¥æç¤ºç»“æžœçš„å›žè°ƒå‡½æ•°
     function autocomplete_CallBack(data) {
         var tipArr = data.tips;
         if (tipArr && tipArr.length > 0) {

@@ -1,9 +1,9 @@
 /**
- * Created by µî÷è on 2015/8/25.
- * Õâ¸öjsÎÄ¼ş¿ÉÒÔ·Ö¸îÎª2-4·İ ´ı¿¼ÂÇÓÅ»¯
+ * Created by æ®¿éº’ on 2015/8/25.
+ * è¿™ä¸ªjsæ–‡ä»¶å¯ä»¥åˆ†å‰²ä¸º2-4ä»½ å¾…è€ƒè™‘ä¼˜åŒ–
  */
-//  ¸ÄÎªfactory ½«directive×¢Èë½øÀ´
-//  ÂÖ²¥¹ì¼£
+//  æ”¹ä¸ºfactory å°†directiveæ³¨å…¥è¿›æ¥
+//  è½®æ’­è½¨è¿¹
 main.service('carouselTrack',function(){
     var self = this;
     var window_width = window.screen.availWidth;
@@ -51,10 +51,10 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
         $swipe.bind(ele, {
             'start': function(coords) {
                 x = coords.x;
-                //  Í£Ö¹ÂÖ²¥
+                //  åœæ­¢è½®æ’­
             },
             'move': function(coords) {
-                //  µÈ´ıÓÅ»¯
+                //  ç­‰å¾…ä¼˜åŒ–
             },
             'end': function(coords) {
                 x1 = coords.x;
@@ -64,7 +64,7 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
                     carouselTrack.slideLeft();
                 }else if(dif < -9){
                     carouselTrack.slideRight();
-                    //  ¿ªÊ¼ÂÖ²¥
+                    //  å¼€å§‹è½®æ’­
                 }
             }
         });
@@ -83,15 +83,15 @@ main.controller('myInterval',function($scope,carouselTrack){
 
 
 main.controller("carousel",function($scope){
-    //  µÚÒ»ÕÅµÄºÍ×îºóÒ»ÕÅ¿ÉÒÔÓÃ³ÌĞòÍÆÈë ´ıÓÅ»¯
+    //  ç¬¬ä¸€å¼ çš„å’Œæœ€åä¸€å¼ å¯ä»¥ç”¨ç¨‹åºæ¨å…¥ å¾…ä¼˜åŒ–
     var imgW = window.screen.availWidth + 'px';
     $scope.imgs = [
-        //  ÕâÕÅÊÇ×îºóÒ»ÕÅµÄ¸´¿Ì
+        //  è¿™å¼ æ˜¯æœ€åä¸€å¼ çš„å¤åˆ»
         {src:'components/images/images-395-02.jpg',text:'sec',width:imgW},
-        //  Í¼Æ¬Êı¾İ
+        //  å›¾ç‰‡æ•°æ®
         {src:'components/images/images-395-01.png',text:'first',width:imgW},
         {src:'components/images/images-395-02.jpg',text:'sec',width:imgW},
-        //  ÕâÕÅÊÇµÚÒ»ÕÅµÄ¸´¿Ì
+        //  è¿™å¼ æ˜¯ç¬¬ä¸€å¼ çš„å¤åˆ»
         {src:'components/images/images-395-01.png',text:'first',width:imgW}
     ];
     $scope.myInterval = 5000;
