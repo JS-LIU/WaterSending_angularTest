@@ -82,7 +82,6 @@ body{
 }
 .L-header-right{
     top:0px;
-    width:35px;
     right:15px;
     line-height: 44px;
 }
@@ -97,7 +96,8 @@ body{
 .common-list-09,
 .common-list-10,
 .common-list-11,
-.common-list-12{
+.common-list-12,
+.common-list-13{
     background:#FFF;
 }
 .common-list-01 li{
@@ -105,15 +105,20 @@ body{
     border-bottom: 1px solid #E2E2E2;
     overflow: hidden;
 }
-.common-list-02{
+.common-list-02,
+.common-list-13{
     border-top: 1px solid #E2E2E2;
 }
 .common-list-02 li,
-.common-list-10-center{
+.common-list-10-center,
+.common-list-13 li{
     height:105px;
     border-bottom: 1px solid #E2E2E2;
 }
-
+.common-list-13 .comlist-13-single{
+    height:44px;
+    line-height:44px;
+}
 .common-list-03,
 .common-list-12{
     border-top:1px solid #E2E2E2;
@@ -262,7 +267,7 @@ body{
     border-top:1px solid #E2E2E2;
 }
 .common-list-01 a{
-    height:101px;
+    height:105px;
 }
 .common-picproduct-01{
     top:15px;
@@ -308,7 +313,7 @@ body{
     -webkit-background-size:14px 18px;
     background-size: 14px 18px;
 }
-.address{
+.comlist-02-floor-02{
     padding:0px 15px;
     overflow: hidden;
     background: url("../images/address.png") no-repeat 0px 3px;
@@ -331,12 +336,29 @@ body{
     height:75px;
     border:1px solid #E2E2E2;
 }
+.common-picproduct-13{
+    top:15px;
+    left:45px;
+    right:15px;
+    width:75px;
+    height:75px;
+    border:1px solid #E2E2E2;
+}
 .common-detailbox-02{
     top:10px;
     left:110px;
-    height:80px;
+    right:15px;
+    height:82px;
 }
-.common-detailbox-02-name{
+.common-detailbox-13{
+    top:10px;
+    left:130px;
+    right:15px;
+    height:82px;
+}
+.comlist-02-floor-01{
+}
+.comlist-02-floor-02{
 }
 .L-carousel{
     position:relative;

@@ -1,0 +1,42 @@
+<div  ng-show="DIALOG_SHOW">
+    <div id="shade-1"></div>
+    <dialog class="dialog">
+        <div class="dialog-center tc">
+            <p class="dialog-line2 pt5">购物车中只剩这一件了，是否要移除该商品</p>
+        </div>
+        <div class="dialog-bottom clearfix f16">
+            <a href="javascript:void(0)" class="fl tc dialog-bottom-btn cipblue" ng-click="NOTREMOVE_GOODS()">取消</a>
+            <a href="#/fillCheckcode" class="fl tc dialog-bottom-btn2 cipblue" ng-click="REMOVE_GOODS()">好</a>
+        </div>
+    </dialog>
+</div>
+
+<div class="L-header w pr blue">
+    <p class="tc L-header-title cfff f16">购物车</p>
+    <a href="#" class="L-header-back h po"></a>
+    <a href="#/register" class="L-header-right h po cfff">编辑</a>
+</div>
+<ul class="common-list-13" ng-controller="goodsCart">
+    <li class="comlist-13-single pl15">郑州市金水区桶装水超市</li>
+    <li class="w pr" ng-repeat="goodsInfo in GOODS_CARTLIST" productId="goodsInfo.productId">
+        <div class="po goodsCheck checked"></div>
+        <div class="common-picproduct-13 pr tc">
+            <img src="{{goodsInfo.imgSrc}}" class="h" alt=""/>
+        </div>
+        <div class="po common-detailbox-13">
+            <p class="f16 comlist-02-floor-01 gL-goodsList">
+                <span>{{goodsInfo.title}}</span>
+            </p>
+            <p class="comlist-02-floor-01 pt5 gL-goodsList">
+                <span>￥</span>
+                <span class="cred f16">{{goodsInfo.price}}</span>
+                <span>*{{goodsInfo.num}}</span>
+            </p>
+        </div>
+        <div class="po clearfix goodsCtrl">
+            <div class="fl subtract tc" ng-click="subtract($index)">-</div>
+            <div class="fl goodsNum tc">{{goodsInfo.num}}</div>
+            <div class="fl add tc" ng-click="addGoods($index)">+</div>
+        </div>
+    </li>
+</ul>

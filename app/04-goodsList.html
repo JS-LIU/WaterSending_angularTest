@@ -8,94 +8,37 @@
     <link rel="stylesheet" type="text/css" href="components/css/base.css"/>
     <link rel="stylesheet" type="text/css" href="components/css/Lhuipayapp-common.css"/>
     <link rel="stylesheet" type="text/css" href="components/css/04_goodsList.css"/>
+
+    <script src="components/js/plugins/angular.min.js"></script>
+    <script src="components/js/plugins/angular-route.min.js"></script>
+    <script src="components/js/plugins/jquery-1.11.3.min.js"></script>
     <title>04_商品列表-2</title>
 </head>
-    <body>
-        <div class="L-header w pr blue">
-            <a class="L-header-back h po" href="#"></a>
-            <div class="L-header-searchbox pr ml50 mr20 pl30">
-                <input class="w h" type="text" placeholder="搜您想要的水站"/>
-            </div>
+    <body ng-app="purchase">
+        <div ng-view>
         </div>
-        <div class="L-center">
-            <ul class="common-list-01">
-                <li class="w">
-                    <a href="#" class="pr">
-                        <div class="common-picproduct-01 pr tc">
-                            <img src="" class="h" alt="汇贝送水"/>
-                        </div>
-                        <div class="po common-detailbox-01">
-                            <p class="f16 common-detailbox-01-name">农夫山泉水站（井水路）</p>
-                            <p class="address">
-                                <span>金水区经三路丰产区经三路丰产路交叉东北角北角</span>
-                                <span class="distance">5.6KM</span>
-                            </p>
-                            <p class="evaluate">
-                                <img src="" alt=""/>
-                                <span>月售12520</span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-            <div class="common-list-06 clearfix mt10">
-                <div class="common-list-06-con1 clearfix w">
-                    <div class="fl pr common-list-06-con50 pr">
-                        <p class="tc">
-                            <span class="common-list-06-ml23">商品分类</span>
-                        </p>
-                    </div>
-                    <div class="fl pr common-list-06-con50 tc pr">
-                        <p class="tc">
-                            <span class="common-list-06-ml23">综合排序</span>
-                        </p>
-                    </div>
-                    <div class="common-list-06-btn fl"></div>
-                </div>
-                <div class="common-list-06-box50 po w clearfix none">
-                    <ul class="tc fl">
-                        <li>我给你的</li>
-                        <li>设计感打</li>
-                        <li>100分！</li>
-                    </ul>
-                    <ul class="tc fl">
-                        <li>我给你的</li>
-                        <li>设计感打</li>
-                        <li>100分！</li>
-                    </ul>
-                </div>
-                <ul class="po common-list-06-box100 none">
-                    <li>我给你的</li>
-                    <li>设计感打</li>
-                    <li>100分！</li>
-                </ul>
-            </div>
-            <ul class="common-list-07 clearfix">
-                <li class="fl pr">
-                    <div class="common-list-07-pic tc m15">
-                        <img class="h" src="components/images/images-170.png" alt="商品图片"/>
-                    </div>
-                    <div class="goodsCart-btn po" href="#"></div>
-                    <a href="#" class="pl15 pb15">
-                        <p class="f16 c000">纯净水18.9L桶装水</p>
-                        <p> 买三送一 </p>
-                        <p>
-                            <span>￥</span>
-                            <span class="cred f16">14.00</span>
-                            <span>已售235</span>
-                        </p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="L-footer-01 cfff w">
-            <a href="#" class="po L-footer-01-btn1">
-                <div class="po L-footer-01-btn-label cfff red">1</div>
+        <div class="L-footer-01 cfff w" ng-controller="goodscartBottom">
+            <a href="#/goodsCart" class="po L-footer-01-btn1" ng-show="showgC" ng-click="showgoodsCart()">
+                <div class="po L-footer-01-btn-label cfff red">{{GOODS_NUM||0}}</div>
             </a>
-            <div class="fl L-footer-01-l w">
-                <span class="gL-totalCost">¥150.00</span>
+            <div ng-hide="showgC" class="fl L-footer-01-l w allCheckbox">
+                <span class="pl15">
+                    <div class="po btmgoodsCheck checked"></div>
+                    <span class="pl30">全选</span>
+                </span>
+                <span class="totleMoney pl15">
+                    <span>合计：</span>
+                    <span>¥</span>
+                    <span>{{TOTLE_MONEY}}</span>
+                </span>
+            </div>
+            <div class="fl L-footer-01-l w" ng-show="showgC">
+                <span class="gL-totalCost">¥</span>
+                <span class="pl5 ">{{TOTLE_MONEY}}</span>
             </div>
             <a href="#" class="fr L-footer-01-r red tc cfff">去结算</a>
         </div>
+        <script src="components/js/purchaseChangeTags.js"></script>
+        <script src="components/js/showWay.js"></script>
     </body>
 </html>

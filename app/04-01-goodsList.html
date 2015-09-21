@@ -1,0 +1,100 @@
+<div class="L-header w pr blue">
+    <a class="L-header-back h po" href="#"></a>
+    <div class="L-header-searchbox pr ml50 mr20 pl30">
+        <input class="w h" type="text" placeholder="搜索店内商品"/>
+    </div>
+</div>
+<div class="L-center" ng-controller="showWay">
+    <ul class="common-list-01">
+        <li class="w">
+            <a href="#" class="pr">
+                <div class="common-picproduct-01 pr tc">
+                    <img src="" class="h" alt="汇贝送水"/>
+                </div>
+                <div class="po common-detailbox-01">
+                    <p class="f16 common-detailbox-01-name">农夫山泉水站（井水路）</p>
+                    <p class="address">
+                        <span>金水区经三路丰产区经三路丰产路交叉东北角北角</span>
+                        <span class="distance">5.6KM</span>
+                    </p>
+                    <p class="evaluate">
+                        <img src="" alt=""/>
+                        <span>月售12520</span>
+                    </p>
+                </div>
+            </a>
+        </li>
+    </ul>
+    <div class="common-list-06 clearfix mt10">
+        <div class="common-list-06-con1 clearfix w">
+            <div class="fl pr common-list-06-con50 pr">
+                <p class="tc">
+                    <span class="common-list-06-ml23">商品分类</span>
+                </p>
+            </div>
+            <div class="fl pr common-list-06-con50 tc pr">
+                <p class="tc">
+                    <span class="common-list-06-ml23">综合排序</span>
+                </p>
+            </div>
+            <div class="common-list-06-btn fl" ng-click="cutShowway()"></div>
+        </div>
+        <div class="common-list-06-box50 po w clearfix none">
+            <ul class="tc fl">
+                <li>我给你的</li>
+                <li>设计感打</li>
+                <li>100分！</li>
+            </ul>
+            <ul class="tc fl">
+                <li>我给你的</li>
+                <li>设计感打</li>
+                <li>100分！</li>
+            </ul>
+        </div>
+        <ul class="po common-list-06-box100 none">
+            <li>我给你的</li>
+            <li>设计感打</li>
+            <li>100分！</li>
+        </ul>
+    </div>
+    <ul class="common-list-02" ng-show="showWay1">
+        <li class="w pr" ng-repeat="goodsInfo in productData.productList" productId="{{goodsInfo.productId}}">
+            <div class="common-picproduct-02 pr tc">
+                <img src="{{goodsInfo.imgSrc}}" class="h" alt="商品图片"/>
+            </div>
+            <div class="po common-detailbox-02">
+                <p class="f16 comlist-02-floor-01 gL-goodsList">
+                    <span>{{goodsInfo.title}}</span>
+                    <span class="cfff blue quan-icon">券</span>
+                    <span class="cfff orange hui-icon">惠</span>
+                </p>
+                <p class="comlist-02-floor-01 pt5 gL-goodsList">
+                    <span>￥</span>
+                    <span class="cred f16">{{goodsInfo.price}}</span>
+                </p>
+                <p class="comlist-02-floor-01 pt10 gL-goodsList">
+                    <span>{{goodsInfo.summary}}</span>
+                    <span class="fr">已售{{goodsInfo.salesCnt}}</span>
+                </p>
+            </div>
+            <div class="po goodsCart-btn1" ng-click="addGoodscart($index)"></div>
+        </li>
+    </ul>
+    <ul class="common-list-07 clearfix" ng-show="showWay2">
+        <li class="fl pr">
+            <div class="common-list-07-pic tc m15">
+                <img class="h" src="components/images/images-170.png" alt="商品图片"/>
+            </div>
+            <div class="goodsCart-btn po" href="#"></div>
+            <a href="#" class="pl15 pb15">
+                <p class="f16 c000">纯净水18.9L桶装水</p>
+                <p> 买三送一 </p>
+                <p>
+                    <span>￥</span>
+                    <span class="cred f16">14.00</span>
+                    <span>已售235</span>
+                </p>
+            </a>
+        </li>
+    </ul>
+</div>
