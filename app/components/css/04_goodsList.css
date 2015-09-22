@@ -64,3 +64,9 @@
     -webkit-background-size: 18px;
     background-size: 18px;
 }
+.confirm-address{
+    padding-left:35px;
+    background: url("../images/address.png") no-repeat 15px center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+}

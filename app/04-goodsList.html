@@ -22,8 +22,8 @@
                 <div class="po L-footer-01-btn-label cfff red">{{GOODS_NUM||0}}</div>
             </a>
             <div ng-hide="showgC" class="fl L-footer-01-l w allCheckbox">
-                <span class="pl15">
-                    <div class="po btmgoodsCheck checked"></div>
+                <span class="pl15" ng-click="checkAll()">
+                    <div class="po btmgoodsCheck" ng-class="{true: 'checked', false: ''}[ALLCHECKED]"></div>
                     <span class="pl30">全选</span>
                 </span>
                 <span class="totleMoney pl15">
@@ -36,7 +36,7 @@
                 <span class="gL-totalCost">¥</span>
                 <span class="pl5 ">{{TOTLE_MONEY}}</span>
             </div>
-            <a href="#" class="fr L-footer-01-r red tc cfff">去结算</a>
+            <a href="#/confirmOrder" class="fr L-footer-01-r red tc cfff">去结算</a>
         </div>
         <script src="components/js/purchaseChangeTags.js"></script>
         <script src="components/js/showWay.js"></script>
