@@ -9,5 +9,7 @@ purchase.config(['$routeProvider', function($routeProvider) {
         templateUrl:'04-01-goodsList.html'
     }).when('/goodsCart',{
         templateUrl:'04-02-goodsCart.html'
+    }).when('/confirmOrder',{
+        templateUrl:'04-03-confirmOrder.html'
     })
 }]);
