@@ -70,3 +70,10 @@
     -webkit-background-size: 18px;
     background-size: 18px;
 }
+.common-list-02 .common-singlerow-1{
+    height:44px;
+    line-height: 44px;
+}
+.confirmOrder-shop{
+    padding-left:40px;
+}

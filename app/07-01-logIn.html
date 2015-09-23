@@ -3,21 +3,21 @@
     <a href="#" class="L-header-back h po"></a>
     <a href="#/register" class="L-header-right h po cfff">注册</a>
 </div>
-<div class="L-center">
+<div class="L-center" ng-controller="logInRequest">
     <ul class="common-list-12 mt10 mb10">
         <li class="pr">
             <span class="common-list-03-title pl15 fb">账号</span>
             <div class="common-list-12-content po h">
-                <input type="text" class="w h" placeholder="请输入您的手机号"/>
+                <input type="text" class="w h" placeholder="请输入您的手机号" ng-model="phoneNum"/>
             </div>
         </li>
         <li class="pr">
             <span class="common-list-03-title pl15 fb">密码</span>
             <div class="common-list-12-content po h">
-                <input type="password" class="w h" placeholder="请输入密码"/>
+                <input type="password" class="w h" placeholder="请输入密码" ng-model="password"/>
             </div>
         </li>
     </ul>
-    <a href="#" class="common-btn-01 tc cfff blue f14 mr15 ml15">登录</a>
+    <a href="javascript:void(0)" class="common-btn-01 tc cfff blue f14 mr15 ml15" ng-click="logInbtn(phoneNum,password)">登录</a>
     <a href="#/findPassword" class="fr mt5 pr15">找回密码</a>
 </div>

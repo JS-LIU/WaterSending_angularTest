@@ -1,9 +1,40 @@
 <div class="L-header w pr blue">
-    <p class="tc L-header-title cfff f16">购物车</p>
+    <p class="tc L-header-title cfff f16">确认订单</p>
     <a href="#" class="L-header-back h po"></a>
 </div>
 <div class="L-center">
-    <div class="common-singlerow-2 mt10">
+    <div class="common-singlerow-2 mt10" ng-controller="sendAddress">
         <a href="#/" class="confirm-address">新增地址</a>
     </div>
+
+    <ul class="common-list-03 mt10">
+        <li class="oD-payway">
+            <span class="common-list-03-title pl15">水票</span>
+            <span class="fr pr15 common-list-03-content">余0张</span>
+        </li>
+        <li class="oD-sender">
+            <span class="common-list-03-title pl15">优惠券</span>
+            <span class="fr pr15 common-list-03-content">-2.00元</span>
+        </li>
+        <li class="oD-sendTime">
+            <span class="common-list-03-title pl15">汇贝金券</span>
+            <span class="fr pr15 common-list-03-content">-5.00元</span>
+        </li>
+    </ul>
+
+    <ul class="common-list-02 mt10" ng-controller="">
+        <li class="common-singlerow-1 confirmOrder-shop">郑州市金水区桶装水超市</li>
+        <li class="w pr">
+            <div class="common-picproduct-02 pr tc">
+                <img src="" class="h" alt="汇贝送水"/>
+            </div>
+            <div class="po common-detailbox-02">
+                <p class="f16 comlist-02-floor-01">乐百乐我想做个好人《无间道》</p>
+                <p class="comlist-02-floor-01">
+                    <span class="cred f16">¥23.00</span>
+                    <span>*1</span>
+                </p>
+            </div>
+        </li>
+    </ul>
 </div>
