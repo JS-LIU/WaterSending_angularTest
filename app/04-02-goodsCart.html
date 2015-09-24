@@ -19,7 +19,7 @@
 
 <ul class="common-list-13 J-checked" ng-controller="goodsCart" >
     <li class="comlist-13-single pl15">郑州市金水区桶装水超市</li>
-    <li class="w pr J_goodsItem" ng-repeat="goodsInfo in GOODS_CARTLIST" productId="goodsInfo.productId" ng-controller="goodsItem">
+    <li class="w pr J_goodsItem" ng-repeat="goodsInfo in goodscart_Item" productId="goodsInfo.productId" ng-controller="goodsItem">
         <div class="po goodsCheck" ng-click="checkGoods()" ng-class="{true: 'checked', false: ''}[isChecked]"></div>
         <div class="common-picproduct-13 pr tc">
             <img src="{{goodsInfo.imgSrc}}" class="h" alt=""/>

@@ -3,11 +3,11 @@
     <a href="#" class="L-header-back h po"></a>
 </div>
 <div class="L-center">
-    <div class="common-singlerow-2 mt10" ng-controller="sendAddress">
+    <div class="common-singlerow-2 mt10" >
         <a href="#/" class="confirm-address">新增地址</a>
     </div>
 
-    <ul class="common-list-03 mt10">
+    <ul class="common-list-03 mt10" >
         <li class="oD-payway">
             <span class="common-list-03-title pl15">水票</span>
             <span class="fr pr15 common-list-03-content">余0张</span>
@@ -22,17 +22,17 @@
         </li>
     </ul>
 
-    <ul class="common-list-02 mt10" ng-controller="">
+    <ul class="common-list-02 mt10" ng-controller="payGoodsModel">
         <li class="common-singlerow-1 confirmOrder-shop">郑州市金水区桶装水超市</li>
-        <li class="w pr">
+        <li class="w pr" ng-repeat="goodsInfo in payGoodsList">
             <div class="common-picproduct-02 pr tc">
-                <img src="" class="h" alt="汇贝送水"/>
+                <img src="{{goodsInfo.imgSrc}}" class="h" alt=""/>
             </div>
             <div class="po common-detailbox-02">
-                <p class="f16 comlist-02-floor-01">乐百乐我想做个好人《无间道》</p>
+                <p class="f16 comlist-02-floor-01">{{goodsInfo.title}}</p>
                 <p class="comlist-02-floor-01">
-                    <span class="cred f16">¥23.00</span>
-                    <span>*1</span>
+                    <span class="cred f16">{{goodsInfo.price}}</span>
+                    <span>*{{goodsInfo.num}}</span>
                 </p>
             </div>
         </li>

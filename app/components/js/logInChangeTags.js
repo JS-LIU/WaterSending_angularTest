@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/9/17.
  */
-var logIn = angular.module('myLog', ['ngRoute']);
+var logIn = angular.module('myLog', ['ngRoute','ngCookies']);
 
 logIn.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/',{

@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/9/23.
  */
-logIn.controller('logInRequest',function($scope,logService,$http){
+logIn.controller('logInRequest',function($scope,logService,$http,$cookieStore){
 
     $scope.logInbtn = function(){
         var phoneNum = $scope.phoneNum;
@@ -23,9 +23,9 @@ logIn.controller('logInRequest',function($scope,logService,$http){
         //    console.log(data);
         //});
         // 模拟获取值
-        $http.get('components/data/login.json',{ cache: true}).success(function(data){
-            console.log(data);
-        })
+        $http.get('components/data/login.json',{cache: true}).success(function(data){
+            $cookieStore.put('logMsg',data);
+        });
     }
 })
 

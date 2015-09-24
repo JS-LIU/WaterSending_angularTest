@@ -11,6 +11,7 @@
 
     <script src="components/js/plugins/angular.min.js"></script>
     <script src="components/js/plugins/angular-route.min.js"></script>
+    <script src="components/js/plugins/angular-cookies.min.js"></script>
     <script src="components/js/plugins/jquery-1.11.3.min.js"></script>
     <title>04_商品列表-2</title>
 </head>
@@ -22,7 +23,7 @@
                 <div class="po L-footer-01-btn-label cfff red">{{GOODS_NUM||0}}</div>
             </a>
             <div ng-hide="showgC" class="fl L-footer-01-l w allCheckbox">
-                <span class="pl15" ng-click="checkAll()">
+                <span class="pl15" ng-click="checkAll(goodscartList)">
                     <div class="po btmgoodsCheck" ng-class="{true: 'checked', false: ''}[ALLCHECKED]"></div>
                     <span class="pl30">全选</span>
                 </span>
@@ -36,7 +37,7 @@
                 <span class="gL-totalCost">¥</span>
                 <span class="pl5 ">{{TOTLE_MONEY}}</span>
             </div>
-            <a href="#/confirmOrder" class="fr L-footer-01-r red tc cfff">去结算</a>
+            <a href="{{gopayhref}}" class="fr L-footer-01-r red tc cfff" ng-click="toPay(goodscartList)">去结算</a>
         </div>
         <script src="components/js/purchaseChangeTags.js"></script>
         <script src="components/js/showWay.js"></script>

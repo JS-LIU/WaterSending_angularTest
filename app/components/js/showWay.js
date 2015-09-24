@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/9/21.
  */
-purchase.controller('showWay',['$rootScope','$scope',function($rootScope,$scope){
+purchase.controller('showWay',function($rootScope,$scope,$cookieStore){
 
     //  请求商品信息数据
     //  模拟返回数据
@@ -14,50 +14,60 @@ purchase.controller('showWay',['$rootScope','$scope',function($rootScope,$scope)
         $scope.showWay2 = !$scope.showWay2;
     }
 
-    //  购物车中的数量
-    $rootScope.GOODS_NUM = 0;
-    //  购物车中商品数据
-    $rootScope.GOODS_CARTLIST = [];
-    //  总价
-    $rootScope.TOTLE_MONEY = 0;
-
-
+    //  cookie中的商品
+    if($cookieStore.get('goodscart_list') == undefined){
+        $cookieStore.put('goodscart_list',[]);
+    }else{
+        $cookieStore.get('goodscart_list');
+    }
     //  添加购物车
     $scope.addGoodscart = function($index){
 
         var selfModel = $scope.productData.productList[$index];
         var goodsPrice = selfModel.price;
+        var productId = $scope.productData.productList[$index].productId;
 
-        //  加入购物车
-        if(selfModel.num == undefined){
-            selfModel.num = 1;
-            $rootScope.GOODS_CARTLIST.push(selfModel);
-        }else{
-            selfModel.num += 1;
+        //  查重
+        for(var i = 0,len = $cookieStore.get('goodscart_list').length; i < len;i++){
+
+            if($cookieStore.get('goodscart_list')[i].productId == productId){
+                $cookieStore.get('goodscart_list')[i].num + 1;
+            }else{
+                console.log(1);
+                $scope.productData.productList[$index].num = 1;
+                Array.prototype.push.call($cookieStore.get('goodscart_list'),$scope.productData.productList[$index]);
+                console.log($cookieStore.get('goodscart_list'));
+            }
         }
 
-        //  购物车右上角红标+1
-        $rootScope.GOODS_NUM ++;
-
-        //  购物车中钱
-        $rootScope.TOTLE_MONEY += goodsPrice;
+        //  购物车中的数量
+        $rootScope.GOODS_NUM = 0;
+        //  总价
+        $rootScope.TOTLE_MONEY = 0;
     }
-}]);
+});
 
 
 purchase.controller('goodsCart',['$rootScope','$scope',function($rootScope,$scope){
 
 }]);
 
-purchase.controller('goodsItem',['$rootScope','$scope',function($rootScope,$scope){
-    var goodscartListModel = $rootScope.GOODS_CARTLIST;
+purchase.controller('goodsItem',function($rootScope,$scope,$cookieStore){
+    var goodscartListModel = $cookieStore.get('goodscart_list');
+    $scope.goodscart_Item = goodscartListModel;
+
     $rootScope.DIALOG_SHOW = false;
     var i = $scope.$index;
     var goodsPrice = goodscartListModel[i].price;
     $scope.isChecked = true;
+
+    goodscartListModel[i].ischecked = true;
     $scope.checkGoods = function(){
         $scope.isChecked = !$scope.isChecked;
-        var goodsMoney = goodsPrice  * goodscartListModel[i].num;
+
+        goodscartListModel[i].ischecked  = !goodscartListModel[i].ischecked;
+
+        var goodsMoney = goodsPrice * goodscartListModel[i].num;
         if($scope.isChecked == false){
             $rootScope.TOTLE_MONEY -= goodsMoney;
             $rootScope.ALLCHECKED = false;
@@ -67,14 +77,13 @@ purchase.controller('goodsItem',['$rootScope','$scope',function($rootScope,$scop
             if($('.goodsCheck').hasClass('checked')){
                 $rootScope.ALLCHECKED = true;
             }
-
         }
+        console.log($cookieStore.get('goodscart_list'));
     }
 
     //  购物车[-]
     $scope.subtract = function($index){
         var $_self = $('.J_goodsItem').eq($index);
-
         if(goodscartListModel[i].num == 1){
             //  弹出对话框
             $rootScope.DIALOG_SHOW = true;
@@ -85,13 +94,16 @@ purchase.controller('goodsItem',['$rootScope','$scope',function($rootScope,$scop
             //  点击确认删除当前商品
             $rootScope.REMOVE_GOODS = function(){
                 $rootScope.DIALOG_SHOW = false;
+                goodscartListModel.splice(i,1);
                 $_self.remove();
+                console.log($cookieStore.get('goodscart_list'));
             }
         }else{
             goodscartListModel[i].num --;
         }
         if($scope.isChecked == true){
             $rootScope.TOTLE_MONEY -= goodsPrice;
+            console.log($cookieStore.get('goodscart_list'));
         }
     }
     //  购物车[+]
@@ -100,11 +112,16 @@ purchase.controller('goodsItem',['$rootScope','$scope',function($rootScope,$scop
         if($scope.isChecked == true){
             $rootScope.TOTLE_MONEY += goodsPrice;
         }
+        console.log($cookieStore.get('goodscart_list'));
     }
-}]);
+});
 
 
-purchase.controller('goodscartBottom',['$rootScope','$scope',function($rootScope,$scope){
+purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,log){
+    var path = '#/confirmOrder';
+    var url = 'http://localhost:63342/WaterSending_angularTest/app/07-log.html#/';
+    var checkedList = [];
+    var uncheckedList = [];
     $scope.showgC = true;
 
     $scope.showgoodsCart = function(){
@@ -112,26 +129,58 @@ purchase.controller('goodscartBottom',['$rootScope','$scope',function($rootScope
     }
     $rootScope.ALLCHECKED = true;
 
-    //  全选
-    $scope.checkAll = function(){
-        $rootScope.ALLCHECKED = !$rootScope.ALLCHECKED;
 
+    $scope.goodscartList = $cookieStore.get('goodscart_list');
+    //  全选
+    $scope.checkAll = function(goodscartlist){
+        $rootScope.ALLCHECKED = !$rootScope.ALLCHECKED;
         //  非全选状态下
         if($rootScope.ALLCHECKED == true){
-            var goodscartListModel = $rootScope.GOODS_CARTLIST;
 
-            for(var i = 0,len = goodscartListModel.length; i < len;i++){
-                $rootScope.TOTLE_MONEY += (goodscartListModel[i].num * goodscartListModel[i].price);
+            for(var i = 0,len = goodscartlist.length; i < len;i++){
+                $rootScope.TOTLE_MONEY += (goodscartlist[i].num * goodscartlist[i].price);
             }
             //  上面所有的都有对勾
             $('.goodsCheck').addClass('checked');
-
+            goodsCheck(true,goodscartlist);
         }else{
+            goodsCheck(false);
             $rootScope.TOTLE_MONEY = 0;
             $('.goodsCheck').removeClass('checked');
         }
     }
-}]);
+    $scope.toPay = function(){
+        if(log.login()){
+            $scope.gopayhref = path;
+        }else{
+            $scope.gopayhref = url;
+        }
+    }
+    function goodsCheck(ischeck,goodscartlist){
+        for(var i = 0,len = goodscartlist.length; i < len;i++){
+            goodscartlist[i].ischecked = ischeck;
+            console.log($cookieStore.get('goodscart_list'));
+        }
+    }
+});
+
+
+purchase.controller('payGoodsModel',function($scope,$cookieStore){
+
+    var payGoodsList = [];
+
+    //  所有 要被付款的商品
+    for(var i = 0,len = $cookieStore.get('checkedList').length;i < len ; i++){
+        if($cookieStore.get('checkedList')[i].ischecked == true){
+            $cookieStore.get('checkedList').splice(i,1);
+            payGoodsList.push($cookieStore.get('checkedList')[i]);
+        }
+    }
+
+    $scope.payGoodsList = payGoodsList;
+});
+
+
 
 purchase.directive('dialog',function(){
     function link($scope,ele){
@@ -154,3 +203,17 @@ purchase.directive('dialog',function(){
         link:link
     }
 });
+
+
+purchase.factory('log',function($cookieStore){
+    var isLogin = function(){
+        if($cookieStore.get('logMsg') != undefined){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    return {
+        login:isLogin
+    };
+})
