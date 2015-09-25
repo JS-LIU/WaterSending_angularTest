@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/9/21.
  */
-purchase.controller('showWay',function($rootScope,$scope,$cookieStore){
+purchase.controller('showWay',function($rootScope,$scope,$cookieStore,goodsCartcookie){
 
     //  请求商品信息数据
     //  模拟返回数据
@@ -13,33 +13,16 @@ purchase.controller('showWay',function($rootScope,$scope,$cookieStore){
         $scope.showWay1 = $scope.showWay2;
         $scope.showWay2 = !$scope.showWay2;
     }
-
-    //  cookie中的商品
-    if($cookieStore.get('goodscart_list') == undefined){
-        $cookieStore.put('goodscart_list',[]);
-    }else{
-        $cookieStore.get('goodscart_list');
-    }
     //  添加购物车
     $scope.addGoodscart = function($index){
 
         var selfModel = $scope.productData.productList[$index];
         var goodsPrice = selfModel.price;
         var productId = $scope.productData.productList[$index].productId;
+        var goodscart_list = $cookieStore.get('goodscart_list');
 
-        //  查重
-        for(var i = 0,len = $cookieStore.get('goodscart_list').length; i < len;i++){
-
-            if($cookieStore.get('goodscart_list')[i].productId == productId){
-                $cookieStore.get('goodscart_list')[i].num + 1;
-            }else{
-                console.log(1);
-                $scope.productData.productList[$index].num = 1;
-                Array.prototype.push.call($cookieStore.get('goodscart_list'),$scope.productData.productList[$index]);
-                console.log($cookieStore.get('goodscart_list'));
-            }
-        }
-
+        //  添加cookie
+        goodsCartcookie.add_goodsCart_cookie(goodscart_list,$scope.productData.productList[$index]);
         //  购物车中的数量
         $rootScope.GOODS_NUM = 0;
         //  总价
@@ -48,42 +31,40 @@ purchase.controller('showWay',function($rootScope,$scope,$cookieStore){
 });
 
 
-purchase.controller('goodsCart',['$rootScope','$scope',function($rootScope,$scope){
-
-}]);
+purchase.controller('goodsCart',function($scope,$cookieStore){
+    $scope.goodscartList_model = $cookieStore.get('goodscart_list');
+});
 
 purchase.controller('goodsItem',function($rootScope,$scope,$cookieStore){
     var goodscartListModel = $cookieStore.get('goodscart_list');
-    $scope.goodscart_Item = goodscartListModel;
-
-    $rootScope.DIALOG_SHOW = false;
     var i = $scope.$index;
     var goodsPrice = goodscartListModel[i].price;
+
+    $scope.goodscart_Item = goodscartListModel[i];
+    $rootScope.DIALOG_SHOW = false;
     $scope.isChecked = true;
 
-    goodscartListModel[i].ischecked = true;
-    $scope.checkGoods = function(){
+    $scope.checkGoods = function($index){
         $scope.isChecked = !$scope.isChecked;
-
-        goodscartListModel[i].ischecked  = !goodscartListModel[i].ischecked;
+        goodscartListModel[i].isChecked = !goodscartListModel[i].isChecked;
 
         var goodsMoney = goodsPrice * goodscartListModel[i].num;
-        if($scope.isChecked == false){
+        if($scope.goodscart_Item.isChecked == false){
             $rootScope.TOTLE_MONEY -= goodsMoney;
             $rootScope.ALLCHECKED = false;
         }else{
             $rootScope.TOTLE_MONEY += goodsMoney;
-            // 判断是否全选
-            if($('.goodsCheck').hasClass('checked')){
-                $rootScope.ALLCHECKED = true;
+            // 判断全选是否打钩
+            for(var j = 0,len = goodscartListModel.length;j < len;j++){
+                if(goodscartListModel[j].isChecked == true && j == (len - 1)){
+                    $rootScope.ALLCHECKED = true;
+                }
             }
         }
-        console.log($cookieStore.get('goodscart_list'));
     }
 
     //  购物车[-]
-    $scope.subtract = function($index){
-        var $_self = $('.J_goodsItem').eq($index);
+    $scope.subtract = function(){
         if(goodscartListModel[i].num == 1){
             //  弹出对话框
             $rootScope.DIALOG_SHOW = true;
@@ -94,25 +75,24 @@ purchase.controller('goodsItem',function($rootScope,$scope,$cookieStore){
             //  点击确认删除当前商品
             $rootScope.REMOVE_GOODS = function(){
                 $rootScope.DIALOG_SHOW = false;
+                $scope.goodscartList_model.splice(i,1)
                 goodscartListModel.splice(i,1);
-                $_self.remove();
-                console.log($cookieStore.get('goodscart_list'));
             }
         }else{
+            $scope.goodscartList_model[i].num--;
             goodscartListModel[i].num --;
         }
         if($scope.isChecked == true){
             $rootScope.TOTLE_MONEY -= goodsPrice;
-            console.log($cookieStore.get('goodscart_list'));
         }
     }
     //  购物车[+]
     $scope.addGoods = function(){
         goodscartListModel[i].num ++;
+        $scope.goodscartList_model[i].num++;
         if($scope.isChecked == true){
             $rootScope.TOTLE_MONEY += goodsPrice;
         }
-        console.log($cookieStore.get('goodscart_list'));
     }
 });
 
@@ -217,3 +197,66 @@ purchase.factory('log',function($cookieStore){
         login:isLogin
     };
 })
+
+
+purchase.factory('goodsCartcookie',function($cookieStore){
+    function addCookie(cookieList,addProduct){
+        //  添加cookie
+        if(cookieList == undefined){
+            addProduct.num = 1;
+            addProduct.isChecked = true;
+            $cookieStore.put('goodscart_list',[addProduct]);
+        }else{
+            //  cookie对象中的值不知道怎么改 百度说重写就修改了
+            var new_goodscart_list = cookieList;
+            //  查重
+            for(var i = 0, len = new_goodscart_list.length;i < len;i++){
+                if(new_goodscart_list[i].productId == addProduct.productId){
+                    new_goodscart_list[i].num += 1;
+                    $cookieStore.put('goodscart_list',new_goodscart_list);
+                    break;
+                }else if(new_goodscart_list[i].productId != addProduct.productId && i == (len - 1)){
+                    addProduct.num = 1;
+                    addProduct.isChecked = true;
+                    new_goodscart_list.push(addProduct);
+                    $cookieStore.put('goodscart_list',new_goodscart_list);
+                }
+            }
+        }
+    }
+
+    function changeCookie(){
+
+    }
+
+    return {
+        add_goodsCart_cookie:addCookie,
+        change_goodsCart_cookie:changeCookie
+    }
+})
+
+
+
+
+
+
+
+Array.prototype.checkRepeat = function(b,obj,i){
+    var self = this;
+    var objProp = [];
+    //  默认第三个参数为0
+    if(arguments.length == 2){
+        arguments[2] = 0;
+    }
+    for(var prop in obj){
+        objProp.push(prop);
+    }
+    for(var j = arguments[2],len = self.length; j < len;j++){
+        if(self[j] == b){
+            obj[objProp[0]]();
+            break;
+        }else if(self[j] != b && j == (len - 1)){
+            obj[objProp[1]]();
+        }
+    }
+}
