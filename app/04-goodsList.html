@@ -23,7 +23,7 @@
                 <div class="po L-footer-01-btn-label cfff red">{{GOODS_NUM||0}}</div>
             </a>
             <div ng-hide="showgC" class="fl L-footer-01-l w allCheckbox">
-                <span class="pl15" ng-click="checkAll(goodscartList)">
+                <span class="pl15" ng-click="checkAll()">
                     <div class="po btmgoodsCheck" ng-class="{true: 'checked', false: ''}[ALLCHECKED]"></div>
                     <span class="pl30">全选</span>
                 </span>
@@ -37,9 +37,16 @@
                 <span class="gL-totalCost">¥</span>
                 <span class="pl5 ">{{TOTLE_MONEY}}</span>
             </div>
-            <a href="{{gopayhref}}" class="fr L-footer-01-r red tc cfff" ng-click="toPay(goodscartList)">去结算</a>
+            <a href="{{gopayhref}}" class="fr L-footer-01-r red tc cfff" ng-click="toPay()">去结算</a>
         </div>
-        <script src="components/js/purchaseChangeTags.js"></script>
-        <script src="components/js/showWay.js"></script>
+
+        <script src="components/js/addGoodscart/purchaseChangeTags.js"></script>
+        <!--04-01商品列表-->
+        <script src="components/js/addGoodscart/goodsListModel.js"></script>
+        <!--04-02购物车-->
+        <script src="components/js/addGoodscart/goodsCartCtrl.js"></script>
+        <!--04底部-->
+        <script src="components/js/addGoodscart/toPay.js"></script>
+        <script src="components/js/addGoodscart/goodsCartBase.js"></script>
     </body>
 </html>
