@@ -78,8 +78,8 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
 }])
 
 main.controller('myInterval',function($scope,carouselTrack){
-    var t = setInterval(carouselTrack.slideLeft,$scope.myInterval);
-})
+    //var t = setInterval(carouselTrack.slideLeft,$scope.myInterval);
+});
 
 
 main.controller("carousel",function($scope){

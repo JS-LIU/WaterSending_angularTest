@@ -12,7 +12,7 @@
             <li>
                 <a href="#/customLocation" class="clearfix map-myLocation pr rightArrow mr15">
                     <p class="map-address-3 fl">送水地址：</p>
-                    <p class="map-a fl pr15 po" id="a">正在定位...</p>
+                    <p class="map-a fl pr15 po" id="a">{{address}}</p>
                 </a>
             </li>
             <li>
@@ -33,7 +33,7 @@
     </div>
     <!--地图页面-->
     <div ng-hide="isshow" class="mb100">
-        <div ng-controller="mapAPI" id="mapContainer">{{map()}}</div>
+        <div id="mapContainer"></div>
         <a href="#" class="common-btn-01 tc cfff blue f14 map-mapview-orderbtn">我要订水</a>
     </div>
 

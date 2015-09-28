@@ -44,7 +44,7 @@ purchase.directive('dialog',function(){
 //  判断是否登录
 purchase.factory('log',function($cookieStore){
     var isLogin = function(){
-        if($cookieStore.get('logMsg') != undefined){
+        if($cookieStore.get('logMsg').access_token != undefined){
             return true;
         }else{
             return false;
@@ -59,7 +59,7 @@ purchase.factory('log',function($cookieStore){
 purchase.factory('goodsCartcookie',function($cookieStore){
     function addCookie(cookieList,addProduct){
         //  添加cookie
-        if(cookieList == undefined){
+        if(cookieList == undefined || cookieList.length == 0){
             addProduct.num = 1;
             addProduct.isChecked = true;
             $cookieStore.put('goodscart_list',[addProduct]);
@@ -93,5 +93,21 @@ purchase.factory('goodsCartcookie',function($cookieStore){
     }
 })
 
+purchase.factory('purchasePost',function($http){
+    var url = 'http://192.168.1.39:8080';
+    var postData = function(data,path){
+        return $http({
+            method:'POST',
+            url: url + path,
+            data: data,
+            headers:{'Content-Type':'application/json'},
+        });
+    }
+    return {
+        postData: function(data,path){
+            return postData(data,path,'postData');
+        }
+    }
+});
 
 

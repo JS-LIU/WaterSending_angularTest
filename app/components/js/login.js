@@ -24,7 +24,13 @@ logIn.controller('logInRequest',function($scope,logService,$http,$cookieStore){
         //});
         // 模拟获取值
         $http.get('components/data/login.json',{cache: true}).success(function(data){
-            $cookieStore.put('logMsg',data);
+            var access_tooken = data['access_token'];
+            var new_logMsg = {
+                app_key: appKey,
+                signature: md5_signature,
+                access_token: access_tooken
+            }
+            $cookieStore.put('logMsg',new_logMsg);
         });
     }
 })
@@ -37,7 +43,6 @@ logIn.factory('logService',function($http){
             url : url + path,
             data:data,
             headers:{'Content-Type':'application/json'},
-            cache:true
         });
     }
     return {
