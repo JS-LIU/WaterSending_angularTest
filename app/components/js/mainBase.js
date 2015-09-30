@@ -1,54 +1,54 @@
 /**
- * Created by µî÷è on 2015/9/29.
+ * Created by æ®¿éº’ on 2015/9/29.
  */
 main.factory("get_location",function($cookieStore){
 
     var map, geolocation,lnglatXY,address;
     /*
-     *   ´úÂëÀ´Ô´£ºhttp://lbs.amap.com/api/javascript-api/example/g/0704-2/
-     *   ×÷ÓÃ£º»ñÈ¡¡¾µ±Ç°¾­Î³¶È¡¿
+     *   ä»£ç æ¥æºï¼šhttp://lbs.amap.com/api/javascript-api/example/g/0704-2/
+     *   ä½œç”¨ï¼šè·å–ã€å½“å‰ç»çº¬åº¦ã€‘
      */
-    //¼ÓÔØµØÍ¼£¬µ÷ÓÃä¯ÀÀÆ÷¶¨Î»·şÎñ
+    //åŠ è½½åœ°å›¾ï¼Œè°ƒç”¨æµè§ˆå™¨å®šä½æœåŠ¡
     map = new AMap.Map('mapContainer', {
         resizeEnable: true
     });
     map.plugin('AMap.Geolocation', function() {
         geolocation = new AMap.Geolocation({
-            enableHighAccuracy: true,//ÊÇ·ñÊ¹ÓÃ¸ß¾«¶È¶¨Î»£¬Ä¬ÈÏ:true
-            timeout: 10000,          //³¬¹ı10ÃëºóÍ£Ö¹¶¨Î»£¬Ä¬ÈÏ£ºÎŞÇî´ó
-            maximumAge: 100000,      //¶¨Î»½á¹û»º´æ0ºÁÃë£¬Ä¬ÈÏ£º0
-            convert: true,           //×Ô¶¯Æ«ÒÆ×ø±ê£¬Æ«ÒÆºóµÄ×ø±êÎª¸ßµÂ×ø±ê£¬Ä¬ÈÏ£ºtrue
-            showMarker: true,        //¶¨Î»³É¹¦ºóÔÚ¶¨Î»µ½µÄÎ»ÖÃÏÔÊ¾µã±ê¼Ç£¬Ä¬ÈÏ£ºtrue
-            showCircle: true,        //¶¨Î»³É¹¦ºóÓÃÔ²È¦±íÊ¾¶¨Î»¾«¶È·¶Î§£¬Ä¬ÈÏ£ºtrue
-            panToLocation: true,     //¶¨Î»³É¹¦ºó½«¶¨Î»µ½µÄÎ»ÖÃ×÷ÎªµØÍ¼ÖĞĞÄµã£¬Ä¬ÈÏ£ºtrue
-            zoomToAccuracy: true     //¶¨Î»³É¹¦ºóµ÷ÕûµØÍ¼ÊÓÒ°·¶Î§Ê¹¶¨Î»Î»ÖÃ¼°¾«¶È·¶Î§ÊÓÒ°ÄÚ¿É¼û£¬Ä¬ÈÏ£ºfalse
+            enableHighAccuracy: true,//æ˜¯å¦ä½¿ç”¨é«˜ç²¾åº¦å®šä½ï¼Œé»˜è®¤:true
+            timeout: 10000,          //è¶…è¿‡10ç§’ååœæ­¢å®šä½ï¼Œé»˜è®¤ï¼šæ— ç©·å¤§
+            maximumAge: 100000,      //å®šä½ç»“æœç¼“å­˜0æ¯«ç§’ï¼Œé»˜è®¤ï¼š0
+            convert: true,           //è‡ªåŠ¨åç§»åæ ‡ï¼Œåç§»åçš„åæ ‡ä¸ºé«˜å¾·åæ ‡ï¼Œé»˜è®¤ï¼štrue
+            showMarker: true,        //å®šä½æˆåŠŸååœ¨å®šä½åˆ°çš„ä½ç½®æ˜¾ç¤ºç‚¹æ ‡è®°ï¼Œé»˜è®¤ï¼štrue
+            showCircle: true,        //å®šä½æˆåŠŸåç”¨åœ†åœˆè¡¨ç¤ºå®šä½ç²¾åº¦èŒƒå›´ï¼Œé»˜è®¤ï¼štrue
+            panToLocation: true,     //å®šä½æˆåŠŸåå°†å®šä½åˆ°çš„ä½ç½®ä½œä¸ºåœ°å›¾ä¸­å¿ƒç‚¹ï¼Œé»˜è®¤ï¼štrue
+            zoomToAccuracy: true     //å®šä½æˆåŠŸåè°ƒæ•´åœ°å›¾è§†é‡èŒƒå›´ä½¿å®šä½ä½ç½®åŠç²¾åº¦èŒƒå›´è§†é‡å†…å¯è§ï¼Œé»˜è®¤ï¼šfalse
         });
         map.addControl(geolocation);
-        AMap.event.addListener(geolocation, 'complete', onComplete);//·µ»Ø¶¨Î»ĞÅÏ¢
+        AMap.event.addListener(geolocation, 'complete', onComplete);//è¿”å›å®šä½ä¿¡æ¯
     });
     function onComplete(data) {
         lnglatXY = [data.position.getLng(),data.position.getLat()];
         geocoder(lnglatXY);
     }
 
-    //  »ñÈ¡µ±Ç°Î»ÖÃĞÅÏ¢
+    //  è·å–å½“å‰ä½ç½®ä¿¡æ¯
     function getCurrentPosition () {
         geolocation.getCurrentPosition();
     };
     /*
-     *  ´úÂëÀ´Ô´£ºhttp://lbs.amap.com/api/javascript-api/example/p/1602-2/
-     *  ×÷ÓÃ£ºµÃµ½µ±Ç°Î»ÖÃ
+     *  ä»£ç æ¥æºï¼šhttp://lbs.amap.com/api/javascript-api/example/p/1602-2/
+     *  ä½œç”¨ï¼šå¾—åˆ°å½“å‰ä½ç½®
      */
 
     function geocoder(lnglatXY) {
         var MGeocoder;
-        //¼ÓÔØµØÀí±àÂë²å¼ş
+        //åŠ è½½åœ°ç†ç¼–ç æ’ä»¶
         AMap.service(["AMap.Geocoder"], function() {
             MGeocoder = new AMap.Geocoder({
                 radius: 1000,
                 extensions: "all"
             });
-            //ÄæµØÀí±àÂë
+            //é€†åœ°ç†ç¼–ç 
             MGeocoder.getAddress(lnglatXY, function(status, result) {
                 if (status === 'complete' && result.info === 'OK') {
                     geocoder_CallBack(result);
@@ -58,7 +58,7 @@ main.factory("get_location",function($cookieStore){
     }
 
     function geocoder_CallBack(data) {
-        //·µ»ØµØÖ·ÃèÊö
+        //è¿”å›åœ°å€æè¿°
         address = data.regeocode.formattedAddress;
         $cookieStore.put('lnglatXY',{
             positionX:lnglatXY[0],
@@ -87,6 +87,17 @@ main.factory('mainPost',function($http){
     return {
         postData: function(data,path){
             return postData(data,path,'postData');
+        }
+    }
+});
+main.factory('logMsg',function(){
+
+    var signature = 'b9528d938a3d6ac64865aee2324d84da';
+    var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    return {
+        accessInfo:{
+            app_key:appKey,
+            signature:signature
         }
     }
 });

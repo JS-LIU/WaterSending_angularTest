@@ -18,7 +18,9 @@ main.controller("mapView",function($rootScope,$scope,get_location,$cookieStore,m
 
         if($cookieStore.get('lnglatXY') != undefined){
             $scope.address = $cookieStore.get('lnglatXY').addressInfo;
-            mainPost.postData(postShopData($cookieStore.get('lnglatXY'),path)).success(function(){
+            var data = postShopData($cookieStore.get('lnglatXY'));
+            console.log(data);
+            mainPost.postData(data,path).success(function(){
                 requestPageInfo.pageNo += 1;
             });
             clearInterval(t);
