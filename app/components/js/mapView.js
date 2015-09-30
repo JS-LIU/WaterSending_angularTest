@@ -2,16 +2,20 @@
  * Created by 殿麒 on 2015/8/31.
  */
 
-main.controller("cutView", ['$scope', '$rootScope',function($scope,$rootScope){
+main.controller("cutView",function($scope,$rootScope){
+    $rootScope.SHOWMAP = true;
     $scope.toggleView = function(){
-        $rootScope.isshow = !$rootScope.isshow;
+        $rootScope.SHOWMAP = !$rootScope.SHOWMAP;
     }
-}]);
+});
 
-main.controller("mapView",function($rootScope,$scope,get_location,$cookieStore,mainPost,logMsg){
-    $cookieStore.remove('lnglatXY');
+main.controller("mapView",function($rootScope,$scope,$cookieStore,get_location,mainPost,logMsg,$http){
+    //$cookieStore.remove('lnglatXY');
+    if($cookieStore.get('lnglatXY') == undefined || $('.amap-marker-content').length ==0){
+        get_location.paintMap();
+    }
+
     $rootScope.isshow = true;
-    get_location.paintMap();
     $scope.address = '正在定位...';
 
     var t = setInterval(function(){
@@ -19,9 +23,18 @@ main.controller("mapView",function($rootScope,$scope,get_location,$cookieStore,m
         if($cookieStore.get('lnglatXY') != undefined){
             $scope.address = $cookieStore.get('lnglatXY').addressInfo;
             var data = postShopData($cookieStore.get('lnglatXY'));
-            console.log(data);
-            mainPost.postData(data,path).success(function(){
-                requestPageInfo.pageNo += 1;
+            //  请求数据
+            //mainPost.postData(data,path).success(function(data){
+            //    console.log(data);
+            //    $rootScope.SHOPLIST = shopList;
+            //    requestPageInfo.pageNo += 1;
+            //});
+
+            //  本地模拟
+            $http.get('components/data/shopList.json').success(function(data){
+                var shopList = data['shopList'];
+                $rootScope.SHOPLIST = shopList;
+                $scope.nearlist_shopList = shopList[0];
             });
             clearInterval(t);
         }
@@ -42,5 +55,4 @@ main.controller("mapView",function($rootScope,$scope,get_location,$cookieStore,m
         }
         return data;
     }
-
 });

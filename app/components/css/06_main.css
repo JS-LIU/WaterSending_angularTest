@@ -86,6 +86,16 @@
     -webkit-background-size: 20px;
     background-size: 20px;
 }
+.shopaddress{
+    display:block;
+    top:0px;
+    left:40px;
+    right:80px;
+    height: 17px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
 .L-carousel{
     height:395px;
 }

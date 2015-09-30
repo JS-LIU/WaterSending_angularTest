@@ -23,7 +23,15 @@
     <body ng-app="myApp">
         <div class="slide-wrap" ng-view>
         </div>
-        <div class="slide-mfooter" ng-show="NAVBOT">
+
+        <!--地图页面-->
+        <div ng-hide="SHOWMAP" class="mb100">
+            <div id="mapContainer"></div>
+            <a href="#" class="common-btn-01 tc cfff blue f14 map-mapview-orderbtn">我要订水</a>
+        </div>
+
+
+        <div class="slide-mfooter" ng-hide="NAVBOT">
             <ul class="common-list-09">
                 <li class="fl tc">
                     <a class="mainf-ds" href="#/">定水</a>

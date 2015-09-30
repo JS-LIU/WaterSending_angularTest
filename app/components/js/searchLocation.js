@@ -4,8 +4,7 @@ main.factory('searchLocation',function(){
     var detailsLocation = [];
 
     //输入提示
-    function autoSearch(){
-        var keywords = document.getElementById("keyword").value;
+    function autoSearch(keywords){
         var auto;
         //加载输入提示插件
         AMap.service(["AMap.Autocomplete"], function() {
@@ -32,10 +31,11 @@ main.factory('searchLocation',function(){
                 var obj2 = {detailsloc:tipArr[i].district};
                 location.push(obj);
                 detailsLocation.push(obj2);
+                console.log(detailsLocation);
             }
         }
         else {
-            console.log('error');
+            autocomplete_CallBack(data);
         }
     }
     return {
@@ -48,14 +48,22 @@ main.factory('searchLocation',function(){
     }
 });
 
-main.controller('search', ['$scope','searchLocation',function($scope,searchLocation){
-    $scope.searchLoc = function(){
-        searchLocation.search();
-    }
-}])
+main.controller('search', function($scope,searchLocation){
+    //$scope.searchLoc = function(){
+    //    searchLocation.search(key);
+    //}
+    $scope.search = function(e){
+        var $_self = $(e.target);
+        var keyWord = function(self){
+            if(self.val() == ''){
 
-main.controller('getLocation',['$scope','searchLocation',function($scope,searchLocation){
+            }
+        }
+    }
+})
+
+main.controller('getLocation',function($scope,searchLocation){
     $('#keyword').keydown(function(){
         $scope.location = searchLocation.location();
     })
-}])
+});

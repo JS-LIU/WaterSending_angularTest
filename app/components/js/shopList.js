@@ -3,7 +3,7 @@
  */
 main.controller('showListModel',function($scope,$rootScope,mainPost,logMsg){
     var accessInfo = logMsg.accessInfo;
-    $rootScope.NAVBOT = true;
+    $rootScope.NAVBOT = false;
 });
 
 main.factory('mainPost',function($http){
