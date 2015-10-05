@@ -1,10 +1,8 @@
 //  代码来源：http://lbs.amap.com/api/javascript-api/example/l/1207-2/
 main.factory('searchLocation',function(){
-    var location = [];
-    var detailsLocation = [];
 
     //输入提示
-    function autoSearch(keywords){
+    function autoSearch(keywords,$scope){
         var auto;
         //加载输入提示插件
         AMap.service(["AMap.Autocomplete"], function() {
@@ -15,7 +13,8 @@ main.factory('searchLocation',function(){
             //查询成功时返回查询结果
             if (keywords.length > 0) {
                 auto.search(keywords, function(status, result) {
-                    autocomplete_CallBack(result);
+                    $scope.location = autocomplete_CallBack(result);
+                    $scope.$apply();
                 });
             }
         });
@@ -23,47 +22,35 @@ main.factory('searchLocation',function(){
 
     //输出输入提示结果的回调函数
     function autocomplete_CallBack(data) {
-
+        var location = [];
         var tipArr = data.tips;
         if (tipArr && tipArr.length > 0) {
             for (var i = 0; i < tipArr.length; i++) {
-                var obj = {loc:tipArr[i].name};
-                var obj2 = {detailsloc:tipArr[i].district};
+                var lng = tipArr[i].location.lng;
+                var lat = tipArr[i].location.lat;
+                var lnglat = [lng,lat];
+                var obj = {loc:tipArr[i].name,lnglat:lnglat};
                 location.push(obj);
-                detailsLocation.push(obj2);
-                console.log(detailsLocation);
             }
-        }
-        else {
-            autocomplete_CallBack(data);
+            return location;
+        } else {
+            console.log('error');
         }
     }
     return {
-        search:autoSearch,
-        location:function(){
-            var l = location;
-            location = [];
-            return l;
-        }
+        search:autoSearch
     }
 });
 
-main.controller('search', function($scope,searchLocation){
-    //$scope.searchLoc = function(){
-    //    searchLocation.search(key);
-    //}
-    $scope.search = function(e){
-        var $_self = $(e.target);
-        var keyWord = function(self){
-            if(self.val() == ''){
+main.controller('getLocation',function($rootScope,$scope,searchLocation){
 
-            }
-        }
+    $rootScope.GETVALUE = function(e){
+        var keywords = $(e.target).val();
+        searchLocation.search(keywords,$scope);
     }
-})
-
-main.controller('getLocation',function($scope,searchLocation){
-    $('#keyword').keydown(function(){
-        $scope.location = searchLocation.location();
-    })
+    $scope.selectAddress = function(i){
+        var obj = {loc:$scope.location[i].loc,lnglat:$scope.location[i].lnglat}
+        $rootScope.MYADDRESS = obj;
+        window.location.href="#/";
+    }
 });

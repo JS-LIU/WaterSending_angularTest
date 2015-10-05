@@ -4,14 +4,28 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>test</title>
+    <script src="components/js/plugins/angular.min.js"></script>
 </head>
-<div ng-app="">
+<div ng-app="aaa">
     <p>在输入框中尝试输入：</p>
     <p>姓名：<input type="text" ng-model="name"></p>
     <p ng-bind="name"></p>
 </div>
+<ul ng-controller="testrepeata">
+    <li ng-repeat="l in location">
+        <a href="#/">{{l.loc}}</a>
+    </li>
+</ul>
 
-<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+
+<script type="text/javascript">
+
+    var a = angular.module('aaa',[]);
+    a.controller('testrepeata',function($scope){
+        $scope.location = [{loc:'adf'},{loc:'aa'},{loc:'dd'}];
+    })
+
+</script>
 
 </body>
 </html>
