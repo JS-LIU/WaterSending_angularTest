@@ -289,6 +289,7 @@ body{
 .common-detailbox-01{
     top:10px;
     left:130px;
+    right:0px;
     height:80px;
 }
 .common-detailbox-01-name{

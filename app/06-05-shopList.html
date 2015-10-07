@@ -1,25 +1,25 @@
 <div class="L-header w pr blue">
-    <a class="L-header-back h po" href="#"></a>
+    <a class="L-header-back h po" href="#/"></a>
     <div class="L-header-searchbox pr ml50 mr20 pl30">
-        <input class="w h" type="text" placeholder="搜您想要的水站"/>
+        <input class="w h" type="text" ng-model="search" placeholder="搜您想要的水站"/>
     </div>
 </div>
 <div class="L-center" ng-controller="showListModel">
-    <div class="nw-nwbox w">
+    <div class="nw-nwbox w" ng-show="false">
         <p class="f16 pt20 pr15">抱歉，附近无可配送水站！</p>
         <p class="pr15">我们已经记录你的位置，我们会尽快开发您附近的水站并及时通知您！</p>
     </div>
     <ul class="common-list-01">
-        <li class="w">
-            <a href="#" class="pr">
+        <li class="w" ng-repeat="shopList in SHOPLIST | filter:search | orderBy:'distance'">
+            <a href="javascript:void(0)" ng-click="getShopInfo(shopList)" class="pr">
                 <div class="common-picproduct-01 pr tc">
-                    <img src="" class="h" alt="汇贝送水"/>
+                    <img src="{{shopList.imageList[0].url}}" class="h" alt="{{shopList.shopName}}"/>
                 </div>
                 <div class="po common-detailbox-01">
-                    <p class="f16 common-detailbox-01-name">农夫山泉水站（井水路）</p>
+                    <p class="f16 common-detailbox-01-name">{{shopList.shopName}}</p>
                     <p class="address">
-                        <span>金水区经三路丰产区经三路丰产路交叉东北角北角</span>
-                        <span class="distance">5.6KM</span>
+                        <span>{{shopList.address}}</span>
+                        <span class="fr pr15">{{shopList.distance}}KM</span>
                     </p>
                     <p class="evaluate">
                         <img src="" alt=""/>

@@ -1,1 +1,20 @@
-{"responsePageInfo":{"totalCount":1951,"pageSize":2,"pageNo":1},"shopList":[{"shopId":8693,"shopName":"测试001","score":8.0,"monthSailCount":0,"address":"江岸区兴业南路东方花都B2栋8号","distance":90.0,"policyInfo":"买一送一大酬宾","canDeleiver":false,"imageList":[{"url":"shop/eeca6a10-5e88-483b-a27e-a9cb858f192f.jpg","size":null},{"url":"shop/6b955289-c057-4544-bbc6-0045d8575faf.jpg","size":null}]},{"shopId":10490,"shopName":"测试002","score":8.0,"monthSailCount":0,"address":"江岸区惠济路63-1","distance":88.0,"policyInfo":"买一送一大酬宾","canDeleiver":false,"imageList":[{"url":"shop/91a31a9f-c3b8-4648-820f-383d1e111bc9.jpg","size":null},{"url":"shop/67a08078-506a-48bf-a50c-62a5b022a561.jpg","size":null}]}]}
+{"responsePageInfo":{"totalCount":1951,"pageSize":2,"pageNo":1},"shopList":[{"shopId":8693,"shopName":"测试001","score":8.0,"monthSailCount":0,"address":"江岸区兴业南路东方花都B2栋8号","distance":90.0,"policyInfo":"买一送一大酬宾","canDeleiver":false,"imageList":[{"url":"components/images/images-170.png","size":null},{"url":"components/images/images-170.png","size":null}]}, {
+  "shopId": 12490,
+  "shopName": "测试0011",
+  "score": 8,
+  "monthSailCount": 0,
+  "address": "江岸区惠济路63-1",
+  "distance": 88,
+  "policyInfo": "买一送一大酬宾",
+  "canDeleiver": false,
+  "imageList": [
+    {
+      "url": "components/images/images-170.png",
+      "size": null
+    },
+    {
+      "url": "components/images/images-170.png",
+      "size": null
+    }
+  ]
+},{"shopId":10490,"shopName":"测试002","score":8.0,"monthSailCount":0,"address":"江岸区惠济路63-1","distance":88.0,"policyInfo":"买一送一大酬宾","canDeleiver":false,"imageList":[{"url":"components/images/images-170.png","size":null},{"url":"components/images/images-170.png","size":null}]}]}

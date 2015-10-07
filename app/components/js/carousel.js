@@ -95,5 +95,6 @@ main.controller("carousel",function($scope){
         {src:'components/images/images-395-01.png',text:'first',width:imgW}
     ];
     $scope.myInterval = 5000;
+
 });
 

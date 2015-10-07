@@ -4,6 +4,9 @@
 main.controller('showListModel',function($scope,$rootScope,mainPost,logMsg){
     var accessInfo = logMsg.accessInfo;
     $rootScope.NAVBOT = false;
+    $scope.getShopInfo = function(shopList){
+        $rootScope.CUSTOMSHOP = shopList;
+    }
 });
 
 main.factory('mainPost',function($http){

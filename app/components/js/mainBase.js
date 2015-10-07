@@ -27,13 +27,14 @@ main.service("get_location",function($cookieStore){
             });
             map.addControl(geolocation);
             AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+            (function getCurrentPosition() {
+                geolocation.getCurrentPosition();
+            })();
         });
-        //  获取当前位置信息
-        (function getCurrentPosition() {
-            geolocation.getCurrentPosition();
-        })();
+
         function onComplete(data) {
             lnglatXY = [data.position.getLng(),data.position.getLat()];
+            //  获取当前位置信息
             geocoder(lnglatXY);
         }
 

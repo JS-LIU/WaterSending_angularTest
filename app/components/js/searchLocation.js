@@ -49,8 +49,12 @@ main.controller('getLocation',function($rootScope,$scope,searchLocation){
         searchLocation.search(keywords,$scope);
     }
     $scope.selectAddress = function(i){
-        var obj = {loc:$scope.location[i].loc,lnglat:$scope.location[i].lnglat}
-        $rootScope.MYADDRESS = obj;
+        $rootScope.MYADDRESS = {
+            positionX:$scope.location[i].lnglat[0],
+            positionY:$scope.location[i].lnglat[1],
+            addressInfo:$scope.location[i].loc,
+            districtId:'this is a no use parameter'
+        }
         window.location.href="#/";
     }
 });

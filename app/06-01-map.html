@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="map-shopinfo rightArrow mr15">
+                <a href="#/shopList" class="map-shopinfo rightArrow mr15">
                     <p class="map-address-3 map-shopname">
                         <span>配送水站：</span>
                         <span>{{nearlist_shopList["shopName"]||'正在寻找最近水站..'}}</span>
@@ -29,7 +29,7 @@
                 </a>
             </li>
         </ul>
-        <a href="#" class="common-btn-01 tc cfff blue f14 map-main-orderbtn">我要订水</a>
+        <a href="javascript:void(0)" ng-click="postShopInfo()" class="common-btn-01 tc cfff blue f14 map-main-orderbtn">我要订水</a>
     </div>
 
 </div>
