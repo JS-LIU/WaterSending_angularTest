@@ -1,11 +1,9 @@
 /**
  * Created by 殿麒 on 2015/9/29.
  */
-main.service("get_location",function($cookieStore){
-    var self = this;
+main.factory("get_location",function($cookieStore){
     var map, geolocation,lnglatXY,address;
-    self.paintMap = function(){
-
+    function paintMap($scope){
         /*
          *   代码来源：http://lbs.amap.com/api/javascript-api/example/g/0704-2/
          *   作用：获取【当前经纬度】
@@ -30,6 +28,7 @@ main.service("get_location",function($cookieStore){
             (function getCurrentPosition() {
                 geolocation.getCurrentPosition();
             })();
+
         });
 
         function onComplete(data) {
@@ -63,13 +62,19 @@ main.service("get_location",function($cookieStore){
         function geocoder_CallBack(data) {
             //返回地址描述
             address = data.regeocode.formattedAddress;
-            $cookieStore.put('lnglatXY',{
+            $scope.lnglat = {
                 positionX:lnglatXY[0],
                 positionY:lnglatXY[1],
                 addressInfo:address,
                 districtId:'this is a no use parameter'
-            });
+            };
+            $scope.address = address;
+            $scope.$apply();
         }
+    }
+
+    return {
+        paintMap:paintMap
     }
 });
 
