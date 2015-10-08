@@ -2,8 +2,8 @@
  * Created by 殿麒 on 2015/9/29.
  */
 main.factory("get_location",function($cookieStore){
-    var map, geolocation,lnglatXY,address;
-    function paintMap($scope){
+    var map,geolocation,lnglatXY;
+    function paintMap($rootScope){
         /*
          *   代码来源：http://lbs.amap.com/api/javascript-api/example/g/0704-2/
          *   作用：获取【当前经纬度】
@@ -16,7 +16,7 @@ main.factory("get_location",function($cookieStore){
             geolocation = new AMap.Geolocation({
                 enableHighAccuracy: true,//是否使用高精度定位，默认:true
                 timeout: 10000,          //超过10秒后停止定位，默认：无穷大
-                maximumAge: 600000,      //定位结果缓存100000毫秒，默认：0
+                maximumAge: 0,           //定位结果缓存100000毫秒，默认：0
                 convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
                 showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
                 showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
@@ -25,6 +25,7 @@ main.factory("get_location",function($cookieStore){
             });
             map.addControl(geolocation);
             AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+
             (function getCurrentPosition() {
                 geolocation.getCurrentPosition();
             })();
@@ -61,20 +62,41 @@ main.factory("get_location",function($cookieStore){
 
         function geocoder_CallBack(data) {
             //返回地址描述
-            address = data.regeocode.formattedAddress;
-            $scope.lnglat = {
+            $rootScope.ADDRESS = data.regeocode.formattedAddress;
+            $rootScope.LNGLAT = {
                 positionX:lnglatXY[0],
                 positionY:lnglatXY[1],
-                addressInfo:address,
+                addressInfo:$rootScope.ADDRESS,
                 districtId:'this is a no use parameter'
             };
-            $scope.address = address;
-            $scope.$apply();
+            $rootScope.$apply();
         }
+    }
+    function shopPoint(i,d){
+        var markerOption = {
+            map: map,
+            icon:"http://webapi.amap.com/theme/v1.3/markers/n/mark_b"+(i+1)+".png",
+            position: d
+        };
+        var mar = new AMap.Marker(markerOption);
+        map.setFitView();
+    }
+
+    function myPosition(d){
+        var marker = new AMap.Marker({
+            position: d
+        });
+        marker.setMap(map);
+        marker.setLabel({                   //label的父div默认蓝框白底右下角显示，样式className为：amap-marker-label
+            offset:new AMap.Pixel(0,-15),   //修改父div相对于maker的位置
+            content:"我是label标签"
+        });
     }
 
     return {
-        paintMap:paintMap
+        paintMap:paintMap,
+        paintshopPoint:shopPoint,
+        myPosition:myPosition,
     }
 });
 

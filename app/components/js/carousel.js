@@ -44,7 +44,7 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
             moveEle = ele.children().css('marginLeft',-window_width+'px');
 
         ele.css({'width':window_width + 'px','display':'block'});
-        moveEle.css({height:'395px',width:bigWidth + 'px'});
+        moveEle.css({height:'100%',width:bigWidth + 'px'});
         //moveEle.find('img').css('width',window_width+'px');
         var x,x1;
 

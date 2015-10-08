@@ -5,7 +5,8 @@ main.controller('showListModel',function($scope,$rootScope,mainPost,logMsg){
     var accessInfo = logMsg.accessInfo;
     $rootScope.NAVBOT = false;
     $scope.getShopInfo = function(shopList){
-        $rootScope.CUSTOMSHOP = shopList;
+        $rootScope.NEARLIST_SHOP = shopList;
+        window.location.href='#/'
     }
 });
 

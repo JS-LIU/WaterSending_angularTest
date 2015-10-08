@@ -12,19 +12,19 @@
             <li style="height: 48px;">
                 <a href="#/customLocation" class="clearfix map-myLocation pr rightArrow mr15">
                     <p class="map-address-3 fl">送水地址：</p>
-                    <p class="map-a fl pr15 po">{{address}}</p>
+                    <p class="map-a fl pr15 po">{{ADDRESS||'正在定位...'}}</p>
                 </a>
             </li>
             <li>
                 <a href="#/shopList" class="map-shopinfo rightArrow mr15">
                     <p class="map-address-3 map-shopname">
                         <span>配送水站：</span>
-                        <span>{{nearlist_shopList["shopName"]||'正在寻找最近水站..'}}</span>
+                        <span>{{NEARLIST_SHOP["shopName"]||'正在寻找最近水站..'}}</span>
                         <span class="fr pr30 cred">最近</span>
                     </p>
                     <p class="map-shopLocation pr">
-                        <span class="shopaddress po">{{nearlist_shopList["address"]||'正在查询地理位置..'}}</span>
-                        <span class="fr pr30">{{nearlist_shopList["distance"]||'正在计算..'}}米</span>
+                        <span class="shopaddress po">{{NEARLIST_SHOP["address"]||'正在查询地理位置..'}}</span>
+                        <span class="fr pr30">{{NEARLIST_SHOP["distance"]||'正在计算..'}}米</span>
                     </p>
                 </a>
             </li>

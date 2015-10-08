@@ -1,20 +1,75 @@
-{"responsePageInfo":{"totalCount":1951,"pageSize":2,"pageNo":1},"shopList":[{"shopId":8693,"shopName":"测试001","score":8.0,"monthSailCount":0,"address":"江岸区兴业南路东方花都B2栋8号","distance":90.0,"policyInfo":"买一送一大酬宾","canDeleiver":false,"imageList":[{"url":"components/images/images-170.png","size":null},{"url":"components/images/images-170.png","size":null}]}, {
-  "shopId": 12490,
-  "shopName": "测试0011",
-  "score": 8,
-  "monthSailCount": 0,
-  "address": "江岸区惠济路63-1",
-  "distance": 88,
-  "policyInfo": "买一送一大酬宾",
-  "canDeleiver": false,
-  "imageList": [
+{
+  "responsePageInfo": {
+    "totalCount": 1951,
+    "pageSize": 2,
+    "pageNo": 1
+  },
+  "shopList": [
     {
-      "url": "components/images/images-170.png",
-      "size": null
+      "shopId": 8693,
+      "shopName": "测试001",
+      "score": 8,
+      "monthSailCount": 0,
+      "address": "江岸区兴业南路东方花都B2栋8号",
+      "distance": 90,
+      "policyInfo": "买一送一大酬宾",
+      "canDeleiver": false,
+      "xAxis": 116.353222,
+      "yAxis": 40.080757,
+      "imageList": [
+        {
+          "url": "components/images/images-170.png",
+          "size": null
+        },
+        {
+          "url": "components/images/images-170.png",
+          "size": null
+        }
+      ]
     },
     {
-      "url": "components/images/images-170.png",
-      "size": null
+      "shopId": 12490,
+      "shopName": "测试0011",
+      "score": 8,
+      "monthSailCount": 0,
+      "address": "江岸区惠济路63-1",
+      "distance": 88,
+      "policyInfo": "买一送一大酬宾",
+      "canDeleiver": false,
+      "xAxis": 116.353926,
+      "yAxis": 40.080222,
+      "imageList": [
+        {
+          "url": "components/images/images-170.png",
+          "size": null
+        },
+        {
+          "url": "components/images/images-170.png",
+          "size": null
+        }
+      ]
+    },
+    {
+      "shopId": 10490,
+      "shopName": "测试002",
+      "score": 8,
+      "monthSailCount": 0,
+      "address": "江岸区惠济路63-1",
+      "distance": 88,
+      "policyInfo": "买一送一大酬宾",
+      "canDeleiver": false,
+      "xAxis": 116.354126,
+      "yAxis": 40.080222,
+      "imageList": [
+        {
+          "url": "components/images/images-170.png",
+          "size": null
+        },
+        {
+          "url": "components/images/images-170.png",
+          "size": null
+        }
+      ]
     }
   ]
-},{"shopId":10490,"shopName":"测试002","score":8.0,"monthSailCount":0,"address":"江岸区惠济路63-1","distance":88.0,"policyInfo":"买一送一大酬宾","canDeleiver":false,"imageList":[{"url":"components/images/images-170.png","size":null},{"url":"components/images/images-170.png","size":null}]}]}
+}
