@@ -1,5 +1,5 @@
 //  代码来源：http://lbs.amap.com/api/javascript-api/example/l/1207-2/
-main.factory('searchLocation',function(){
+main.factory('searchLocation',function($rootScope){
 
     //输入提示
     function autoSearch(keywords,$scope){
@@ -38,45 +38,14 @@ main.factory('searchLocation',function(){
             console.log('error');
         }
     }
-    var map;
-    function reposition(d){
-        map = new AMap.Map('mapContainer', {
-            center:d,
-            zoom:13
-        });
-    }
-    function shopPoint(i,d){
-        var markerOption = {
-            map: map,
-            icon:"http://webapi.amap.com/theme/v1.3/markers/n/mark_b"+(i+1)+".png",
-            position: d
-        };
-        var mar = new AMap.Marker(markerOption);
-        map.setFitView();
-    }
-    function myPosition(d){
-        var marker = new AMap.Marker({
-            position: d
-        });
-        marker.setMap(map);
-        marker.setLabel({//label的父div默认蓝框白底右下角显示，样式className为：amap-marker-label
-            offset:new AMap.Pixel(0,-15),//修改父div相对于maker的位置
-            content:"我是label标签"
-        });
-    }
-
-
     return {
         search:autoSearch,
-        reposition:reposition,
-        shopPoint:shopPoint,
-        myPosition:myPosition
     }
 
 });
 
 
-main.controller('getLocation',function($rootScope,$scope,searchLocation,logMsg,mainPost,$http){
+main.controller('getLocation',function($rootScope,$scope,searchLocation,get_location,logMsg,mainPost,$http){
 
     $rootScope.GETVALUE = function(e){
         var keywords = $(e.target).val();
@@ -94,8 +63,6 @@ main.controller('getLocation',function($rootScope,$scope,searchLocation,logMsg,m
         $rootScope.ADDRESS = $scope.location[i].loc;
         //  当前所在地
         var curd = [$scope.location[i].lnglat[0],$scope.location[i].lnglat[1]];
-        searchLocation.reposition(curd);
-        searchLocation.myPosition(curd);
         //  请求商店
         //var requestPageInfo = {
         //    pageSize:5,
@@ -121,7 +88,7 @@ main.controller('getLocation',function($rootScope,$scope,searchLocation,logMsg,m
             //  在地图中标记出来商店位置
             for(var i = 0,len = shopList.length; i < len ; i++){
                 var lnglat = [shopList[i]["xAxis"],shopList[i]["yAxis"]];
-                searchLocation.shopPoint(i,lnglat);
+                get_location.paintshopPoint(i,lnglat,curd);
             }
         });
 

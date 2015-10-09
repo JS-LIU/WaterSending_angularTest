@@ -11,6 +11,7 @@ main.controller("cutView",function($scope,$rootScope){
 
 main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_location,mainPost,logMsg,$http){
     $cookieStore.remove('lnglatXY');
+    $cookieStore.remove('shopInfo');
 
 
     $rootScope.isshow = true;
@@ -48,36 +49,42 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
                     //  在地图中标记出来商店位置
                     for(var i = 0,len = shopList.length; i < len ; i++){
                         var shoplnglat = [shopList[i]["xAxis"],shopList[i]["yAxis"]];
-                        get_location.paintshopPoint(i,shoplnglat);
-                    }
-                    //  当前位置
-                    get_location.myPosition(lnglat);
-                    //  为点击【我要订水】绑定事件
-                    $scope.postShopInfo = function(){
-                        //  保存选中的【商店信息】
-                        $cookieStore.put('shopInfo',shopInfo);
-                        //  保存位置信息 todo
-
-                        window.location.href = '04-goodsList.html';
+                        get_location.paintshopPoint(i,shoplnglat,lnglat);
                     }
                 });
             }
         })
     }
-});
+    get_location.resetMyPosition(function(location){
+        get_location.getCurAddress(location);
 
-
-main.controller('aa',function($scope,$swipe){
-    $swipe.bind($('#mapContainer'),{
-        'start': function() {
-            console.log(123);
-        },
-        'move': function() {
-
-        },
-        'end': function() {
-            console.log(2323);
+        //  todo  这块请求代码写得不好 等明天到线上服务器再重构
+        //  请求当前数据
+        //var path = '/shopList/shop';  //  地址
+        //var requestPageInfo = {       //  页数 每页条数
+        //    pageSize:5,
+        //    pageNo:1
+        //}
+        //var data = {                  //  发送data
+        //    accessInfo:logMsg.accessInfo,
+        //    positionInfo:$rootScope.LNGLAT,
+        //    requestPageInfo: requestPageInfo
+        //}
+        //mainPost.postData(data,path).success(function(data){
+        //    console.log(data);
+        //    $rootScope.SHOPLIST = shopList;
+        //    requestPageInfo.pageNo += 1;
+        //});
+    });
+    //  为点击【我要订水】绑定事件
+    $scope.postShopInfo = function(){
+        //  保存选中的【商店信息】
+        if($rootScope.NEARLIST_SHOP != undefined){
+            //  保存商店信息
+            $cookieStore.put('shopInfo',$rootScope.NEARLIST_SHOP);
+            //  保存位置信息
+            $cookieStore.put('lnglatXY',$rootScope.LNGLAT);
+            window.location.href = '04-goodsList.html';
         }
-    })
-
-})
+    }
+});

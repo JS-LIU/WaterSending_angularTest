@@ -1,11 +1,32 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie){
-
+purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,postGoodsList,$http){
+    var shopInfo = $cookieStore.get('shopInfo');
     //  请求商品信息数据
-    //  模拟返回数据
-    $scope.productData = {"responsePageInfo":{"totalCount":442,"pageSize":2,"pageNo":1},"productList":[{"productId":14614,"imgSrc":"components/images/images-170.png","price":11100,"salesCnt":253,"title":"乐百氏18.9L矿泉水","subTitile":"","summary":"买10送2"},{"productId":14604,"imgSrc":"components/images/images-170.png","price":300,"salesCnt":2000,"title":"测试002","subTitile":"","summary":"买一送一"}]}
+    var shopId = shopInfo["shopId"];
+    var requestPageInfo = {
+        pageSize: 5,
+        pageNo: 1
+    }
+    var accessInfo = {
+        app_key: "e330ce4aa98546b3b99329d20e17450b",
+        signature: "b9528d938a3d6ac64865aee2324d84da"
+    }
+
+    var data = {
+        requestPageInfo:requestPageInfo,
+        categoryId:'',
+        sortType:'',
+        keyWord:'',
+        accessInfo:accessInfo
+    }
+
+    var path = "/shop/productList";
+    postGoodsList.postData(data,path).success(function(data){
+
+    })
+
 
     $scope.showWay1 = true;
     $scope.showWay2 = false;
@@ -30,3 +51,30 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         $rootScope.TOTLE_MONEY = 0;
     }
 });
+
+purchase.controller('shopInfo',function($scope,$cookieStore){
+    var shopInfo = $cookieStore.get('shopInfo');
+
+    $scope.shopImg = shopInfo["imageList"][0].url;
+    $scope.shopName = shopInfo["shopName"];
+    $scope.shopAddress = shopInfo["address"];
+    $scope.shopDistance = shopInfo["distance"];
+    $scope.sellCount = shopInfo["monthSailCount"];
+})
+
+purchase.factory('postGoodsList',function($http){
+    var url = 'http://192.168.1.39:8080';
+    var postData = function(data,path){
+        return $http({
+            method:'POST',
+            url: url + path,
+            data: data,
+            headers:{'Content-Type':'application/json'},
+        });
+    }
+    return {
+        postData: function(data,path){
+            return postData(data,path,'postData');
+        }
+    }
+})

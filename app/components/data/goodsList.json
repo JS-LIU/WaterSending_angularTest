@@ -1,0 +1,25 @@
+{
+  "responsePageInfo": {
+    "totalCount": 442,
+    "pageSize": 2,
+    "pageNo": 1
+  },
+  "productList": [
+    {
+      "productId": 14614,
+      "price": 11100,
+      "salesCnt": 0,
+      "title": "≤Ëæﬂ",
+      "subTitile": "",
+      "summary": ""
+    },
+    {
+      "productId": 14604,
+      "price": 332300,
+      "salesCnt": 0,
+      "title": "≤‚ ‘002",
+      "subTitile": "",
+      "summary": ""
+    }
+  ]
+}

@@ -190,3 +190,17 @@
     padding:0px 15px;
     border-bottom:1px solid #E2E2E2;
 }
+#point{
+    top: 196.5px;
+    left: 48%;
+    width: 18px;
+    height: 28px;
+    background:url("../images/address-03.png") no-repeat center center;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+    z-index: 100;
+}
+#mapContainer .common-multyrow-1{
+    z-index: 100;
+    background: #ffffff;
+}

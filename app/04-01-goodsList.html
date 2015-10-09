@@ -5,21 +5,21 @@
     </div>
 </div>
 <div class="L-center" ng-controller="goodsListModel">
-    <ul class="common-list-01">
+    <ul class="common-list-01" ng-controller="shopInfo">
         <li class="w">
             <a href="#" class="pr">
                 <div class="common-picproduct-01 pr tc">
-                    <img src="" class="h" alt="汇贝送水"/>
+                    <img src="{{shopImg}}" class="h" alt="汇贝送水"/>
                 </div>
                 <div class="po common-detailbox-01">
-                    <p class="f16 common-detailbox-01-name">农夫山泉水站（井水路）</p>
+                    <p class="f16 common-detailbox-01-name">{{shopName}}</p>
                     <p class="address">
-                        <span>金水区经三路丰产区经三路丰产路交叉东北角北角</span>
-                        <span class="distance">5.6KM</span>
+                        <span>{{shopAddress}}</span>
+                        <span class="distance">{{shopDistance}}KM</span>
                     </p>
                     <p class="evaluate">
                         <img src="" alt=""/>
-                        <span>月售12520</span>
+                        <span>{{sellCount}}</span>
                     </p>
                 </div>
             </a>
