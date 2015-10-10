@@ -61,20 +61,3 @@ purchase.controller('shopInfo',function($scope,$cookieStore){
     $scope.shopDistance = shopInfo["distance"];
     $scope.sellCount = shopInfo["monthSailCount"];
 })
-
-purchase.factory('postGoodsList',function($http){
-    var url = 'http://192.168.1.39:8080';
-    var postData = function(data,path){
-        return $http({
-            method:'POST',
-            url: url + path,
-            data: data,
-            headers:{'Content-Type':'application/json'},
-        });
-    }
-    return {
-        postData: function(data,path){
-            return postData(data,path,'postData');
-        }
-    }
-})

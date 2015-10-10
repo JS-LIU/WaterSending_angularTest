@@ -19,23 +19,26 @@
         <div ng-view>
         </div>
         <div class="L-footer-01 cfff w" ng-controller="goodscartBottom">
-            <a href="#/goodsCart" class="po L-footer-01-btn1" ng-show="showgC" ng-click="showgoodsCart()">
+            <!--底部1-->
+            <a href="#/goodsCart" class="po L-footer-01-btn1" ng-show="showGoodsList" ng-click="showgoodsCart()">
                 <div class="po L-footer-01-btn-label cfff red">{{GOODS_NUM||0}}</div>
             </a>
-            <div ng-hide="showgC" class="fl L-footer-01-l w allCheckbox">
+            <div class="fl L-footer-01-l w" ng-show="showGoodsList">
+                <span class="gL-totalCost">¥</span>
+                <span class="pl5 ">{{TOTLE_MONEY}}</span>
+            </div>
+            <!--底部2-->
+            <div ng-show="showGoodsCart" class="fl L-footer-01-l w allCheckbox">
                 <span class="pl15" ng-click="checkAll()">
                     <div class="po btmgoodsCheck" ng-class="{true: 'checked', false: ''}[ALLCHECKED]"></div>
                     <span class="pl30">全选</span>
                 </span>
-                <span class="totleMoney pl15">
-                    <span>合计：</span>
-                    <span>¥</span>
-                    <span>{{TOTLE_MONEY}}</span>
-                </span>
+                <span class="totleMoney pl15">合计：¥{{TOTLE_MONEY}}</span>
             </div>
-            <div class="fl L-footer-01-l w" ng-show="showgC">
-                <span class="gL-totalCost">¥</span>
-                <span class="pl5 ">{{TOTLE_MONEY}}</span>
+            <!--底部3-->
+            <div ng-show="showOrderList" class="fl L-footer-01-l w allCheckbox">
+                <span class="totleMoney pl15">实付款：¥</span>
+                <span>{{order_totle}}</span>
             </div>
             <a href="{{gopayhref}}" class="fr L-footer-01-r red tc cfff" ng-click="toPay()">去结算</a>
         </div>

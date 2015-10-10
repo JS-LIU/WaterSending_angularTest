@@ -4,8 +4,13 @@
 
 purchase.controller('payGoodsModel',function($scope,$cookieStore){
 
-    var payGoodsList = [];
+    var shopInfo = $cookieStore.get('shopInfo');
+    var order_goodslist = $cookieStore.get('order_goodslist');
+    var totleNum = 0;
+    var totleMoney = 0;
+    $scope.shopName = shopInfo.shopName;
 
+    console.log(order_goodslist);
     ////  所有 要被付款的商品
     //for(var i = 0,len = $cookieStore.get('checkedList').length;i < len ; i++){
     //    if($cookieStore.get('checkedList')[i].ischecked == true){
@@ -14,7 +19,15 @@ purchase.controller('payGoodsModel',function($scope,$cookieStore){
     //    }
     //}
 
-    $scope.payGoodsList = payGoodsList;
+    $scope.order_goodslist = order_goodslist;
+    for(var i = 0,len = order_goodslist.length;i < len; i++){
+        totleNum += parseInt(order_goodslist[i].num);
+        totleMoney += parseInt(order_goodslist[i].num * order_goodslist[i].price);
+    }
+    $scope.totleNum = totleNum;
+    $scope.totleMoney = totleMoney;
+
+
 });
 
 
@@ -111,3 +124,19 @@ purchase.factory('purchasePost',function($http){
 });
 
 
+purchase.factory('postGoodsList',function($http){
+    var url = 'http://192.168.1.39:8080';
+    var postData = function(data,path){
+        return $http({
+            method:'POST',
+            url: url + path,
+            data: data,
+            headers:{'Content-Type':'application/json'},
+        });
+    }
+    return {
+        postData: function(data,path){
+            return postData(data,path,'postData');
+        }
+    }
+})

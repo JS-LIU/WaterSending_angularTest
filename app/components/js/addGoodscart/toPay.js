@@ -1,14 +1,34 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,purchasePost,log){
+purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,purchasePost,log,$location){
     var path = '#/confirmOrder';
-    var url = 'http://localhost:63342/WaterSending_angularTest/app/07-log.html#/';
+    var url = "07-log.html";
+
+    //  监听url是否变化
+    $rootScope.$on('$routeChangeSuccess', function () {
+        //  判断显示哪种底部样式
+        var self_url = $location.url();
+        function hideBottom(){
+            $scope.showGoodsList = false;
+            $scope.showGoodsCart = false;
+            $scope.showOrderList = false;
+        }
+        if(self_url == '/'){
+            hideBottom();
+            $scope.showGoodsList = true;
+        }else if(self_url == '/goodsCart'){
+            hideBottom()
+            $scope.showGoodsCart = true;
+        }else if(self_url == '/confirmOrder'){
+            hideBottom();
+            $scope.showOrderList = true;
+        }
+    });
 
 
-    $scope.showgC = true;
+    //  点击【购物车】按钮
     $scope.showgoodsCart = function(){
-        $scope.showgC = !$scope.showgC;
         var new_goodscart_list = $cookieStore.get('goodscart_list');
 
         for(var i = 0,len = new_goodscart_list.length;i < len;i++){
