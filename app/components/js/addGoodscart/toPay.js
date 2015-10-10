@@ -5,7 +5,6 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
     var path = "#/confirmOrder";
     var url = "07-log.html";
     var old_goodscart_list = $cookieStore.get('goodscart_list');
-    console.log(old_goodscart_list);
     $rootScope.GOODSCART_NUM = 0;
     $rootScope.GOODSCART_MONEY = 0;
     if(old_goodscart_list != undefined){

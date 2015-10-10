@@ -41,7 +41,7 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
     $scope.addGoodscart = function(item){
 
         var goodscart_list = $cookieStore.get('goodscart_list');
-        $rootScope.GOODS_NUM += 1;
+        $rootScope.GOODSCART_NUM += 1;
         console.log(item.price);
         console.log($rootScope.GOODSCART_MONEY);
         $rootScope.GOODSCART_MONEY += item.price;
