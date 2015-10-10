@@ -58,9 +58,9 @@
         </ul>
     </div>
     <ul class="common-list-02" ng-show="showWay1">
-        <li class="w pr" ng-repeat="goodsInfo in productData.productList" productId="{{goodsInfo.productId}}">
+        <li class="w pr" ng-repeat="goodsInfo in goodsList">
             <div class="common-picproduct-02 pr tc">
-                <img src="{{goodsInfo.imgSrc}}" class="h" alt="商品图片"/>
+                <img src="{{goodsInfo.imageList[0].url}}" class="h" alt="商品图片"/>
             </div>
             <div class="po common-detailbox-02">
                 <p class="f16 comlist-02-floor-01 gL-goodsList">
@@ -69,30 +69,28 @@
                     <span class="cfff orange hui-icon">惠</span>
                 </p>
                 <p class="comlist-02-floor-01 pt5 gL-goodsList">
-                    <span>￥</span>
-                    <span class="cred f16">{{goodsInfo.price}}</span>
+                    <span class="cred f16">￥{{goodsInfo.price}}</span>
                 </p>
                 <p class="comlist-02-floor-01 pt10 gL-goodsList">
                     <span>{{goodsInfo.summary}}</span>
                     <span class="fr">已售{{goodsInfo.salesCnt}}</span>
                 </p>
             </div>
-            <div class="po goodsCart-btn1" ng-click="addGoodscart($index)"></div>
+            <div class="po goodsCart-btn1" ng-click="addGoodscart(goodsInfo)"></div>
         </li>
     </ul>
     <ul class="common-list-07 clearfix" ng-show="showWay2">
-        <li class="fl pr">
+        <li class="fl pr" ng-repeat="goodsInfo in goodsList">
             <div class="common-list-07-pic tc m15">
-                <img class="h" src="components/images/images-170.png" alt="商品图片"/>
+                <img class="h" src="{{goodsInfo.imageList[0].url}}" alt="商品图片"/>
             </div>
             <div class="goodsCart-btn po" href="#"></div>
             <a href="#" class="pl15 pb15">
-                <p class="f16 c000">纯净水18.9L桶装水</p>
-                <p> 买三送一 </p>
+                <p class="f16 c000">{{goodsInfo.title}}</p>
+                <p> {{goodsInfo.summary}} </p>
                 <p>
-                    <span>￥</span>
-                    <span class="cred f16">14.00</span>
-                    <span>已售235</span>
+                    <span class="cred f16">￥{{goodsInfo.price}}</span>
+                    <span>已售{{goodsInfo.salesCnt}}</span>
                 </p>
             </a>
         </li>

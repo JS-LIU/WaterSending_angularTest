@@ -21,12 +21,15 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         keyWord:'',
         accessInfo:accessInfo
     }
-
-    var path = "/shop/productList";
-    postGoodsList.postData(data,path).success(function(data){
-
-    })
-
+    //  请求商品列表
+    //var path = "/shop/productList";
+    //postGoodsList.postData(data,path).success(function(data){
+    //    console.log(data);
+    //})
+    //  本地模拟
+    $http.get('components/data/goodsList.json').success(function(data){
+        $scope.goodsList = data['productList'];
+    });
 
     $scope.showWay1 = true;
     $scope.showWay2 = false;
@@ -35,15 +38,12 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         $scope.showWay2 = !$scope.showWay2;
     }
     //  添加购物车
-    $scope.addGoodscart = function($index){
+    $scope.addGoodscart = function(item){
 
-        var selfModel = $scope.productData.productList[$index];
-        var goodsPrice = selfModel.price;
-        var productId = $scope.productData.productList[$index].productId;
         var goodscart_list = $cookieStore.get('goodscart_list');
 
         //  添加cookie
-        goodsCartcookie.add_goodsCart_cookie(goodscart_list,$scope.productData.productList[$index]);
+        goodsCartcookie.add_goodsCart_cookie(goodscart_list,item);
 
         //  购物车中的数量
         $rootScope.GOODS_NUM = 0;
