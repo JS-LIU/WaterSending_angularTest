@@ -20,7 +20,7 @@
 <ul class="common-list-13 J-checked" ng-controller="goodsCart" >
     <li class="comlist-13-single pl15">郑州市金水区桶装水超市</li>
     <li class="w pr J_goodsItem" ng-repeat="goodsInfo in GOODSCARTLIST">
-        <div class="po goodsCheck" ng-click="checkGoods(goodsInfo)" ng-class="{true: 'checked', false: ''}[isChecked]"></div>
+        <div class="po goodsCheck" ng-click="checkGoods(goodsInfo)" ng-class="{true: 'checked', false: ''}[goodsInfo.isChecked]"></div>
         <div class="common-picproduct-13 pr tc">
             <img src="{{goodsInfo.imgSrc}}" class="h" alt=""/>
         </div>
@@ -35,9 +35,9 @@
             </p>
         </div>
         <div class="po clearfix goodsCtrl">
-            <div class="fl subtract tc" ng-click="subtract($index)">-</div>
+            <div class="fl subtract tc" ng-click="subtract(goodsInfo)">-</div>
             <div class="fl goodsNum tc">{{goodsInfo.num}}</div>
-            <div class="fl add tc" ng-click="addGoods($index)">+</div>
+            <div class="fl add tc" ng-click="addGoods(goodsInfo)">+</div>
         </div>
     </li>
 </ul>

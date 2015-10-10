@@ -10,15 +10,6 @@ purchase.controller('payGoodsModel',function($scope,$cookieStore){
     var totleMoney = 0;
     $scope.shopName = shopInfo.shopName;
 
-    console.log(order_goodslist);
-    ////  所有 要被付款的商品
-    //for(var i = 0,len = $cookieStore.get('checkedList').length;i < len ; i++){
-    //    if($cookieStore.get('checkedList')[i].ischecked == true){
-    //        $cookieStore.get('checkedList').splice(i,1);
-    //        payGoodsList.push($cookieStore.get('checkedList')[i]);
-    //    }
-    //}
-
     $scope.order_goodslist = order_goodslist;
     for(var i = 0,len = order_goodslist.length;i < len; i++){
         totleNum += parseInt(order_goodslist[i].num);
@@ -26,8 +17,6 @@ purchase.controller('payGoodsModel',function($scope,$cookieStore){
     }
     $scope.totleNum = totleNum;
     $scope.totleMoney = totleMoney;
-
-
 });
 
 

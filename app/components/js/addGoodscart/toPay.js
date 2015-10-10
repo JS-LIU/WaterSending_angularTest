@@ -2,8 +2,23 @@
  * Created by LIU on 15/9/27.
  */
 purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,purchasePost,log,$location){
-    var path = '#/confirmOrder';
+    var path = "#/confirmOrder";
     var url = "07-log.html";
+    var old_goodscart_list = $cookieStore.get('goodscart_list');
+    console.log(old_goodscart_list);
+    $rootScope.GOODSCART_NUM = 0;
+    $rootScope.GOODSCART_MONEY = 0;
+    if(old_goodscart_list != undefined){
+        for(var i = 0, len = old_goodscart_list.length; i < len;i++){
+            console.log();
+            console.log(old_goodscart_list[i].num);
+            $rootScope.GOODSCART_NUM += old_goodscart_list[i].num;
+            $rootScope.GOODSCART_MONEY += (old_goodscart_list[i].price * old_goodscart_list[i].num);
+        }
+    }
+
+
+
 
     //  监听url是否变化
     $rootScope.$on('$routeChangeSuccess', function () {
@@ -26,73 +41,62 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
         }
     });
 
-
-    //  点击【购物车】按钮
-    $scope.showgoodsCart = function(){
-        var new_goodscart_list = $cookieStore.get('goodscart_list');
-
-        for(var i = 0,len = new_goodscart_list.length;i < len;i++){
-            new_goodscart_list[i].isChecked = true;
-        }
-        $cookieStore.put('goodscart_list',new_goodscart_list);
-    }
     $rootScope.ALLCHECKED = true;
 
     //  全选
     $scope.checkAll = function(){
-        var goodscartList = $cookieStore.get('goodscart_list');
+
         $rootScope.ALLCHECKED = !$rootScope.ALLCHECKED;
         //  非全选状态下
         if($rootScope.ALLCHECKED == true){
-
-            for(var i = 0,len = goodscartList.length; i < len;i++){
-                $rootScope.TOTLE_MONEY += (goodscartList[i].num * goodscartList[i].price);
-            }
-            //  上面所有的都有对勾
-            $('.goodsCheck').addClass('checked');
-            goodsCheckModel(true,goodscartList);
+            allcheck(true,function(i){
+                $rootScope.TOTLE_MONEY += ($rootScope.GOODSCARTLIST[i].num * $rootScope.GOODSCARTLIST[i].price);
+            });
         }else{
-            goodsCheckModel(false,goodscartList);
             $rootScope.TOTLE_MONEY = 0;
-            $('.goodsCheck').removeClass('checked');
+            allcheck(false);
         }
     }
+    function allcheck(ischeck,func){
+        for(var i = 0,len = $rootScope.GOODSCARTLIST.length; i < len; i++){
+            $rootScope.GOODSCARTLIST[i].isChecked = ischeck;
+            if(func != undefined){
+                func(i);
+            }
+        }
+    }
+
     $scope.toPay = function(){
-        var goodscartList = $cookieStore.get('goodscart_list');
+        var goodscartList = $rootScope.GOODSCARTLIST;
 
         if(log.login()){
+            $scope.order_totle = 0;
             console.log(goodscartList);
+            //  保存cookie 这里必须保存 付款后从这里可以正确读数据
             cookieCheckedgoods(goodscartList);
             $scope.gopayhref = path;
             var data = checkedGoodsData();
             var postPath = '/order/new';
             purchasePost.postData(data,postPath);
         }else{
+            //  登录界面
             $scope.gopayhref = url;
         }
     }
-
-    function goodsCheckModel(ischeck,goodscartlist){
-        for(var i = 0,len = goodscartlist.length; i < len;i++){
-            goodscartlist[i].isChecked = ischeck;
-        }
-    }
-
     function cookieCheckedgoods(goodscartlist){
         var new_goodscart_list = [];
         var checked_goodscart_list = [];
         for(var i = 0,len = goodscartlist.length;i < len;i++){
+
             if(goodscartlist[i].isChecked == false){
                 new_goodscart_list.push(goodscartlist[i]);
-                console.log(new_goodscart_list);
             }else{
                 checked_goodscart_list.push(goodscartlist[i]);
-                console.log(checked_goodscart_list);
+                $scope.order_totle += (goodscartlist[i].num * goodscartlist[i].price);
             }
         }
         $cookieStore.put('goodscart_list',new_goodscart_list);
         $cookieStore.put('order_goodslist',checked_goodscart_list);
-        console.log($cookieStore.get('order_goodslist'));
     }
 
     function checkedGoodsData(){

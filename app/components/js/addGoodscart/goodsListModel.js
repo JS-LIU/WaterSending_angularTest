@@ -41,14 +41,13 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
     $scope.addGoodscart = function(item){
 
         var goodscart_list = $cookieStore.get('goodscart_list');
+        $rootScope.GOODS_NUM += 1;
+        console.log(item.price);
+        console.log($rootScope.GOODSCART_MONEY);
+        $rootScope.GOODSCART_MONEY += item.price;
 
         //  添加cookie
         goodsCartcookie.add_goodsCart_cookie(goodscart_list,item);
-
-        //  购物车中的数量
-        $rootScope.GOODS_NUM = 0;
-        //  总价
-        $rootScope.TOTLE_MONEY = 0;
     }
 });
 
