@@ -11,5 +11,7 @@ purchase.config(['$routeProvider', function($routeProvider) {
         templateUrl:'04-02-goodsCart.html'
     }).when('/confirmOrder',{
         templateUrl:'04-03-confirmOrder.html'
+    }).when('/receiverAddress',{
+        templateUrl:'04-04-receiverAddress.html'
     })
 }]);

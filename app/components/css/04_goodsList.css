@@ -47,8 +47,18 @@
 }
 .goodsCheck,
 .btmgoodsCheck{
-    top:35px;
+    top:30px;
     left:15px;
+    width:18px;
+    height:18px;
+    border:1px solid #E2E2E2;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.addressCheck{
+    top:35px;
+    right:15px;
     width:18px;
     height:18px;
     border:1px solid #E2E2E2;

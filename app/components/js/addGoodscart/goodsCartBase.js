@@ -12,6 +12,7 @@ purchase.controller('payGoodsModel',function($scope,$cookieStore){
 
     $scope.order_goodslist = order_goodslist;
     for(var i = 0,len = order_goodslist.length;i < len; i++){
+        console.log(order_goodslist);
         totleNum += parseInt(order_goodslist[i].num);
         totleMoney += parseInt(order_goodslist[i].num * order_goodslist[i].price);
     }
@@ -46,7 +47,7 @@ purchase.directive('dialog',function(){
 //  判断是否登录
 purchase.factory('log',function($cookieStore){
     var isLogin = function(){
-        if($cookieStore.get('logMsg').access_token != undefined){
+        if($cookieStore.get('logMsg') != undefined){
             return true;
         }else{
             return false;

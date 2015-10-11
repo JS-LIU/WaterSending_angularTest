@@ -18,7 +18,7 @@
     <body ng-app="purchase">
         <div ng-view>
         </div>
-        <div class="L-footer-01 cfff w" ng-controller="goodscartBottom">
+        <div class="L-footer-01 cfff w" ng-controller="goodscartBottom" ng-show="showBtn">
             <!--底部1-->
             <a href="#/goodsCart" class="po L-footer-01-btn1" ng-show="showGoodsList">
                 <div class="po L-footer-01-btn-label cfff red">{{GOODSCART_NUM}}</div>
@@ -51,5 +51,7 @@
         <!--04底部-->
         <script src="components/js/addGoodscart/toPay.js"></script>
         <script src="components/js/addGoodscart/goodsCartBase.js"></script>
+        <!--04-03/04-04收货地址-->
+        <script src="components/js/addGoodscart/receiverLocation.js"></script>
     </body>
 </html>

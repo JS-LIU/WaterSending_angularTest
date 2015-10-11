@@ -9,15 +9,10 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
     $rootScope.GOODSCART_MONEY = 0;
     if(old_goodscart_list != undefined){
         for(var i = 0, len = old_goodscart_list.length; i < len;i++){
-            console.log();
-            console.log(old_goodscart_list[i].num);
             $rootScope.GOODSCART_NUM += old_goodscart_list[i].num;
             $rootScope.GOODSCART_MONEY += (old_goodscart_list[i].price * old_goodscart_list[i].num);
         }
     }
-
-
-
 
     //  监听url是否变化
     $rootScope.$on('$routeChangeSuccess', function () {
@@ -27,6 +22,7 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
             $scope.showGoodsList = false;
             $scope.showGoodsCart = false;
             $scope.showOrderList = false;
+            $scope.showBtn = true;
         }
         if(self_url == '/'){
             hideBottom();
@@ -37,6 +33,9 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
         }else if(self_url == '/confirmOrder'){
             hideBottom();
             $scope.showOrderList = true;
+        }else if(self_url == 'receiverAddress'){
+            hideBottom();
+            $scope.showBtn = false;
         }
     });
 
@@ -64,13 +63,11 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
             }
         }
     }
-
+    $scope.order_totle = 0;
     $scope.toPay = function(){
         var goodscartList = $rootScope.GOODSCARTLIST;
 
         if(log.login()){
-            $scope.order_totle = 0;
-            console.log(goodscartList);
             //  保存cookie 这里必须保存 付款后从这里可以正确读数据
             cookieCheckedgoods(goodscartList);
             $scope.gopayhref = path;
@@ -80,6 +77,13 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
         }else{
             //  登录界面
             $scope.gopayhref = url;
+        }
+    }
+    //  04-03底部价格 【实付款】
+    if($cookieStore.get('order_goodslist') != undefined){
+        var order_goodsList = $cookieStore.get('order_goodslist');
+        for(var i = 0; i < order_goodsList.length; i++){
+            $scope.order_totle += (order_goodsList[i].num * order_goodsList[i].price);;
         }
     }
     function cookieCheckedgoods(goodscartlist){

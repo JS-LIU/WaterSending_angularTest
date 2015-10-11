@@ -97,7 +97,8 @@ body{
 .common-list-10,
 .common-list-11,
 .common-list-12,
-.common-list-13{
+.common-list-13,
+.common-list-14{
     background:#FFF;
 }
 .common-list-01 li{
@@ -114,6 +115,15 @@ body{
 .common-list-13 li{
     height:105px;
     border-bottom: 1px solid #E2E2E2;
+}
+.common-list-14 li{
+    bordr-bottom:1px solid #E2E2E2;
+}
+.common-list-line-1{
+    line-height:25px;
+}
+.common-list-line-2{
+    line-height:20px;
 }
 .common-list-13 .comlist-13-single{
     height:44px;

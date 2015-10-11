@@ -52,12 +52,13 @@ purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore){
                 //  remove
                 $rootScope.GOODSCARTLIST.splice($.inArray(goodsInfo,$rootScope.GOODSCARTLIST),1);
                 $cookieStore.put('goodscart_list',$rootScope.GOODSCARTLIST);
+                $rootScope.TOTLE_MONEY -= goodsInfo.price;
             }
         }else{
             goodsInfo.num--;
             $cookieStore.put('goodscart_list',$rootScope.GOODSCARTLIST);
         }
-        if(goodsInfo.isChecked){
+        if(goodsInfo.isChecked && goodsInfo.num != 1){
             $rootScope.TOTLE_MONEY -= goodsInfo.price;
         }
     }
