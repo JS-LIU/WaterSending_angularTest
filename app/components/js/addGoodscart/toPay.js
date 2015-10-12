@@ -66,7 +66,10 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
     $scope.order_totle = 0;
     $scope.toPay = function(){
         var goodscartList = $rootScope.GOODSCARTLIST;
+        topay(goodscartList);
 
+    }
+    function topay(goodscartList){
         if(log.login()){
             //  保存cookie 这里必须保存 付款后从这里可以正确读数据
             cookieCheckedgoods(goodscartList);
@@ -75,9 +78,15 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
             var postPath = '/order/new';
             purchasePost.postData(data,postPath);
         }else{
+            //  保存cookie 这里必须保存 付款后从这里可以正确读数据
+            cookieCheckedgoods(goodscartList);
             //  登录界面
             $scope.gopayhref = url;
         }
+    }
+    $scope.toPay_quick = function(){
+        var goodscartList =  $cookieStore.get('goodscart_list');
+        topay(goodscartList);
     }
     //  04-03底部价格 【实付款】
     if($cookieStore.get('order_goodslist') != undefined){

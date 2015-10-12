@@ -3,17 +3,15 @@
     <a href="#/goodsCart" class="L-header-back h po"></a>
 </div>
 <div class="L-center">
-    <div class="common-singlerow-2 mt10" ng-controller="receiverLocation">
-        <a href="#/receiverAddress" class="confirm-address">
-            <p>
-                <span>{{receiverName}}</span>
-                <span>{{receiverPhone}}</span>
-            </p>
-            <p>
-                <span>地址:{{receiverAddress}}</span>
-            </p>
-        </a>
-    </div>
+    <a href="#/receiverAddress" class="pr fff confirm-address" ng-controller="receiverLocation">
+        <p class="common-list-line-1 pr50 pl15 pt10">
+            <span>{{default_receiverName}}</span>
+            <span class="pl15">{{default_receiverPhone}}</span>
+        </p>
+        <p class="common-list-line-2 pr50 pl15 pb10">
+            <span>地址：{{default_receiverAddress}}</span>
+        </p>
+    </a>
 
     <ul class="common-list-03 mt10" >
         <li class="oD-payway">

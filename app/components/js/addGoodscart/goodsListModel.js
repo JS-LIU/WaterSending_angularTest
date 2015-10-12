@@ -42,8 +42,6 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
 
         var goodscart_list = $cookieStore.get('goodscart_list');
         $rootScope.GOODSCART_NUM += 1;
-        console.log(item.price);
-        console.log($rootScope.GOODSCART_MONEY);
         $rootScope.GOODSCART_MONEY += item.price;
 
         //  添加cookie

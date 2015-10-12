@@ -1,17 +1,17 @@
 <div class="L-header w pr blue">
     <p class="tc L-header-title cfff f16">管理收货地址</p>
     <a href="#/confirmOrder" class="L-header-back h po"></a>
-    <a href="#/register" class="L-header-right h po cfff">新增</a>
+    <a href="#/modiAddress" class="L-header-right h po cfff">新增</a>
 </div>
-<ul class="common-list-14">
-    <li class="pr">
+<ul class="common-list-14" ng-controller="receiverLocation">
+    <li class="pr" ng-repeat="myAddress in myAddress">
         <p class="common-list-line-1 clearfix pr50 pl15 pt10 f16">
-            <span class="fl">张晓琪</span>
-            <span class="fr">13652556866</span>
+            <span class="fl">{{myAddress["recieve_name"]}}</span>
+            <span class="fr">{{myAddress["phone_num"]}}</span>
         </p>
         <p class="common-list-line-2 pr50 pl15 pb10">
-            <span>河南省郑州市河南省郑州市河南省郑州市河南省郑州市河南省郑州市河南省郑州市河南省郑州市</span>
-            <div class="po addressCheck"></div>
+            <span>{{myAddress["fullAddress"]}}</span>
+            <a href="#/modiAddress" class="po addressCheck" ng-click="modiAddress(myAddress)"></a>
         </p>
     </li>
 </ul>

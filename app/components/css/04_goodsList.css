@@ -76,7 +76,7 @@
 }
 .confirm-address{
     padding-left:35px;
-    background: url("../images/address.png") no-repeat 15px center;
+    background:#fff url("../images/address.png") no-repeat 15px center;
     -webkit-background-size: 18px;
     background-size: 18px;
 }
@@ -86,4 +86,18 @@
 }
 .confirmOrder-shop{
     padding-left:40px;
+}
+#mapContainer{
+    height: 50%!important;
+    overflow: hidden;
+}
+#point{
+    top: 50%;
+    left: 48%;
+    width: 20px;
+    height: 28px;
+    background:url("../images/address-03.png") no-repeat center center;
+    -webkit-background-size: 20px;
+    background-size: 20px;
+    z-index: 100;
 }

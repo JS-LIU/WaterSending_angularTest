@@ -98,8 +98,14 @@ body{
 .common-list-11,
 .common-list-12,
 .common-list-13,
-.common-list-14{
+.common-list-14,
+.common-list-15{
     background:#FFF;
+}
+.common-list-15 li{
+    height:44px;
+    line-height: 44px;
+    border-bottom:1px solid #E2E2E2;
 }
 .common-list-01 li{
     height:105px;
@@ -117,7 +123,17 @@ body{
     border-bottom: 1px solid #E2E2E2;
 }
 .common-list-14 li{
-    bordr-bottom:1px solid #E2E2E2;
+    border-bottom:1px solid #E2E2E2;
+}
+.common-list-input-1{
+    left:80px;
+    right:0px;
+    height:42px;
+    line-height: 42px;
+
+}
+.common-list-input-1 input{
+    outline: none;
 }
 .common-list-line-1{
     line-height:25px;

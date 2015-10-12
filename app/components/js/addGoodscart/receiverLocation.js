@@ -22,10 +22,18 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,p
     //});
     //  Êý¾ÝÄ£Äâ
     $http.get('components/data/address.json').success(function(data){
-        $rootScope.MYADDRESS = data;
-        var defaultAddress = $rootScope.MYADDRESS;
-        $scope.receiverName = defaultAddress["recieve_name"];
-        $scope.receiverPhone = defaultAddress["phone_num"];
-        $scope.fullAddress = defaultAddress["phone_num"];
-    })
+
+        if(data != undefined){
+            $scope.myAddress = data;
+            var defaultAddress = $scope.myAddress[0];
+            console.log(data);
+            $scope.default_receiverName = defaultAddress["recieve_name"];
+            $scope.default_receiverPhone = defaultAddress["phone_num"];
+            $scope.default_fullAddress = defaultAddress["phone_num"];
+            $scope.default_receiverAddress = defaultAddress["fullAddress"];
+        }
+    });
+    $scope.modiAddress = function(myAddress){
+
+    }
 })
