@@ -101,3 +101,16 @@
     background-size: 20px;
     z-index: 100;
 }
+#result1 {
+    top:50%;
+    max-height:50%;
+}
+.custom-location{
+    height:44px;
+    line-height:44px;
+    padding:0px 15px;
+    border-bottom:1px solid #E2E2E2;
+}
+.searchBox{
+    z-index:101;
+}
