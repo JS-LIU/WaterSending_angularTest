@@ -92,7 +92,8 @@
     overflow: hidden;
 }
 #point{
-    top: 50%;
+    margin-top:-20px;
+    top: 25%;
     left: 48%;
     width: 20px;
     height: 28px;

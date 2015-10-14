@@ -1,18 +1,18 @@
 /**
  * Created by 殿麒 on 2015/10/12.
  */
-purchase.factory("get_location",function(){
+purchase.factory("get_location",function($rootScope){
     /*
      *  代码来源：http://lbs.amap.com/api/javascript-api/example/p/1602-2/
      *  作用：得到当前位置
      */
-    var map = new AMap.Map('mapContainer', {
-        resizeEnable: true,
-        zoom:16
-    });
 
     function geocoder(lnglatXY,$scope) {
-        map.setCenter(lnglatXY);
+        $rootScope.map = new AMap.Map('mapContainer', {
+            resizeEnable: true,
+            zoom:16
+        });
+        $rootScope.map.setCenter(lnglatXY);
         var MGeocoder;
         //加载地理编码插件
         AMap.service(["AMap.Geocoder"], function() {
@@ -32,7 +32,6 @@ purchase.factory("get_location",function(){
     function geocoder_CallBack(data,$scope,lnglatXY) {
         //返回地址描述
         $scope.address = data.regeocode.formattedAddress;
-        console.log($scope.address);
         autoSearch($scope.address,$scope);
         $scope.lnglat = {
             positionX:lnglatXY[0],
@@ -50,12 +49,13 @@ purchase.factory("get_location",function(){
      *   作用：获取【当前地图中心经纬度】
      */
     function changeMyPosition(func){
-        map.on('dragend',function(){
-            var nowLocation = [map.getCenter().lng,map.getCenter().lat];
+        $rootScope.map.on('dragend',function(){
+            var nowLocation = [$rootScope.map.getCenter().lng,$rootScope.map.getCenter().lat];
+            console.log(nowLocation);
             func(nowLocation);
 
             setTimeout(function(){
-                var correct = [map.getCenter().lng,map.getCenter().lat];
+                var correct = [$rootScope.map.getCenter().lng,$rootScope.map.getCenter().lat];
                 if(correct[0] != nowLocation[0] || correct[1] != nowLocation[1]){
                     func(correct);
                     console.log('矫正惯性误差成功...');
@@ -73,7 +73,6 @@ purchase.factory("get_location",function(){
                 city: "" //城市，默认全国
             };
             auto = new AMap.Autocomplete(autoOptions);
-            console.log(keywords);
             //查询成功时返回查询结果
             if (keywords.length > 0) {
                 auto.search(keywords, function(status, result) {
@@ -112,8 +111,9 @@ purchase.factory("get_location",function(){
 });
 
 purchase.controller('changeLocInfo',function($scope,get_location,$cookieStore){
-    var lnglat = $cookieStore.get('lnglatXY');
-    var d = [lnglat.positionX,lnglat.positionY];
+    //var lnglat = $cookieStore.get('lnglatXY');
+    //var d = [lnglat.positionX,lnglat.positionY];
+    var d = [116.397428, 39.90923];
     get_location.getLocation(d,$scope);
 
     //  时时获取地理位置
