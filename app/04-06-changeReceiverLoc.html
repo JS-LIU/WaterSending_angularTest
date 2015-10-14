@@ -5,8 +5,8 @@
         <input class="w h" id="keyword" name="keyword" ng-keyup="getmyloc($event)" value="" type="text" placeholder="输入您所在的地区"/>
     </div>
     <ul id="result1" class="po w" name="result1">
-        <li class="custom-location" ng-repeat="location in location" >
-            {{location.loc}}
+        <li class="custom-location" ng-repeat="l in location" ng-click="setAddress(l)" >
+            {{l.loc}}
         </li>
     </ul>
 </div>

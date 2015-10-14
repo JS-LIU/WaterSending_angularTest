@@ -9,7 +9,7 @@ purchase.factory("get_location",function($rootScope){
     function paintMap(){
         $rootScope.map = new AMap.Map('mapContainer', {
             resizeEnable: true,
-            zoom:16
+            zoom:13
         });
     }
     function geocoder(lnglatXY,$scope) {
@@ -33,12 +33,12 @@ purchase.factory("get_location",function($rootScope){
 
     function geocoder_CallBack(data,$scope,lnglatXY) {
         //返回地址描述
-        $scope.address = data.regeocode.formattedAddress;
-        autoSearch($scope.address,$scope);
+        $rootScope.ADDRESS = data.regeocode.formattedAddress;
+        autoSearch($rootScope.ADDRESS,$scope);
         $scope.lnglat = {
             positionX:lnglatXY[0],
             positionY:lnglatXY[1],
-            addressInfo:$scope.address,
+            addressInfo:$rootScope.ADDRESS,
             districtId:'this is a no use parameter'
         };
         //$scope.$apply();
@@ -113,13 +113,12 @@ purchase.factory("get_location",function($rootScope){
     }
 });
 
-purchase.controller('changeLocInfo',function($scope,get_location,$cookieStore){
-    //var lnglat = $cookieStore.get('lnglatXY');
-    //var d = [lnglat.positionX,lnglat.positionY];
-    var d = [116.397428, 39.90923];
+purchase.controller('changeLocInfo',function($rootScope,$scope,get_location,$cookieStore){
+    var lnglat = $cookieStore.get('lnglatXY');
+    var d = [lnglat.positionX,lnglat.positionY];
+
     get_location.paintMap();
     get_location.getLocation(d,$scope);
-
     //  时时获取地理位置
     get_location.resetMyPosition(function(location){
         //  周边位置
@@ -131,4 +130,12 @@ purchase.controller('changeLocInfo',function($scope,get_location,$cookieStore){
         var keywords = $(e.target).val();
         get_location.search(keywords,$scope);
     }
+    $scope.setAddress = function(item){
+        console.log(item);
+        $rootScope.ADDRESS = item.loc;
+        window.location.href = "04-goodsList.html#/modiAddress";
+    }
+});
+purchase.controller('new_receiveInfo',function($rootScope,$scope){
+
 });
