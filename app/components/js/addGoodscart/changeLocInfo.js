@@ -6,12 +6,14 @@ purchase.factory("get_location",function($rootScope){
      *  代码来源：http://lbs.amap.com/api/javascript-api/example/p/1602-2/
      *  作用：得到当前位置
      */
-
-    function geocoder(lnglatXY,$scope) {
+    function paintMap(){
         $rootScope.map = new AMap.Map('mapContainer', {
             resizeEnable: true,
             zoom:16
         });
+    }
+    function geocoder(lnglatXY,$scope) {
+
         $rootScope.map.setCenter(lnglatXY);
         var MGeocoder;
         //加载地理编码插件
@@ -106,7 +108,8 @@ purchase.factory("get_location",function($rootScope){
     return {
         getLocation:geocoder,
         resetMyPosition:changeMyPosition,
-        search:autoSearch
+        search:autoSearch,
+        paintMap:paintMap
     }
 });
 
@@ -114,6 +117,7 @@ purchase.controller('changeLocInfo',function($scope,get_location,$cookieStore){
     //var lnglat = $cookieStore.get('lnglatXY');
     //var d = [lnglat.positionX,lnglat.positionY];
     var d = [116.397428, 39.90923];
+    get_location.paintMap();
     get_location.getLocation(d,$scope);
 
     //  时时获取地理位置
