@@ -14,7 +14,5 @@ logIn.config(['$routeProvider', function($routeProvider) {
         templateUrl:'07-04-register.html'
     }).when('/fillCheckcode',{
         templateUrl:'07-05-fillCheckcode.html'
-    }).when('/setPassword',{
-        templateUrl:'07-06-setPassword.html'
     })
 }]);
