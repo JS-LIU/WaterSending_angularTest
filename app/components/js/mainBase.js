@@ -133,6 +133,17 @@ main.factory('mainPost',function($http){
 });
 
 
+main.service('getAccessInfo',function(){
+    var app_secret = hex_md5("165416");
+    var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    this.accessInfo = {
+        app_key:appKey,
+        signature:app_secret
+    }
+});
+
+
+
 main.factory('logMsg',function(){
 
     var signature = 'b9528d938a3d6ac64865aee2324d84da';

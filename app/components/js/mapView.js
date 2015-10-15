@@ -30,10 +30,16 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
                     pageSize:5,
                     pageNo:1
                 }
+                var lnglat = {
+                    position_x:$rootScope.LNGLAT.positionX,
+                    position_y:$rootScope.LNGLAT.positionY,
+                    addressInfo:$rootScope.LNGLAT.addressInfo,
+                    districtId:$rootScope.LNGLAT.districtId
+                }
                 //  发送data
                 var data = {
                     accessInfo:getAccessInfo.accessInfo,
-                    positionInfo:$rootScope.LNGLAT,
+                    positionInfo:lnglat,
                     requestPageInfo: requestPageInfo,
                     x_dpi:'640',
                     sign :'meng wei'

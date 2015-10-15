@@ -106,12 +106,3 @@ main.controller("carousel",function($scope,mainPost,getAccessInfo){
     ];
 });
 
-main.service('getAccessInfo',function(){
-    var app_secret = hex_md5("165416");
-    var appKey = "e330ce4aa98546b3b99329d20e17450b";
-    this.accessInfo = {
-        app_key:appKey,
-        signature:app_secret
-    }
-});
-
