@@ -64,10 +64,10 @@ main.factory("get_location",function($rootScope){
         //返回地址描述
         $rootScope.ADDRESS = data.regeocode.formattedAddress;
         $rootScope.LNGLAT = {
-            positionX:lnglatXY[0],
-            positionY:lnglatXY[1],
+            positionX:lnglatXY[0] + '',
+            positionY:lnglatXY[1] + '',
             addressInfo:$rootScope.ADDRESS,
-            districtId:'this is a no use parameter'
+            districtId:data.regeocode.addressComponent.citycode
         };
         $rootScope.$apply();
     }
@@ -116,7 +116,7 @@ main.factory("get_location",function($rootScope){
 
 
 main.factory('mainPost',function($http){
-    var url = 'http://192.168.1.39:8080';
+    var url = 'http://114.251.53.22/huipaywater/';
     var postData = function(data,path){
         return $http({
             method:'POST',
@@ -137,6 +137,7 @@ main.factory('logMsg',function(){
 
     var signature = 'b9528d938a3d6ac64865aee2324d84da';
     var appKey = "e330ce4aa98546b3b99329d20e17450b";
+
     return {
         accessInfo:{
             app_key:appKey,

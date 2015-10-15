@@ -1,0 +1,78 @@
+<div class="L-header w pr blue">
+    <p class="tc L-header-title cfff f16">乐百氏水站</p>
+    <a href="#" class="L-header-back h po"></a>
+    <img class="sD-star po" src="components/images/header-star.png" alt="收藏"/>
+    <img class="sD-share po" src="components/images/header-share.png" alt="分享"/>
+</div>
+<div ng-controller="carousel">
+    <carousel class="L-carousel">
+        <img class="h fl" ng-repeat="img in imgs" src={{img.src}} style="width:{{img.width}};height: {{img.height}}"/>
+    </carousel>
+</div>
+<ul class="common-list-03">
+    <li>
+        <a href="#">
+            <span class="common-list-03-title ml15 piao cfff blue">票</span>
+            <span class="common-list-03-title pl10">水票</span>
+            <span class="fr pr15 common-list-03-content pr30 mr15 rightArrow">11张</span>
+        </a>
+    </li>
+    <li >
+        <a href="#">
+            <span class="common-list-03-title ml15 quan cfff orange">券</span>
+            <span class="common-list-03-title pl10">代金券红包</span>
+            <span class="fr pr15 common-list-03-content pr30 mr15 rightArrow">1张</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <span class="common-list-03-title ml15 hui cfff red">惠</span>
+            <span class="common-list-03-title pl10">优惠券</span>
+            <span class="fr pr15 common-list-03-content pr30 mr15 rightArrow">1张</span>
+        </a>
+    </li>
+</ul>
+<ul class="common-list-03 mt10">
+    <li>
+        <span class="common-list-03-title pl50 pt5 pb5 my-address">收货地址</span>
+    </li>
+    <li>
+        <span class="common-list-03-title pl50 pt5 pb5 my-collect">收藏</span>
+    </li>
+</ul>
+<ul class="common-list-03 mt10">
+    <li>
+        <span class="common-list-03-title pl50 pt5 pb5 my-share">分享给好友</span>
+    </li>
+    <li>
+        <span class="common-list-03-title pl50 pt5 pb5 my-set">设置</span>
+    </li>
+</ul>
+<div class="sD-introduce mt10">
+    <p class="f16 pl15 sD-introduce-title">商家介绍</p>
+    <p class="sD-introduceDetails pt5 pb5 pl15 pr15">
+        我公司致力于lowb产品数十载啦啦啦啦啦啦公我司致力于lowb产品数十载啦啦啦啦啦啦我公司致力于lowb产品数十载啦啦啦啦啦啦
+    </p>
+</div>
+<ul class="common-list-05 mt10">
+    <li class="common-list-05-list-1 pl15">网友点评（121）</li>
+    <li class="pl15 pt5 pb5 clearfix pr15">
+        <div class="common-list-05-pic-1 tc mr15 fl" >
+            <img class="h" src="components/images/images.png" alt="用户头像"/>
+        </div>
+        <p class="common-list-05-p-1">
+            <span>林***小</span>
+            <span>123456789</span>
+        </p>
+        <p class="common-list-05-p-2">这是垃圾，看得我眼睛都要烂了。你还真不容易，收集了这么一堆垃圾。收集了这么一堆垃圾。 </p>
+        <div class="common-list-05-p-2 mt10">
+            <div class="common-list-05-pic-2 tc fl mr10">
+                <img src="components/images/images.png" class="h" alt="商品图片"/>
+            </div>
+            <div class="common-list-05-pic-2 tc fl mr10">
+                <img src="components/images/images.png" class="h" alt="商品图片"/>
+            </div>
+        </div>
+    </li>
+</ul>
+

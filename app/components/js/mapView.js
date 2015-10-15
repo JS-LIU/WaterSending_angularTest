@@ -9,7 +9,7 @@ main.controller("cutView",function($scope,$rootScope){
     }
 });
 
-main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_location,mainPost,logMsg,$http){
+main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_location,mainPost,getAccessInfo,$http){
     $cookieStore.remove('lnglatXY');
     $cookieStore.remove('shopInfo');
 
@@ -23,24 +23,26 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
         $rootScope.$watch('LNGLAT',function(){
             if($rootScope.LNGLAT != undefined){
                 //  请求数据
-                //var path = '/shopList/shop';  //  地址
-                //var requestPageInfo = {       //  页数 每页条数
-                //    pageSize:5,
-                //    pageNo:1
-                //}
-                //var data = {                  //  发送data
-                //    accessInfo:logMsg.accessInfo,
-                //    positionInfo:$rootScope.LNGLAT,
-                //    requestPageInfo: requestPageInfo
-                //}
-                //mainPost.postData(data,path).success(function(data){
-                //    console.log(data);
-                //    $rootScope.SHOPLIST = shopList;
-                //    requestPageInfo.pageNo += 1;
-                //});
+                //  地址
+                var path = 'shopList/shop';
+                //  页数 每页条数
+                var requestPageInfo = {
+                    pageSize:5,
+                    pageNo:1
+                }
+                //  发送data
+                var data = {
+                    accessInfo:getAccessInfo.accessInfo,
+                    positionInfo:$rootScope.LNGLAT,
+                    requestPageInfo: requestPageInfo,
+                    x_dpi:'640',
+                    sign :'meng wei'
+                }
+                console.log(data);
+                //
                 var lnglat = [$rootScope.LNGLAT.positionX,$rootScope.LNGLAT.positionY];
-                //  本地模拟
-                $http.get('components/data/shopList.json').success(function(data){
+                mainPost.postData(data,path).success(function(data){
+                    console.log(data);
                     var shopList = data['shopList'];
 
                     $rootScope.SHOPLIST = shopList;
@@ -51,7 +53,22 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
                         var shoplnglat = [shopList[i]["xAxis"],shopList[i]["yAxis"]];
                         get_location.paintshopPoint(i,shoplnglat,lnglat);
                     }
+                    requestPageInfo.pageNo += 1;
                 });
+
+                //  本地模拟
+                //$http.get('components/data/shopList.json').success(function(data){
+                //    var shopList = data['shopList'];
+                //
+                //    $rootScope.SHOPLIST = shopList;
+                //    $rootScope.NEARLIST_SHOP = shopList[0];
+                //    var shopInfo = shopList[0];
+                //    //  在地图中标记出来商店位置
+                //    for(var i = 0,len = shopList.length; i < len ; i++){
+                //        var shoplnglat = [shopList[i]["xAxis"],shopList[i]["yAxis"]];
+                //        get_location.paintshopPoint(i,shoplnglat,lnglat);
+                //    }
+                //});
             }
         })
     }

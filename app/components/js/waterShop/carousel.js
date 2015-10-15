@@ -1,9 +1,8 @@
 /**
  * Created by 殿麒 on 2015/8/25.
  */
-//  改为factory 将directive注入进来
 //  轮播轨迹
-main.service('carouselTrack',function(){
+waterShop.service('carouselTrack',function(){
     var self = this;
     var window_width = window.screen.availWidth;
     this.slideLeft = function (){
@@ -35,7 +34,7 @@ main.service('carouselTrack',function(){
     }
 });
 
-main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTrack){
+waterShop.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTrack){
     function link($scope,ele){
         var imgLen = $scope.imgs.length,
             window_width = window.screen.availWidth,
@@ -75,43 +74,19 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
     }
 }])
 
-main.controller("carousel",function($scope,mainPost,getAccessInfo){
+waterShop.controller('carousel',function($scope){
     //  第一张的和最后一张可以用程序推入 待优化
-    var screenW = window.screen.availWidth;
-    var imgW = screenW + 'px';
-    var imgH = screenW * 17 / 18 + 'px';
-    var path = 'act/actList';
-    var accessInfo = getAccessInfo.accessInfo;
-    var x_dpi = screenW;
-    var cityId = '010';
-    var data = {
-        x_dpi:x_dpi,
-        sign:'',
-        city_id:cityId,
-        accessInfo:accessInfo
-    }
-
-    mainPost.postData(data,path).success(function(data){
-        console.log(data);
-        //  线上环境再调 todo
-    })
+    var imgW = window.screen.availWidth + 'px';
+    var imgH = window.screen.availWidth * 0.6 + 'px';
     $scope.imgs = [
         //  这张是最后一张的复刻
-        {src:'components/images/images-395-02.jpg',text:'sec',width:imgW,height:imgH},
+        {src:"components/images/images-395-02.jpg",text:'sec',width:imgW,height:imgH},
         //  图片数据
-        {src:'components/images/images-395-01.png',text:'first',width:imgW,height:imgH},
-        {src:'components/images/images-395-02.jpg',text:'sec',width:imgW,height:imgH},
+        {src:"components/images/images-395-01.png",text:'first',width:imgW,height:imgH},
+        {src:"components/images/images-395-02.jpg",text:'sec',width:imgW,height:imgH},
         //  这张是第一张的复刻
-        {src:'components/images/images-395-01.png',text:'first',width:imgW,height:imgH}
+        {src:"components/images/images-395-01.png",text:'first',width:imgW,height:imgH}
     ];
-});
+})
 
-main.service('getAccessInfo',function(){
-    var app_secret = hex_md5("165416");
-    var appKey = "e330ce4aa98546b3b99329d20e17450b";
-    this.accessInfo = {
-        app_key:appKey,
-        signature:app_secret
-    }
-});
 

@@ -5,8 +5,8 @@
 <div class="L-slide-center" ng-controller="mapView">
     <!--轮播页面-->
     <div ng-show="SHOWMAP" ng-controller="carousel">
-        <carousel class="L-carousel" ng-controller="myInterval">
-            <img class="h fl" ng-repeat="img in imgs" src="{{img.src}}" alt="{{img.text}}"style="width:{{img.width}};"/>
+        <carousel class="L-carousel">
+            <img class="h fl" ng-repeat="img in imgs" src={{img.src}} style="width:{{img.width}};height:{{img.height}}"/>
         </carousel>
         <ul class="common-multyrow-1 mt10 ml15 mr15">
             <li style="height: 48px;">
