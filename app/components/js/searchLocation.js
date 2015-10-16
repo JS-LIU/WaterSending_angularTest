@@ -93,10 +93,11 @@ main.controller('getLocation',function($rootScope,$scope,searchLocation,get_loca
                 for(var i = 0,len = shopList.length; i < len ; i++){
                     shopList[i].distance = parseInt(shopList[i].distance);
                     var shoplnglat = [shopList[i]["xAxis"],shopList[i]["yAxis"]];
-                    get_location.paintshopPoint(i,shoplnglat,lnglat);
+                    get_location.paintshopPoint(i,shoplnglat,curd);
                 }
                 $rootScope.SHOPLIST = shopList;
                 $rootScope.NEARLIST_SHOP = shopList[0];
+                console.log($rootScope.NEARLIST_SHOP)
                 requestPageInfo.pageNo += 1;
             });
         })
