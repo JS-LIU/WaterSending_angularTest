@@ -64,8 +64,8 @@ main.factory("get_location",function($rootScope){
         //返回地址描述
         $rootScope.ADDRESS = data.regeocode.formattedAddress;
         $rootScope.LNGLAT = {
-            positionX:lnglatXY[0] + '',
-            positionY:lnglatXY[1] + '',
+            position_x:lnglatXY[0] + '',
+            position_y:lnglatXY[1] + '',
             addressInfo:$rootScope.ADDRESS,
             districtId:data.regeocode.addressComponent.citycode
         };
@@ -82,7 +82,6 @@ main.factory("get_location",function($rootScope){
             position: d
         };
         var mar = new AMap.Marker(markerOption);
-        $rootScope.map.setFitView();
         $rootScope.map.setCenter(curd);
     }
 
