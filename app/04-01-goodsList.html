@@ -12,7 +12,7 @@
                     <img src="{{shopImg}}" class="h" alt="汇贝送水"/>
                 </div>
                 <div class="po common-detailbox-01">
-                    <p class="f16 common-detailbox-01-name">{{shopName}}</p>
+                    <p class="f16 common-detailbox-01-name">{{merchantName}}</p>
                     <p class="address">
                         <span>{{shopAddress}}</span>
                         <span class="distance">{{shopDistance}}KM</span>
@@ -57,7 +57,7 @@
             <li>100分！</li>
         </ul>
     </div>
-    <ul class="common-list-02" ng-show="showWay1">
+    <ul class="common-list-02" ng-show="showWay1" style="margin-bottom: 60px;">
         <li class="w pr" ng-repeat="goodsInfo in goodsList">
             <div class="common-picproduct-02 pr tc">
                 <img src="{{goodsInfo.imageList[0].url}}" class="h" alt="商品图片"/>
@@ -79,7 +79,7 @@
             <div class="po goodsCart-btn1" ng-click="addGoodscart(goodsInfo)"></div>
         </li>
     </ul>
-    <ul class="common-list-07 clearfix" ng-show="showWay2">
+    <ul class="common-list-07 clearfix" ng-show="showWay2" style="margin-bottom: 60px;">
         <li class="fl pr" ng-repeat="goodsInfo in goodsList">
             <div class="common-list-07-pic tc m15">
                 <img class="h" src="{{goodsInfo.imageList[0].url}}" alt="商品图片"/>
