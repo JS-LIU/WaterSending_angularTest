@@ -26,12 +26,13 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
             }
         })
     }
+
+    //  移动地图
     get_location.resetMyPosition(function(location){
         get_location.getCurAddress(location);
-
-        //  请求当前数据
         postNearShops();
     });
+
     //  为点击【我要订水】绑定事件
     $scope.postShopInfo = function(){
         //  保存选中的【商店信息】
@@ -43,7 +44,7 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
             window.location.href = '04-goodsList.html';
         }
     }
-
+    //  请求附近水站
     function postNearShops(){
         var path = 'shopList/shop';
         //  页数 每页条数
@@ -65,6 +66,8 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
         mainPost.postData(data,path).success(function(data){
             var shopList = data['shopList'];
 
+            //  清楚地图中标记的水站
+            get_location.clearMaker();
             //  在地图中标记出来商店位置
             for(var i = 0,len = shopList.length; i < len ; i++){
                 shopList[i].distance = parseInt(shopList[i].distance);
@@ -76,5 +79,4 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
             requestPageInfo.pageNo += 1;
         });
     }
-
 });
