@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/9/21.
  */
-var purchase = angular.module('purchase', ['ngRoute','ngCookies']);
+var purchase = angular.module('purchase', ['ngRoute','ngCookies','ngTouch']);
 
 
 purchase.config(['$routeProvider', function($routeProvider) {

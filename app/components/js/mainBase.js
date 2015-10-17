@@ -145,17 +145,3 @@ main.service('getAccessInfo',function(){
     }
 });
 
-
-
-main.factory('logMsg',function(){
-
-    var signature = 'b9528d938a3d6ac64865aee2324d84da';
-    var appKey = "e330ce4aa98546b3b99329d20e17450b";
-
-    return {
-        accessInfo:{
-            app_key:appKey,
-            signature:signature
-        }
-    }
-});

@@ -97,7 +97,7 @@ purchase.factory('goodsCartcookie',function($cookieStore){
 })
 
 purchase.factory('purchasePost',function($http){
-    var url = 'http://192.168.1.39:8080';
+    var url = 'http://114.251.53.22/huipaywater/';
     var postData = function(data,path){
         return $http({
             method:'POST',
@@ -112,21 +112,11 @@ purchase.factory('purchasePost',function($http){
         }
     }
 });
-
-
-purchase.factory('postGoodsList',function($http){
-    var url = 'http://192.168.1.39:8080';
-    var postData = function(data,path){
-        return $http({
-            method:'POST',
-            url: url + path,
-            data: data,
-            headers:{'Content-Type':'application/json'},
-        });
+purchase.service('getAccessInfo',function(){
+    var app_secret = hex_md5("165416");
+    var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    this.accessInfo = {
+        app_key:appKey,
+        signature:app_secret
     }
-    return {
-        postData: function(data,path){
-            return postData(data,path,'postData');
-        }
-    }
-})
+});
