@@ -29,7 +29,6 @@ main.factory("get_location",function($rootScope){
             (function getCurrentPosition() {
                 geolocation.getCurrentPosition();
             })();
-
         });
 
         function onComplete(data) {
@@ -82,9 +81,13 @@ main.factory("get_location",function($rootScope){
             position: d
         };
         var mar = new AMap.Marker(markerOption);
+        $rootScope.map.setFitView();
         $rootScope.map.setCenter(curd);
     }
-
+    //  清楚标记
+    function clearMaker(){
+        $rootScope.map.clearMap();
+    }
     /*
      *   代码来源：http://lbs.amap.com/api/javascript-api/example/i/0902-2/
      *   作用：监听地图【拖拽】事件
@@ -109,7 +112,8 @@ main.factory("get_location",function($rootScope){
         paintMap:paintMap,
         paintshopPoint:shopPoint,
         resetMyPosition:changeMyPosition,
-        getCurAddress:geocoder
+        getCurAddress:geocoder,
+        clearMaker:clearMaker
     }
 });
 

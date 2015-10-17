@@ -57,6 +57,7 @@ main.controller('getLocation',function($rootScope,$scope,searchLocation,get_loca
     }
 
     $scope.selectAddress = function(i){
+
         var path = 'shopList/shop';
         //  页数 每页条数
         var requestPageInfo = {
@@ -95,13 +96,12 @@ main.controller('getLocation',function($rootScope,$scope,searchLocation,get_loca
                     var shoplnglat = [shopList[i]["xAxis"],shopList[i]["yAxis"]];
                     get_location.paintshopPoint(i,shoplnglat,curd);
                 }
+
                 $rootScope.SHOPLIST = shopList;
                 $rootScope.NEARLIST_SHOP = shopList[0];
-                console.log($rootScope.NEARLIST_SHOP)
                 requestPageInfo.pageNo += 1;
             });
-        })
-
+        });
         window.location.href="#/";
     }
 });
