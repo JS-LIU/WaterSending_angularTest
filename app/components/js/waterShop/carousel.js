@@ -36,35 +36,39 @@ waterShop.service('carouselTrack',function(){
 
 waterShop.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTrack){
     function link($scope,ele){
-        var imgLen = $scope.imgs.length,
-            window_width = window.screen.availWidth,
-            bigWidth = imgLen * window_width,
-            moveEle = ele.children().css('marginLeft',-window_width+'px');
-        ele.css({'width':window_width + 'px','display':'block'});
-        moveEle.css({height:'100%',width:bigWidth + 'px'});
-        //moveEle.find('img').css('width',window_width+'px');
-        var x,x1;
-
-        $swipe.bind(ele, {
-            'start': function(coords) {
-                x = coords.x;
-                //  停止轮播
-            },
-            'move': function(coords) {
-                //  等待优化
-            },
-            'end': function(coords) {
-                x1 = coords.x;
-                var dif = x - x1;
-                //  swipe-left
-                if(dif > 10){
-                    carouselTrack.slideLeft();
-                }else if(dif < -9){
-                    carouselTrack.slideRight();
-                    //  开始轮播
-                }
+        $scope.$watch('imgs',function(){
+            if($scope.imgs != undefined && $scope.imgs.length > 1){
+                var imgLen = $scope.imgs.length,
+                    window_width = window.screen.availWidth,
+                    bigWidth = imgLen * window_width,
+                    moveEle = ele.children().css('marginLeft',-window_width+'px');
+                ele.css({'width':window_width + 'px','display':'block'});
+                moveEle.css({height:'100%',width:bigWidth + 'px'});
+                //moveEle.find('img').css('width',window_width+'px');
+                var x,x1;
+                $swipe.bind(ele, {
+                    'start': function(coords) {
+                        x = coords.x;
+                        //  停止轮播
+                    },
+                    'move': function(coords) {
+                        //  等待优化
+                    },
+                    'end': function(coords) {
+                        x1 = coords.x;
+                        var dif = x - x1;
+                        //  swipe-left
+                        if(dif > 10){
+                            carouselTrack.slideLeft();
+                        }else if(dif < -9){
+                            carouselTrack.slideRight();
+                            //  开始轮播
+                        }
+                    }
+                });
             }
-        });
+        })
+
     }
     return{
         restrict:'E',
@@ -76,17 +80,22 @@ waterShop.directive('carousel',['$swipe','carouselTrack',function ($swipe,carous
 
 waterShop.controller('carousel',function($scope){
     //  第一张的和最后一张可以用程序推入 待优化
+
+    //  正常写法 但现在是个字符串
+    //var len = $scope.imgs.length;
+    //for(var i = 0;i < len;i++){
+    //    $scope.imgs[i].width = imgW;
+    //    $scope.imgs[i].height = imgH;
+    //}
+    //$scope.imgs[0].concat($scope.imgs);
+    //$scope.imgs[len-1].push($scope.imgs);
     var imgW = window.screen.availWidth + 'px';
     var imgH = window.screen.availWidth * 0.6 + 'px';
-    $scope.imgs = [
-        //  这张是最后一张的复刻
-        {src:"components/images/images-395-02.jpg",text:'sec',width:imgW,height:imgH},
-        //  图片数据
-        {src:"components/images/images-395-01.png",text:'first',width:imgW,height:imgH},
-        {src:"components/images/images-395-02.jpg",text:'sec',width:imgW,height:imgH},
-        //  这张是第一张的复刻
-        {src:"components/images/images-395-01.png",text:'first',width:imgW,height:imgH}
-    ];
+    $scope.$watch('imgs',function(){
+        if($scope.imgs != undefined){
+            $scope.imgs[0].width = imgW;
+            $scope.imgs[0].height = imgH;
+        }
+    });
 })
-
 
