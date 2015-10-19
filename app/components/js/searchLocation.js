@@ -39,17 +39,17 @@ main.factory('searchLocation',function($rootScope){
         }
     }
 
-    function setCenter(curd){
+    function setmapCenter(curd){
         $rootScope.map.setCenter(curd);
     }
     return {
         search:autoSearch,
-        setMapCenter:setCenter
+        setMapCenter:setmapCenter
     }
 });
 
 
-main.controller('getLocation',function($rootScope,$scope,searchLocation,get_location,logMsg,mainPost,getAccessInfo){
+main.controller('getLocation',function($rootScope,$scope,searchLocation,get_location,mainPost,getAccessInfo){
 
     $rootScope.GETVALUE = function(e){
         var keywords = $(e.target).val();

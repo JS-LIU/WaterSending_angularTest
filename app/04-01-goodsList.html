@@ -7,7 +7,7 @@
 <div class="L-center" ng-controller="goodsListModel">
     <ul class="common-list-01" ng-controller="shopInfo">
         <li class="w">
-            <a href="#" class="pr">
+            <a href="08-waterShop.html#/" class="pr">
                 <div class="common-picproduct-01 pr tc">
                     <img src="{{shopImg}}" class="h" alt="汇贝送水"/>
                 </div>
@@ -25,24 +25,17 @@
             </a>
         </li>
     </ul>
-    <div class="common-list-06 clearfix mt10" ng-controller="classifyModel">
+    <div class="common-list-06 clearfix mt10">
         <div class="common-list-06-con1 clearfix w">
-            <div class="fl pr common-list-06-con50 pr" ng-click="showClassify()">
+            <div ng-repeat="names in classifyClick" class="fl pr common-list-06-con50 pr" ng-click="showClassify(names)">
                 <p class="tc">
-                    <span class="common-list-06-ml23">商品分类</span>
-                </p>
-            </div>
-            <div class="fl pr common-list-06-con50 tc pr">
-                <p class="tc">
-                    <span class="common-list-06-ml23">综合排序</span>
+                    <span class="common-list-06-ml23">{{names.name}}</span>
                 </p>
             </div>
             <div class="common-list-06-btn fl" ng-click="cutShowway()"></div>
         </div>
-        <ul class="po common-list-06-box100"ng-show='cutclassify'>
-            <li ng-click="selectA()">商品分类</li>
-            <li ng-click="selectT()">桶装水</li>
-            <li ng-click="selectP()">瓶装水</li>
+        <ul class="po common-list-06-box100" ng-show='cutclassify'>
+            <li ng-repeat="classify in classifyList" ng-click="select(classify)">{{classify.name}}</li>
         </ul>
     </div>
     <ul class="common-list-02" ng-show="showWay1" style="margin-bottom: 60px;">
