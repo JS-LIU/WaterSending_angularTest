@@ -1,5 +1,5 @@
 /**
- * Created by 殿麒 on 2015/10/19.
+ * Created by 娈块簰 on 2015/10/19.
  */
 logIn.service('getAccessInfo',function(){
     var app_secret = hex_md5("165416");
@@ -9,11 +9,11 @@ logIn.service('getAccessInfo',function(){
         signature:app_secret
     }
 });
-//  生成md5key
+//  鐢熸垚md5key
 logIn.service('regesteData',function(){
     this.md5_key = Math.uuid();
 });
-//  获取checkcode
+//  鑾峰彇checkcode
 logIn.service('getCheckcode',function(getAccessInfo,logService){
     this.getCheckcode = function(obj){
         var accessInfo = getAccessInfo.accessInfo;
@@ -21,10 +21,11 @@ logIn.service('getCheckcode',function(getAccessInfo,logService){
             accessInfo:accessInfo,
             sign:'mengwei'
         }
-        var path = "/checkCode/new";
+        var path = "checkCode/new";
         for(var prop in obj){
-            data['prop'] = obj.prop;
+            data[prop] = obj[prop];
         }
+        console.log(data);
         return logService.postData(data,path);
     }
 });
