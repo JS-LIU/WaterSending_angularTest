@@ -194,9 +194,13 @@ body{
     -webkit-background-size: 18px;
     background-size: 18px;
 }
+.common-list-06-box50,
+.common-list-06-box100{
+    z-index: 1;
+    background: #FFF;
+}
 .common-list-06-box50 ul{
     width: 50%;
-    height: 133px;
     margin-left: -1px;
     border-right: 1px solid #E2E2E2;
     border-bottom: 1px solid #E2E2E2;
@@ -204,12 +208,12 @@ body{
 }
 .common-list-06-box100{
     width: 100%;
-    height: 133px;
     border-bottom: 1px solid #E2E2E2;
     overflow-y: auto;
 }
 .common-list-06-box100 li{
     padding-left: 15px;
+    border-top: 1px solid #E2E2E2;
 }
 .common-list-07{
     border-top: 1px solid #E2E2E2;

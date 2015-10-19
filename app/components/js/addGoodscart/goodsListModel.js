@@ -2,21 +2,6 @@
  * Created by LIU on 15/9/27.
  */
 purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,getAccessInfo,refresh){
-    var shopInfo = $cookieStore.get('shopInfo');
-    console.log(shopInfo);
-    //  请求商品信息数据
-    var shopId = shopInfo["shopId"];
-    var requestPageInfo = {
-        pageSize: 6,
-        pageNo: 1
-    }
-    var accessInfo = getAccessInfo.accessInfo;
-    var data = {
-        requestPageInfo:requestPageInfo,
-        accessInfo:accessInfo,
-        sign:'meng wei',
-        shopId:shopId
-    }
 
     //  请求商品列表
     var path = "shop/productList";
@@ -41,10 +26,7 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         goodsCartcookie.add_goodsCart_cookie(goodscart_list,item);
     }
 
-
     refresh.getNewdata(window);
-
-
 });
 
 purchase.controller('shopInfo',function($scope,$cookieStore){
@@ -56,6 +38,18 @@ purchase.controller('shopInfo',function($scope,$cookieStore){
     $scope.shopDistance = shopInfo["distance"];
     $scope.sellCount = shopInfo["monthSailCount"];
 });
+//  分类
+purchase.controller('classifyModel',function($scope){
+    $scope.cutclassify = false;
+    $scope.showClassify = function(){
+        $scope.cutclassify = !$scope.cutclassify;
+    }
+    //  全选
+    $scope.selectA = function(){
+
+    }
+});
+
 
 purchase.factory('refresh',function($swipe){
     function getNewdata(ele){

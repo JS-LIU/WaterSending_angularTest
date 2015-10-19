@@ -25,9 +25,9 @@
             </a>
         </li>
     </ul>
-    <div class="common-list-06 clearfix mt10">
+    <div class="common-list-06 clearfix mt10" ng-controller="classifyModel">
         <div class="common-list-06-con1 clearfix w">
-            <div class="fl pr common-list-06-con50 pr">
+            <div class="fl pr common-list-06-con50 pr" ng-click="showClassify()">
                 <p class="tc">
                     <span class="common-list-06-ml23">商品分类</span>
                 </p>
@@ -39,22 +39,10 @@
             </div>
             <div class="common-list-06-btn fl" ng-click="cutShowway()"></div>
         </div>
-        <div class="common-list-06-box50 po w clearfix none">
-            <ul class="tc fl">
-                <li>我给你的</li>
-                <li>设计感打</li>
-                <li>100分！</li>
-            </ul>
-            <ul class="tc fl">
-                <li>我给你的</li>
-                <li>设计感打</li>
-                <li>100分！</li>
-            </ul>
-        </div>
-        <ul class="po common-list-06-box100 none">
-            <li>我给你的</li>
-            <li>设计感打</li>
-            <li>100分！</li>
+        <ul class="po common-list-06-box100"ng-show='cutclassify'>
+            <li ng-click="selectA()">商品分类</li>
+            <li ng-click="selectT()">桶装水</li>
+            <li ng-click="selectP()">瓶装水</li>
         </ul>
     </div>
     <ul class="common-list-02" ng-show="showWay1" style="margin-bottom: 60px;">
