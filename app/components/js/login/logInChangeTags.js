@@ -5,14 +5,14 @@ var logIn = angular.module('myLog', ['ngRoute','ngCookies']);
 
 logIn.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/',{
-        templateUrl:'07-01-logIn.html'
+        templateUrl:'../../../07-01-logIn.html'
     }).when('/findPassword',{
-        templateUrl:'07-02-findPassword.html'
+        templateUrl:'../../../07-02-findPassword.html'
     }).when('/resetPassword',{
-        templateUrl:'07-03-resetPassword.html'
+        templateUrl:'../../../07-03-resetPassword.html'
     }).when('/register',{
-        templateUrl:'07-04-register.html'
+        templateUrl:'../../../07-04-register.html'
     }).when('/fillCheckcode',{
-        templateUrl:'07-05-fillCheckcode.html'
+        templateUrl:'../../../07-05-fillCheckcode.html'
     })
 }]);

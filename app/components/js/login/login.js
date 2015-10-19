@@ -6,8 +6,7 @@ logIn.controller('logInRequest',function($scope,logService,$http,$cookieStore){
     $scope.logInbtn = function(){
         var phoneNum = $scope.phoneNum;
         var signature = $scope.password + '&' + '165416';
-        console.log(phoneNum);
-        console.log(signature);
+
 
         var appKey = "e330ce4aa98546b3b99329d20e17450b";
         var sign = 'meng wei';
@@ -34,21 +33,6 @@ logIn.controller('logInRequest',function($scope,logService,$http,$cookieStore){
     }
 })
 
-logIn.factory('logService',function($http){
-    var url = 'http://114.251.53.22/huipaywater/';
-    var userLogin = function(data,path){
-        return $http({
-            method:'POST',
-            url : url + path,
-            data:data,
-            headers:{'Content-Type':'application/json'},
-        });
-    }
-    return {
-        events:function(data,path){
-            return userLogin(data,path,'events');
-        }
-    }
-});
+
 
 
