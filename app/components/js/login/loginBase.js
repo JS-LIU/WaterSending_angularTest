@@ -30,6 +30,15 @@ logIn.service('getCheckcode',function(getAccessInfo,logService){
     }
 });
 
+//  密码
+logIn.service('getPassword',function(){
+    this.passWord = function(userName,pwd,md5_key){
+        var pwd = userName + pwd + md5_key;
+        var md5_pwd = hex_md5(pwd);
+        return md5_pwd;
+    }
+});
+
 logIn.factory('logService',function($http){
     var url = 'http://114.251.53.22/huipaywater/';
     var postData = function(data,path){
