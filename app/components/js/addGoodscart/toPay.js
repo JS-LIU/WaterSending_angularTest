@@ -69,19 +69,22 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
         topay(goodscartList);
 
     }
+    //  去付款
     function topay(goodscartList){
         if(log.login()){
             //  保存cookie 这里必须保存 付款后从这里可以正确读数据
             cookieCheckedgoods(goodscartList);
-            $scope.gopayhref = path;
-            var data = checkedGoodsData();
-            var postPath = '/order/new';
-            purchasePost.postData(data,postPath);
+            //$scope.gopayhref = path;
+            window.location.href = path;
+            //var data = checkedGoodsData();
+            //var postPath = '/order/new';
+            //purchasePost.postData(data,postPath);
         }else{
             //  保存cookie 这里必须保存 付款后从这里可以正确读数据
             cookieCheckedgoods(goodscartList);
             //  登录界面
-            $scope.gopayhref = url;
+            window.location.href = url;
+            //$scope.gopayhref = url;
         }
     }
     $scope.toPay_quick = function(){
@@ -113,12 +116,12 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
 
     function checkedGoodsData(){
         //  暂时
-        var shopId = '123';
+        var shopId = $cookieStore.get('shopInfo')["shopId"];
         var total_fee = '';
         var description = '';
         var comment = '';
         var checked_goodscart_list = $cookieStore.get('order_goodslist');
-        var sign = 'BDA2A96987403A81E3935D0265086018';
+        var sign = '';
         var orderItems = [];
         for(var i = 0,len = checked_goodscart_list.length; i < len;i++){
             var product = {
@@ -136,7 +139,6 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
             total_fee:total_fee,
             description:description,
             comment:comment,
-            addressId:'123',
             orderItems:orderItems,
             sign:sign,
             accessInfo:accessInfo

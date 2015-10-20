@@ -47,7 +47,7 @@ purchase.directive('dialog',function(){
 //  判断是否登录
 purchase.factory('log',function($cookieStore){
     var isLogin = function(){
-        if($cookieStore.get('logMsg') != undefined){
+        if($cookieStore.get('access_token') != undefined){
             return true;
         }else{
             return false;
