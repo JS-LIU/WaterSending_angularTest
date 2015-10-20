@@ -1,7 +1,7 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,purchasePost,log,$location){
+purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$location,purchasePost,log){
     var path = "#/confirmOrder";
     var url = "07-log.html";
     var old_goodscart_list = $cookieStore.get('goodscart_list');
@@ -15,7 +15,7 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,pu
     }
 
     //  监听url是否变化
-    $rootScope.$on('$routeChangeSuccess', function () {
+    $rootScope.$on('$routeChangeSuccess', function(){
         //  判断显示哪种底部样式
         var self_url = $location.url();
         function hideBottom(){

@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/9/19.
  */
-logIn.controller('fillCheckcode',function($rootScope,$scope,getCheckcode,regesteData,getAccessInfo,logService){
+logIn.controller('fillCheckcode',function($rootScope,$scope,$location,getCheckcode,regesteData,getAccessInfo,logService){
 
     $scope.isresend = '秒后重发';
     $scope.t = function(){
@@ -23,16 +23,22 @@ logIn.controller('fillCheckcode',function($rootScope,$scope,getCheckcode,regeste
     }
     $scope.t();
 
+    var self_url = $location.url();
+    if(self_url == '/resetPassword'){
+        var i = 4;
+        var url = 'account/new/reset';
+    }else if(self_url == '/fillCheckcode'){
+        var i = 1;
+        var url = 'account/new/regist';
+    }
+
     getCheckcode.getCheckcode({
         phone_num:$rootScope.PHONENUM,
-        checkCodeType:1
+        checkCodeType:i
     }).success(function(data){
         console.log(data);
         $scope.submit_registInfo = function(){
-            console.log($scope.password);
-            console.log(regesteData.md5_key);
-            console.log($rootScope.PHONENUM);
-            var passWord = hex_md5($scope.password+$rootScope.PHONENUM+regesteData.md5_key);
+            var passWord = hex_md5($rootScope.PHONENUM+$scope.password+regesteData.md5_key);
             var registerData = {
                 sign:'mengwei',
                 md5_key:regesteData.md5_key,
@@ -42,11 +48,10 @@ logIn.controller('fillCheckcode',function($rootScope,$scope,getCheckcode,regeste
                 password:passWord
             }
             console.log(registerData);
-            var path = 'account/new/regist';
+            var path = url;
             logService.postData(registerData,path).success(function(data){
                 console.log(data);
             });
         }
-
     })
 });
