@@ -65,7 +65,7 @@ purchase.controller('shopInfo',function($scope,$cookieStore){
     $scope.sellCount = shopInfo["monthSailCount"];
 });
 
-//  请求（筛选）【 商品】post的数据
+//  请求（筛选）【商品】post的数据
 purchase.factory('postclassify',function($cookieStore,getAccessInfo){
     function data(obj){
         var shopInfo = $cookieStore.get('shopInfo');

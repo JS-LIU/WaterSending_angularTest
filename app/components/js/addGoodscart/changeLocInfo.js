@@ -136,6 +136,7 @@ purchase.controller('changeLocInfo',function($rootScope,$scope,get_location,$coo
         window.location.href = "04-goodsList.html#/modiAddress";
     }
 });
+
 purchase.controller('new_receiveInfo',function($rootScope,$scope){
 
 });

@@ -74,17 +74,12 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
         if(log.login()){
             //  保存cookie 这里必须保存 付款后从这里可以正确读数据
             cookieCheckedgoods(goodscartList);
-            //$scope.gopayhref = path;
             window.location.href = path;
-            //var data = checkedGoodsData();
-            //var postPath = '/order/new';
-            //purchasePost.postData(data,postPath);
         }else{
             //  保存cookie 这里必须保存 付款后从这里可以正确读数据
             cookieCheckedgoods(goodscartList);
             //  登录界面
             window.location.href = url;
-            //$scope.gopayhref = url;
         }
     }
     $scope.toPay_quick = function(){
@@ -112,36 +107,5 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
         }
         $cookieStore.put('goodscart_list',new_goodscart_list);
         $cookieStore.put('order_goodslist',checked_goodscart_list);
-    }
-
-    function checkedGoodsData(){
-        //  暂时
-        var shopId = $cookieStore.get('shopInfo')["shopId"];
-        var total_fee = '';
-        var description = '';
-        var comment = '';
-        var checked_goodscart_list = $cookieStore.get('order_goodslist');
-        var sign = '';
-        var orderItems = [];
-        for(var i = 0,len = checked_goodscart_list.length; i < len;i++){
-            var product = {
-                productId:checked_goodscart_list[i].productId,
-                itemInfo:'github.com/JS-LIU/',
-                itemNum:checked_goodscart_list[i].num,
-                productType:'',
-                itemPrice:''
-            }
-            orderItems.push(product);
-        }
-        var accessInfo = $cookieStore.get('logMsg');
-        return {
-            shopId:shopId,
-            total_fee:total_fee,
-            description:description,
-            comment:comment,
-            orderItems:orderItems,
-            sign:sign,
-            accessInfo:accessInfo
-        }
     }
 });
