@@ -1,29 +1,31 @@
-<div class="L-header w pr blue">
-    <p class="tc L-header-title cfff f16">编写收货地址</p>
-    <a href="#/confirmOrder" class="L-header-back h po"></a>
-    <a href="#/modiAddress" class="L-header-right h po cfff">保存</a>
+<div ng-controller="new_receiveInfo">
+    <div class="L-header w pr blue">
+        <p class="tc L-header-title cfff f16">编写收货地址</p>
+        <a href="#/confirmOrder" class="L-header-back h po"></a>
+        <a href="#/modiAddress" class="L-header-right h po cfff" ng-click="saveNewLoc()">保存</a>
+    </div>
+    <ul class="common-list-15" >
+        <li class="clearfix pr">
+            <p class="fl pl15">联系人</p>
+            <P class="po common-list-input-1">
+                <input type="text" class="w h" placeholder="您的姓名" ng-model="myName"/>
+            </P>
+        </li>
+        <li class="clearfix pr">
+            <p class="fl pl15">手机号</p>
+            <P class="po common-list-input-1">
+                <input type="text" class="w h" placeholder="请输入您的手机号" ng-model="phoneNum"/>
+            </P>
+        </li>
+        <li class="clearfix pr">
+            <p class="fl pl15">送水地址</p>
+            <a href="#/changeReceiverLoc" class="po common-list-input-1">{{address}}</a>
+        </li>
+        <li class="clearfix pr">
+            <p class="fl pl15">门牌号</p>
+            <P class="po common-list-input-1">
+                <input type="text" class="w h" placeholder="请输入门牌号码等信息" ng-model="detailsAddress"/>
+            </P>
+        </li>
+    </ul>
 </div>
-<ul class="common-list-15" ng-controller="new_receiveInfo">
-    <li class="clearfix pr">
-        <p class="fl pl15">联系人</p>
-        <P class="po common-list-input-1">
-            <input type="text" class="w h" placeholder="您的姓名"/>
-        </P>
-    </li>
-    <li class="clearfix pr">
-        <p class="fl pl15">手机号</p>
-        <P class="po common-list-input-1">
-            <input type="text" class="w h" placeholder="请输入您的手机号"/>
-        </P>
-    </li>
-    <li class="clearfix pr">
-        <p class="fl pl15">送水地址</p>
-        <a href="#/changeReceiverLoc" class="po common-list-input-1">{{ADDRESS}}</a>
-    </li>
-    <li class="clearfix pr">
-        <p class="fl pl15">门牌号</p>
-        <P class="po common-list-input-1">
-            <input type="text" class="w h" placeholder="请输入门牌号码等信息"/>
-        </P>
-    </li>
-</ul>

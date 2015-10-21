@@ -13,7 +13,6 @@ purchase.factory("get_location",function($rootScope){
         });
     }
     function geocoder(lnglatXY,$scope) {
-
         $rootScope.map.setCenter(lnglatXY);
         var MGeocoder;
         //加载地理编码插件
@@ -36,8 +35,8 @@ purchase.factory("get_location",function($rootScope){
         $rootScope.ADDRESS = data.regeocode.formattedAddress;
         autoSearch($rootScope.ADDRESS,$scope);
         $scope.lnglat = {
-            positionX:lnglatXY[0],
-            positionY:lnglatXY[1],
+            position_x:lnglatXY[0],
+            position_y:lnglatXY[1],
             addressInfo:$rootScope.ADDRESS,
             districtId:'this is a no use parameter'
         };
@@ -95,9 +94,13 @@ purchase.factory("get_location",function($rootScope){
                 var lat = tipArr[i].location.lat;
                 var lnglat = [lng,lat];
                 var obj = {loc:tipArr[i].name,lnglat:lnglat};
+                (function(obj){
+                    $rootScope.map.getCity(function(data){
+                        obj.cityId = data.citycode;
+                    });
+                })(obj);
                 location.push(obj);
             }
-
             return location;
         } else {
             console.log('error');
@@ -115,8 +118,7 @@ purchase.factory("get_location",function($rootScope){
 
 purchase.controller('changeLocInfo',function($rootScope,$scope,get_location,$cookieStore){
     var lnglat = $cookieStore.get('lnglatXY');
-    var d = [lnglat.positionX,lnglat.positionY];
-
+    var d = [lnglat.position_x,lnglat.position_y];
     get_location.paintMap();
     get_location.getLocation(d,$scope);
     //  时时获取地理位置
@@ -131,12 +133,48 @@ purchase.controller('changeLocInfo',function($rootScope,$scope,get_location,$coo
         get_location.search(keywords,$scope);
     }
     $scope.setAddress = function(item){
+        $rootScope.MYADDRESSINFO = item;
         console.log(item);
-        $rootScope.ADDRESS = item.loc;
         window.location.href = "04-goodsList.html#/modiAddress";
     }
 });
 
-purchase.controller('new_receiveInfo',function($rootScope,$scope){
+purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,purchasePost){
+    var MYADDRESSINFO = $rootScope.MYADDRESSINFO;
+    console.log(MYADDRESSINFO);
+    function setaddress(){
+        if(MYADDRESSINFO!=undefined){
+            return $rootScope.MYADDRESSINFO.loc;
+        }else{
+            return '选择位置';
+        }
+    }
+    $scope.address = setaddress();
+    $scope.saveNewLoc = function(){
+        var phone_num = $scope.phoneNum;
+        var recieve_name = $scope.myName;
+        var fullAddress = $scope.address + $scope.detailsAddress;
 
+        console.log(MYADDRESSINFO);
+        var addressItem = {
+            phone_num:phone_num,
+            recieve_name:recieve_name,
+            position_x:MYADDRESSINFO.lnglat[0],
+            position_y:MYADDRESSINFO.lnglat[1],
+            provinceId:'0',
+            cityId:MYADDRESSINFO.cityId,
+            fullAddress:fullAddress,
+            userId:0
+        }
+        var data = {
+            addressItem:addressItem,
+            accessInfo:getAccessInfo.loginAccessInfo(),
+            sign:'sign'
+        }
+        console.log(data);
+        var path = 'delieveryAddress/new';
+        purchasePost.postData(data,path).success(function(data){
+            console.log(data);
+        });
+    }
 });
