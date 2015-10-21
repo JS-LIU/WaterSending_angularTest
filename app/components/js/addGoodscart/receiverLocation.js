@@ -1,11 +1,13 @@
 /**
- * Created by µÓ˜Ë on 2015/10/11.
+ * Created by ÊÆøÈ∫í on 2015/10/11.
  */
 purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,purchasePost,$http){
-    var accessInfo = $cookieStore.get('logMsg');
+    var accessInfo = $cookieStore.get('access_token');
     var position_x = $cookieStore.get('lnglatXY').positionX;
     var position_y = $cookieStore.get('lnglatXY').positionX;
     var addressInfo = $cookieStore.get('lnglatXY').addressInfo;
+
+    //  Ëé∑ÂèñÂ∏∏Áî®Âú∞ÂùÄ
     var positionInfo = {
         districtId:"",
         addressInfo:addressInfo,
@@ -16,23 +18,22 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,p
         accessInfo:accessInfo,
         positionInfo:positionInfo
     }
-    var path = "/delieveryAddress/show"
+    var path = "delieveryAddress/show"
     //purchasePost.postData(data,path).success(function(data){
     //    console.log(data);
     //});
-    //   ˝æ›ƒ£ƒ‚
-    $http.get('components/data/address.json').success(function(data){
-
-        if(data != undefined){
-            $scope.myAddress = data;
-            var defaultAddress = $scope.myAddress[0];
-            console.log(data);
-            $scope.default_receiverName = defaultAddress["recieve_name"];
-            $scope.default_receiverPhone = defaultAddress["phone_num"];
-            $scope.default_fullAddress = defaultAddress["phone_num"];
-            $scope.default_receiverAddress = defaultAddress["fullAddress"];
-        }
-    });
+    //$http.get('components/data/address.json').success(function(data){
+    //
+    //    if(data != undefined){
+    //        $scope.myAddress = data;
+    //        var defaultAddress = $scope.myAddress[0];
+    //        console.log(data);
+    //        $scope.default_receiverName = defaultAddress["recieve_name"];
+    //        $scope.default_receiverPhone = defaultAddress["phone_num"];
+    //        $scope.default_fullAddress = defaultAddress["phone_num"];
+    //        $scope.default_receiverAddress = defaultAddress["fullAddress"];
+    //    }
+    //});
     $scope.modiAddress = function(myAddress){
 
     }
