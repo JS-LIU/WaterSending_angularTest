@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/10/11.
  */
-purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,getAccessInfo,purchasePost){
+purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$swipe,getAccessInfo,purchasePost){
     var position_x = $cookieStore.get('lnglatXY').position_x;
     var position_y = $cookieStore.get('lnglatXY').position_y;
     var addressInfo = $cookieStore.get('lnglatXY').addressInfo;
@@ -34,4 +34,39 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,g
     $scope.modiAddress = function(){
         console.log('0');
     }
-})
+});
+purchase.directive('myList',function($swipe){
+    function del($scope,ele){
+        console.log(ele);
+        var x,x1;
+        $swipe.bind(ele, {
+            'start': function(coords) {
+                x = coords.x;
+                console.log(coords.x);
+                alert(1);
+                //  停止轮播
+            },
+            'move': function(coords) {
+                console.log(coords.x);
+                ele.animate({
+                })
+            },
+            'end': function(coords) {
+                x1 = coords.x;
+                var dif = x - x1;
+                //  swipe-left
+                if(dif > 10){
+                }else if(dif < -9){
+                    //  开始轮播
+                }
+            }
+        });
+    }
+    return{
+        restrict:'E',
+        template:'<li class="pr" ><div ng-transclude></div></li>',
+        transclude:true,
+        replace:true,
+        link:del
+    }
+});

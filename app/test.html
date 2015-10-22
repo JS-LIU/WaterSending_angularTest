@@ -10,20 +10,29 @@
     <p>在输入框中尝试输入：</p>
     <p>姓名：<input type="text" ng-model="name"></p>
     <p ng-bind="name"></p>
-</div>
-<ul ng-controller="testrepeata">
-    <li ng-repeat="l in location">
-        <a href="#/">{{l.loc}}</a>
-    </li>
-</ul>
 
+    <ul ng-controller="testrepeata">
+        <li ng-repeat="l in location">
+            <a href="#/">{{l.loc}}</a>
+        </li>
+        <hello></hello>
+    </ul>
+</div>
 
 <script type="text/javascript">
 
     var a = angular.module('aaa',[]);
     a.controller('testrepeata',function($scope){
         $scope.location = [{loc:'adf'},{loc:'aa'},{loc:'dd'}];
-    })
+    });
+
+    a.directive('hello',function(){
+        return{
+            restrict:'E',
+            template:'<div>hello<span ng-transclude></span></div>',
+            transclude: true
+        }
+    });
 
 </script>
 
