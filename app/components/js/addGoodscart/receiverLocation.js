@@ -35,21 +35,18 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
         console.log('0');
     }
 });
-purchase.directive('myList',function($swipe){
-    function del($scope,ele){
-        console.log(ele);
-        var x,x1;
+//
+purchase.directive('liulist',function($swipe){
+    var x,x1;
+    function link($scope,ele){
         $swipe.bind(ele, {
             'start': function(coords) {
                 x = coords.x;
-                console.log(coords.x);
-                alert(1);
                 //  停止轮播
             },
             'move': function(coords) {
-                console.log(coords.x);
-                ele.animate({
-                })
+                cosnole.log(coords.x);
+                //  等待优化
             },
             'end': function(coords) {
                 x1 = coords.x;
@@ -62,11 +59,13 @@ purchase.directive('myList',function($swipe){
             }
         });
     }
+
+
+
     return{
         restrict:'E',
         template:'<li class="pr" ><div ng-transclude></div></li>',
         transclude:true,
-        replace:true,
-        link:del
+        link:link
     }
 });
