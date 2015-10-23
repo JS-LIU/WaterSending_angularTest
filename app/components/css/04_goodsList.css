@@ -57,7 +57,7 @@
     border-radius: 10px;
 }
 .addressCheck{
-    top:35px;
+    top:25px;
     right:15px;
     width:18px;
     height:18px;
@@ -117,4 +117,12 @@
 }
 myList{
     border-bottom:1px solid #E2E2E2;
+}
+.delBtn{
+    right:-55px;
+    top:0px;
+    width: 55px;
+    height:65px;
+    line-height:65px;
+    background:#fa5b60;
 }

@@ -134,8 +134,7 @@ purchase.controller('changeLocInfo',function($rootScope,$scope,get_location,$coo
     }
     $scope.setAddress = function(item){
         $rootScope.MYADDRESSINFO = item;
-        console.log(item);
-        window.location.href = "04-goodsList.html#/modiAddress";
+        window.location.href = "#/modiAddress";
     }
 });
 
@@ -151,11 +150,10 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
     }
     $scope.address = setaddress();
     $scope.saveNewLoc = function(){
-        var phone_num = $scope.phoneNum;
+        var phone_num = $rootScope.PHONENUM;
         var recieve_name = $scope.myName;
         var fullAddress = $scope.address + $scope.detailsAddress;
 
-        console.log(MYADDRESSINFO);
         var addressItem = {
             phone_num:phone_num,
             recieve_name:recieve_name,

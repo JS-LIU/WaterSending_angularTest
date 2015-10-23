@@ -4,14 +4,15 @@
     <a href="#/modiAddress" class="L-header-right h po cfff">新增</a>
 </div>
 <ul class="common-list-14" ng-controller="receiverLocation" style="margin-bottom:60px;">
-    <liulist ng-repeat="myAddress in myAddress">
+    <liulist ng-repeat="myAddress in myAddress" ng-click="selAddress(myAddress)">
         <p class="common-list-line-1 clearfix pr50 pl15 pt10 f16">
             <span class="fl">{{myAddress["recieve_name"]}}</span>
             <span class="fr">{{myAddress["phone_num"]}}</span>
         </p>
         <p class="common-list-line-2 pr50 pl15 pb10">
             <span>{{myAddress["fullAddress"]}}</span>
-            <a href="#/modiAddress" class="po addressCheck" ng-click="modiAddress()"></a>
+            <a href="javascript:void(0)" class="po addressCheck" ng-click="modiAddress()"></a>
         </p>
+        <div class="po delBtn tc cfff" ng-click="delAddress(myAddress)">删除</div>
     </liulist>
 </ul>

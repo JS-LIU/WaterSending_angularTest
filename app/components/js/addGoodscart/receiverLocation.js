@@ -34,38 +34,62 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
     $scope.modiAddress = function(){
         console.log('0');
     }
+
+    //  删除地址
+    $scope.delAddress = function(item){
+        var path = 'delieveryAddress/delete';
+        var addressId = item.addressId;
+        var data = {
+            addressId:addressId,
+            sign:'mengwei',
+            accessInfo:getAccessInfo.loginAccessInfo()
+        }
+        purchasePost.postData(data,path).success(function(){
+
+            $scope.myAddress.splice($.inArray(item,$scope.myAddress),1);
+
+        });
+    }
+    //  选择地址
+
 });
 //
 purchase.directive('liulist',function($swipe){
-    var x,x1;
+    var x,x1,x2,$_eleLeft;
     function link($scope,ele){
         $swipe.bind(ele, {
-            'start': function(coords) {
-                x = coords.x;
-                //  停止轮播
+            'start': function() {
+                x = 0;
+                $(ele).css('left','0px');
+                $_eleLeft = parseFloat(ele.css('left'));
             },
             'move': function(coords) {
-                cosnole.log(coords.x);
-                //  等待优化
-            },
-            'end': function(coords) {
+                x2 = x1 || x;
                 x1 = coords.x;
-                var dif = x - x1;
-                //  swipe-left
-                if(dif > 10){
-                }else if(dif < -9){
-                    //  开始轮播
+                var dif = x1 - x2;
+                console.log()
+                if($_eleLeft <= 0 && dif < 0){
+                    $(ele).css({
+                        left:'+=' + dif +'px'
+                    });
+                }
+            },
+            'end': function() {
+                var $_eleLeft = parseFloat($(ele).css('left'));
+                if($_eleLeft >　-35){
+                    $(ele).css('left','-0px');
+                }
+                if($_eleLeft <　-55){
+                    $(ele).css('left','-55px');
                 }
             }
         });
     }
-
-
-
     return{
         restrict:'E',
         template:'<li class="pr" ><div ng-transclude></div></li>',
         transclude:true,
+        replace:true,
         link:link
     }
 });
