@@ -16,6 +16,7 @@
             <a href="#/">{{l.loc}}</a>
         </li>
         <hello></hello>
+        <input type="text" ng-model="myName" value="{{myName}}"/>
     </ul>
 </div>
 
@@ -24,6 +25,7 @@
     var a = angular.module('aaa',[]);
     a.controller('testrepeata',function($scope){
         $scope.location = [{loc:'adf'},{loc:'aa'},{loc:'dd'}];
+        $scope.myName = '';
     });
 
     a.directive('hello',function(){

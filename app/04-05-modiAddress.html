@@ -8,13 +8,13 @@
         <li class="clearfix pr">
             <p class="fl pl15">联系人</p>
             <P class="po common-list-input-1">
-                <input type="text" class="w h" placeholder="{{myName||'输入姓名'}}" ng-model="myName"/>
+                <input type="text" class="w h" placeholder="{{name}}" ng-blur="getValue($event,'NAME')"/>
             </P>
         </li>
         <li class="clearfix pr">
             <p class="fl pl15">手机号</p>
             <P class="po common-list-input-1">
-                <input type="text" class="w h" placeholder="请输入您的手机号" ng-model="phoneNum"/>
+                <input type="text" class="w h" placeholder="{{phoneNum}}" ng-blur="getValue($event,'PHONENUM')"/>
             </P>
         </li>
         <li class="clearfix pr">
@@ -24,7 +24,7 @@
         <li class="clearfix pr">
             <p class="fl pl15">门牌号</p>
             <P class="po common-list-input-1">
-                <input type="text" class="w h" placeholder="请输入门牌号码等信息" ng-model="detailsAddress"/>
+                <input type="text" class="w h" placeholder="{{detailAddress}}" ng-blur="getValue($event,'DETAILADDRESS')"/>
             </P>
         </li>
     </ul>

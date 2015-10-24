@@ -150,7 +150,14 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
     }
     $scope.address = setaddress();
 
-
+    //  输入的内容
+    $scope.getValue = function(e,str){
+        var $_self = $(e.target);
+        $rootScope[str] = $_self.val();
+    }
+    $scope.name = $rootScope.NAME;
+    $scope.phoneNum = $rootScope.PHONENUM;
+    $scope.detailAddress = $rootScope.DETAILADDRESS;
 
     $scope.saveNewLoc = function(){
         var phone_num = $scope.phoneNum;
