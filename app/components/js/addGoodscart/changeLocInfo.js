@@ -139,8 +139,8 @@ purchase.controller('changeLocInfo',function($rootScope,$scope,get_location,$coo
 });
 
 purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,purchasePost){
+    //  地址信息
     var MYADDRESSINFO = $rootScope.MYADDRESSINFO;
-    console.log(MYADDRESSINFO);
     function setaddress(){
         if(MYADDRESSINFO!=undefined){
             return $rootScope.MYADDRESSINFO.loc;
@@ -149,8 +149,11 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
         }
     }
     $scope.address = setaddress();
+
+
+
     $scope.saveNewLoc = function(){
-        var phone_num = $rootScope.PHONENUM;
+        var phone_num = $scope.phoneNum;
         var recieve_name = $scope.myName;
         var fullAddress = $scope.address + $scope.detailsAddress;
 
