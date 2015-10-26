@@ -93,36 +93,62 @@ purchase.factory('postclassify',function($cookieStore,getAccessInfo){
     }
 });
 
-purchase.factory('refresh',function($swipe){
-    function getNewdata(ele){
-        var screenH = window.screen.availHeight;
-        //  请求后需要重新获取页面高度
-        var bodyH = document.body.scrollHeight;
-        $(window).scroll(function(){
-            var overScroll = document.body.scrollTop;
-            console.log(overScroll);
-            console.log(screenH);
-            //  卷去的高 + 屏幕的高 == 整个页面的高
-            if(overScroll + screenH == bodyH){
-                console.log(1);
-                var x;
-                $swipe.bind(ele, {
-                    'start': function() {
-                    },
-                    'move': function(coords) {
-                        //  等待优化
-                        x = coords.x;
-                        console.log(x);
-                    },
-                    'end': function(coords) {
-                    }
-                });
-            }
-        })
+//purchase.factory('refresh',function($swipe){
+//    function getNewdata(ele){
+//        var screenH = window.screen.availHeight;
+//        //  请求后需要重新获取页面高度
+//        var bodyH = document.body.scrollHeight;
+//        $(window).scroll(function(){
+//            var overScroll = document.body.scrollTop;
+//            console.log(overScroll);
+//            console.log(screenH);
+//            //  卷去的高 + 屏幕的高 == 整个页面的高
+//            if(overScroll + screenH == bodyH){
+//                console.log(1);
+//                var x;
+//                $swipe.bind(ele, {
+//                    'start': function() {
+//                    },
+//                    'move': function(coords) {
+//                        //  等待优化
+//                        x = coords.x;
+//                        console.log(x);
+//                    },
+//                    'end': function(coords) {
+//                    }
+//                });
+//            }
+//        })
+//
+//        //func();
+//    }
+//    return {
+//        getNewdata:getNewdata
+//    }
+//});
 
-        //func();
+purchase.directive('liuul',function($swipe){
+    var y,y1,y2,$_eleLeft;
+    function link($scope,ele){
+        $swipe.bind(ele, {
+            'start': function() {
+                y = 0;
+                $(ele).css('bottom','0px');
+            },
+            'move': function(coords) {
+            },
+            'end': function() {
+            }
+        });
     }
-    return {
-        getNewdata:getNewdata
+
+    return{
+        restrict:'E',
+        template:'<ul class="pr" ><div ng-transclude></div></ul>',
+        transclude:true,
+        replace:true,
+        link:link
     }
 });
+
+
