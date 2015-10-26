@@ -150,7 +150,7 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
     }
     $scope.address = setaddress();
 
-    //  输入的内容
+    //  保留填写【地址信息】【前】输入的内容 （姓名、电话、门牌号）
     $scope.getValue = function(e,str){
         var $_self = $(e.target);
         $rootScope[str] = $_self.val();
@@ -159,11 +159,12 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
     $scope.phoneNum = $rootScope.PHONENUM;
     $scope.detailAddress = $rootScope.DETAILADDRESS;
 
+    //  【保存】按钮事件
     $scope.saveNewLoc = function(){
-        var phone_num = $scope.phoneNum;
-        var recieve_name = $scope.myName;
-        var fullAddress = $scope.address + $scope.detailsAddress;
-
+        var recieve_name = $scope.name || $scope.a;
+        var phone_num = $scope.phoneNum ||　$scope.b;
+        var detailsAddress = $scope.detailAddress || $scope.c;
+        var fullAddress = $scope.address + detailsAddress;
         var addressItem = {
             phone_num:phone_num,
             recieve_name:recieve_name,
@@ -179,10 +180,11 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
             accessInfo:getAccessInfo.loginAccessInfo(),
             sign:'sign'
         }
-        console.log(data);
         var path = 'delieveryAddress/new';
+        //  保存到后台
         purchasePost.postData(data,path).success(function(data){
             console.log(data);
+            window.location.href = "#/receiverAddress";
         });
     }
 });

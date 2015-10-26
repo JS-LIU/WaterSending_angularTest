@@ -31,7 +31,7 @@
             </a>
             <div class="fl L-footer-01-l w" ng-show="showGoodsList">
                 <span class="gL-totalCost">¥</span>
-                <span class="pl5 ">{{GOODSCART_MONEY}}</span>
+                <span class="pl5 ">{{GOODSCART_MONEY.toFixed(2)}}</span>
             </div>
             <a ng-show="showGoodsList" class="fr L-footer-01-r red tc cfff" ng-click="toPay_quick()">去结算</a>
             <!--底部2-->
@@ -40,13 +40,13 @@
                     <div class="po btmgoodsCheck" ng-class="{true: 'checked', false: ''}[ALLCHECKED]"></div>
                     <span class="pl30">全选</span>
                 </span>
-                <span class="totleMoney pl15">合计：¥{{TOTLE_MONEY}}</span>
+                <span class="totleMoney pl15">合计：¥{{TOTLE_MONEY.toFixed(2)}}</span>
             </div>
             <a ng-show="showGoodsCart" class="fr L-footer-01-r red tc cfff" ng-click="toPay()">去结算</a>
             <!--底部3-->
             <div ng-show="showOrderList" class="fl L-footer-01-l w allCheckbox">
                 <span class="totleMoney pl15">实付款：¥</span>
-                <span>{{order_totle}}</span>
+                <span>{{order_totle.toFixed(2)}}</span>
             </div>
             <a href="{{gopayhref}}" ng-show="showOrderList" class="fr L-footer-01-r red tc cfff" ng-click="toPay()">去结算</a>
         </div>

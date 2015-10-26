@@ -12,7 +12,6 @@ purchase.controller('payGoodsModel',function($scope,$cookieStore){
 
     $scope.order_goodslist = order_goodslist;
     for(var i = 0,len = order_goodslist.length;i < len; i++){
-        console.log(order_goodslist);
         totleNum += parseInt(order_goodslist[i].num);
         totleMoney += parseInt(order_goodslist[i].num * order_goodslist[i].price);
     }

@@ -5,6 +5,8 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
     var position_x = $cookieStore.get('lnglatXY').position_x;
     var position_y = $cookieStore.get('lnglatXY').position_y;
     var addressInfo = $cookieStore.get('lnglatXY').addressInfo;
+
+
     //  获取常用地址
     var positionInfo = {
         districtId:'0',
@@ -17,17 +19,17 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
         positionInfo:positionInfo,
         sign:'mengwei'
     }
-    console.log(data);
+
     var path = "delieveryAddress/show"
     purchasePost.postData(data,path).success(function(data){
-        console.log(data);
         if(data.length > 0){
             $scope.myAddress = data;
-            var defaultAddress = $scope.myAddress[0];
-            $scope.default_receiverName = defaultAddress["recieve_name"];
-            $scope.default_receiverPhone = defaultAddress["phone_num"];
-            $scope.default_fullAddress = defaultAddress["phone_num"];
-            $scope.default_receiverAddress = defaultAddress["fullAddress"];
+            if($rootScope.SELECTADDRESS == undefined){
+                var defaultAddress = $scope.myAddress[0];
+                myAddress(defaultAddress);
+            }else{
+                myAddress($rootScope.SELECTADDRESS);
+            }
         }
     });
 
@@ -51,6 +53,20 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
         });
     }
     //  选择地址
+    $scope.selAddress = function(item){
+        if(item["canDeliever"]){
+            $rootScope.SELECTADDRESS = item;
+            window.location.href = "#/confirmOrder";
+        }
+    }
+
+    //  送货地址赋值
+    function myAddress(item){
+        $scope.default_receiverName = item["recieve_name"];
+        $scope.default_receiverPhone = item["phone_num"];
+        $scope.default_fullAddress = item["phone_num"];
+        $scope.default_receiverAddress = item["fullAddress"];
+    }
 
 });
 //

@@ -126,3 +126,8 @@ myList{
     line-height:65px;
     background:#fa5b60;
 }
+.cantDeliver{
+    background:#E2E2E2 url("../images/cantDeliver.png") no-repeat 90% center;
+    -webkit-background-size: 50px;
+    background-size: 50px;
+}

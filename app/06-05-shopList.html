@@ -4,12 +4,12 @@
         <input class="w h" type="text" ng-model="search" placeholder="搜您想要的水站"/>
     </div>
 </div>
-<div class="L-center" ng-controller="showListModel">
+<div class="L-center mb50" ng-controller="showListModel">
     <div class="nw-nwbox w" ng-show="false">
         <p class="f16 pt20 pr15">抱歉，附近无可配送水站！</p>
         <p class="pr15">我们已经记录你的位置，我们会尽快开发您附近的水站并及时通知您！</p>
     </div>
-    <ul class="common-list-01"style="margin-bottom: 60px;">
+    <ul class="common-list-01">
         <li class="w" ng-repeat="shopList in SHOPLIST | filter:search | orderBy:'distance'">
             <a href="javascript:void(0)" ng-click="getShopInfo(shopList)" class="pr">
                 <div class="common-picproduct-01 pr tc">

@@ -4,7 +4,7 @@
 </div>
 <div class="L-slide-center" ng-controller="mapView">
     <!--轮播页面-->
-    <div ng-show="SHOWMAP" ng-controller="carousel">
+    <div ng-show="SHOWMAP" class="mb100" ng-controller="carousel">
         <carousel class="L-carousel">
             <img class="h fl" ng-repeat="img in imgs" src={{img.src}} style="width:{{img.width}};height:{{img.height}}"/>
         </carousel>
