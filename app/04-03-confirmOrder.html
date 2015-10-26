@@ -37,7 +37,7 @@
             <div class="po common-detailbox-02">
                 <p class="f16 comlist-02-floor-01 mt10">{{goodsInfo.title}}</p>
                 <p class="comlist-02-floor-01 mt10">
-                    <span class="cred f16">{{goodsInfo.price}}</span>
+                    <span class="cred f16">{{(goodsInfo.price/10000).toFixed(2)}}</span>
                     <span>*{{goodsInfo.num}}</span>
                 </p>
             </div>
@@ -45,7 +45,7 @@
         <li class="common-singlerow-1">
             <p class="fr mr15">
                 <span>共{{totleNum}}件商品，合计</span>
-                <span class="cred f16">￥{{totleMoney}}</span>
+                <span class="cred f16">￥{{(totleMoney/10000).toFixed(2)}}</span>
             </p>
         </li>
     </ul>

@@ -1,7 +1,7 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,getAccessInfo,postclassify,refresh){
+purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,getAccessInfo,postclassify){
 
     $scope.cutclassify = false;
     $scope.classifyClick = [{name:'商品分类',id:1},{name:'综合排序',id:2}];
@@ -52,7 +52,6 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         });
         $scope.cutclassify = !$scope.cutclassify;
     }
-    refresh.getNewdata(window);
 });
 
 purchase.controller('shopInfo',function($scope,$cookieStore){

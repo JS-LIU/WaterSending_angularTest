@@ -1,7 +1,7 @@
 /**
- * Created by 殿麒 on 2015/10/26.
+ * Created by 娈块簰 on 2015/10/26.
  */
-//  带滑动删除功能的列表 li
+//  甯︽粦鍔ㄥ垹闄ゅ姛鑳界殑鍒楄〃 li
 purchase.directive('liulist',function($swipe){
     var x,x1,x2,$_eleLeft;
     function link($scope,ele){
@@ -24,10 +24,10 @@ purchase.directive('liulist',function($swipe){
             },
             'end': function() {
                 var $_eleLeft = parseFloat($(ele).css('left'));
-                if($_eleLeft >　-35){
+                if($_eleLeft >銆�-35){
                     $(ele).css('left','-0px');
                 }
-                if($_eleLeft <　-55){
+                if($_eleLeft <銆�-55){
                     $(ele).css('left','-55px');
                 }
             }
