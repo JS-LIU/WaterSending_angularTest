@@ -10,11 +10,14 @@ main.controller('orderListModel',function($rootScope,$scope,mainPost,getAccessIn
         }
         var data = {
             accessInfo:accessInfo,
-            requestPageInfo:requestPageInfo
+            requestPageInfo:requestPageInfo,
+            sign:'sign'
         }
+        console.log(data);
         var path = 'order/list'
         mainPost.postData(data,path).success(function(data){
             console.log(data);
+
         });
     }else{
         console.log('请登录');

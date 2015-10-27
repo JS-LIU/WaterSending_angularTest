@@ -1,7 +1,7 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$location,purchasePost,log){
+purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$location,purchasePost,log,getAccessInfo){
     var path = "#/confirmOrder";
     var url = "07-log.html";
     var old_goodscart_list = $cookieStore.get('goodscart_list');
@@ -67,7 +67,6 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
     $scope.toPay = function(){
         var goodscartList = $rootScope.GOODSCARTLIST;
         topay(goodscartList);
-
     }
     //  去付款
     function topay(goodscartList){
@@ -86,13 +85,6 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
         var goodscartList =  $cookieStore.get('goodscart_list');
         topay(goodscartList);
     }
-    //  04-03底部价格 【实付款】
-    if($cookieStore.get('order_goodslist') != undefined){
-        var order_goodsList = $cookieStore.get('order_goodslist');
-        for(var i = 0; i < order_goodsList.length; i++){
-            $scope.order_totle += (order_goodsList[i].num * order_goodsList[i].price);;
-        }
-    }
     function cookieCheckedgoods(goodscartlist){
         var new_goodscart_list = [];
         var checked_goodscart_list = [];
@@ -107,5 +99,36 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
         }
         $cookieStore.put('goodscart_list',new_goodscart_list);
         $cookieStore.put('order_goodslist',checked_goodscart_list);
+    }
+    //  生成订单
+    $scope.confirmOrder = function(){
+        var shopId = $cookieStore.get('shopInfo').shopId;
+        var order_list = $cookieStore.get('order_goodslist');
+        var orderItem = [];
+
+        for(var i = 0,len  = order_list.length; i < len;i++){
+            var item = {};
+            item.productId = order_list[i].productId;
+            item.productType = 1;
+            item.itemNum = order_list[i].num;
+            item.itemPrice = order_list[i].price;
+            item.itemInfo = '';
+            orderItem.push(item);
+        }
+        var data = {
+            shopId:shopId,
+            total_fee:$scope.order_totle,
+            description:'',
+            comment:'',
+            addressId:$rootScope.SELECTADDRESS.addressId,
+            orderItems:orderItem,
+            accessInfo:getAccessInfo.loginAccessInfo(),
+            sign:'sign'
+        }
+        console.log(data);
+        var path = 'order/new';
+        purchasePost.postData(data,path).success(function(data){
+            console.log(data);
+        });
     }
 });

@@ -12,6 +12,7 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
     var path = "shop/productList";
     purchasePost.postData(data,path).success(function(data){
         $scope.goodsList = data['productList'];
+        console.log(data['productList']);
     });
 
     $scope.showWay1 = true;

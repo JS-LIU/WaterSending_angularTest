@@ -25,6 +25,7 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
         if(data.length > 0){
             $scope.myAddress = data;
             if($rootScope.SELECTADDRESS == undefined){
+                $rootScope.SELECTADDRESS = $scope.myAddress[0];
                 var defaultAddress = $scope.myAddress[0];
                 myAddress(defaultAddress);
             }else{
