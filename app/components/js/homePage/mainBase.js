@@ -136,12 +136,35 @@ main.factory('mainPost',function($http){
 });
 
 
-main.service('getAccessInfo',function(){
+//  判断是否登录
+main.factory('log',function($cookieStore){
+    var isLogin = function(){
+        if($cookieStore.get('access_token') != undefined){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    return {
+        login:isLogin
+    };
+});
+
+main.service('getAccessInfo',function(log,$cookieStore){
     var app_secret = hex_md5("165416");
     var appKey = "e330ce4aa98546b3b99329d20e17450b";
     this.accessInfo = {
         app_key:appKey,
         signature:app_secret
     }
+    this.loginAccessInfo = function(){
+        var access_token = $cookieStore.get('access_token').access_token;
+        var access_token_secret = $cookieStore.get('access_token').access_token_secret;
+        var accessInfo = {
+            app_key:appKey,
+            signature:hex_md5(165416 + '&' + access_token_secret),
+            access_token:access_token
+        }
+        return accessInfo;
+    }
 });
-

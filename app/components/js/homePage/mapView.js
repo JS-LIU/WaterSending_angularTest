@@ -41,7 +41,7 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
             $cookieStore.put('shopInfo',$rootScope.NEARLIST_SHOP);
             //  保存位置信息
             $cookieStore.put('lnglatXY',$rootScope.LNGLAT);
-            window.location.href = '04-goodsList.html';
+            window.location.href = '../../../04-goodsList.html';
         }
     }
     //  请求附近水站
