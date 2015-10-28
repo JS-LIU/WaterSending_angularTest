@@ -99,8 +99,20 @@ body{
 .common-list-12,
 .common-list-13,
 .common-list-14,
-.common-list-15{
+.common-list-15,
+.common-list-16{
     background:#FFF;
+}
+.common-list-16{
+    border-bottom:1px solid #E2E2E2;
+    border-top:1px solid #E2E2E2;
+}
+.common-list-16 li{
+    height:55px;
+    broder-bottom:1px solid #E2E2E2;
+}
+.com-text-60{
+    margin-left:60px;
 }
 .common-list-15 li{
     height:44px;

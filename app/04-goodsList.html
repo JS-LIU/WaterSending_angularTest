@@ -48,7 +48,7 @@
                 <span class="totleMoney pl15">实付款：¥</span>
                 <span>{{(order_totle/10000).toFixed(2)}}</span>
             </div>
-            <a href="{{gopayhref}}" ng-show="showOrderList" class="fr L-footer-01-r red tc cfff" ng-click="confirmOrder()">确认订单</a>
+            <a ng-show="showOrderList" class="fr L-footer-01-r red tc cfff" ng-click="confirmOrder()">确认订单</a>
         </div>
 
         <script src="components/js/addGoodscart/PurchaseChangeTags.js"></script>

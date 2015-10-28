@@ -17,5 +17,7 @@ purchase.config(['$routeProvider', function($routeProvider) {
         templateUrl:'04-05-modiAddress.html'
     }).when('/changeReceiverLoc',{
         templateUrl:'04-06-changeReceiverLoc.html'
+    }).when('/payPage',{
+        templateUrl:'04-07-pay.html'
     })
 }]);

@@ -125,10 +125,10 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
             accessInfo:getAccessInfo.loginAccessInfo(),
             sign:'sign'
         }
-        console.log(data);
         var path = 'order/new';
         purchasePost.postData(data,path).success(function(data){
-            console.log(data);
+            $cookieStore.put('orderId',data);
+            window.location.href = "http://114.251.53.22/huipaywater/pages/water/app/09-payPage.html";
         });
     }
 });
