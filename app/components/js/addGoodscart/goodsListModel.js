@@ -128,14 +128,24 @@ purchase.factory('postclassify',function($cookieStore,getAccessInfo){
 //});
 
 purchase.directive('liuul',function($swipe){
-    var y,y1,y2,$_eleLeft;
+    var y,y1,y2;
     function link($scope,ele){
-        $swipe.bind(ele, {
-            'start': function() {
-                y = 0;
-                $(ele).css('bottom','0px');
+        var clientH = document.body.clientHeight;
+        var $_self = $(ele);
+        var overScroll = document.body.scrollTop;
+        //  请求到数据后需要重新获取值
+        var bodyH = document.body.scrollHeight;
+        //  卷去的高 + 屏幕的高 == 整个页面的高
+        var selfH = parseFloat($_self.css('height'));
+        $swipe.bind($_self, {
+            'start': function(coords) {
+                console.log(coords.y);
             },
             'move': function(coords) {
+                console.log(coords.y)
+                if(overScroll + clientH == bodyH){
+                    console.log('11');
+                }
             },
             'end': function() {
             }

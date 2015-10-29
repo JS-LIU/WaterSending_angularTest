@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1"/>
@@ -20,10 +20,8 @@
 
     <title>06_主页</title>
 </head>
-    <body ng-app="myApp">
-        <div class="slide-wrap" ng-view>
-        </div>
-
+    <body>
+        <div class="slide-wrap" ng-view></div>
         <!--地图页面-->
         <div ng-hide="SHOWMAP" class="mb100">
             <div id="mapContainer">

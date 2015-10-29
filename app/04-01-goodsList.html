@@ -38,7 +38,7 @@
             <li ng-repeat="classify in classifyList" ng-click="select(classify)">{{classify.name}}</li>
         </ul>
     </div>
-    <ul class="common-list-02" ng-show="showWay1" style="margin-bottom: 60px;">
+    <liuul class="common-list-02" ng-show="showWay1" style="margin-bottom: 60px;">
         <li class="w pr" ng-repeat="goodsInfo in goodsList">
             <div class="common-picproduct-02 pr tc">
                 <img src="{{goodsInfo.imageList[0].url}}" class="h" alt="商品图片"/>
@@ -59,7 +59,7 @@
             </div>
             <div class="po goodsCart-btn1" ng-click="addGoodscart(goodsInfo)"></div>
         </li>
-    </ul>
+    </liuul>
     <ul class="common-list-07 clearfix" ng-show="showWay2" style="margin-bottom: 60px;">
         <li class="fl pr" ng-repeat="goodsInfo in goodsList">
             <div class="common-list-07-pic tc m15">

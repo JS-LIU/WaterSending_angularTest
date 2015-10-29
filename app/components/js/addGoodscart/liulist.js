@@ -1,4 +1,4 @@
-/**
+0/**
  * Created by 殿麒 on 2015/10/26.
  */
 //  带滑动删除功能的列表 li
@@ -15,7 +15,6 @@ purchase.directive('liulist',function($swipe){
                 x2 = x1 || x;
                 x1 = coords.x;
                 var dif = x1 - x2;
-                console.log()
                 if($_eleLeft <= 0 && dif < 0){
                     $(ele).css({
                         left:'+=' + dif +'px'

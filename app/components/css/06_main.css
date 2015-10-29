@@ -178,7 +178,7 @@
     margin-top:451px;
 }
 .map-main-orderbtn{
-    margin:10px 15px 64px 15px;
+    margin:10px 15px 64px;
 }
 #result1 {
     max-height: 300px;
@@ -202,4 +202,10 @@
 #mapContainer .common-multyrow-1{
     z-index: 100;
     background: #ffffff;
+}
+html,body{
+    position:static!important;
+}
+.whyCantSlideDown{
+    height:100px;
 }

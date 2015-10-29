@@ -28,7 +28,7 @@
         </li>
         <li>
             <span class="common-list-04-title pl15">需要支付：</span>
-            <span class="common-list-04-content fr pr15 J_payMoney">{{payMoney}}</span>
+            <span class="common-list-04-content fr pr15 J_payMoney">{{(payMoney/1000).toFixed(2)}}</span>
         </li>
     </ul>
     <ul class="common-list-16 mt10">
@@ -38,7 +38,7 @@
             <div class="po checkPay"></div>
         </li>
     </ul>
-    <div class="common-btn-01 mt10 tc cfff blue f14" style="margin-top:10px;">立即支付</div>
+    <div class="common-btn-01 mt10 tc cfff blue f14" style="margin-top:10px;" ng-controller="WXController" ng-click="toPay()">立即支付</div>
     <script src="components/js/pay/weChatPay.js"></script>
 </body>
 </html>
