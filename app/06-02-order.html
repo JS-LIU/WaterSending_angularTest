@@ -3,30 +3,24 @@
 </div>
 <div ng-controller="orderListModel">
     <ul class="common-list-09 fff clearfix order-common-list-09">
-        <li class="fl tc">
-            <p class="order-goods-noPay" ng-click="orderDetails(i)">待付款</p>
-        </li>
-        <li class="fl tc">
-            <p class="order-goods-noReciving" ng-click="orderDetails($index)">待收获</p>
-        </li>
-        <li class="fl tc">
-            <p class="order-goods-noEvaluate" ng-click="orderDetails($index)">待评价</p>
+        <li class="fl tc" ng-repeat="tabItem in tab">
+            <p class={{tabItem.icon}} ng-click="orderDetails(tabItem)">{{tabItem.name}}</p>
         </li>
     </ul>
     <div class="order-main-list">
-        <ul class="common-list-10 mt10">
-            <li>
-                <a href="#" class="common-list-10-top pr15 pl50 order-shop-icon">郑州市金水区桶装水超市</a>
-                <a href="#" class="common-list-02">
-                    <div class="w pr common-list-10-center">
+        <ul class="common-list-10 mt10" style="background:#EEEFF3;">
+            <li ng-repeat="orderItem in orderList" style="background:#FFF">
+                <div class="common-list-10-top pr15 pl50 mt10 order-shop-icon">{{orderItem.merchantName}}</div>
+                <a href="#" class="common-list-02" ng-controller="goodsModel">
+                    <div class="w pr common-list-10-center" ng-repeat="goods in goodsList">
                         <div class="common-picproduct-02 pr tc">
-                            <img src="" class="h" alt="汇贝展示UI"/>
+                            <img src={{goods.image}} class="h" alt="商品图片"/>
                         </div>
                         <div class="po common-detailbox-02 pr15">
-                            <p class="f16 common-detailbox-02-name">汇贝展示UI</p>
+                            <p class="f16 common-detailbox-02-name">{{goods.itemName}}</p>
                             <p class="common-detailbox-02-pricebox">
-                                <span class="cred f16">汇贝展示</span>
-                                <span>UI</span>
+                                <span class="cred f16">{{(goods.itemPrice / 100).toFixed(2)}}</span>
+                                <span>{{goods.itemNum}}</span>
                             </p>
                         </div>
                     </div>
@@ -39,6 +33,7 @@
                 </div>
             </li>
         </ul>
+        <div style="height:64px;"></div>
     </div>
 </div>
 

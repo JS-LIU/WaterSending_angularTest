@@ -2,6 +2,21 @@
  * Created by 殿麒 on 2015/10/27.
  */
 main.controller('orderListModel',function($rootScope,$scope,mainPost,getAccessInfo,log){
+    //  头部【选项卡】数据
+    $scope.tab = [{
+        name:"待付款",
+        icon:"order-goods-noPay",
+        clientOrderState:1
+    },{
+        name:"代收货",
+        icon:"order-goods-noReciving",
+        clientOrderState:2
+    },{
+        name:"带评价",
+        icon:"order-goods-noEvaluate",
+        clientOrderState:3
+    }];
+
     if(log.login()){
         var accessInfo = getAccessInfo.loginAccessInfo();
         var requestPageInfo = {
@@ -14,16 +29,22 @@ main.controller('orderListModel',function($rootScope,$scope,mainPost,getAccessIn
             sign:'sign',
             clientOrderState:null
         }
-        $scope.orderDetails = function(i){
-            console.log(i);
+
+        $scope.orderDetails = function(item){
+            data.clientOrderState = item.clientOrderState;
+            mainPost.postData(data,path).success(function(data){
+                $scope.orderList = data["orderList"];
+            });
         }
 
-        console.log(data);
         var path = 'order/list'
-        //mainPost.postData(data,path).success(function(data){
-        //    console.log(data);
-        //});
+        mainPost.postData(data,path).success(function(data){
+            $scope.orderList = data["orderList"];
+        });
     }else{
         window.location.href = "http://114.251.53.22/huipaywater/pages/water/app/07-log.html"
     }
+});
+main.controller('goodsModel',function($scope){
+    $scope.goodsList = $scope.orderList[$scope.$index].orderItems;
 });
