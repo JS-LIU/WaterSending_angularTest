@@ -2,15 +2,15 @@
     <p class="tc L-header-title cfff f16">订单</p>
 </div>
 <div ng-controller="orderListModel">
-    <ul class="common-list-09 fff clearfix">
+    <ul class="common-list-09 fff clearfix order-common-list-09">
         <li class="fl tc">
-            <p class="order-goods-noPay">待付款</p>
+            <p class="order-goods-noPay" ng-click="orderDetails(i)">待付款</p>
         </li>
         <li class="fl tc">
-            <p class="order-goods-noReciving">待收获</p>
+            <p class="order-goods-noReciving" ng-click="orderDetails($index)">待收获</p>
         </li>
         <li class="fl tc">
-            <p class="order-goods-noEvaluate">待评价</p>
+            <p class="order-goods-noEvaluate" ng-click="orderDetails($index)">待评价</p>
         </li>
     </ul>
     <div class="order-main-list">

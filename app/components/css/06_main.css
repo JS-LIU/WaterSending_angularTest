@@ -110,7 +110,7 @@
 }
 #mapContainer{
     top: 44px!important;
-    height:441px!important;
+    height:60%!important;
     overflow: hidden;
 }
 .common-list-09{
@@ -175,7 +175,8 @@
     padding-left:40px;
 }
 .map-mapview-orderbtn{
-    margin-top:451px;
+    position:relative;
+    top:50%
 }
 .map-main-orderbtn{
     margin:10px 15px 64px;
@@ -190,16 +191,18 @@
     border-bottom:1px solid #E2E2E2;
 }
 #point{
-    top: 196.5px;
+    margin-top: -28px;
+    top: 50%;
     left: 48%;
     width: 18px;
     height: 28px;
-    background:url("../images/address-03.png") no-repeat center center;
-    -webkit-background-size: 20px;
+    background: url("../images/address-03.png") no-repeat center center;
     background-size: 20px;
     z-index: 100;
 }
 #mapContainer .common-multyrow-1{
+    top:50%;
+    margin-top: -125px;
     z-index: 100;
     background: #ffffff;
 }
@@ -208,4 +211,11 @@ html,body{
 }
 .whyCantSlideDown{
     height:100px;
+}
+.order-common-list-09{
+    height:60px;
+    border-bottom:1px solid #E2E2E2;
+}
+.order-common-list-09 li{
+    height:60px;
 }
