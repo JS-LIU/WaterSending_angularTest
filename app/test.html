@@ -2,9 +2,13 @@
 <html lang="en">
 <body>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1"/>
     <title>test</title>
     <script src="components/js/plugins/angular.min.js"></script>
+    <script src="components/js/plugins/angular-touch.min.js"></script>
+    <link rel="stylesheet" href="components/css/base.css"/>
+    <link rel="stylesheet" href="components/css/Lhuipayapp-common.css"/>
 </head>
 <div ng-app="aaa">
     <p>在输入框中尝试输入：</p>
@@ -18,11 +22,26 @@
         <hello></hello>
         <input type="text" ng-model="myName" value="{{myName}}"/>
     </ul>
+    <liuul>
+        <li style="height: 44px;line-height: 44px;">这是第一个</li>
+        <li style="height: 44px;line-height: 44px;">这是第2个</li>
+        <li style="height: 44px;line-height: 44px;">这是第3个</li>
+        <li style="height: 44px;line-height: 44px;">这是第4个</li>
+        <li style="height: 44px;line-height: 44px;">这是第5个</li>
+        <li style="height: 44px;line-height: 44px;">这是第6个</li>
+        <li style="height: 44px;line-height: 44px;">这是第7个</li>
+        <li style="height: 44px;line-height: 44px;">这是第8个</li>
+        <li style="height: 44px;line-height: 44px;">这是第9个</li>
+        <li style="height: 44px;line-height: 44px;">这是最后一个</li>
+    </liuul>
+    <!--通用底部-->
+    <div style="margin-bottom:50px;"></div>
+    <div style="position:fixed;bottom:0px;height:50px;width:100%;border-top:1px solid #E2E2E2;z-index: 10;text-align: center;background:#FFF;">奶茶东</div>
 </div>
 
 <script type="text/javascript">
 
-    var a = angular.module('aaa',[]);
+    var a = angular.module('aaa',['ngTouch']);
     a.controller('testrepeata',function($scope){
         $scope.location = [{loc:'adf'},{loc:'aa'},{loc:'dd'}];
         $scope.myName = '';
@@ -37,6 +56,6 @@
     });
 
 </script>
-
+<script type="text/javascript" src="components/js/text/text.js"></script>
 </body>
 </html>
