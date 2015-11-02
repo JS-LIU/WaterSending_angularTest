@@ -8,3 +8,7 @@ main.controller('showListModel',function($scope,$rootScope){
         window.location.href='#/'
     }
 });
+
+main.controller('searchShopModel',function($rootScope,$scope){
+    console.log($scope.searchShop);
+});

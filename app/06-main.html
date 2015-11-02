@@ -23,7 +23,7 @@
     <body>
         <div class="slide-wrap" ng-view></div>
         <!--地图页面-->
-        <div ng-hide="SHOWMAP" class="mb100">
+        <div ng-hide="SHOWMAP">
             <div id="mapContainer">
                 <div id="point" class="po"></div>
                 <ul class="common-multyrow-1 ml15 pr mr15">
@@ -50,6 +50,7 @@
             </div>
         </div>
         <a href="javascript:void(0)"ng-hide="SHOWMAP" ng-click="postShopInfo()" class="common-btn-01 tc cfff blue f14 map-mapview-orderbtn">我要订水</a>
+        <div class="whyCantSlideDown"></div>
         <div class="slide-mfooter" ng-hide="NAVBOT">
             <ul class="common-list-09 clearfix">
                 <li class="fl tc">
@@ -63,7 +64,6 @@
                 </li>
             </ul>
         </div>
-
         <script src="components/js/homePage/mainChangeTags.js"></script>
         <script src="components/js/homePage/carousel.js"></script>
         <script src="components/js/homePage/mainBase.js"></script>

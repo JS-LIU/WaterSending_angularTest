@@ -2,7 +2,7 @@
     <p class="tc L-header-title cfff f16">汇贝送水</p>
     <div class="po my-cutMap" ng-click="toggleView()"></div>
 </div>
-<div class="L-slide-center" ng-controller="mapView" style="margin-bottom:64px;">
+<div class="L-slide-center" ng-controller="mapView">
     <!--轮播页面-->
     <div ng-show="SHOWMAP" ng-controller="carousel">
         <carousel class="L-carousel">
@@ -30,6 +30,5 @@
             </li>
         </ul>
         <a href="javascript:void(0)" ng-click="postShopInfo()" class="common-btn-01 tc cfff blue f14 pr" style="margin-top: 10px;">我要订水</a>
-        <div class="whyCantSlideDown"></div>
     </div>
 </div>

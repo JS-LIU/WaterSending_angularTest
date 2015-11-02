@@ -2,6 +2,7 @@ body{
     background: #EEEFF3;
     min-width: 320px;
     max-width:640px;
+    margin:0 auto;
 }
 .fff{
     background: #ffffff;
