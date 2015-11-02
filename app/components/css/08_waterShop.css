@@ -11,8 +11,13 @@
     right:50px;
 }
 .sD-share{
-    top: 11px;
+    top: 10px;
     right:15px;
+    width:25px;
+    height:25px;
+    background:url("../images/header-share.png") no-repeat center center;
+    -webkit-background-size: 25px;
+    background-size: 25px;
 }
 .piao,
 .quan,
@@ -62,4 +67,14 @@
 .sD-introduce{
     border-top: 1px solid #E2E2E2;
     border-bottom: 1px solid #E2E2E2;
+}
+.my-address{
+    background: url("../images/address.png") no-repeat 18px center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+}
+.my-tel{
+    background: url("../images/phone-02.png") no-repeat 18px center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
 }

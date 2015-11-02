@@ -46,7 +46,7 @@
     border-radius: 16px;
 }
 .my-address{
-    background: url("../images/address-02.png") no-repeat 15px center;
+    background: url("../images/address.png") no-repeat 15px center;
     -webkit-background-size: 15px;
     background-size: 20px;
 }
@@ -59,17 +59,17 @@
     line-height: 44px;
 }
 .my-collect{
-    background: url("../images/address-02.png") no-repeat 15px center;
+    background: url("../images/address.png") no-repeat 15px center;
     -webkit-background-size: 15px;
     background-size: 20px;
 }
 .my-share{
-    background: url("../images/address-02.png") no-repeat 15px center;
+    background: url("../images/address.png") no-repeat 15px center;
     -webkit-background-size: 15px;
     background-size: 20px;
 }
 .my-set{
-    background: url("../images/address-02.png") no-repeat 15px center;
+    background: url("../images/address.png") no-repeat 15px center;
     -webkit-background-size: 15px;
     background-size: 20px;
 }

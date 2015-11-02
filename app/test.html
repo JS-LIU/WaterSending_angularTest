@@ -5,10 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1"/>
     <title>test</title>
-    <script src="components/js/plugins/angular.min.js"></script>
-    <script src="components/js/plugins/angular-touch.min.js"></script>
     <link rel="stylesheet" href="components/css/base.css"/>
     <link rel="stylesheet" href="components/css/Lhuipayapp-common.css"/>
+
+
+    <script src="components/js/plugins/angular.min.js"></script>
+    <script src="components/js/plugins/jquery-1.11.3.min.js"></script>
+    <script src="components/js/plugins/angular-touch.min.js"></script>
 </head>
 <div ng-app="aaa">
     <p>在输入框中尝试输入：</p>
@@ -22,8 +25,15 @@
         <hello></hello>
         <input type="text" ng-model="myName" value="{{myName}}"/>
     </ul>
-    <liuul>
+    <liuul id="aaa">
         <li style="height: 44px;line-height: 44px;">这是第一个</li>
+        <li style="height: 44px;line-height: 44px;">这是第2个</li>
+        <li style="height: 44px;line-height: 44px;">这是第3个</li>
+        <li style="height: 44px;line-height: 44px;">这是第4个</li>
+        <li style="height: 44px;line-height: 44px;">这是第5个</li>
+        <li style="height: 44px;line-height: 44px;">这是第6个</li>
+        <li style="height: 44px;line-height: 44px;">这是第7个</li>
+        <li style="height: 44px;line-height: 44px;">这是第8个</li>
         <li style="height: 44px;line-height: 44px;">这是第2个</li>
         <li style="height: 44px;line-height: 44px;">这是第3个</li>
         <li style="height: 44px;line-height: 44px;">这是第4个</li>
@@ -34,6 +44,7 @@
         <li style="height: 44px;line-height: 44px;">这是第9个</li>
         <li style="height: 44px;line-height: 44px;">这是最后一个</li>
     </liuul>
+    </div>
     <!--通用底部-->
     <div style="margin-bottom:50px;"></div>
     <div style="position:fixed;bottom:0px;height:50px;width:100%;border-top:1px solid #E2E2E2;z-index: 10;text-align: center;background:#FFF;">奶茶东</div>
@@ -46,7 +57,6 @@
         $scope.location = [{loc:'adf'},{loc:'aa'},{loc:'dd'}];
         $scope.myName = '';
     });
-
     a.directive('hello',function(){
         return{
             restrict:'E',
@@ -54,7 +64,28 @@
             transclude: true
         }
     });
-
+    document.getElementById('aaa').addEventListener('touchstart',function(event){
+        var y1,y2,y;
+        y1 = event.changedTouches[0].clientY;
+        this.addEventListener('touchmove',function(event){
+            var scrollOver = document.body.scrollTop;
+            var screenH = window.screen.height;
+            var documentH = document.body.scrollHeight;
+            y2 = y1;
+            y1 = event.changedTouches[0].clientY;
+            y = y2 - y1;
+            if(scrollOver + screenH == documentH){
+                $(this).css({
+                    'transform':"translateY("-y+"px)"
+                });
+            }
+            if(scrollOver == 0){
+                $(this).css({
+                    'transform':"translateY("+y+"px)"
+                });
+            }
+        })
+    })
 </script>
 <script type="text/javascript" src="components/js/text/text.js"></script>
 </body>

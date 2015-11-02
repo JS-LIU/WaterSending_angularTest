@@ -1,8 +1,14 @@
 <div class="L-header w pr blue">
     <p class="tc L-header-title cfff f16">乐百氏水站</p>
-    <a href="#" class="L-header-back h po"></a>
+    <a href="04-goodsList.html#/" class="L-header-back h po"></a>
     <img class="sD-star po" src="components/images/header-star.png" alt="收藏"/>
-    <img class="sD-share po" src="components/images/header-share.png" alt="分享"/>
+    <!-- 此处添加展示按钮 -->
+    <div class="bdsharebuttonbox" data-tag="share_1">
+        <!-- 此处添加展示按钮 -->
+        <a class="bds_weixin" data-cmd="weixin"></a>
+        <a class="bds_tqq" data-cmd="tqq"></a>
+        <a class="bds_tsina" data-cmd="tsina"></a>
+    </div>
 </div>
 <div ng-controller="shopDetails">
     <div ng-controller="carousel">
@@ -38,15 +44,7 @@
             <span class="common-list-03-title pl50 pt5 pb5 my-address">{{shopAddress}}</span>
         </li>
         <li>
-            <span class="common-list-03-title pl50 pt5 pb5 my-collect">{{telphone}}</span>
-        </li>
-    </ul>
-    <ul class="common-list-03 mt10">
-        <li>
-            <span class="common-list-03-title pl50 pt5 pb5 my-share">分享给好友</span>
-        </li>
-        <li>
-            <span class="common-list-03-title pl50 pt5 pb5 my-set">设置</span>
+            <span class="common-list-03-title pl50 pt5 pb5 my-tel">{{telphone}}</span>
         </li>
     </ul>
     <div class="sD-introduce mt10">

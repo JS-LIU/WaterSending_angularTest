@@ -1,9 +1,11 @@
 /**
  * Created by 殿麒 on 2015/10/19.
  */
-waterShop.controller('shopDetails',function($scope,$cookieStore,getAccessInfo,shopDetailsPost){
+waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAccessInfo,shopDetailsPost){
+    //  当前页面url后缀
+    var self_url = $location.url();
     var shopInfo = $cookieStore.get('shopInfo');
-    var shopId = shopInfo["shopId"];
+    var shopId = shopInfo["shopId"] || self_url;
     var data = {
         accessInfo:getAccessInfo.accessInfo,
         sign:'',
@@ -29,7 +31,7 @@ waterShop.controller('shopDetails',function($scope,$cookieStore,getAccessInfo,sh
 waterShop.controller('comment',function($scope,$cookieStore,shopDetailsPost){
     var shopInfo = $cookieStore.get('shopInfo');
     var shopId = shopInfo["shopId"];
-    var requestPageInfo =     {
+    var requestPageInfo = {
         pageNo:1,
         pageSize:2
     };
