@@ -78,3 +78,42 @@
     -webkit-background-size: 18px;
     background-size: 18px;
 }
+.share-box{
+    position:fixed;
+    bottom:0px;
+    height:44px;
+    line-height:44px;
+    background:#FFF;
+    border-top:1px solid #E2E2E2;
+    z-index: 11;
+}
+.share-box li{
+    width:25%;
+    height:44px;
+    line-height: 44px;
+}
+#qzone-icon{
+    padding: 0;
+    margin: 0;
+    height: 44px;
+    width: 100%;
+    background:url("../images/qq.png") no-repeat center center;
+    -webkit-background-size: 30px;
+    background-size: 30px;
+}
+#wb-icon{
+    padding: 0;
+    margin: 0;
+    height: 44px;
+    width: 100%;
+    background:url("../images/wb.png") no-repeat center center;
+    -webkit-background-size: 30px;
+    background-size: 30px;
+}
+#shade{
+    position:fixed;
+    top:0px;
+    background:#000000;
+    opacity: 0.8;
+    z-index: 10;
+}

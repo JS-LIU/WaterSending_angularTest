@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,initial-scale=1"/>
     <meta name="Liudq" content="Administrator"/>
 
     <link rel="stylesheet" type="text/css" href="components/css/base.css"/>
@@ -20,32 +20,16 @@
 </head>
 <body ng-app="waterShop">
 
-<div ng-view></div>
+    <div ng-view></div>
 
-<script src="components/js/waterShop/waterShopRoute.js"></script>
-<script src="components/js/waterShop/carousel.js"></script>
-<script src="components/js/waterShop/waterShopBase.js"></script>
-<script src="components/js/waterShop/shopDetails.js"></script>
-<!--代码来源http://share.baidu.com/code/advance#html-->
-<script>
-    window._bd_share_config = {
-        common : {
-            bdText : '一个不错的店铺',
-            bdDesc : '这是一个不错的店铺哦',
-            bdMini:1,
-            bdMiniList:['weixin','tqq','tsina'],
-            bdPopupOffsetLeft:100,
-            bdPopupOffsetTop:100
-        },
-        share : [{
-            "tag" : "share_1",
-            "bdSize" : 24,
-            "bdCustomStyle":'../images/header-share.png'
-        }]
-    }
-
-    //以下为js加载部分
-    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
+    <script src="components/js/waterShop/waterShopRoute.js"></script>
+    <script src="components/js/waterShop/carousel.js"></script>
+    <script src="components/js/waterShop/waterShopBase.js"></script>
+    <script src="components/js/waterShop/shopDetails.js"></script>
+    <script src="components/js/waterShop/header.js"></script>
+    <script type="text/javascript">
+        //以下为js加载部分
+        with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
 </body>
 </html>

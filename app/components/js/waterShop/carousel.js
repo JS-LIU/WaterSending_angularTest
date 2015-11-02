@@ -4,7 +4,7 @@
 //  轮播轨迹
 waterShop.service('carouselTrack',function(){
     var self = this;
-    var window_width = window.screen.availWidth;
+    var window_width = document.body.clientWidth;
     this.slideLeft = function (){
         var $_carouselAnimate =  $('.carousel-animation');
         var $_carouselAnimateWidth = parseFloat($_carouselAnimate.css('width'));
@@ -39,7 +39,7 @@ waterShop.directive('carousel',['$swipe','carouselTrack',function ($swipe,carous
         $scope.$watch('imgs',function(){
             if($scope.imgs != undefined && $scope.imgs.length > 1){
                 var imgLen = $scope.imgs.length,
-                    window_width = window.screen.availWidth,
+                    window_width = document.body.clientWidth,
                     bigWidth = imgLen * window_width,
                     moveEle = ele.children().css('marginLeft',-window_width+'px');
                 ele.css({'width':window_width + 'px','display':'block'});
@@ -89,8 +89,8 @@ waterShop.controller('carousel',function($scope){
     //}
     //$scope.imgs[0].concat($scope.imgs);
     //$scope.imgs[len-1].push($scope.imgs);
-    var imgW = window.screen.availWidth + 'px';
-    var imgH = window.screen.availWidth * 0.6 + 'px';
+    var imgW = document.body.clientWidth + 'px';
+    var imgH = document.body.clientWidth * 0.6 + 'px';
     $scope.$watch('imgs',function(){
         if($scope.imgs != undefined){
             $scope.imgs[0].width = imgW;

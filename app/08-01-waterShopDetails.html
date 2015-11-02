@@ -1,14 +1,8 @@
-<div class="L-header w pr blue">
+<div class="L-header w pr blue" ng-controller="headerModel">
     <p class="tc L-header-title cfff f16">乐百氏水站</p>
-    <a href="04-goodsList.html#/" class="L-header-back h po"></a>
+    <a href="#" class="L-header-back h po"></a>
     <img class="sD-star po" src="components/images/header-star.png" alt="收藏"/>
-    <!-- 此处添加展示按钮 -->
-    <div class="bdsharebuttonbox" data-tag="share_1">
-        <!-- 此处添加展示按钮 -->
-        <a class="bds_weixin" data-cmd="weixin"></a>
-        <a class="bds_tqq" data-cmd="tqq"></a>
-        <a class="bds_tsina" data-cmd="tsina"></a>
-    </div>
+    <div class="sD-share po" ng-click="isShare()"></div>
 </div>
 <div ng-controller="shopDetails">
     <div ng-controller="carousel">
@@ -74,4 +68,13 @@
         </div>
     </li>
 </ul>
+<ul class="share-box bdsharebuttonbox w clearfix" ng-hide="SHAREBTN">
+    <li class="tc fl">
+        <a class="bds_qzone" data-cmd="qzone" href="#" id="qzone-icon"></a>
+    </li>
+    <li class="tc fl">
+        <a class="bds_tsina" data-cmd="tsina" id="wb-icon"></a>
+    </li>
+</ul>
+<div id="shade" class="w h" ng-hide="SHAREBTN" ng-click="HIDESHARE()"></div>
 

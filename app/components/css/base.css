@@ -1,14 +1,14 @@
 @charset "utf-8";
-body,h1,h2,h3,h4,h5,h6,hr,p, 								/**清除内外边距**/  
-blockquote,														/*structuralelements结构元素*/  
+body,h1,h2,h3,h4,h5,h6,hr,p, 								/**清除内外边距**/
+blockquote,														/*structuralelements结构元素*/
 dl,dt,dd,ul,ol,li,
-pre,																	/*textformattingelements文本格式元素*/  
-form,fieldset,legend,button,input,textarea,		/*formelements表单元素*/  
+pre,																	/*textformattingelements文本格式元素*/
+form,fieldset,legend,button,input,textarea,		/*formelements表单元素*/
 th,td,
 img{
 	border:medium none;
-    margin:0;
-	padding:0;  
+	margin:0;
+	padding:0;
 }
 *{
 	margin:0px;
@@ -18,32 +18,32 @@ body{
 	margin:0px;
 	padding:0px;
 	overflow-x: hidden;
-}  
-/**设置默认字体**/  
-body,button,input,select,textarea{  
-	font:12px/1.5'微软雅黑',tahoma,Srial,helvetica,sans-serif;  
+}
+/**设置默认字体**/
+body,button,input,select,textarea{
+	font:12px/1.5'微软雅黑',tahoma,Srial,helvetica,sans-serif;
 	font-size:12px\9;
 	color:rgb(101,101,101);
-}  
+}
 h1,h2,h3,h4,h5,h6{
 	font-size:100%;
-}  
+}
 em{
 	font-style:normal;
-}  
-/**重置列表元素**/  
+}
+/**重置列表元素**/
 ul,ol{
 	list-style:none;
-}  
-/**重置超链接元素**/  
+}
+/**重置超链接元素**/
 a{
 	text-decoration:none;
 	color:rgb(101,101,101);
-}   
+}
 img{
 	border:0px;
-}  
-/**重置表格元素**/  
+}
+/**重置表格元素**/
 table{
 	border-collapse:collapse;
 	border-spacing:0;
@@ -62,8 +62,8 @@ table{
 	width:0px;
 	height:0px;
 	border-left: 3px solid transparent;
-    border-right: 3px solid transparent;
-    border-bottom: 6px solid #888888;
+	border-right: 3px solid transparent;
+	border-bottom: 6px solid #888888;
 	margin-top: 3px;
 }
 a{
@@ -191,7 +191,7 @@ a{
 
 /*overflow*/
 .o-y{
-	overflow-y: auto;	
+	overflow-y: auto;
 }
 
 

@@ -5,7 +5,7 @@
 //  轮播轨迹
 main.service('carouselTrack',function(){
     var self = this;
-    var window_width = window.screen.availWidth;
+    var window_width = document.body.clientWidth;
     this.slideLeft = function (){
         var $_carouselAnimate =  $('.carousel-animation');
         var $_carouselAnimateWidth = parseFloat($_carouselAnimate.css('width'));
@@ -38,7 +38,7 @@ main.service('carouselTrack',function(){
 main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTrack){
     function link($scope,ele){
         var imgLen = $scope.imgs.length,
-            window_width = window.screen.availWidth,
+            window_width = document.body.clientWidth,
             bigWidth = imgLen * window_width,
             moveEle = ele.children().css('marginLeft',-window_width+'px');
         ele.css({'width':window_width + 'px','display':'block'});
@@ -77,7 +77,7 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
 
 main.controller("carousel",function($scope,mainPost,getAccessInfo){
     //  第一张的和最后一张可以用程序推入 待优化
-    var screenW = window.screen.availWidth;
+    var screenW = document.body.clientWidth;
     var imgW = screenW + 'px';
     var imgH = screenW * 17 / 18 + 'px';
     var path = 'act/actList';
