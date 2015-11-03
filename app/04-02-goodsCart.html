@@ -22,7 +22,7 @@
     <li class="w pr J_goodsItem" ng-repeat="goodsInfo in GOODSCARTLIST">
         <div class="po goodsCheck" ng-click="checkGoods(goodsInfo)" ng-class="{true: 'checked', false: ''}[goodsInfo.isChecked]"></div>
         <div class="common-picproduct-13 pr tc">
-            <img src="{{goodsInfo.imageList[0].url}}" class="h" alt=""/>
+            <img src={{goodsInfo.big_image}} class="h" alt=""/>
         </div>
         <div class="po common-detailbox-13">
             <p class="f16 comlist-02-floor-01 gL-goodsList">

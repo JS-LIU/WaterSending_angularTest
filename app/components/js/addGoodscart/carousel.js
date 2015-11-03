@@ -2,7 +2,7 @@
  * Created by 殿麒 on 2015/8/25.
  */
 //  轮播轨迹
-waterShop.service('carouselTrack',function(){
+purchase.service('carouselTrack',function(){
     var self = this;
     var window_width = document.body.clientWidth;
     this.slideLeft = function (){
@@ -34,7 +34,7 @@ waterShop.service('carouselTrack',function(){
     }
 });
 
-waterShop.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTrack){
+purchase.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTrack){
     function link($scope,ele){
         $scope.$watch('imgs',function(){
             if($scope.imgs != undefined && $scope.imgs.length > 1){
@@ -78,7 +78,7 @@ waterShop.directive('carousel',['$swipe','carouselTrack',function ($swipe,carous
     }
 }])
 
-waterShop.controller('carousel',function($scope){
+purchase.controller('carousel',function($scope){
     //  第一张的和最后一张可以用程序推入 待优化
 
     //  正常写法 但现在是个字符串

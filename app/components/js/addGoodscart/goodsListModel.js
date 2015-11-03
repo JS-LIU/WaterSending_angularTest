@@ -34,7 +34,6 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
 
     $scope.showClassify = function(item){
         $scope.cutclassify = !$scope.cutclassify;
-        console.log($scope.cutclassify);
         if(item.id == 1){
             $scope.classifyList = classifymodle;
         }
@@ -47,11 +46,15 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
     $scope.select = function(item){
         var obj = item.sortWay;
         var data = postclassify.data(obj);
-        console.log($scope.goodsList);
         purchasePost.postData(data,path).success(function(data){
             $scope.goodsList = data["productList"];
         });
         $scope.cutclassify = !$scope.cutclassify;
+    }
+
+    //  商品详情
+    $scope.getGoodsInfo = function(item){
+        $rootScope.GOODSINFO = item;
     }
 });
 

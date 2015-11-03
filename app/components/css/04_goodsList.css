@@ -133,7 +133,22 @@ myList{
 }
 
 
-
+.L-header img{
+    width:25px;
+}
+.sD-star{
+    top: 9px;
+    right:50px;
+}
+.sD-share{
+    top: 10px;
+    right:15px;
+    width:25px;
+    height:25px;
+    background:url("../images/header-share.png") no-repeat center center;
+    -webkit-background-size: 25px;
+    background-size: 25px;
+}
 .whyCantSlideDown{
     height:50px;
 }

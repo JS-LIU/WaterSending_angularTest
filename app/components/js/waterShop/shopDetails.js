@@ -5,7 +5,7 @@ waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAcc
     //  当前页面url后缀
     var self_url = $location.url();
     var shopInfo = $cookieStore.get('shopInfo');
-    var shopId = shopInfo["shopId"] || self_url;
+    var shopId = shopInfo["shopId"] || self_url.shopId;
     var data = {
         accessInfo:getAccessInfo.accessInfo,
         sign:'',
@@ -28,9 +28,10 @@ waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAcc
         console.log($scope.imgs);
     });
 });
-waterShop.controller('comment',function($scope,$cookieStore,shopDetailsPost){
+waterShop.controller('comment',function($scope,$cookieStore,$location,shopDetailsPost){
     var shopInfo = $cookieStore.get('shopInfo');
-    var shopId = shopInfo["shopId"];
+    var self_url = $location.url();
+    var shopId = shopInfo["shopId"]|| self_url;
     var requestPageInfo = {
         pageNo:1,
         pageSize:2
