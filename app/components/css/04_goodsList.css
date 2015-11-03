@@ -155,21 +155,21 @@ myList{
 .share-box{
     position:fixed;
     bottom:0px;
-    height:80px;
-    line-height:80px;
+    height: 70px;
+    line-height: 70px;
     background:#FFF;
     border-top:1px solid #E2E2E2;
     z-index: 11;
 }
 .share-box li{
     width:25%;
-    height:80px;
-    line-height: 80px;
+    height: 70px;
+    line-height: 70px;
 }
 #qzone-icon{
     padding: 0;
     margin: 0;
-    height: 80px;
+    height: 70px;
     width: 100%;
     background:url("../images/qq.png") no-repeat center center;
     -webkit-background-size: 40px;
@@ -178,7 +178,7 @@ myList{
 #wb-icon{
     padding: 0;
     margin: 0;
-    height: 80px;
+    height: 70px;
     width: 100%;
     background:url("../images/wb.png") no-repeat center center;
     -webkit-background-size: 40px;

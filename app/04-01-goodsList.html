@@ -40,11 +40,11 @@
     </div>
     <liuul class="common-list-02" ng-show="showWay1" style="margin-bottom: 60px;">
         <li class="w pr" ng-repeat="goodsInfo in goodsList">
-            <a href="#/goodsDetails" class="common-picproduct-02 pr tc" ng-click="getGoodsInfo(goodsInfo)">
+            <a class="common-picproduct-02 pr tc" ng-click="getGoodsInfo(goodsInfo)">
                 <img src="{{goodsInfo.big_image}}" class="h" alt="商品图片"/>
             </a>
-            <div class="po common-detailbox-02">
-                <p class="f16 comlist-02-floor-01 gL-goodsList">
+            <a class="po common-detailbox-02">
+                <p class="f16 comlist-02-floor-01 gL-goodsList" ng-click="getGoodsInfo(goodsInfo)">
                     <span>{{goodsInfo.title}}</span>
                     <span class="cfff blue quan-icon">券</span>
                     <span class="cfff orange hui-icon">惠</span>
@@ -56,7 +56,7 @@
                     <span>{{goodsInfo.summary}}</span>
                     <span class="po" style="bottom:0px;right:-35px;">已售{{goodsInfo.salesCnt}}</span>
                 </p>
-            </div>
+            </a>
             <div class="po goodsCart-btn1" ng-click="addGoodscart(goodsInfo)"></div>
         </li>
     </liuul>

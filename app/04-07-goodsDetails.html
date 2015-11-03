@@ -1,28 +1,29 @@
 <div class="L-header w pr blue" ng-controller="headerModel">
     <p class="tc L-header-title cfff f16">商品</p>
-    <a href="#" class="L-header-back h po"></a>
+    <a href="#/" class="L-header-back h po"></a>
     <img class="sD-star po" src="components/images/header-star.png" alt="收藏"/>
     <div class="sD-share po" ng-click="isShare()"></div>
 </div>
 <div ng-controller="goodsDetails">
     <div ng-controller="carousel">
         <carousel class="L-carousel">
-            <img class="h fl" ng-repeat="img in imgs" src={{img.src}} style="width:{{img.width}};height: {{img.height}}"/>
+            <img class="h fl" ng-repeat="item in imgs track by $index" src={{item.src}} style="width:{{item.width}};height: {{item.height}}"/>
         </carousel>
     </div>
-
-    <ul class="common-list-03">
-        <li>
-            <a href="#">
-                <span class="common-list-03-title ml15 piao cfff blue">票</span>
-                <span class="common-list-03-title pl10">水票</span>
-                <span class="fr pr15 common-list-03-content pr30 mr15 rightArrow">11张</span>
-            </a>
+    <ul class="common-list-17 pr">
+        <li class="clearfix pt5 pb5 common-list-line-3">
+            <span class="fl pl15 f20">{{goodsName}}</span>
+            <span class="fr pr15">已售{{saleNum}}</span>
         </li>
+        <li class="common-list-line-4 cred f16 pl15">{{limitBuy || "不限制购买"}}</li>
+        <li class="pl15 common-list-line-3 pl15">
+            <span class="cred">￥</span>
+            <span class="f20 cred">{{nowSale}}</span>
+            <del class="pl15">{{originSale}}</del>
+        </li>
+        <li class="pl15 common-list-line-5">服务：免运费</li>
+        <div class="po goodsCart-btn1" ng-click="addGoodscart()"></div>
     </ul>
-    <div class="sD-introduce mt10">
-        <p class="f16 pl15 sD-introduce-title">商品详情</p>
-    </div>
 </div>
 <ul class="common-list-05 mt10" ng-controller="comment">
     <li class="common-list-05-list-1 pl15">网友点评{{totalCount}}</li>

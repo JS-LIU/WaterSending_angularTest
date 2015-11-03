@@ -5,7 +5,12 @@ waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAcc
     //  当前页面url后缀
     var self_url = $location.url();
     var shopInfo = $cookieStore.get('shopInfo');
-    var shopId = shopInfo["shopId"] || self_url.shopId;
+    if(self_url["shopId"] != undefined){
+        var shopId = self_url["shopId"];
+    }else{
+
+        var shopId = shopInfo["shopId"];
+    }
     var data = {
         accessInfo:getAccessInfo.accessInfo,
         sign:'',

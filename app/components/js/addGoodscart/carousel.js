@@ -80,21 +80,17 @@ purchase.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouse
 
 purchase.controller('carousel',function($scope){
     //  第一张的和最后一张可以用程序推入 待优化
-
-    //  正常写法 但现在是个字符串
-    //var len = $scope.imgs.length;
-    //for(var i = 0;i < len;i++){
-    //    $scope.imgs[i].width = imgW;
-    //    $scope.imgs[i].height = imgH;
-    //}
-    //$scope.imgs[0].concat($scope.imgs);
-    //$scope.imgs[len-1].push($scope.imgs);
     var imgW = document.body.clientWidth + 'px';
     var imgH = document.body.clientWidth * 0.6 + 'px';
     $scope.$watch('imgs',function(){
         if($scope.imgs != undefined){
-            $scope.imgs[0].width = imgW;
-            $scope.imgs[0].height = imgH;
+            $scope.imgs.splice(0,0,$scope.imgs[0]);
+            var len = $scope.imgs.length;
+            $scope.imgs.push($scope.imgs[len-1]);
+            for(var i = 0;i <= len;i++){
+                $scope.imgs[i].width = imgW;
+                $scope.imgs[i].height = imgH;
+            }
         }
     });
 })

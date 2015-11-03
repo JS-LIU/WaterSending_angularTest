@@ -103,9 +103,27 @@ body{
 .common-list-13,
 .common-list-14,
 .common-list-15,
-.common-list-16{
+.common-list-16,
+.common-list-17{
     background:#FFF;
 }
+.common-list-17{
+    border-top:1px solid #E2E2E2;
+    border-bottom:1px solid #E2E2E2;
+}
+.common-list-line-5{
+    height:44px;
+    line-height:44px;
+}
+.common-list-line-3{
+    height:32px;
+    line-height:32px;
+}
+.common-list-line-4{
+    height:25px;
+    line-height:25px;
+}
+.common-list
 .common-list-16{
     border-bottom:1px solid #E2E2E2;
     border-top:1px solid #E2E2E2;

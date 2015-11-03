@@ -27,7 +27,6 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         var goodscart_list = $cookieStore.get('goodscart_list');
         $rootScope.GOODSCART_NUM += 1;
         $rootScope.GOODSCART_MONEY += item.price;
-
         //  添加cookie
         goodsCartcookie.add_goodsCart_cookie(goodscart_list,item);
     }
@@ -55,6 +54,7 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
     //  商品详情
     $scope.getGoodsInfo = function(item){
         $rootScope.GOODSINFO = item;
+        window.location.href = '#/goodsDetails';
     }
 });
 
@@ -142,12 +142,9 @@ purchase.directive('liuul',function($swipe){
         var selfH = parseFloat($_self.css('height'));
         $swipe.bind($_self, {
             'start': function(coords) {
-                console.log(coords.y);
             },
             'move': function(coords) {
-                console.log(coords.y)
                 if(overScroll + clientH == bodyH){
-                    console.log('11');
                 }
             },
             'end': function() {
