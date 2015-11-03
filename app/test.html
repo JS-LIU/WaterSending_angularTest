@@ -44,6 +44,8 @@
         <li style="height: 44px;line-height: 44px;">这是第9个</li>
         <li style="height: 44px;line-height: 44px;">这是最后一个</li>
     </liuul>
+    <div ng-controller="testNgModel">
+        <input type="text" ng-model="myModel"/>
     </div>
     <!--通用底部-->
     <div style="margin-bottom:50px;"></div>
@@ -53,9 +55,20 @@
 <script type="text/javascript">
 
     var a = angular.module('aaa',['ngTouch']);
+
+    a.controller('testNgModel',function($scope){
+        $scope.$watch('myModel',function(){
+            console.log($scope.myModel);
+        })
+
+    });
+
+
+
     a.controller('testrepeata',function($scope){
         $scope.location = [{loc:'adf'},{loc:'aa'},{loc:'dd'}];
         $scope.myName = '';
+        console.log($scope.myName);
     });
     a.directive('hello',function(){
         return{

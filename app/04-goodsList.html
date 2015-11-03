@@ -22,8 +22,8 @@
     <title>04_商品列表-2</title>
 </head>
     <body ng-app="purchase">
-        <div ng-view>
-        </div>
+        <div ng-view></div>
+        <div class="whyCantSlideDown"></div>
         <div class="L-footer-01 cfff w" ng-controller="goodscartBottom" ng-show="showBtn">
             <!--底部1-->
             <a href="#/goodsCart" class="po L-footer-01-btn1" ng-show="showGoodsList">
@@ -64,5 +64,7 @@
         <!--04-03/04-04收货地址-->
         <script src="components/js/addGoodscart/receiverLocation.js"></script>
         <script src="components/js/addGoodscart/changeLocInfo.js"></script>
+        <!--04-07分享头部-->
+        <script src="components/js/addGoodscart/header.js"></script>
     </body>
 </html>
