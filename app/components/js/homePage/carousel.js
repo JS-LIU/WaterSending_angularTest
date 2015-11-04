@@ -58,9 +58,9 @@ main.directive('carousel',['$swipe','carouselTrack',function ($swipe,carouselTra
                 x1 = coords.x;
                 var dif = x - x1;
                 //  swipe-left
-                if(dif > 10){
+                if(dif > 10 && $scope.imgs.length>2){
                     carouselTrack.slideLeft();
-                }else if(dif < -9){
+                }else if(dif < -9 && $scope.imgs.length>2){
                     carouselTrack.slideRight();
                     //  开始轮播
                 }
@@ -93,16 +93,10 @@ main.controller("carousel",function($scope,mainPost,getAccessInfo){
 
     mainPost.postData(data,path).success(function(data){
         console.log(data);
-        //  线上环境再调 todo
     })
     $scope.imgs = [
-        //  这张是最后一张的复刻
-        {src:'components/images/images-395-02.jpg',text:'sec',width:imgW,height:imgH},
-        //  图片数据
-        {src:'components/images/images-395-01.png',text:'first',width:imgW,height:imgH},
-        {src:'components/images/images-395-02.jpg',text:'sec',width:imgW,height:imgH},
-        //  这张是第一张的复刻
-        {src:'components/images/images-395-01.png',text:'first',width:imgW,height:imgH}
+        {src:'components/images/xuanchuan.png',text:'sec',width:imgW,height:imgH},
+        {src:'components/images/xuanchuan.png',text:'sec',width:imgW,height:imgH},
     ];
 });
 

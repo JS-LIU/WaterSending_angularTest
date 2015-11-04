@@ -3,8 +3,10 @@
  */
 var waterShop = angular.module('waterShop', ['ngRoute','ngTouch','ngCookies']);
 
-waterShop.config(['$routeProvider', function($routeProvider) {
+waterShop.config(function($routeProvider,$locationProvider) {
+    $locationProvider.html5mode = false;
+    $locationProvider.hashPrefix = '!';
     $routeProvider.when('/',{
         templateUrl:'08-01-waterShopDetails.html'
-    })
-}]);
+    });
+});

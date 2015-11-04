@@ -2,14 +2,16 @@
  * Created by 殿麒 on 2015/10/19.
  */
 waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAccessInfo,shopDetailsPost){
+    console.log($location.search(shopId));
     //  当前页面url后缀
-    var self_url = $location.url();
+    var self_url = $location.search();
     var shopInfo = $cookieStore.get('shopInfo');
-    if(self_url["shopId"] != undefined){
-        var shopId = self_url["shopId"];
-    }else{
 
+    if(self_url != undefined){
+        var shopId = self_url;
+    }else{
         var shopId = shopInfo["shopId"];
+        console.log(shopId);
     }
     var data = {
         accessInfo:getAccessInfo.accessInfo,
