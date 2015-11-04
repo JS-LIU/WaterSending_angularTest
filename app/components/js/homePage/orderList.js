@@ -42,7 +42,8 @@ main.controller('orderListModel',function($rootScope,$scope,mainPost,getAccessIn
             $scope.orderList = data["orderList"];
         });
     }else{
-        window.location.href = "http://114.251.53.22/huipaywater/pages/water/app/07-log.html"
+        window.location.href = "http://www.huipay.com/huipaywater/app/07-log.html";
+
     }
 });
 main.controller('goodsModel',function($scope){

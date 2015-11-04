@@ -81,8 +81,8 @@ main.factory("get_location",function($rootScope){
             position: d
         };
         var mar = new AMap.Marker(markerOption);
-        $rootScope.map.setFitView();
         $rootScope.map.setCenter(curd);
+        $rootScope.map.setFitView();
     }
     //  清楚标记
     function clearMaker(){
@@ -119,7 +119,7 @@ main.factory("get_location",function($rootScope){
 
 
 main.factory('mainPost',function($http){
-    var url = 'http://114.251.53.22/huipaywater/';
+    var url = 'http://www.huipay.com/huipaywater/';
     var postData = function(data,path){
         return $http({
             method:'POST',
@@ -151,8 +151,8 @@ main.factory('log',function($cookieStore){
 });
 
 main.service('getAccessInfo',function(log,$cookieStore){
-    var app_secret = hex_md5("165416");
-    var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    var app_secret = hex_md5("8262af21b2b6457d9c2cec10e08d01b9");
+    var appKey = "9631075388a641ee9197f0496685f320";
     this.accessInfo = {
         app_key:appKey,
         signature:app_secret
@@ -162,7 +162,7 @@ main.service('getAccessInfo',function(log,$cookieStore){
         var access_token_secret = $cookieStore.get('access_token').access_token_secret;
         var accessInfo = {
             app_key:appKey,
-            signature:hex_md5(165416 + '&' + access_token_secret),
+            signature:hex_md5("8262af21b2b6457d9c2cec10e08d01b9" + '&' + access_token_secret),
             access_token:access_token
         }
         return accessInfo;

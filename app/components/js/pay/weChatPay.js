@@ -9,9 +9,9 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location){
     $scope.payMoney = order["final_fee"];
 
     if($location.url() == ''){
-        window.location.href = "https://open.weixin.qq.com/conn" +
+        window.location.href = "weixin://open.weixin.qq.com/conn" +
             "ect/oauth2/authorize?appid=wxdab7bbbbcba36617&redi" +
-            "rect_uri=http://114.251.53.22/huipaywater/pages/water/app" +
+            "rect_uri=http:http://www.huipay.com/huipaywater/app" +
             "/09-payPage.html&response_type=code&scope=snsapi_b" +
             "ase&state=1#wechat_redirect";
     }else{
@@ -64,7 +64,7 @@ pay.controller('WXController',function($rootScope,$scope,$cookieStore,purchasePo
 });
 
 pay.factory('purchasePost',function($http){
-    var url = 'http://114.251.53.22/huipaywater/';
+    var url = 'http://www.huipay.com/huipaywater/';
     var postData = function(data,path){
         return $http({
             method:'POST',
@@ -96,7 +96,7 @@ pay.factory('log',function($cookieStore){
 
 pay.service('getAccessInfo',function(log,$cookieStore){
     var app_secret = hex_md5("165416");
-    var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    var appKey = "9631075388a641ee9197f0496685f320";
     this.accessInfo = {
         app_key:appKey,
         signature:app_secret
@@ -106,7 +106,7 @@ pay.service('getAccessInfo',function(log,$cookieStore){
         var access_token_secret = $cookieStore.get('access_token').access_token_secret;
         var accessInfo = {
             app_key:appKey,
-            signature:hex_md5(165416 + '&' + access_token_secret),
+            signature:hex_md5("8262af21b2b6457d9c2cec10e08d01b9" + '&' + access_token_secret),
             access_token:access_token
         }
         return accessInfo;

@@ -2,8 +2,8 @@
  * Created by 殿麒 on 2015/10/19.
  */
 logIn.service('getAccessInfo',function(){
-    var app_secret = hex_md5("165416");
-    var appKey = "e330ce4aa98546b3b99329d20e17450b";
+    var app_secret = hex_md5("8262af21b2b6457d9c2cec10e08d01b9");
+    var appKey = "9631075388a641ee9197f0496685f320";
     this.accessInfo = {
         app_key:appKey,
         signature:app_secret
@@ -40,7 +40,7 @@ logIn.service('getPassword',function(){
 });
 
 logIn.factory('logService',function($http){
-    var url = 'http://114.251.53.22/huipaywater/';
+    var url = 'http://www.huipay.com/huipaywater/';
     var postData = function(data,path){
         return $http({
             method:'POST',

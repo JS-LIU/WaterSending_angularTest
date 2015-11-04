@@ -128,7 +128,8 @@ purchase.controller('goodscartBottom',function($rootScope,$scope,$cookieStore,$l
         var path = 'order/new';
         purchasePost.postData(data,path).success(function(data){
             $cookieStore.put('orderId',data);
-            window.location.href = "http://114.251.53.22/huipaywater/pages/water/app/09-payPage.html";
+            window.location.href = "http://www.huipay.com/huipaywater/app/09-payPage.html";
+
         });
     }
 });

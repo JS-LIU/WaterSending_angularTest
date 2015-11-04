@@ -18,11 +18,10 @@ logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,ge
             console.log(data);
             var md5_key = data["md5_keyStr"];
             var md5_user_pwd = hex_md5(phoneNum +　pwd + md5_key);
-            console.log(md5_user_pwd);
-            var signature = hex_md5("165416" + md5_user_pwd);
+            var signature = hex_md5("8262af21b2b6457d9c2cec10e08d01b9" + md5_user_pwd);
             var path = 'account/login';
             var accessInfo = {
-                app_key:"e330ce4aa98546b3b99329d20e17450b",
+                app_key:"9631075388a641ee9197f0496685f320",
                 signature:signature,
                 phone_num:phoneNum
             }
