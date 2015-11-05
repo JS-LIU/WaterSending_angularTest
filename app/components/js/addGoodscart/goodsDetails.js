@@ -1,12 +1,18 @@
 /**
  * Created by 殿麒 on 2015/11/3.
  */
-
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
 purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieStore,goodsCartcookie,purchasePost,getAccessInfo){
-    var self_url = $location.url();
 
-    if(self_url.productId != undefined){
-        var productId = self_url.productId;
+    var self_url = GetQueryString("productId");
+
+    if(self_url!= undefined){
+        var productId = self_url;
     }else{
         var productId = $rootScope.GOODSINFO.productId;
     }
@@ -42,9 +48,14 @@ purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieS
     }
 });
 
-purchase.controller('comment',function($scope,$cookieStore,purchasePost){
-    var shopInfo = $cookieStore.get('shopInfo');
-    var shopId = shopInfo["shopId"];
+purchase.controller('comment',function($rootScope,$scope,$cookieStore,purchasePost){
+    var self_url = GetQueryString("productId");
+
+    if(self_url!= undefined){
+        var productId = self_url;
+    }else{
+        var productId = $rootScope.GOODSINFO.productId;
+    }
     var requestPageInfo = {
         pageNo:1,
         pageSize:2

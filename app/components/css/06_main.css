@@ -1,20 +1,20 @@
 .mainf-ds{
-    background: url("../images/bottom-icon.png") no-repeat center 8px;
+    background: url("../images/bottom-icon-1.png") no-repeat center 8px;
     -webkit-background-size: 15px;
     background-size: 15px;
-    line-height: 67px;
+    line-height: 70px;
 }
 .mainf-dd{
-    background: url("../images/bottom-icon.png") no-repeat center 8px;
-    -webkit-background-size: 15px;
-    background-size: 15px;
-    line-height: 67px;
+    background: url("../images/bottom-icon-2.png") no-repeat center 8px;
+    -webkit-background-size: 13px;
+    background-size: 13px;
+    line-height: 70px;
 }
 .mainf-wd{
-    background: url("../images/bottom-icon.png") no-repeat center 8px;
-    -webkit-background-size: 15px;
-    background-size: 15px;
-    line-height: 67px;
+    background: url("../images/bottom-icon-3.png") no-repeat center 8px;
+    -webkit-background-size: 17px;
+    background-size: 17px;
+    line-height: 70px;
 }
 .my-myMoney{
     height:100px;
@@ -50,13 +50,19 @@
     -webkit-background-size: 15px;
     background-size: 20px;
 }
-.map-address-3{
+.map-address-3,
+.map-address-2{
     padding-left:40px;
     height:44px;
     background: url("../images/address-03.png") no-repeat 15px center;
     -webkit-background-size: 15px;
     background-size: 15px;
     line-height: 44px;
+}
+.map-address-2{
+    background: url("../images/address-02.png") no-repeat 15px center;
+    -webkit-background-size: 15px;
+    background-size: 15px;
 }
 .my-collect{
     background: url("../images/address.png") no-repeat 15px center;
@@ -109,8 +115,6 @@
     background-size: 15px;
 }
 #mapContainer{
-    top: 44px!important;
-    height:60%!important;
     overflow: hidden;
 }
 .common-list-09{
@@ -194,16 +198,23 @@
     margin-top: -28px;
     top: 50%;
     left: 48%;
-    width: 18px;
+    width: 20px;
     height: 28px;
     background: url("../images/address-03.png") no-repeat center center;
     background-size: 20px;
     z-index: 100;
 }
-#mapContainer .common-multyrow-1{
-    top:50%;
+.common-multyrow-1-spe{
+    top: 50%;
+    z-index: 1;
+    background:#FFF;
+    border:1px solid #E2E2E2;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    left: 15px;
+    right: 15px;
     margin-top: -125px;
-    z-index: 100;
     background: #ffffff;
 }
 html,body{
@@ -218,4 +229,23 @@ html,body{
 }
 .order-common-list-09 li{
     height:60px;
+}
+
+.temporary-title{
+    top:54px;
+    z-index: 1;
+}
+.mapBox{
+    top:44px;
+    bottom:110px;
+}
+.common-btn-01-spe{
+    left:15px;
+    right:15px;
+    bottom:56px;
+    height:44px;
+    line-height:44px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }

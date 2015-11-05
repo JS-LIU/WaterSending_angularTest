@@ -58,7 +58,7 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
     }
 });
 
-purchase.controller('shopInfo',function($scope,$cookieStore){
+purchase.controller('shopInfo',function($scope,$cookieStore,ramdomStart){
     var shopInfo = $cookieStore.get('shopInfo');
 
     $scope.shopImg = shopInfo["imageList"][0].url;
@@ -66,6 +66,8 @@ purchase.controller('shopInfo',function($scope,$cookieStore){
     $scope.shopAddress = shopInfo["address"];
     $scope.shopDistance = shopInfo["distance"];
     $scope.sellCount = shopInfo["monthSailCount"];
+
+    ramdomStart.getStar($scope,shopInfo.score,$cookieStore.put('shopInfo',shopInfo));
 });
 
 //  请求（筛选）【商品】post的数据
@@ -96,6 +98,40 @@ purchase.factory('postclassify',function($cookieStore,getAccessInfo){
     }
 });
 
+
+
+purchase.factory('ramdomStart',function(){
+    function calcStar(){
+        var num = parseInt(Math.random()*5) + 1;
+        return num;
+    }
+    function paintStar($scope,score,saveInfo){
+        if(score == 0){
+            var newscore = calcStar();
+            saveInfo;
+        }else{
+            var newscore = score;
+        }
+        var startArr = [];
+        for(var i = 0,len = newscore;i < len;i++){
+            var obj = {
+                src:"components/images/star5.png"
+            }
+            startArr.push(obj);
+        }
+        for(var j = 5; j > newscore; j--){
+            var obj = {
+                src:"components/images/star6.png"
+            }
+            startArr.push(obj);
+        }
+        $scope.startArr = startArr;
+    }
+
+    return {
+        getStar:paintStar
+    }
+});
 //purchase.factory('refresh',function($swipe){
 //    function getNewdata(ele){
 //        var screenH = window.screen.availHeight;

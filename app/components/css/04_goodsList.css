@@ -209,3 +209,13 @@ myList{
     opacity: 0.8;
     z-index: 10;
 }
+
+.address-05{
+    background:url("../images/address-05.png") no-repeat left center;
+    -webkit-background-size: 10px;
+    background-size: 10px;
+}
+.star{
+    width:16px;
+    height:16px;
+}

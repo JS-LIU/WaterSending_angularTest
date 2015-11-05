@@ -21,7 +21,6 @@ waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAcc
         var shopId = self_url;
     }else{
         var shopId = shopInfo["shopId"];
-        console.log(shopId);
     }
     var data = {
         accessInfo:getAccessInfo.accessInfo,
@@ -41,14 +40,18 @@ waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAcc
         $scope.telphone = data["telphone"];
         //  轮播图需要便利
         $scope.imgs = [{src:data["big_image"]}];
-        console.log(data["big_image"]);
-        console.log($scope.imgs);
     });
 });
 waterShop.controller('comment',function($scope,$cookieStore,$location,shopDetailsPost){
+    //  当前页面url后缀
+    var self_url = GetQueryString("shopId");
     var shopInfo = $cookieStore.get('shopInfo');
-    var self_url = $location.url();
-    var shopId = shopInfo["shopId"]|| self_url;
+
+    if(self_url != undefined){
+        var shopId = self_url;
+    }else{
+        var shopId = shopInfo["shopId"];
+    }
     var requestPageInfo = {
         pageNo:1,
         pageSize:2

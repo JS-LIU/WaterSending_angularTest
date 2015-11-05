@@ -92,7 +92,7 @@ main.controller("carousel",function($scope,mainPost,getAccessInfo){
     }
 
     mainPost.postData(data,path).success(function(data){
-        console.log(data);
+        $scope.totalityShop = data.waterStationCount;
     })
     $scope.imgs = [
         {src:'components/images/xuanchuan.png',text:'sec',width:imgW,height:imgH},

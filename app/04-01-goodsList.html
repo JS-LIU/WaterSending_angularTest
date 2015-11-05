@@ -13,12 +13,12 @@
                 </div>
                 <div class="po common-detailbox-01">
                     <p class="f16 common-detailbox-01-name">{{merchantName}}</p>
-                    <p class="address">
+                    <p class="address address-05 pl15">
                         <span class="pr50">{{shopAddress}}</span>
                         <span class="distance">{{shopDistance}}米</span>
                     </p>
-                    <p class="evaluate">
-                        <img src="" alt=""/>
+                    <p class="evaluate clearfix">
+                        <img ng-repeat="start in startArr" src={{start.src}} class="fl mr5 star"/>
                         <span>{{sellCount}}</span>
                     </p>
                 </div>

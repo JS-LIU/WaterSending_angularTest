@@ -31,6 +31,9 @@ body{
 .c000{
     color:#000;
 }
+.c333{
+    color:#333333;
+}
 .L-header{
     height:44px;
 }
@@ -297,7 +300,9 @@ body{
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    z-index: 1;
 }
+
 .common-multyrow-1 li{
     height:44px;
     overflow: hidden;
