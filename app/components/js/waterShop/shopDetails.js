@@ -1,10 +1,20 @@
 /**
  * Created by 殿麒 on 2015/10/19.
  */
+
+
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+
 waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAccessInfo,shopDetailsPost){
-    console.log($location.search(shopId));
+
+
     //  当前页面url后缀
-    var self_url = $location.search();
+    var self_url = GetQueryString("shopId");
     var shopInfo = $cookieStore.get('shopInfo');
 
     if(self_url != undefined){
