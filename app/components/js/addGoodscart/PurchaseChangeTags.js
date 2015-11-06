@@ -7,8 +7,10 @@ var purchase = angular.module('purchase', ['ngRoute','ngCookies','ngTouch']);
 purchase.config(['$routeProvider',function($routeProvider) {
     $routeProvider.when('/',{
         templateUrl:'04-01-goodsList.html',
+        controller:'goodsListModel'
     }).when('/goodsCart',{
-        templateUrl:'04-02-goodsCart.html'
+        templateUrl:'04-02-goodsCart.html',
+        controller:'goodsCart'
     }).when('/confirmOrder',{
         templateUrl:'04-03-confirmOrder.html'
     }).when('/receiverAddress',{

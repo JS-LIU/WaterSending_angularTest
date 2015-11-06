@@ -17,9 +17,9 @@
     <a href="#/register" class="L-header-right h po cfff">编辑</a>
 </div>
 
-<ul class="common-list-13 J-checked" ng-controller="goodsCart" >
+<ul class="common-list-13 J-checked">
     <li class="comlist-13-single pl15">郑州市金水区桶装水超市</li>
-    <li class="w pr J_goodsItem" ng-repeat="goodsInfo in GOODSCARTLIST">
+    <li class="w pr J_goodsItem" ng-repeat="goodsInfo in goodscartList">
         <div class="po goodsCheck" ng-click="checkGoods(goodsInfo)" ng-class="{true: 'checked', false: ''}[goodsInfo.isChecked]"></div>
         <div class="common-picproduct-13 pr tc">
             <img src={{goodsInfo.big_image}} class="h" alt=""/>
@@ -41,3 +41,13 @@
         </div>
     </li>
 </ul>
+<div class="L-footer-01 cfff w">
+    <div class="fl L-footer-01-l w allCheckbox">
+        <span class="pl15">
+            <div class="po btmgoodsCheck" ng-click="checkall()" ng-class="{true: 'checked', false: ''}[allcheck]"></div>
+            <span class="pl30">全选</span>
+        </span>
+        <span class="totleMoney pl15">合计：¥{{(totleMoney / 100).toFixed(2)}}</span>
+    </div>
+    <a class="fr L-footer-01-r red tc cfff" ng-click="toPay()">确认订单</a>
+</div>

@@ -1,7 +1,7 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,getAccessInfo,postclassify){
+purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay){
 
     $scope.cutclassify = false;
     $scope.classifyClick = [{name:'商品分类',id:1},{name:'综合排序',id:2}];
@@ -12,7 +12,6 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
     var path = "shop/productList";
     purchasePost.postData(data,path).success(function(data){
         $scope.goodsList = data['productList'];
-        console.log(data['productList']);
     });
 
     $scope.showWay1 = true;
@@ -21,15 +20,41 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         $scope.showWay1 = $scope.showWay2;
         $scope.showWay2 = !$scope.showWay2;
     }
+    //  底部购物车商品数量价格
+    var goodscart_list = $cookieStore.get('goodscart_list');
+    $scope.goodscart_money = 0;
+    $scope.goodscart_num = 0;
+    if(goodscart_list != undefined){
+        for(var i = 0; i < goodscart_list.length;i++){
+            $scope.goodscart_num += goodscart_list[i].num;
+            var goodscart_money = goodscart_list[i].price * goodscart_list[i].num;
+            $scope.goodscart_money += goodscart_money;
+        }
+    }
+
+    var isLogin = log.login();
+
     //  添加购物车
     $scope.addGoodscart = function(item){
-
-        var goodscart_list = $cookieStore.get('goodscart_list');
-        $rootScope.GOODSCART_NUM += 1;
-        $rootScope.GOODSCART_MONEY += item.price;
-        //  添加cookie
-        goodsCartcookie.add_goodsCart_cookie(goodscart_list,item);
+        if(isLogin){
+            var goodscart_list = $cookieStore.get('goodscart_list');
+            $scope.goodscart_num += 1;
+            $scope.goodscart_money += item.price;
+            //  添加cookie
+            goodsCartcookie.add_goodsCart_cookie(goodscart_list,item);
+        }else{
+            window.location.href = "07-log.html";
+        }
     }
+    //  查看购物车
+    $scope.toGoodsCart = function(){
+        if(isLogin){
+            window.location.href = "#/goodsCart"
+        }else{
+            window.location.href = "07-log.html";
+        }
+    }
+
 
     $scope.showClassify = function(item){
         $scope.cutclassify = !$scope.cutclassify;
@@ -56,8 +81,13 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
         $rootScope.GOODSINFO = item;
         window.location.href = '#/goodsDetails';
     }
+    $scope.toPay = function(){
+        var goodsCart_list = $cookieStore.get('goodscart_list') || [];
+        toPay.pay(goodsCart_list);
+    }
 });
 
+//  商店信息
 purchase.controller('shopInfo',function($scope,$cookieStore,ramdomStart){
     var shopInfo = $cookieStore.get('shopInfo');
 
@@ -98,8 +128,6 @@ purchase.factory('postclassify',function($cookieStore,getAccessInfo){
     }
 });
 
-
-
 purchase.factory('ramdomStart',function(){
     function calcStar(){
         var num = parseInt(Math.random()*5) + 1;
@@ -132,40 +160,6 @@ purchase.factory('ramdomStart',function(){
         getStar:paintStar
     }
 });
-//purchase.factory('refresh',function($swipe){
-//    function getNewdata(ele){
-//        var screenH = window.screen.availHeight;
-//        //  请求后需要重新获取页面高度
-//        var bodyH = document.body.scrollHeight;
-//        $(window).scroll(function(){
-//            var overScroll = document.body.scrollTop;
-//            console.log(overScroll);
-//            console.log(screenH);
-//            //  卷去的高 + 屏幕的高 == 整个页面的高
-//            if(overScroll + screenH == bodyH){
-//                console.log(1);
-//                var x;
-//                $swipe.bind(ele, {
-//                    'start': function() {
-//                    },
-//                    'move': function(coords) {
-//                        //  等待优化
-//                        x = coords.x;
-//                        console.log(x);
-//                    },
-//                    'end': function(coords) {
-//                    }
-//                });
-//            }
-//        })
-//
-//        //func();
-//    }
-//    return {
-//        getNewdata:getNewdata
-//    }
-//});
-
 purchase.directive('liuul',function($swipe){
     var y,y1,y2;
     function link($scope,ele){

@@ -4,7 +4,7 @@
         <input class="w h" type="text" placeholder="搜索店内商品"/>
     </div>
 </div>
-<div class="L-center" ng-controller="goodsListModel">
+<div class="L-center">
     <ul class="common-list-01" ng-controller="shopInfo">
         <li class="w">
             <a href="08-waterShop.html#/" class="pr">
@@ -76,4 +76,15 @@
             </a>
         </li>
     </ul>
+</div>
+
+<div class="L-footer-01 cfff w">
+    <a ng-click="toGoodsCart()" class="po L-footer-01-btn1">
+        <div class="po L-footer-01-btn-label cfff red">{{goodscart_num || 0}}</div>
+    </a>
+    <div class="fl L-footer-01-l w">
+        <span class="gL-totalCost">¥</span>
+        <span class="pl5 ">{{(goodscart_money / 100).toFixed(2)}}</span>
+    </div>
+    <a class="fr L-footer-01-r red tc cfff" ng-click="toPay()">去结算</a>
 </div>

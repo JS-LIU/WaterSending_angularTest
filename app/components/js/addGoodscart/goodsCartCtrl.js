@@ -1,20 +1,20 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore){
+purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore,toPay){
     //  将购物车中【商品信息】绑定到rootscope中
-    $rootScope.GOODSCARTLIST = $cookieStore.get('goodscart_list');
+    $scope.goodscartList = $cookieStore.get('goodscart_list') || [];
     //  是否显示【对话框】
     $rootScope.DIALOG_SHOW = false;
     //  总价
-    $rootScope.TOTLE_MONEY = 0;
+    $scope.totleMoney = 0;
     //  默认下面的【全选按钮】为【选中】状态
-    $rootScope.ALLCHECKED = true;
+    $scope.allcheck = true;
 
     //  到购物车默认全选商品
-    for(var i = 0 ;i < $rootScope.GOODSCARTLIST.length; i++){
-        $rootScope.GOODSCARTLIST[i].isChecked = true;
-        $rootScope.TOTLE_MONEY += ($rootScope.GOODSCARTLIST[i].price * $rootScope.GOODSCARTLIST[i].num);
+    for(var i = 0 ;i < $scope.goodscartList.length; i++){
+        $scope.goodscartList[i].isChecked = true;
+        $scope.totleMoney += ($scope.goodscartList[i].price * $scope.goodscartList[i].num);
     }
 
     //  点击商品的【选择按钮】取消/选中 该商品
@@ -24,16 +24,21 @@ purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore){
         var goodsMoney = (goodsInfo.price * goodsInfo.num);
         //  判断是否被选择；
         if(goodsInfo.isChecked){
-            $rootScope.TOTLE_MONEY += goodsMoney;
+            $scope.totleMoney += goodsMoney;
             //  判断是否全选
-            for(var i= 0,len = $rootScope.GOODSCARTLIST.length; i < len; i++){
-                if($rootScope.GOODSCARTLIST[i].isChecked && i == (len-1)){
-                    $rootScope.ALLCHECKED = true;
+            for(var i= 0,len = $scope.goodscartList.length; i < len; i++){
+                if($scope.goodscartList[i].isChecked ){
+                    if(i == (len-1)){
+                        $scope.allcheck = true;
+                    }
+                }else{
+                    $scope.allcheck = false;
+                    break;
                 }
             }
         }else{
-            $rootScope.ALLCHECKED = false;
-            $rootScope.TOTLE_MONEY -= goodsMoney;
+            $scope.allcheck = false;
+            $scope.totleMoney -= goodsMoney;
         }
     }
 
@@ -50,25 +55,59 @@ purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore){
             $rootScope.REMOVE_GOODS = function(){
                 $rootScope.DIALOG_SHOW = false;
                 //  remove
-                $rootScope.GOODSCARTLIST.splice($.inArray(goodsInfo,$rootScope.GOODSCARTLIST),1);
-                $cookieStore.put('goodscart_list',$rootScope.GOODSCARTLIST);
-                $rootScope.TOTLE_MONEY -= goodsInfo.price;
+                $scope.goodscartList.splice($.inArray(goodsInfo,$scope.goodscartList),1);
+                $cookieStore.put('goodscart_list',$scope.goodscartList );
+                $scope.totleMoney -= goodsInfo.price;
             }
         }else{
             goodsInfo.num--;
-            $cookieStore.put('goodscart_list',$rootScope.GOODSCARTLIST);
+            $cookieStore.put('goodscart_list',$scope.goodscartList);
         }
         if(goodsInfo.isChecked && goodsInfo.num != 1){
-            $rootScope.TOTLE_MONEY -= goodsInfo.price;
+            $scope.totleMoney -= goodsInfo.price;
         }
     }
     //  商品【+】
     $scope.addGoods = function(goodsInfo){
         goodsInfo.num++;
         if(goodsInfo.isChecked){
-            $rootScope.TOTLE_MONEY += goodsInfo.price;
-            console.log($rootScope.GOODSCARTLIST);
+            $scope.totleMoney += goodsInfo.price;
         }
-        $cookieStore.put('goodscart_list',$rootScope.GOODSCARTLIST);
+        $cookieStore.put('goodscart_list',$scope.goodscartList);
+    }
+    //  全选
+    $scope.checkall = function(){
+        if($scope.allcheck){
+
+            checkAll(false,$scope.goodscartList,function(){
+                $scope.allcheck = false;
+                $scope.totleMoney = 0.00;
+            });
+        }else{
+            $scope.totleMoney = 0;
+            checkAll(true,$scope.goodscartList,function(){
+                $scope.allcheck = true;
+            });
+
+
+        }
+    }
+    //  全选
+    function forEach(list,func){
+        for(var i = 0; i < list.length;i++){
+            func(i);
+        }
+    }
+    //  全选
+    function checkAll(boolean,list,func){
+        forEach(list,function(i){
+            list[i].isChecked = boolean;
+            $scope.totleMoney += list[i].num * list[i].price;
+        });
+        func();
+    }
+
+    $scope.toPay = function(){
+        toPay.pay($scope.goodscartList);
     }
 });

@@ -24,32 +24,6 @@
     <body ng-app="purchase">
         <div ng-view></div>
         <div class="whyCantSlideDown"></div>
-        <div class="L-footer-01 cfff w" ng-controller="goodscartBottom" ng-show="showBtn">
-            <!--底部1-->
-            <a href="#/goodsCart" class="po L-footer-01-btn1" ng-show="showGoodsList">
-                <div class="po L-footer-01-btn-label cfff red">{{GOODSCART_NUM}}</div>
-            </a>
-            <div class="fl L-footer-01-l w" ng-show="showGoodsList">
-                <span class="gL-totalCost">¥</span>
-                <span class="pl5 ">{{(GOODSCART_MONEY / 100).toFixed(2)}}</span>
-            </div>
-            <a ng-show="showGoodsList" class="fr L-footer-01-r red tc cfff" ng-click="toPay_quick()">去结算</a>
-            <!--底部2-->
-            <div ng-show="showGoodsCart" class="fl L-footer-01-l w allCheckbox">
-                <span class="pl15" ng-click="checkAll()">
-                    <div class="po btmgoodsCheck" ng-class="{true: 'checked', false: ''}[ALLCHECKED]"></div>
-                    <span class="pl30">全选</span>
-                </span>
-                <span class="totleMoney pl15">合计：¥{{(TOTLE_MONEY / 100).toFixed(2)}}</span>
-            </div>
-            <a ng-show="showGoodsCart" class="fr L-footer-01-r red tc cfff" ng-click="toPay()">确认订单</a>
-            <!--底部3-->
-            <div ng-show="showOrderList" class="fl L-footer-01-l w allCheckbox">
-                <span class="totleMoney pl15">实付款：¥</span>
-                <span>{{(order_totle / 100).toFixed(2)}}</span>
-            </div>
-            <a ng-show="showOrderList" class="fr L-footer-01-r red tc cfff" ng-click="confirmOrder()">确认订单</a>
-        </div>
 
         <script src="components/js/addGoodscart/PurchaseChangeTags.js"></script>
         <!--带删除功能的li-->
