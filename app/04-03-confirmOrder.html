@@ -13,22 +13,7 @@
         </p>
     </a>
 
-    <ul class="common-list-03 mt10" >
-        <li class="oD-payway">
-            <span class="common-list-03-title pl15">水票</span>
-            <span class="fr pr15 common-list-03-content">余0张</span>
-        </li>
-        <li class="oD-sender">
-            <span class="common-list-03-title pl15">优惠券</span>
-            <span class="fr pr15 common-list-03-content">-2.00元</span>
-        </li>
-        <li class="oD-sendTime">
-            <span class="common-list-03-title pl15">汇贝金券</span>
-            <span class="fr pr15 common-list-03-content">-5.00元</span>
-        </li>
-    </ul>
-
-    <ul class="common-list-02 mt10 mb50" ng-controller="payGoodsModel">
+    <ul class="common-list-02 mt10 mb50">
         <li class="common-singlerow-1 confirmOrder-shop">{{shopName}}</li>
         <li class="w pr" ng-repeat="goodsInfo in order_goodslist">
             <div class="common-picproduct-02 pr tc">
@@ -53,7 +38,7 @@
 <div class="L-footer-01 cfff w">
     <div class="fl L-footer-01-l w allCheckbox">
         <span class="totleMoney pl15">实付款：¥</span>
-        <span>123</span>
+        <span>{{(totleMoney/100).toFixed(2)}}</span>
     </div>
     <a class="fr L-footer-01-r red tc cfff" ng-click="confirmOrder()">确认订单</a>
 </div>

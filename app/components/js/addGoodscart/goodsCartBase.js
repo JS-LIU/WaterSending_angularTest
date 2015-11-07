@@ -1,25 +1,6 @@
 /**
  * Created by 殿麒 on 2015/9/21.
  */
-
-purchase.controller('payGoodsModel',function($scope,$cookieStore){
-
-    var shopInfo = $cookieStore.get('shopInfo');
-    var order_goodslist = $cookieStore.get('order_goodslist');
-    var totleNum = 0;
-    var totleMoney = 0;
-    $scope.shopName = shopInfo.shopName;
-
-    $scope.order_goodslist = order_goodslist;
-    for(var i = 0,len = order_goodslist.length;i < len; i++){
-        totleNum += parseInt(order_goodslist[i].num);
-        totleMoney += parseInt(order_goodslist[i].num * order_goodslist[i].price);
-    }
-    $scope.totleNum = totleNum;
-    $scope.totleMoney = totleMoney;
-});
-
-
 //  对话框
 purchase.directive('dialog',function(){
     function link($scope,ele){
