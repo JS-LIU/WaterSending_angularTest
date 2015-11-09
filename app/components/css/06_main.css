@@ -115,6 +115,7 @@
     background-size: 15px;
 }
 #mapContainer{
+    height:100%;
     overflow: hidden;
 }
 .common-list-09{

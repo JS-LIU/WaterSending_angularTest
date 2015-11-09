@@ -57,6 +57,7 @@ purchase.factory('goodsCartcookie',function($cookieStore){
 purchase.factory('purchasePost',function($http){
     var url = 'http://www.huipay.com/huipaywater/';
     var postData = function(data,path){
+        console.log(data);
         return $http({
             method:'POST',
             url: url + path,
@@ -134,5 +135,21 @@ purchase.service('toPay',function($cookieStore,log){
         }
         $cookieStore.put('goodscart_list',new_goodscart_list);
         $cookieStore.put('order_goodslist',checked_goodscart_list);
+    }
+});
+
+purchase.service('refreshData',function(purchasePost){
+    var wH = document.documentElement.clientHeight;
+    this.getMoreData = function(data,path,func){
+        $(window).scroll(function(){
+            var dH = document.body.scrollHeight;
+            var overH = document.body.scrollTop;
+            if(wH + overH == dH){
+                purchasePost.postData(data,path).success(function(getData){
+                    func(getData,data);
+                    dH = document.body.scrollHeight;
+                });
+            }
+        })
     }
 });

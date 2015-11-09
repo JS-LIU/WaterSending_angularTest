@@ -1,11 +1,11 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay){
+purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay,refreshData){
 
     $scope.cutclassify = false;
     $scope.classifyClick = [{name:'商品分类',id:1},{name:'综合排序',id:2}];
-    var data = postclassify.data();
+    var data = postclassify.data(1);
     var classifymodle = [{name:'商品分类'},{name:'桶装水',sortWay:{categoryId:0}},{name:'瓶装水',sortWay:{categoryId:1}}];
     var incomeClassify = [{name:'综合排序'},{name:'价格排序',sortWay:{sortType:1}},{name:'销量排序',sortWay:{sortType:2}}];
     //  请求商品列表
@@ -13,6 +13,10 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
     purchasePost.postData(data,path).success(function(data){
         $scope.goodsList = data['productList'];
     });
+    refreshData.getMoreData(postclassify.data(2),path,function(getData,data){
+        $scope.goodsList = $scope.goodsList.concat(getData['productList']);
+        data.requestPageInfo.pageNo++;
+    })
 
     $scope.showWay1 = true;
     $scope.showWay2 = false;
@@ -102,19 +106,19 @@ purchase.controller('shopInfo',function($scope,$cookieStore,ramdomStart){
 
 //  请求（筛选）【商品】post的数据
 purchase.factory('postclassify',function($cookieStore,getAccessInfo){
-    function data(obj){
+    function data(pageNo,obj){
         var shopInfo = $cookieStore.get('shopInfo');
         //  请求商品信息数据
         var shopId = shopInfo["shopId"];
         var requestPageInfo = {
             pageSize: 6,
-            pageNo: 1
+            pageNo: pageNo
         }
         var accessInfo = getAccessInfo.accessInfo;
         var data = {
             requestPageInfo:requestPageInfo,
             accessInfo:accessInfo,
-            sign:'meng wei',
+            sign:'sign',
             shopId:shopId
         }
         for(var prop in obj){
@@ -160,35 +164,35 @@ purchase.factory('ramdomStart',function(){
         getStar:paintStar
     }
 });
-purchase.directive('liuul',function($swipe){
-    var y,y1,y2;
-    function link($scope,ele){
-        var clientH = document.body.clientHeight;
-        var $_self = $(ele);
-        var overScroll = document.body.scrollTop;
-        //  请求到数据后需要重新获取值
-        var bodyH = document.body.scrollHeight;
-        //  卷去的高 + 屏幕的高 == 整个页面的高
-        var selfH = parseFloat($_self.css('height'));
-        $swipe.bind($_self, {
-            'start': function(coords) {
-            },
-            'move': function(coords) {
-                if(overScroll + clientH == bodyH){
-                }
-            },
-            'end': function() {
-            }
-        });
-    }
-
-    return{
-        restrict:'E',
-        template:'<ul class="pr" ><div ng-transclude></div></ul>',
-        transclude:true,
-        replace:true,
-        link:link
-    }
-});
+//purchase.directive('liuul',function($swipe){
+//    var y,y1,y2;
+//    function link($scope,ele){
+//        var clientH = document.body.clientHeight;
+//        var $_self = $(ele);
+//        var overScroll = document.body.scrollTop;
+//        //  请求到数据后需要重新获取值
+//        var bodyH = document.body.scrollHeight;
+//        //  卷去的高 + 屏幕的高 == 整个页面的高
+//        var selfH = parseFloat($_self.css('height'));
+//        $swipe.bind($_self, {
+//            'start': function(coords) {
+//            },
+//            'move': function(coords) {
+//                if(overScroll + clientH == bodyH){
+//                }
+//            },
+//            'end': function() {
+//            }
+//        });
+//    }
+//
+//    return{
+//        restrict:'E',
+//        template:'<ul class="pr" ><div ng-transclude></div></ul>',
+//        transclude:true,
+//        replace:true,
+//        link:link
+//    }
+//});
 
 

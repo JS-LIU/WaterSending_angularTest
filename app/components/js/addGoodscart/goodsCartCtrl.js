@@ -59,12 +59,13 @@ purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore,toPay){
                 $cookieStore.put('goodscart_list',$scope.goodscartList );
                 $scope.totleMoney -= goodsInfo.price;
             }
-        }else{
+        }else if(goodsInfo.isChecked && goodsInfo.num != 1){
+            goodsInfo.num--;
+            $scope.totleMoney -= goodsInfo.price;
+            $cookieStore.put('goodscart_list',$scope.goodscartList);
+        }else if(!goodsInfo.isChecked){
             goodsInfo.num--;
             $cookieStore.put('goodscart_list',$scope.goodscartList);
-        }
-        if(goodsInfo.isChecked && goodsInfo.num != 1){
-            $scope.totleMoney -= goodsInfo.price;
         }
     }
     //  商品【+】
