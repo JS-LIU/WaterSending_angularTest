@@ -8,7 +8,6 @@ function GetQueryString(name)
     if(r!=null)return  unescape(r[2]); return null;
 }
 purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieStore,goodsCartcookie,purchasePost,getAccessInfo){
-
     var self_url = GetQueryString("productId");
 
     if(self_url!= undefined){
@@ -60,6 +59,7 @@ purchase.controller('comment',function($rootScope,$scope,$cookieStore,purchasePo
         pageNo:1,
         pageSize:2
     };
+    var shopId = $rootScope.GOODSINFO.shopId || GetQueryString("shopId") || null;
     var data = {
         shopId:shopId,
         requestPageInfo:requestPageInfo
@@ -68,6 +68,5 @@ purchase.controller('comment',function($rootScope,$scope,$cookieStore,purchasePo
     purchasePost.postData(data,path).success(function(data){
         $scope.totalCount = data["responsePageInfo"].totalCount;
         $scope.item_respList = data["item_respList"];
-        console.log(data);
     });
 });

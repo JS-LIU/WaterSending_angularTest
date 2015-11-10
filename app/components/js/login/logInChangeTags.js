@@ -5,7 +5,8 @@ var logIn = angular.module('myLog', ['ngRoute','ngCookies']);
 
 logIn.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/',{
-        templateUrl:'07-01-logIn.html'
+        templateUrl:'07-01-logIn.html',
+        controller:'logInRequest'
     }).when('/findPassword',{
         templateUrl:'07-02-findPassword.html'
     }).when('/resetPassword',{

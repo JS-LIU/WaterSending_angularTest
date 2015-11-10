@@ -1,9 +1,19 @@
+<dialog class="dialog" ng-hide="showDialog">
+    <div class="dialog-center tc">
+        <p class="dialog-line1 pt10 f16">{{errorInfo}}</p>
+    </div>
+    <div class="dialog-bottom clearfix f16">
+        <a href="javascript:void(0)" class="fl tc dialog-bottom-btn2 cipblue" ng-click="ok()" style="width:100%;">好</a>
+    </div>
+</dialog>
+<div id="shade-1" ng-hide="showDialog"></div>
+
 <div class="L-header w pr blue">
     <p class="tc L-header-title cfff f16">登录</p>
-    <a href="#" class="L-header-back h po"></a>
+    <a ng-href="{{lastUrl}}" class="L-header-back h po"></a>
     <a href="#/register" class="L-header-right h po cfff">注册</a>
 </div>
-<div class="L-center" ng-controller="logInRequest">
+<div class="L-center">
     <ul class="common-list-12 mt10 mb10">
         <li class="pr">
             <span class="common-list-03-title pl15 fb">账号</span>

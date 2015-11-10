@@ -3,6 +3,14 @@
  */
 logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,getAccessInfo){
 
+    $scope.showDialog = true;
+
+    //  读取过来时的url
+    var url = $cookieStore.get('myUrl');
+    //  绑定后退按钮url
+    $scope.lastUrl = url;
+
+    //  为登陆按钮绑定数据
     $scope.logInbtn = function(){
         //  获取md5_key
         var accessInfo = getAccessInfo.accessInfo;
@@ -12,7 +20,7 @@ logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,ge
         var md5_data = {
             accessInfo:accessInfo,
             phone_num:phoneNum,
-            sign:'mengwei'
+            sign:'sign'
         }
         logService.postData(md5_data,md5_path).success(function(data){
             console.log(data);
@@ -31,8 +39,14 @@ logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,ge
                 sign:'sign'
             }
             logService.postData(logData,path).success(function(data){
-                console.log(data);
                 $cookieStore.put('access_token',data);
+                window.location.href = url;
+            }).error(function(data){
+                $scope.showDialog = false;
+                $scope.errorInfo = data.errorInfo;
+                $scope.ok = function(){
+                    $scope.showDialog = false;
+                }
             });
         });
     }

@@ -1,7 +1,11 @@
 /**
  * Created by LIU on 15/9/27.
  */
-purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay,refreshData){
+purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goodsCartcookie,purchasePost,log,postclassify,toPay,refreshData,getSelfUrl){
+
+    //  获取当前URL
+    var myUrl = getSelfUrl.myUrl;
+    $cookieStore.put('myUrl',myUrl);
 
     $scope.cutclassify = false;
     $scope.classifyClick = [{name:'商品分类',id:1},{name:'综合排序',id:2}];
@@ -16,7 +20,7 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
     refreshData.getMoreData(postclassify.data(2),path,function(getData,data){
         $scope.goodsList = $scope.goodsList.concat(getData['productList']);
         data.requestPageInfo.pageNo++;
-    })
+    });
 
     $scope.showWay1 = true;
     $scope.showWay2 = false;
@@ -58,7 +62,6 @@ purchase.controller('goodsListModel',function($rootScope,$scope,$cookieStore,goo
             window.location.href = "07-log.html";
         }
     }
-
 
     $scope.showClassify = function(item){
         $scope.cutclassify = !$scope.cutclassify;
@@ -164,35 +167,6 @@ purchase.factory('ramdomStart',function(){
         getStar:paintStar
     }
 });
-//purchase.directive('liuul',function($swipe){
-//    var y,y1,y2;
-//    function link($scope,ele){
-//        var clientH = document.body.clientHeight;
-//        var $_self = $(ele);
-//        var overScroll = document.body.scrollTop;
-//        //  请求到数据后需要重新获取值
-//        var bodyH = document.body.scrollHeight;
-//        //  卷去的高 + 屏幕的高 == 整个页面的高
-//        var selfH = parseFloat($_self.css('height'));
-//        $swipe.bind($_self, {
-//            'start': function(coords) {
-//            },
-//            'move': function(coords) {
-//                if(overScroll + clientH == bodyH){
-//                }
-//            },
-//            'end': function() {
-//            }
-//        });
-//    }
-//
-//    return{
-//        restrict:'E',
-//        template:'<ul class="pr" ><div ng-transclude></div></ul>',
-//        transclude:true,
-//        replace:true,
-//        link:link
-//    }
-//});
+
 
 

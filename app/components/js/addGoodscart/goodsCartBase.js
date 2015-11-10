@@ -153,3 +153,7 @@ purchase.service('refreshData',function(purchasePost){
         })
     }
 });
+
+purchase.service('getSelfUrl',function($location){
+    this.myUrl = $location.absUrl();
+});
