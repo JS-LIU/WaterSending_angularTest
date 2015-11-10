@@ -57,7 +57,20 @@ purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore,toPay){
                 //  remove
                 $scope.goodscartList.splice($.inArray(goodsInfo,$scope.goodscartList),1);
                 $cookieStore.put('goodscart_list',$scope.goodscartList );
-                $scope.totleMoney -= goodsInfo.price;
+                if(goodsInfo.isChecked){
+                    $scope.totleMoney -= goodsInfo.price;
+                }
+                //  判断是否全选
+                for(var i= 0,len = $scope.goodscartList.length; i < len; i++){
+                    if($scope.goodscartList[i].isChecked ){
+                        if(i == (len-1)){
+                            $scope.allcheck = true;
+                        }
+                    }else{
+                        $scope.allcheck = false;
+                        break;
+                    }
+                }
             }
         }else if(goodsInfo.isChecked && goodsInfo.num != 1){
             goodsInfo.num--;
@@ -89,8 +102,6 @@ purchase.controller('goodsCart',function($scope,$rootScope,$cookieStore,toPay){
             checkAll(true,$scope.goodscartList,function(){
                 $scope.allcheck = true;
             });
-
-
         }
     }
     //  全选

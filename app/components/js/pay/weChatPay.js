@@ -18,7 +18,6 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pu
     }else{
         $scope.code = GetQueryString('code');
         $scope.toPay = function(){
-            alert($scope.code);
             var order = $cookieStore.get('orderId');
             var data = {
                 accessInfo:getAccessInfo.loginAccessInfo(),
@@ -31,6 +30,7 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pu
             var path = "pay/confirm";
             purchasePost.postData(data,path).success(function(data){
                 var data = data;
+                alert(data.appId);
                 function onBridgeReady(){
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest', {
