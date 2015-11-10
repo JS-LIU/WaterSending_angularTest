@@ -60,8 +60,8 @@
     a.controller('testNgModel',function($scope){
         $scope.$watch('myModel',function(){
             console.log($scope.name);
-        })
-
+        });
+        window.location.href = "https://mp.weixin.qq.com";
     });
     a.controller('fuckModel',function($scope){
         $scope.$watch(['name','age',function(){

@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="Liudq" content="Administrator"/>
+<html lang="en" ng-app="WXpay">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="Liudq" content="Administrator"/>
 
-    <link rel="stylesheet" type="text/css" href="components/css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="components/css/Lhuipayapp-common.css"/>
-    <link rel="stylesheet" type="text/css" href="components/css/09_payPage.css"/>
+        <link rel="stylesheet" type="text/css" href="components/css/base.css"/>
+        <link rel="stylesheet" type="text/css" href="components/css/Lhuipayapp-common.css"/>
+        <link rel="stylesheet" type="text/css" href="components/css/09_payPage.css"/>
 
-    <script src="components/js/plugins/angular.min.js"></script>
-    <script src="components/js/plugins/angular-route.min.js"></script>
-    <script src="components/js/plugins/jquery-1.11.3.min.js"></script>
-    <script src="components/js/plugins/angular-touch.min.js"></script>
-    <script src="components/js/plugins/angular-cookies.min.js"></script>
-    <script src="components/js/plugins/md5.js"></script>
-</head>
-<body ng-app="WXpay">
-    <div class="L-header w pr blue">
-        <p class="tc L-header-title cfff f16">快捷支付</p>
-        <a href="#/goodsCart" class="L-header-back h po"></a>
-    </div>
-    <ul class="common-list-04 pt15 pb15 mt10" ng-controller="orderModel">
-        <li>
-            <span class="common-list-04-title pl15">订单号：</span>
-            <span class="common-list-04-content fr pr15 J_orderId">{{orderId}}</span>
-        </li>
-        <li>
-            <span class="common-list-04-title pl15">需要支付：</span>
-            <span class="common-list-04-content fr pr15 J_payMoney">{{(payMoney).toFixed(2)}}</span>
-        </li>
-    </ul>
-    <ul class="common-list-16 mt10">
-        <li class="WX-icon pr">
-            <div class="f16 com-text-60 pt5">微信支付</div>
-            <div class="com-text-60">单笔消费最高1000，每日限额1000元</div>
-            <div class="po checkPay"></div>
-        </li>
-    </ul>
-    <div class="common-btn-01 mt10 tc cfff blue f14" style="margin-top:10px;" ng-controller="WXController" ng-click="toPay()">立即支付</div>
-    <script src="components/js/pay/weChatPay.js"></script>
-</body>
+        <script src="components/js/plugins/angular.min.js"></script>
+        <script src="components/js/plugins/angular-route.min.js"></script>
+        <script src="components/js/plugins/jquery-1.11.3.min.js"></script>
+        <script src="components/js/plugins/angular-touch.min.js"></script>
+        <script src="components/js/plugins/angular-cookies.min.js"></script>
+        <script src="components/js/plugins/md5.js"></script>
+    </head>
+    <body ng-controller="orderModel">
+        <div class="L-header w pr blue">
+            <p class="tc L-header-title cfff f16">快捷支付</p>
+            <a href="#/goodsCart" class="L-header-back h po"></a>
+        </div>
+        <ul class="common-list-04 pt15 pb15 mt10" >
+            <li>
+                <span class="common-list-04-title pl15">订单号：</span>
+                <span class="common-list-04-content fr pr15 J_orderId">{{orderId}}</span>
+            </li>
+            <li>
+                <span class="common-list-04-title pl15">需要支付：</span>
+                <span class="common-list-04-content fr pr15 J_payMoney">{{(payMoney).toFixed(2)}}</span>
+            </li>
+        </ul>
+        <ul class="common-list-16 mt10">
+            <li class="WX-icon pr">
+                <div class="f16 com-text-60 pt5">微信支付</div>
+                <div class="com-text-60">单笔消费最高1000，每日限额1000元</div>
+                <div class="po checkPay"></div>
+            </li>
+        </ul>
+        <div class="common-btn-01 mt10 tc cfff blue f14" style="margin-top:10px;" ng-click="toPay()">立即支付</div>
+        <script src="components/js/pay/weChatPay.js"></script>
+    </body>
 </html>
