@@ -2,8 +2,8 @@
  * Created by 殿麒 on 2015/10/19.
  */
 logIn.service('getAccessInfo',function(){
-    var app_secret = hex_md5("8262af21b2b6457d9c2cec10e08d01b9");
-    var appKey = "9631075388a641ee9197f0496685f320";
+    var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
+    var appKey = "cf385992c3fc46cbaebae2c1dae08653";
     this.accessInfo = {
         app_key:appKey,
         signature:app_secret
@@ -53,5 +53,31 @@ logIn.factory('logService',function($http){
         postData: function(data,path){
             return postData(data,path,'postData');
         }
+    }
+});
+
+logIn.service('getSign',function(){
+    this.mySign = function(obj){
+        var initialArr = [];
+        for(var prop in obj){
+            initialArr.push(prop);
+        }
+        initialArr.sort();
+        var sign = '';
+        for(var i = 0;i < initialArr.length;i++){
+            if(typeof obj[initialArr[i]] == 'object'){
+                var string_obj = JSON.stringify(obj[initialArr[i]]);
+            }else{
+                var string_obj = obj[initialArr[i]];
+            }
+            sign += (initialArr[i] + '=' +string_obj + '&');
+        }
+
+        var signLen = sign.length;
+        sign = sign.slice(0,signLen-1);
+        console.log(sign);
+        var appSecret = "5e5cd8e3ccca45c2a5a3b00a5a90cdd5";
+        var md5_sign = hex_md5(sign+appSecret);
+        return md5_sign;
     }
 });

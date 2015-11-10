@@ -87,8 +87,8 @@ purchase.factory('log',function($cookieStore){
 });
 
 purchase.service('getAccessInfo',function(log,$cookieStore){
-    var app_secret = hex_md5("8262af21b2b6457d9c2cec10e08d01b9");
-    var appKey = "9631075388a641ee9197f0496685f320";
+    var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
+    var appKey = "cf385992c3fc46cbaebae2c1dae08653";
     this.accessInfo = {
         app_key:appKey,
         signature:app_secret
@@ -98,7 +98,7 @@ purchase.service('getAccessInfo',function(log,$cookieStore){
         var access_token_secret = $cookieStore.get('access_token').access_token_secret;
         var accessInfo = {
             app_key:appKey,
-            signature:hex_md5('8262af21b2b6457d9c2cec10e08d01b9' + '&' + access_token_secret),
+            signature:hex_md5('5e5cd8e3ccca45c2a5a3b00a5a90cdd5' + '&' + access_token_secret),
             access_token:access_token
         }
         return accessInfo;

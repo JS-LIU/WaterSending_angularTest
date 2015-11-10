@@ -14,10 +14,11 @@
     <script src="components/js/plugins/angular-touch.min.js"></script>
 </head>
 <div ng-app="aaa">
-    <p>在输入框中尝试输入：</p>
-    <p>姓名：<input type="text" ng-model="name"></p>
-    <p ng-bind="name"></p>
-
+    <div ng-controller="fuckModel">
+        <p>在输入框中尝试输入：</p>
+        <p>姓名：<input type="text" ng-model="name"></p>
+        <input type="text" ng-model="age"/>
+    </div>
     <ul ng-controller="testrepeata">
         <li ng-repeat="l in location">
             <a href="#/">{{l.loc}}</a>
@@ -58,11 +59,16 @@
 
     a.controller('testNgModel',function($scope){
         $scope.$watch('myModel',function(){
-            console.log($scope.myModel);
+            console.log($scope.name);
         })
 
     });
+    a.controller('fuckModel',function($scope){
+        $scope.$watch(['name','age',function(){
+            console.log($scope.name);
+        }])
 
+    });
 
 
     a.controller('testrepeata',function($scope){

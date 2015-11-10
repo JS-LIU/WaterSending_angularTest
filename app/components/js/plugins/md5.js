@@ -1,7 +1,7 @@
-var hexcase = 0;  
-var b64pad  = ""; 
-var chrsz   = 8;  
-function hex_md5(s){ return binl2hex(core_md5(str2binl(s), s.length * chrsz));}
+var hexcase = 0;
+var b64pad  = "";
+var chrsz   = 8;
+function hex_md5(s){ return binl2hex(core_md5(str2binl(s), s.length * chrsz)).toUpperCase();}
 function b64_md5(s){ return binl2b64(core_md5(str2binl(s), s.length * chrsz));}
 function hex_hmac_md5(key, data) { return binl2hex(core_hmac_md5(key, data)); }
 function b64_hmac_md5(key, data) { return binl2b64(core_hmac_md5(key, data)); }
@@ -99,7 +99,7 @@ function core_md5(x, len)
     d = safe_add(d, oldd);
   }
   return Array(a, b, c, d);
-  
+
 }
 
 function md5_cmn(q, a, b, x, s, t)
@@ -129,7 +129,7 @@ function core_hmac_md5(key, data)
   if(bkey.length > 16) bkey = core_md5(bkey, key.length * chrsz);
 
   var ipad = Array(16), opad = Array(16);
-  for(var i = 0; i < 16; i++) 
+  for(var i = 0; i < 16; i++)
   {
     ipad[i] = bkey[i] ^ 0x36363636;
     opad[i] = bkey[i] ^ 0x5C5C5C5C;
@@ -167,7 +167,7 @@ function binl2hex(binarray)
   for(var i = 0; i < binarray.length * 4; i++)
   {
     str += hex_tab.charAt((binarray[i>>2] >> ((i%4)*8+4)) & 0xF) +
-           hex_tab.charAt((binarray[i>>2] >> ((i%4)*8  )) & 0xF);
+        hex_tab.charAt((binarray[i>>2] >> ((i%4)*8  )) & 0xF);
   }
   return str;
 }
@@ -179,8 +179,8 @@ function binl2b64(binarray)
   for(var i = 0; i < binarray.length * 4; i += 3)
   {
     var triplet = (((binarray[i   >> 2] >> 8 * ( i   %4)) & 0xFF) << 16)
-                | (((binarray[i+1 >> 2] >> 8 * ((i+1)%4)) & 0xFF) << 8 )
-                |  ((binarray[i+2 >> 2] >> 8 * ((i+2)%4)) & 0xFF);
+        | (((binarray[i+1 >> 2] >> 8 * ((i+1)%4)) & 0xFF) << 8 )
+        |  ((binarray[i+2 >> 2] >> 8 * ((i+2)%4)) & 0xFF);
     for(var j = 0; j < 4; j++)
     {
       if(i * 8 + j * 6 > binarray.length * 32) str += b64pad;

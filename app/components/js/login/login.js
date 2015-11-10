@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/9/23.
  */
-logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,getAccessInfo){
+logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,getAccessInfo,getSign){
 
     $scope.showDialog = true;
 
@@ -22,22 +22,31 @@ logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,ge
             phone_num:phoneNum,
             sign:'sign'
         }
+
+        //  请求MD5
         logService.postData(md5_data,md5_path).success(function(data){
-            console.log(data);
             var md5_key = data["md5_keyStr"];
+            console.log(md5_key);
             var md5_user_pwd = hex_md5(phoneNum +　pwd + md5_key);
-            var signature = hex_md5("8262af21b2b6457d9c2cec10e08d01b9" + md5_user_pwd);
+            console.log(phoneNum);
+            console.log(pwd);
+            console.log(md5_key);
+            console.log(md5_user_pwd);
+            console.log(123456)
+            var signature = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5" + md5_user_pwd).toUpperCase();
             var path = 'account/login';
             var accessInfo = {
-                app_key:"9631075388a641ee9197f0496685f320",
+                app_key:"cf385992c3fc46cbaebae2c1dae08653",
                 signature:signature,
                 phone_num:phoneNum
             }
             var logData = {
                 accessInfo:accessInfo,
-                signature:accessInfo.signature,
-                sign:'sign'
+                signature:accessInfo.signature
             }
+            console.log(logData.signature);
+            var sign = getSign.mySign(logData);
+            logData.sign = sign;
             logService.postData(logData,path).success(function(data){
                 $cookieStore.put('access_token',data);
                 window.location.href = url;
@@ -45,9 +54,15 @@ logIn.controller('logInRequest',function($scope,$http,$cookieStore,logService,ge
                 $scope.showDialog = false;
                 $scope.errorInfo = data.errorInfo;
                 $scope.ok = function(){
-                    $scope.showDialog = false;
+                    $scope.showDialog = true;
                 }
             });
+        }).error(function(data){
+            $scope.showDialog = false;
+            $scope.errorInfo = data.errorInfo;
+            $scope.ok = function(){
+                $scope.showDialog = true;
+            }
         });
     }
 })

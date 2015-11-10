@@ -155,19 +155,28 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
         var $_self = $(e.target);
         $rootScope[str] = $_self.val();
     }
-    $scope.name = $rootScope.NAME;
+    $scope.myName = $rootScope.NAME;
     $scope.phoneNum = $rootScope.PHONENUM;
     $scope.detailAddress = $rootScope.DETAILADDRESS;
 
+    var myName,phone_num,detailsAddress;
+    $scope.$watch('myName',function(){
+        myName = $scope.myName;
+    });
+    $scope.$watch('phoneNum',function(){
+        phone_num = $scope.phoneNum;
+    });
+    $scope.$watch('detailAddress',function(){
+        detailsAddress = $scope.detailAddress;
+    });
+
     //  【保存】按钮事件
     $scope.saveNewLoc = function(){
-        var recieve_name = $scope.name || $scope.a;
-        var phone_num = $scope.phoneNum ||　$scope.b;
-        var detailsAddress = $scope.detailAddress || $scope.c;
+
         var fullAddress = $scope.address + detailsAddress;
         var addressItem = {
             phone_num:phone_num,
-            recieve_name:recieve_name,
+            recieve_name:myName,
             position_x:MYADDRESSINFO.lnglat[0],
             position_y:MYADDRESSINFO.lnglat[1],
             provinceId:'0',
