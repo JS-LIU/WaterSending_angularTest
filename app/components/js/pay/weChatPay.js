@@ -17,7 +17,6 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location){
     }else{
         $rootScope.CODE = $location.url();
     }
-
 });
 pay.controller('WXController',function($rootScope,$scope,$cookieStore,purchasePost,log,getAccessInfo){
 

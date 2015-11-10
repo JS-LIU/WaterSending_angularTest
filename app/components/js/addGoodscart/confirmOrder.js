@@ -9,17 +9,18 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purch
         var orderItem = [];
 
         for(var i = 0,len  = order_list.length; i < len;i++){
-            var item = {};
-            item.productId = order_list[i].productId;
-            item.productType = 1;
-            item.itemNum = order_list[i].num;
-            item.itemPrice = order_list[i].price;
-            item.itemInfo = '';
+            var item = {
+                productId:order_list[i].productId,
+                productType:1,
+                itemNum:order_list[i].num,
+                itemPrice:order_list[i].price,
+                itemInfo:''
+            };
             orderItem.push(item);
         }
         var data = {
             shopId:shopId,
-            total_fee:$scope.order_totle,
+            total_fee:$scope.totleMoney,
             description:'',
             comment:'',
             addressId:$rootScope.SELECTADDRESS.addressId,
@@ -27,6 +28,7 @@ purchase.controller('confirmOrder',function($rootScope,$scope,$cookieStore,purch
             accessInfo:getAccessInfo.loginAccessInfo(),
             sign:'sign'
         }
+
         var path = 'order/new';
         purchasePost.postData(data,path).success(function(data){
             $cookieStore.put('orderId',data);

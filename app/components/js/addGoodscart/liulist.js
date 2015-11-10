@@ -2,11 +2,13 @@
  * Created by 殿麒 on 2015/10/26.
  */
 //  带滑动删除功能的列表 li
-purchase.directive('liulist',function($swipe){
+purchase.directive('liudiv',function($swipe){
     var x,x1,x2,$_eleLeft;
     function link($scope,ele){
         $swipe.bind(ele, {
-            'start': function() {
+            'start': function(coords,e) {
+                e = e || window.event;
+                e.preventDefault();
                 x = 0;
                 $(ele).css('left','0px');
                 $_eleLeft = parseFloat(ele.css('left'));
@@ -34,7 +36,7 @@ purchase.directive('liulist',function($swipe){
     }
     return{
         restrict:'E',
-        template:'<li class="pr" ><div ng-transclude></div></li>',
+        template:'<div class="pr liudiv" ng-transclude></div>',
         transclude:true,
         replace:true,
         link:link

@@ -39,7 +39,7 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
     }
 
     //  删除地址
-    $scope.delAddress = function(item){
+    $scope.delAddress = function(item,e){
         var path = 'delieveryAddress/delete';
         var addressId = item.addressId;
         var data = {
@@ -47,6 +47,8 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
             sign:'mengwei',
             accessInfo:getAccessInfo.loginAccessInfo()
         }
+        e = e || window.event;
+        e.preventDefault();
         purchasePost.postData(data,path).success(function(){
 
             $scope.myAddress.splice($.inArray(item,$scope.myAddress),1);

@@ -85,6 +85,9 @@
     line-height: 44px;
 }
 .confirmOrder-shop{
+    background:#fff url("../images/shopIcon.png") no-repeat 15px center;
+    -webkit-background-size: 20px;
+    background-size: 20px;
     padding-left:40px;
 }
 #mapContainer{
@@ -119,20 +122,22 @@ myList{
     border-bottom:1px solid #E2E2E2;
 }
 .delBtn{
-    right:-55px;
+    right:0px;
     top:0px;
     width: 55px;
     height:65px;
     line-height:65px;
     background:#fa5b60;
 }
+.liudiv{
+    background:#FFF;
+    z-index: 1;
+}
 .cantDeliver{
     background:#E2E2E2 url("../images/cantDeliver.png") no-repeat 90% center;
     -webkit-background-size: 50px;
     background-size: 50px;
 }
-
-
 .L-header img{
     width:25px;
 }
