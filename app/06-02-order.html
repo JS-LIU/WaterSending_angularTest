@@ -20,20 +20,19 @@
                             <p class="f16 common-detailbox-02-name">{{goods.itemName}}</p>
                             <p class="common-detailbox-02-pricebox">
                                 <span class="cred f16">{{(goods.itemPrice / 100).toFixed(2)}}</span>
-                                <span>{{goods.itemNum}}</span>
+                                <span>*{{goods.itemNum}}</span>
                             </p>
                         </div>
                     </div>
                 </a>
                 <div class="common-list-10-bottom pl15 pr15">
-                    <span>共1件商品</span>
+                    <span>共{{orderItem.orderItems.length}}件商品</span>
                     <span>合计：</span>
-                    <span class="cred f16">￥23.00</span>
-                    <a href="#" class="fr mt10 order-toPay tc cblue">付款</a>
+                    <span class="cred f16">￥{{(orderItem.total_fee / 100).toFixed(2)}}</span>
+                    <div class="fr mt10 order-toPay tc cblue" ng-click="toPay(orderItem)">{{orderItem.clientOrderState}}</div>
                 </div>
             </li>
         </ul>
-        <div style="height:64px;"></div>
     </div>
 </div>
 

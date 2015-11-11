@@ -37,6 +37,7 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
         $scope.orderDetails = function(item){
             data.clientOrderState = item.clientOrderState;
             mainPost.postData(data,path).success(function(data){
+                console.log(data);
                 $scope.orderList = data["orderList"];
             });
         }
@@ -47,7 +48,12 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
         });
     }else{
         window.location.href = "http://www.huipay.com/huipaywater/app/07-log.html";
+    }
 
+    $scope.toPay = function(item){
+        item.final_fee = (item.total_fee/100).toFixed(2);
+        $cookieStore.put('orderId',item);
+        window.location.href = "http://www.huipay.com/huipaywater/app/09-payPage.html";
     }
 });
 main.controller('goodsModel',function($scope){

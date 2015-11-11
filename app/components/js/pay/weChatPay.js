@@ -12,6 +12,7 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pu
     var order = $cookieStore.get('orderId');
     $scope.orderId = order["orderId"];
     $scope.payMoney = order["final_fee"];
+
     var code = GetQueryString('code');
     if(!code){
         window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdab7bbbbcba36617&redirect_uri=http://www.huipay.com/huipaywater/app/09-payPage.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
@@ -30,19 +31,19 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pu
             var path = "pay/confirm";
             purchasePost.postData(data,path).success(function(data){
                 var data = data;
-                //alert(JSON.stringify(data.wexinSpec));
+                alert(JSON.stringify(data.wexinSpec));
                 function onBridgeReady(){
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest', {
-                            "appId" : data.wexinSpec.appid,                                 //    公众号名称，由商户传入
-                            "timeStamp":data.wexinSpec.timestamp,                           //    时间戳，自1970年以来的秒数
-                            "nonceStr" : data.wexinSpec.noncestr,                           //    随机串
+                            "appId" : data.wexinSpec.appid,                                 //  公众号名称，由商户传入
+                            "timeStamp":data.wexinSpec.timestamp,                           //  时间戳，自1970年以来的秒数
+                            "nonceStr" : data.wexinSpec.noncestr,                           //  随机串
                             "package" : data.wexinSpec.packageValue,
-                            "signType" : "MD5",                                              //    微信签名方式：
-                            "paySign" : data.wexinSpec.sign                                 //    微信签名
+                            "signType" : "MD5",                                             //  微信签名方式：
+                            "paySign" : data.wexinSpec.sign                                 //  微信签名
                         },
                         function(res){
-                            if(res.err_msg == "get_brand_wcpay_request：ok" ) {}   //    使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                            if(res.err_msg == "get_brand_wcpay_request：ok" ) {}             //  使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
                         }
                     )
                 }
@@ -61,9 +62,6 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pu
     }
 
 });
-//pay.controller('WXController',function($rootScope,$scope,$cookieStore,purchasePost,log,getAccessInfo){
-//
-//});
 
 pay.factory('purchasePost',function($http){
     var url = 'http://www.huipay.com/huipaywater/';
