@@ -185,3 +185,7 @@ main.service('refreshData',function(mainPost){
         })
     }
 });
+
+main.service('getSelfUrl',function($location){
+    this.myUrl = $location.absUrl();
+});

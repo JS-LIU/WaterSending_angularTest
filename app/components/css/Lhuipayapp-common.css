@@ -412,6 +412,7 @@ body{
     right:15px;
     width:75px;
     height:75px;
+    overflow: hidden;
     border:1px solid #E2E2E2;
 }
 .common-picproduct-13{

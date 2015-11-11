@@ -1,32 +1,34 @@
-<div class="L-header w pr blue" ng-controller="searchShopModel">
-    <a class="L-header-back h po" href="#/"></a>
-    <div class="L-header-searchbox pr ml50 mr20 pl30">
-        <input class="w h" type="text" ng-model="searchShop" placeholder="搜您想要的水站"/>
+<div ng-controller="showListModel">
+    <div class="L-header w pr blue">
+        <a class="L-header-back h po" href="#/"></a>
+        <div class="L-header-searchbox pr ml50 mr20 pl30">
+            <input class="w h" type="text" ng-keyup="searchShop($event)"  placeholder="搜您想要的水站"/>
+        </div>
     </div>
-</div>
-<div class="L-center" ng-controller="showListModel">
-    <div class="nw-nwbox w" ng-hide="true">
-        <p class="f16 pt20 pr15">抱歉，附近无可配送水站！</p>
-        <p class="pr15">我们已经记录你的位置，我们会尽快开发您附近的水站并及时通知您！</p>
+    <div class="L-center">
+        <div class="nw-nwbox w" ng-hide="true">
+            <p class="f16 pt20 pr15">抱歉，附近无可配送水站！</p>
+            <p class="pr15">我们已经记录你的位置，我们会尽快开发您附近的水站并及时通知您！</p>
+        </div>
+        <ul class="common-list-01">
+            <li class="w" ng-repeat="shopList in SHOPLIST | filter:search | orderBy:'distance'">
+                <a href="javascript:void(0)" ng-click="getShopInfo(shopList)" class="pr">
+                    <div class="common-picproduct-01 pr tc">
+                        <img src="{{shopList.imageList[0].url}}" class="h"/>
+                    </div>
+                    <div class="po common-detailbox-01">
+                        <p class="f16 common-detailbox-01-name">{{shopList.merchantName}}</p>
+                        <p class="address">
+                            <span>{{shopList.address}}</span>
+                            <span class="fr pr15">{{(shopList.distance).toFixed(0)}}米</span>
+                        </p>
+                        <p class="evaluate">
+                            <img src="" alt=""/>
+                            <span>月售12520</span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
     </div>
-    <ul class="common-list-01">
-        <li class="w" ng-repeat="shopList in SHOPLIST | filter:search | orderBy:'distance'">
-            <a href="javascript:void(0)" ng-click="getShopInfo(shopList)" class="pr">
-                <div class="common-picproduct-01 pr tc">
-                    <img src="{{shopList.imageList[0].url}}" class="h"/>
-                </div>
-                <div class="po common-detailbox-01">
-                    <p class="f16 common-detailbox-01-name">{{shopList.merchantName}}</p>
-                    <p class="address">
-                        <span>{{shopList.address}}</span>
-                        <span class="fr pr15">{{shopList.distance}}米</span>
-                    </p>
-                    <p class="evaluate">
-                        <img src="" alt=""/>
-                        <span>月售12520</span>
-                    </p>
-                </div>
-            </a>
-        </li>
-    </ul>
 </div>

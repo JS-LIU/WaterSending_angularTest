@@ -32,7 +32,7 @@
                     </p>
                     <p class="map-shopLocation pr">
                         <span class="shopaddress po">{{NEARLIST_SHOP["address"]||'正在查询地理位置..'}}</span>
-                        <span class="fr pr30">{{NEARLIST_SHOP["distance"]||'正在计算..'}}米</span>
+                        <span class="fr pr30">{{(NEARLIST_SHOP["distance"]).toFixed(0)||'正在计算..'}}米</span>
                     </p>
                 </a>
             </li>

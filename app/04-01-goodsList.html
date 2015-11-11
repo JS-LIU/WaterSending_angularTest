@@ -15,11 +15,11 @@
                     <p class="f16 common-detailbox-01-name">{{merchantName}}</p>
                     <p class="address address-05 pl15">
                         <span class="pr50">{{shopAddress}}</span>
-                        <span class="distance">{{shopDistance}}米</span>
+                        <span class="distance">{{shopDistance.toFixed(0)}}米</span>
                     </p>
                     <p class="evaluate clearfix">
                         <img ng-repeat="start in startArr" src={{start.src}} class="fl mr5 star"/>
-                        <span>{{sellCount}}</span>
+                        <span>月售{{sellCount}}</span>
                     </p>
                 </div>
             </a>

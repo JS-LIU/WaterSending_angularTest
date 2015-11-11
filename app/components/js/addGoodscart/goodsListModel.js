@@ -141,11 +141,12 @@ purchase.factory('ramdomStart',function(){
         return num;
     }
     function paintStar($scope,score,saveInfo){
+        console.log(score);
         if(score == 0){
             var newscore = calcStar();
             saveInfo;
         }else{
-            var newscore = score;
+            var newscore = parseInt(score / 2);
         }
         var startArr = [];
         for(var i = 0,len = newscore;i < len;i++){

@@ -58,7 +58,7 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
             positionInfo:$rootScope.LNGLAT,
             requestPageInfo: requestPageInfo,
             x_dpi:'640',
-            sign :'meng wei'
+            sign :'sign'
         }
 
 
@@ -76,7 +76,6 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
             }
             $rootScope.SHOPLIST = shopList;
             $rootScope.NEARLIST_SHOP = shopList[0];
-            requestPageInfo.pageNo += 1;
         });
     }
 });
