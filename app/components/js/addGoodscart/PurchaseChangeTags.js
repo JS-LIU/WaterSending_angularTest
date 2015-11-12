@@ -14,9 +14,11 @@ purchase.config(['$routeProvider',function($routeProvider) {
         templateUrl:'04-03-confirmOrder.html',
         controller:'confirmOrder'
     }).when('/receiverAddress',{
-        templateUrl:'04-04-receiverAddress.html'
+        templateUrl:'04-04-receiverAddress.html',
+        controller:'receiverLocation'
     }).when('/modiAddress',{
-        templateUrl:'04-05-modiAddress.html'
+        templateUrl:'04-05-modiAddress.html',
+        controller:'new_receiveInfo'
     }).when('/changeReceiverLoc',{
         templateUrl:'04-06-changeReceiverLoc.html'
     }).when('/goodsDetails',{

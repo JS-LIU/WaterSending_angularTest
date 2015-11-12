@@ -422,6 +422,7 @@ body{
     width:75px;
     height:75px;
     border:1px solid #E2E2E2;
+    overflow: hidden;
 }
 .common-detailbox-02{
     top:10px;

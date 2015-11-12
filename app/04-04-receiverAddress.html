@@ -1,11 +1,11 @@
 <div class="L-header w pr blue">
     <p class="tc L-header-title cfff f16">管理收货地址</p>
-    <a href="#/confirmOrder" class="L-header-back h po"></a>
-    <a href="#/modiAddress" class="L-header-right h po cfff">新增</a>
+    <a ng-href="{{lastPage}}" class="L-header-back h po"></a>
+    <a href="#/modiAddress" class="L-header-right h po cfff" ng-hide="addAddress">新增</a>
 </div>
-<ul class="common-list-14" ng-controller="receiverLocation" style="margin-bottom:60px;">
-    <li class="pr" ng-repeat="addressInfo in myAddress" ng-click="selAddress(addressInfo)">
-        <liudiv ng-class="{true:'',false:'cantDeliver'}[addressInfo['canDeliever']]">
+<ul class="common-list-14" style="margin-bottom:60px;">
+    <li class="pr" ng-repeat="addressInfo in myAddress">
+        <liudiv ng-class="{true:'',false:'cantDeliver'}[addressInfo['canDeliever']]" ng-click="selAddress(addressInfo)">
             <p class="common-list-line-1 clearfix pr50 pl15 pt10 f16">
                 <span class="fl">{{addressInfo["recieve_name"]}}</span>
                 <span class="fr">{{addressInfo["phone_num"]}}</span>

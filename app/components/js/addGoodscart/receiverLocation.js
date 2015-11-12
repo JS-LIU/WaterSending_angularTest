@@ -1,23 +1,26 @@
 /**
  * Created by 殿麒 on 2015/10/11.
  */
-function GetQueryString(name)
-{
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if(r!=null)return  unescape(r[2]); return null;
-}
-purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$swipe,getAccessInfo,purchasePost){
-    var isFixed = GetQueryString("fixed");
-
-    console.log(isFixed);
+purchase.controller('receiverLocation',function($scope,$rootScope,$location,$cookieStore,$swipe,getAccessInfo,purchasePost){
+    var myUrl = $location.absUrl();
+    var isFixed = false;
+    //  临时代码 判断是否需要修改地址
+    for(var i = 0 ;i<myUrl.length;i++){
+        if(myUrl[i] == "?"){
+            isFixed = true;
+            break;
+        }
+    }
+    $scope.lastPage = "06-main.html#/my";
+    $scope.addAddress = true;
     var lnglatXY = $cookieStore.get('lnglatXY');
-    if(lnglatXY){
+    if(!isFixed){
         var position_x = lnglatXY.position_x;
         var position_y = lnglatXY.position_y;
         var addressInfo = lnglatXY.addressInfo;
+        $scope.lastPage = "#/confirmOrder";
+        $scope.addAddress = false;
     }
-
 
     //  获取常用地址
     var positionInfo = {
@@ -36,11 +39,9 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
     purchasePost.postData(data,path).success(function(data){
         if(data.length > 0){
             $scope.myAddress = data;
-            console.log(isFixed);
             if(isFixed){
                 for(var i = 0;i<$scope.myAddress.length;i++){
                     $scope.myAddress[i].canDeliever = true;
-                    console.log($scope.myAddress[i].canDeliever);
                 }
             }else{
                 if($rootScope.SELECTADDRESS == undefined){
@@ -77,9 +78,13 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
     }
     //  选择地址
     $scope.selAddress = function(item){
-        if(item["canDeliever"]){
-            $rootScope.SELECTADDRESS = item;
-            window.location.href = "#/confirmOrder";
+        $rootScope.SELECTADDRESS = item;
+        if(isFixed){
+            window.location.href="#/modiAddress";
+        }else{
+            if(item["canDeliever"]){
+                window.location.href = "#/confirmOrder";
+            }
         }
     }
 
@@ -90,5 +95,4 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$
         $scope.default_fullAddress = item["phone_num"];
         $scope.default_receiverAddress = item["fullAddress"];
     }
-
 });

@@ -157,3 +157,23 @@ purchase.service('refreshData',function(purchasePost){
 purchase.service('getSelfUrl',function($location){
     this.myUrl = $location.absUrl();
 });
+
+
+//  修改地址
+purchase.service('fixedAddress',function(){
+    this.saveData = function(data,addressId){
+        var url = "#/receiverAddress";
+        var fixedUrl = 'delieveryAddress/new';
+
+        if(arguments[1] != undefined){
+            data.addressId = addressId;
+            url = "#/receiverAddress?fixed=address"
+            fixedUrl = 'delieveryAddress/edit';
+        }
+        return {
+            data:data,
+            url:url,
+            fixedUrl:fixedUrl
+        };
+    }
+});

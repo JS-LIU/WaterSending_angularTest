@@ -117,7 +117,7 @@ purchase.factory("get_location",function($rootScope){
 });
 
 purchase.controller('changeLocInfo',function($rootScope,$scope,get_location,$cookieStore){
-    var lnglat = $cookieStore.get('lnglatXY');
+    var lnglat = $cookieStore.get('lnglatXY') || $rootScope.SELECTADDRESS;
     var d = [lnglat.position_x,lnglat.position_y];
     get_location.paintMap();
     get_location.getLocation(d,$scope);
@@ -138,7 +138,7 @@ purchase.controller('changeLocInfo',function($rootScope,$scope,get_location,$coo
     }
 });
 
-purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,purchasePost){
+purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,purchasePost,fixedAddress){
     //  地址信息
     var MYADDRESSINFO = $rootScope.MYADDRESSINFO;
     function setaddress(){
@@ -169,7 +169,12 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
     $scope.$watch('detailAddress',function(){
         detailsAddress = $scope.detailAddress;
     });
-
+    console.log($rootScope.SELECTADDRESS);
+    if($rootScope.SELECTADDRESS){
+        $scope.lastPage = "#/receiverAddress?fixed=address"
+    }else{
+        $scope.lastPage = "#/confirmOrder"
+    }
     //  【保存】按钮事件
     $scope.saveNewLoc = function(){
 
@@ -184,16 +189,18 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
             fullAddress:fullAddress,
             userId:0
         }
+        if($rootScope.SELECTADDRESS){
+            var addressId = $rootScope.SELECTADDRESS.addressId;
+        }
+        var dataObj = fixedAddress.saveData(addressItem,addressId);
         var data = {
-            addressItem:addressItem,
+            addressItem:dataObj.data,
             accessInfo:getAccessInfo.loginAccessInfo(),
             sign:'sign'
         }
-        var path = 'delieveryAddress/new';
-        //  保存到后台
-        purchasePost.postData(data,path).success(function(data){
-            console.log(data);
-            window.location.href = "#/receiverAddress";
+        var path = dataObj.fixedUrl;
+        purchasePost.postData(data,path).success(function(){
+            window.location.href = dataObj.url;
         });
     }
 });

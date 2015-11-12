@@ -2,8 +2,7 @@
  * Created by 殿麒 on 2015/10/28.
  */
 var pay = angular.module('WXpay', ['ngRoute','ngCookies']);
-function GetQueryString(name)
-{
+function GetQueryString(name) {
     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     if(r!=null)return  unescape(r[2]); return null;
@@ -18,21 +17,11 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pa
     }else{
         $scope.code = GetQueryString('code');
         $scope.toPay = function(){
-            var order = $cookieStore.get('orderId');
-            var data = {
-                accessInfo:getAccessInfo.loginAccessInfo(),
-                channel:33,
-                orderId:order["orderId"],
-                resubmit:false,
-                sign:'sign',
-                code:$scope.code
-            }
-
-            alert(JSON.stringify(queryOrderData.getData(false)));
             var path = "pay/confirm";
-            payPost.postData(data,path).success(function(data){
+            payPost.postData(queryOrderData.getData({resubmit:false,code:$scope.code}),path).success(function(data){
                 var data = data;
                 function onBridgeReady(){
+                    alert('onBridgeReady');
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest', {
                             "appId" : data.wexinSpec.appid,                                 //  公众号名称，由商户传入
@@ -43,11 +32,11 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pa
                             "paySign" : data.wexinSpec.sign                                 //  微信签名
                         },
                         function(res){
-                            alert(JSON.stringify(queryOrderData.getData(false)));
+                            alert(JSON.stringify(queryOrderData.getData()));
                             if(res.err_msg == "get_brand_wcpay_request:ok" ) {              //  使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
                                 var path = "pay/query";
 
-                                payPost.postData(queryOrderData.getData(false),path).success(function(data){
+                                payPost.postData(queryOrderData.getData(),path).success(function(data){
                                     var data = JSON.stringify(data);
                                     alert(data);
                                 }).error(function(errData){
@@ -60,15 +49,20 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pa
                     )
                 }
                 if (typeof WeixinJSBridge == "undefined"){
+                    alert('unde');
                     if( document.addEventListener ){
+                        alert('!IE--trigger');
                         document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
                     }else if (document.attachEvent){
                         document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
                         document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
                     }
                 }else{
+                    alert('defin');
                     onBridgeReady();
                 }
+            }).error(function(errdata){
+                alert(errdata);
             });
         }
     }
@@ -128,13 +122,17 @@ pay.service('getAccessInfo',function(log,$cookieStore){
 pay.service('queryOrderData',function($cookieStore,getAccessInfo){
     var order = $cookieStore.get('orderId');
     var orderId = order['orderId'];
-    this.getData = function(isResubmit){
-        return {
+    this.getData = function(obj){
+        var data = {
             channel:33,
             orderId:orderId,
-            resubmit:isResubmit,
             accessInfo:getAccessInfo.loginAccessInfo(),
             sign:'sign'
         }
+
+        for(var prop in obj){
+            data[prop] = obj[prop];
+        }
+        return data;
     }
 })

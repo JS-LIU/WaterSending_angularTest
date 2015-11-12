@@ -1,31 +1,29 @@
-<div ng-controller="new_receiveInfo">
-    <div class="L-header w pr blue">
-        <p class="tc L-header-title cfff f16">编写收货地址</p>
-        <a href="#/confirmOrder" class="L-header-back h po"></a>
-        <a href="javascript:void(0)" class="L-header-right h po cfff" ng-click="saveNewLoc()">保存</a>
-    </div>
-    <ul class="common-list-15" >
-        <li class="clearfix pr">
-            <p class="fl pl15">联系人</p>
-            <P class="po common-list-input-1">
-                <input type="text" class="w h" placeholder="{{myName}}" ng-model="myName" ng-blur="getValue($event,'NAME')"/>
-            </P>
-        </li>
-        <li class="clearfix pr">
-            <p class="fl pl15">手机号</p>
-            <P class="po common-list-input-1">
-                <input type="text" class="w h" placeholder="{{phoneNum}}" ng-model="phoneNum" ng-blur="getValue($event,'PHONENUM')"/>
-            </P>
-        </li>
-        <li class="clearfix pr">
-            <p class="fl pl15">送水地址</p>
-            <a href="#/changeReceiverLoc" class="po common-list-input-1">{{address}}</a>
-        </li>
-        <li class="clearfix pr">
-            <p class="fl pl15">门牌号</p>
-            <P class="po common-list-input-1">
-                <input type="text" class="w h" placeholder="{{detailAddress}}" ng-model="detailAddress" ng-blur="getValue($event,'DETAILADDRESS')"/>
-            </P>
-        </li>
-    </ul>
+<div class="L-header w pr blue">
+    <p class="tc L-header-title cfff f16">编写收货地址</p>
+    <a ng-href="{{lastPage}}" class="L-header-back h po"></a>
+    <a href="javascript:void(0)" class="L-header-right h po cfff" ng-click="saveNewLoc()">保存</a>
 </div>
+<ul class="common-list-15" >
+    <li class="clearfix pr">
+        <p class="fl pl15">联系人</p>
+        <P class="po common-list-input-1">
+            <input type="text" class="w h" placeholder="{{myName}}" ng-model="myName" ng-blur="getValue($event,'NAME')"/>
+        </P>
+    </li>
+    <li class="clearfix pr">
+        <p class="fl pl15">手机号</p>
+        <P class="po common-list-input-1">
+            <input type="text" class="w h" placeholder="{{phoneNum}}" ng-model="phoneNum" ng-blur="getValue($event,'PHONENUM')"/>
+        </P>
+    </li>
+    <li class="clearfix pr">
+        <p class="fl pl15">送水地址</p>
+        <a href="#/changeReceiverLoc" class="po common-list-input-1">{{address}}</a>
+    </li>
+    <li class="clearfix pr">
+        <p class="fl pl15">门牌号</p>
+        <P class="po common-list-input-1">
+            <input type="text" class="w h" placeholder="{{detailAddress}}" ng-model="detailAddress" ng-blur="getValue($event,'DETAILADDRESS')"/>
+        </P>
+    </li>
+</ul>
