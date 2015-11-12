@@ -42,6 +42,11 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
             });
         }
 
+        $scope.stateToWord = function(val){
+            var words = ['付款','待确认','评价'];
+            return words[covertState(val)];
+        }
+
         var path = 'order/list'
         mainPost.postData(data,path).success(function(data){
             $scope.orderList = data["orderList"];
@@ -50,10 +55,24 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
         window.location.href = "http://www.huipay.com/huipaywater/app/07-log.html";
     }
 
-    $scope.toPay = function(item){
+    var clientOrderState = [1,2,3];
+    function topay(item){
         item.final_fee = (item.total_fee/100).toFixed(2);
         $cookieStore.put('orderId',item);
-        window.location.href = "http://www.huipay.com/huipaywater/app/09-payPage.html";
+        window.location.href = this.url;
+    }
+    var actionsArr = [{
+        url:"http://www.huipay.com/huipaywater/app/09-payPage.html",
+        action: topay
+    }];
+
+    function covertState(state){
+        return clientOrderState.indexOf(state);
+    }
+
+    $scope.toGo = function(item){
+        var i = covertState(item.clientOrderState);
+        actionsArr[i].action(item);
     }
 });
 main.controller('goodsModel',function($scope){

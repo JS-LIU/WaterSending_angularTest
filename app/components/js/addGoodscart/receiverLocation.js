@@ -1,35 +1,55 @@
 /**
  * Created by 殿麒 on 2015/10/11.
  */
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
 purchase.controller('receiverLocation',function($scope,$rootScope,$cookieStore,$swipe,getAccessInfo,purchasePost){
-    var position_x = $cookieStore.get('lnglatXY').position_x;
-    var position_y = $cookieStore.get('lnglatXY').position_y;
-    var addressInfo = $cookieStore.get('lnglatXY').addressInfo;
+    var isFixed = GetQueryString("fixed");
+
+    console.log(isFixed);
+    var lnglatXY = $cookieStore.get('lnglatXY');
+    if(lnglatXY){
+        var position_x = lnglatXY.position_x;
+        var position_y = lnglatXY.position_y;
+        var addressInfo = lnglatXY.addressInfo;
+    }
 
 
     //  获取常用地址
     var positionInfo = {
         districtId:'0',
-        addressInfo:addressInfo,
-        position_x:position_x,
-        position_y:position_y
+        addressInfo:addressInfo||'',
+        position_x:position_x||'0',
+        position_y:position_y||'0'
     }
     var data = {
         accessInfo:getAccessInfo.loginAccessInfo(),
         positionInfo:positionInfo,
-        sign:'mengwei'
+        sign:'sign'
     }
 
     var path = "delieveryAddress/show"
     purchasePost.postData(data,path).success(function(data){
         if(data.length > 0){
             $scope.myAddress = data;
-            if($rootScope.SELECTADDRESS == undefined){
-                $rootScope.SELECTADDRESS = $scope.myAddress[0];
-                var defaultAddress = $scope.myAddress[0];
-                myAddress(defaultAddress);
+            console.log(isFixed);
+            if(isFixed){
+                for(var i = 0;i<$scope.myAddress.length;i++){
+                    $scope.myAddress[i].canDeliever = true;
+                    console.log($scope.myAddress[i].canDeliever);
+                }
             }else{
-                myAddress($rootScope.SELECTADDRESS);
+                if($rootScope.SELECTADDRESS == undefined){
+                    $rootScope.SELECTADDRESS = $scope.myAddress[0];
+                    var defaultAddress = $scope.myAddress[0];
+                    myAddress(defaultAddress);
+                }else{
+                    myAddress($rootScope.SELECTADDRESS);
+                }
             }
         }
     });

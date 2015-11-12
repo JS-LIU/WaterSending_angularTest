@@ -29,7 +29,7 @@
                     <span>共{{orderItem.orderItems.length}}件商品</span>
                     <span>合计：</span>
                     <span class="cred f16">￥{{(orderItem.total_fee / 100).toFixed(2)}}</span>
-                    <div class="fr mt10 order-toPay tc cblue" ng-click="toPay(orderItem)">{{orderItem.clientOrderState}}</div>
+                    <div class="fr mt10 order-toPay tc cblue" ng-click="toGo(orderItem)">{{stateToWord(orderItem.clientOrderState)}}</div>
                 </div>
             </li>
         </ul>

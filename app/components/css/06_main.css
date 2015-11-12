@@ -50,6 +50,7 @@
     -webkit-background-size: 15px;
     background-size: 20px;
 }
+
 .map-address-3,
 .map-address-2{
     padding-left:40px;
@@ -65,9 +66,9 @@
     background-size: 15px;
 }
 .my-collect{
-    background: url("../images/address.png") no-repeat 15px center;
-    -webkit-background-size: 15px;
-    background-size: 20px;
+    background: url("../images/collect.png") no-repeat 15px center;
+    -webkit-background-size: 23px;
+    background-size: 23px;
 }
 .my-share{
     background: url("../images/address.png") no-repeat 15px center;

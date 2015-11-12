@@ -8,11 +8,10 @@ function GetQueryString(name)
     var r = window.location.search.substr(1).match(reg);
     if(r!=null)return  unescape(r[2]); return null;
 }
-pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,purchasePost,log,getAccessInfo){
+pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,payPost,log,getAccessInfo,queryOrderData){
     var order = $cookieStore.get('orderId');
     $scope.orderId = order["orderId"];
     $scope.payMoney = order["final_fee"];
-
     var code = GetQueryString('code');
     if(!code){
         window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdab7bbbbcba36617&redirect_uri=http://www.huipay.com/huipaywater/app/09-payPage.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
@@ -28,10 +27,11 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pu
                 sign:'sign',
                 code:$scope.code
             }
+
+            alert(JSON.stringify(queryOrderData.getData(false)));
             var path = "pay/confirm";
-            purchasePost.postData(data,path).success(function(data){
+            payPost.postData(data,path).success(function(data){
                 var data = data;
-                alert(JSON.stringify(data.wexinSpec));
                 function onBridgeReady(){
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest', {
@@ -43,7 +43,19 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pu
                             "paySign" : data.wexinSpec.sign                                 //  微信签名
                         },
                         function(res){
-                            if(res.err_msg == "get_brand_wcpay_request：ok" ) {}             //  使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                            alert(JSON.stringify(queryOrderData.getData(false)));
+                            if(res.err_msg == "get_brand_wcpay_request:ok" ) {              //  使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                                var path = "pay/query";
+
+                                payPost.postData(queryOrderData.getData(false),path).success(function(data){
+                                    var data = JSON.stringify(data);
+                                    alert(data);
+                                }).error(function(errData){
+                                    var errData = JSON.stringify(errData);
+                                    alert(errData);
+                                });
+
+                            }
                         }
                     )
                 }
@@ -63,7 +75,7 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pu
 
 });
 
-pay.factory('purchasePost',function($http){
+pay.factory('payPost',function($http){
     var url = 'http://www.huipay.com/huipaywater/';
     var postData = function(data,path){
         return $http({
@@ -112,3 +124,17 @@ pay.service('getAccessInfo',function(log,$cookieStore){
         return accessInfo;
     }
 });
+
+pay.service('queryOrderData',function($cookieStore,getAccessInfo){
+    var order = $cookieStore.get('orderId');
+    var orderId = order['orderId'];
+    this.getData = function(isResubmit){
+        return {
+            channel:33,
+            orderId:orderId,
+            resubmit:isResubmit,
+            accessInfo:getAccessInfo.loginAccessInfo(),
+            sign:'sign'
+        }
+    }
+})

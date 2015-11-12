@@ -34,3 +34,11 @@ function wrapList(list, wraper){
 wrapList(list, function(item, value){
     return {item:item, value:value};
 })
+
+
+
+message(id, name, xx);
+data
+
+
+

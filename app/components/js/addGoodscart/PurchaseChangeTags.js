@@ -3,7 +3,6 @@
  */
 var purchase = angular.module('purchase', ['ngRoute','ngCookies','ngTouch']);
 
-
 purchase.config(['$routeProvider',function($routeProvider) {
     $routeProvider.when('/',{
         templateUrl:'04-01-goodsList.html',
