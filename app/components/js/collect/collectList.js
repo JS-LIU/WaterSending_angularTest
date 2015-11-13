@@ -13,35 +13,49 @@ var collect = angular.module('collect', ['ngRoute','ngCookies']);
 
 
 collect.controller('collection',function($scope,$cookieStore,collectPost,getAccessInfo,refreshData){
-    var lnglatXY = $cookieStore.get('lnglatXY');
-    console.log(lnglatXY);
-    var requestPageInfo={
-        pageNo:1,
-        pageSize:5
+    function postShopList(){
+        var lnglatXY = $cookieStore.get('lnglatXY');
+        var requestPageInfo={
+            pageNo:1,
+            pageSize:50
+        }
+        var merchantData = {
+            positionInfo:lnglatXY,
+            accessInfo:getAccessInfo.loginAccessInfo(),
+            sign: 'sign',
+            userId:0,
+            xAxis:lnglatXY.position_x,
+            yAxis:lnglatXY.position_y,
+            requestPageInfo:requestPageInfo
+        }
+        function changePage(pageNo){
+            merchantData.requestPageInfo.pageNo = pageNo;
+            return merchantData;
+        }
+        console.log(merchantData);
+        var path = "favourite/shop/list"
+        collectPost.postData(merchantData,path).success(function(data){
+            console.log(data);
+            $scope.shopList = data.favourShops;
+        });
+        refreshData.getMoreData(changePage(2),path,function(getData,merchantData){
+            console.log(getData);
+            merchantData.requestPageInfo.pageNo++;
+        });
+    };
+    postShopList();
+    $scope.shop = true;$scope.goods = false;
+    $scope.postShopList = function(){
+        $scope.shop = true;
+        $scope.goods = false;
+        postShopList();
     }
-    var merchantData = {
-        positionInfo:lnglatXY,
-        accessInfo:getAccessInfo.loginAccessInfo(),
-        sign: 'sign',
-        userId:0,
-        xAxis:lnglatXY.position_x,
-        yAxis:lnglatXY.position_y,
-        requestPageInfo:requestPageInfo
+    $scope.postShopList();
+    $scope.postGoodsList = function(){
+        $scope.goods = true;
+        $scope.shop = false;
     }
-    function changePage(pageNo){
-        merchantData.requestPageInfo.pageNo = pageNo;
-        return merchantData;
-    }
-    console.log(merchantData);
-    var path = "favourite/shop/list"
-    collectPost.postData(merchantData,path).success(function(data){
-        console.log(data);
-        $scope.shopList = data.favourShops;
-    });
-    refreshData.getMoreData(changePage(2),path,function(getData,merchantData){
-        console.log(getData);
-        merchantData.requestPageInfo.pageNo++;
-    });
+
 });
 
 

@@ -1,59 +1,62 @@
-<div class="L-header-02 w pr blue">
-    <div class="L-header-02-pic tc pr">
-        <img class="h" src="components/images/hb-icon.png" alt=""/>
-    </div>
-    <p class="pt5 cfff tc f16">汇贝号:暂无</p>
-</div>
-<div class="L-center pb100" ng-controller="myCtrl">
-    <div class="my-myMoney clearfix">
-        <div class="my-myRMB fl tc cfff">
-            RMB:0.00
+<div ng-controller="myCtrl">
+    <div class="L-header-02 w pr blue">
+        <div class="L-header-02-pic tc pr">
+            <img class="h" src="components/images/hb-icon.png" alt="" ng-hide="isLog"/>
+            <a href="07-log.html" class="cfff f16 pt20" ng-show="isLog">登录</a>
         </div>
-        <div class="my-myHB fl tc cfff">
-            汇币:0.00
-        </div>
+        <p class="cfff tc f16 pt20">汇贝号:暂无</p>
     </div>
-    <ul class="common-list-03">
-        <li>
-            <a href="javascript:void(0)">
-                <span class="common-list-03-title ml15 piao cfff blue">票</span>
-                <span class="common-list-03-title pl10">水票</span>
-            </a>
-        </li>
-        <li >
-            <a href="javascript:void(0)">
-                <span class="common-list-03-title ml15 quan cfff orange">券</span>
-                <span class="common-list-03-title pl10">代金券红包</span>
-            </a>
-        </li>
-        <li>
-            <a href="javascript:void(0)">
-                <span class="common-list-03-title ml15 hui cfff red">惠</span>
-                <span class="common-list-03-title pl10">优惠券</span>
-            </a>
-        </li>
-    </ul>
-    <ul class="common-list-03 mt10">
-        <li ng-hide="isLog">
-            <a href="04-goodsList.html#/receiverAddress?fixed=address">
-                <span class="common-list-03-title pl50 pt5 pb5 my-address">收货地址</span>
-            </a>
-        </li>
-        <li ng-hide="isLog">
-            <a href="05-collectList.html">
-                <span class="common-list-03-title pl50 pt5 pb5 my-collect">收藏</span>
-            </a>
-        </li>
-    </ul>
-    <ul class="common-list-03 mt10">
-        <li>
-            <span class="common-list-03-title pl50 pt5 pb5 my-share">分享给好友</span>
-        </li>
-        <li ng-hide="isLog">
-            <span class="common-list-03-title pl50 pt5 pb5 my-set" ng-click="logout()">退出登录</span>
-        </li>
-    </ul>
-    <div class="mt10 my-callSeller tc">
-        <span>联系商家</span>
+    <div class="L-center pb100">
+        <div class="my-myMoney clearfix">
+            <div class="my-myRMB fl tc cfff">
+                RMB:0.00
+            </div>
+            <div class="my-myHB fl tc cfff">
+                汇币:0.00
+            </div>
+        </div>
+        <ul class="common-list-03">
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="common-list-03-title ml15 piao cfff blue">票</span>
+                    <span class="common-list-03-title pl10">水票</span>
+                </a>
+            </li>
+            <li >
+                <a href="javascript:void(0)">
+                    <span class="common-list-03-title ml15 quan cfff orange">券</span>
+                    <span class="common-list-03-title pl10">代金券红包</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="common-list-03-title ml15 hui cfff red">惠</span>
+                    <span class="common-list-03-title pl10">优惠券</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="common-list-03 mt10">
+            <li ng-hide="isLog">
+                <a href="04-goodsList.html#/receiverAddress?fixed=address">
+                    <span class="common-list-03-title pl50 pt5 pb5 my-address">收货地址</span>
+                </a>
+            </li>
+            <li ng-hide="isLog">
+                <a href="05-collectList.html">
+                    <span class="common-list-03-title pl50 pt5 pb5 my-collect">收藏</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="common-list-03 mt10">
+            <li>
+                <span class="common-list-03-title pl50 pt5 pb5 my-share">分享给好友</span>
+            </li>
+            <li ng-hide="isLog" ng-click="logout()">
+                <span class="common-list-03-title pl50 pt5 pb5 my-set" >退出登录</span>
+            </li>
+        </ul>
+        <div class="mt10 my-callSeller tc">
+            <span>联系商家</span>
+        </div>
     </div>
 </div>

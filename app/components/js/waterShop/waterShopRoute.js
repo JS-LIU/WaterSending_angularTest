@@ -5,6 +5,7 @@ var waterShop = angular.module('waterShop', ['ngRoute','ngTouch','ngCookies']);
 
 waterShop.config(['$routeProvider',function($routeProvider){
     $routeProvider.when('/',{
-        templateUrl:'08-01-waterShopDetails.html'
+        templateUrl:'08-01-waterShopDetails.html',
+        controller:"shopDetails"
     });
 }]);

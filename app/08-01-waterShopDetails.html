@@ -1,10 +1,10 @@
 <div class="L-header w pr blue" ng-controller="headerModel">
     <p class="tc L-header-title cfff f16">水站详情</p>
     <a href="#" class="L-header-back h po"></a>
-    <img class="sD-star po" src="components/images/header-star.png" alt="收藏"/>
+    <img class="sD-star po" ng-src="{{isFaver}}" alt="收藏" ng-click="collected()"/>
     <div class="sD-share po" ng-click="isShare()"></div>
 </div>
-<div ng-controller="shopDetails">
+<div>
     <div ng-controller="carousel">
         <carousel class="L-carousel">
             <img class="h fl" ng-repeat="img in imgs" src={{img.src}} style="width:{{img.width}};height: {{img.height}}"/>

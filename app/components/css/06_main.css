@@ -1,17 +1,35 @@
-.mainf-ds{
+.mainf-ds-c{
     background: url("../images/bottom-icon-1.png") no-repeat center 8px;
     -webkit-background-size: 15px;
     background-size: 15px;
     line-height: 70px;
 }
-.mainf-dd{
+.mainf-ds-n{
+    background: url("../images/bottom-icon-1-n.png") no-repeat center 8px;
+    -webkit-background-size: 15px;
+    background-size: 15px;
+    line-height: 70px;
+}
+.mainf-dd-n{
+    background: url("../images/bottom-icon-2-n.png") no-repeat center 8px;
+    -webkit-background-size: 13px;
+    background-size: 13px;
+    line-height: 70px;
+}
+.mainf-dd-c{
     background: url("../images/bottom-icon-2.png") no-repeat center 8px;
     -webkit-background-size: 13px;
     background-size: 13px;
     line-height: 70px;
 }
-.mainf-wd{
+.mainf-wd-c{
     background: url("../images/bottom-icon-3.png") no-repeat center 8px;
+    -webkit-background-size: 17px;
+    background-size: 17px;
+    line-height: 70px;
+}
+.mainf-wd-n{
+    background: url("../images/bottom-icon-3-n.png") no-repeat center 8px;
     -webkit-background-size: 17px;
     background-size: 17px;
     line-height: 70px;

@@ -25,25 +25,25 @@
         <div class="L-center">
             <div class="common-list-08">
                 <ul class="common-list-08-ul clearfix tc">
-                    <li class="blue cfff fl">商家</li>
-                    <li class="fl cblue">商品</li>
+                    <li class="fl" ng-class="{true:'blue cfff',false:'cblue'}[shop]" ng-click="postShopList()">商家</li>
+                    <li class="fl" ng-class="{true:'blue cfff',false:'cblue'}[goods]" ng-click="postGoodsList()">商品</li>
                 </ul>
             </div>
             <ul class="common-list-01 mt10" ng-repeat="shopInfo in shopList">
                 <li class="w">
-                    <a href="#" class="pr">
+                    <a href="javascript:void(0)" class="pr">
                         <div class="common-picproduct-01 pr tc">
-                            <img src="" class="h" alt="汇贝送水"/>
+                            <img src={{shopInfo.imageList[0].url}} class="h" alt="汇贝送水"/>
                         </div>
                         <div class="po common-detailbox-01">
-                            <p class="f16 common-detailbox-01-name">农夫山泉水站（井水路）</p>
+                            <p class="f16 common-detailbox-01-name">{{shopInfo.merchantName}}</p>
                             <p class="address">
-                                <span>金水区经三路丰产区经三路丰产路交叉东北角北角</span>
-                                <span class="distance">5.6KM</span>
+                                <span>{{shopInfo.address}}</span>
+                                <span class="distance" style="top:63px;">{{(shopInfo.distance).toFixed(2)}}米</span>
                             </p>
                             <p class="evaluate">
                                 <img src="" alt=""/>
-                                <span>月售12520</span>
+                                <span>月售{{shopInfo.monthSailCount}}</span>
                             </p>
                         </div>
                     </a>

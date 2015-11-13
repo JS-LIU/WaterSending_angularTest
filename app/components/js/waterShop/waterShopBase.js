@@ -22,12 +22,22 @@ waterShop.factory('shopDetailsPost',function($http){
         }
     }
 });
-waterShop.service('getAccessInfo',function(){
+waterShop.service('getAccessInfo',function($cookieStore){
     var app_secret = hex_md5("5e5cd8e3ccca45c2a5a3b00a5a90cdd5");
     var appKey = "cf385992c3fc46cbaebae2c1dae08653";
     this.accessInfo = {
         app_key:appKey,
         signature:app_secret
+    }
+    this.loginAccessInfo = function(){
+        var access_token = $cookieStore.get('access_token').access_token;
+        var access_token_secret = $cookieStore.get('access_token').access_token_secret;
+        var accessInfo = {
+            app_key:appKey,
+            signature:hex_md5('5e5cd8e3ccca45c2a5a3b00a5a90cdd5' + '&' + access_token_secret),
+            access_token:access_token
+        }
+        return accessInfo;
     }
 });
 //  ÅÐ¶ÏÊÇ·ñµÇÂ¼
