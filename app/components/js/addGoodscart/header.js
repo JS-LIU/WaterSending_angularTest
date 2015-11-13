@@ -10,5 +10,11 @@ purchase.controller('headerModel',function($rootScope,$scope,getSelfUrl){
         $rootScope.SHAREBTN = true;
     }
     var lastUrl = getSelfUrl.myUrl;
-    $scope.lastUrl = lastUrl || 'www.huipay.com/huipaywater/app/06-main.html';
+    var host = window.location.host;
+    var contextPath = document.location.pathname;
+    var index = contextPath.substr(1).indexOf("/");
+    contextPath = contextPath.substr(0, index + 1);
+
+    var url = "http://" + host + contextPath;
+    $scope.lastUrl = lastUrl || url + '/app/06-main.html';
 })

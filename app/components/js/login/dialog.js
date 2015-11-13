@@ -3,9 +3,9 @@
  */
 logIn.directive('dialoger',function(){
     function link($scope,ele){
-        var window_width = window.screen.availWidth,
+        var window_width = document.documentElement.clientWidth,
             dialog_left = (window_width - 235) / 2,
-            window_height = window.screen.availHeight,
+            window_height = document.documentElement.clientHeight,
             dialog_header = parseFloat($('.dialog-header').css('height'))||0,
             dialog_center =  parseFloat($('.dialog-center').css('height')) || 0,
             dialog_bottom =  parseFloat($('.dialog-bottom').css('height')) || 0,

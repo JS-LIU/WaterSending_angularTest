@@ -46,7 +46,12 @@ collect.controller('collection',function($scope,$cookieStore,collectPost,getAcce
 
 
 collect.factory('collectPost',function($http){
-    var url = 'http://www.huipay.com/huipaywater/';
+    var host = window.location.host;
+    var contextPath = document.location.pathname;
+    var index = contextPath.substr(1).indexOf("/");
+    contextPath = contextPath.substr(0, index + 1);
+
+    var url = "http://" + host + contextPath + '/';
     var postData = function(data,path){
         return $http({
             method:'POST',

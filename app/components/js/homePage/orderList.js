@@ -76,8 +76,14 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
             console.log(errorData);
         })
     }
+    var host = window.location.host;
+    var contextPath = document.location.pathname;
+    var index = contextPath.substr(1).indexOf("/");
+    contextPath = contextPath.substr(0, index + 1);
+
+    var url = "http://" + host + contextPath;
     var actionsArr = [{
-        url:"http://www.huipay.com/huipaywater/app/09-payPage.html",
+        url: url + "/app/09-payPage.html",
         action: topay
     },{
         action:confirmOrder

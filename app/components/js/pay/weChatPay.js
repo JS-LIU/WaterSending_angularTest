@@ -11,9 +11,15 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pa
     var order = $cookieStore.get('orderId');
     $scope.orderId = order["orderId"];
     $scope.payMoney = order["final_fee"];
+    var host = window.location.host;
+    var contextPath = document.location.pathname;
+    var index = contextPath.substr(1).indexOf("/");
+    contextPath = contextPath.substr(0, index + 1);
+
+    var url = "http://" + host + contextPath;
     var code = GetQueryString('code');
     if(!code){
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdab7bbbbcba36617&redirect_uri=http://www.huipay.com/huipaywater/app/09-payPage.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdab7bbbbcba36617&redirect_uri="+url+"/app/09-payPage.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
     }else{
         $scope.code = GetQueryString('code');
         $scope.toPay = function(){
@@ -36,7 +42,7 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pa
 
                                 payPost.postData(queryOrderData.getData(),path).success(function(data){
                                     var data = JSON.stringify(data);
-                                    window.location.href="http://www.huipay.com/huipaywater/app/06-main.html#/order";
+                                    window.location.href= url + "/app/06-main.html#/order";
                                 }).error(function(errData){
                                     var errData = JSON.stringify(errData);
                                 });
@@ -63,7 +69,12 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pa
 });
 
 pay.factory('payPost',function($http){
-    var url = 'http://www.huipay.com/huipaywater/';
+    var host = window.location.host;
+    var contextPath = document.location.pathname;
+    var index = contextPath.substr(1).indexOf("/");
+    contextPath = contextPath.substr(0, index + 1);
+
+    var url = "http://" + host + contextPath + "/";
     var postData = function(data,path){
         return $http({
             method:'POST',

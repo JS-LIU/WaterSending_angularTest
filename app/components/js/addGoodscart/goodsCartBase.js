@@ -1,12 +1,14 @@
 /**
  * Created by 殿麒 on 2015/9/21.
  */
+
+
 //  对话框
 purchase.directive('dialoger',function(){
     function link($scope,ele){
-        var window_width = window.innerWidth,
+        var window_width = document.documentElement.clientWidth,
             dialog_left = (window_width - 235) / 2,
-            window_height = window.innerHeight,
+            window_height = document.documentElement.clientHeight,
             dialog_header = parseFloat($('.dialog-header').css('height')) || 0,
             dialog_center =  parseFloat($('.dialog-center').css('height')) || 0,
             dialog_bottom =  parseFloat($('.dialog-bottom').css('height')) || 0,
@@ -54,7 +56,12 @@ purchase.factory('goodsCartcookie',function($cookieStore){
 })
 
 purchase.factory('purchasePost',function($http){
-    var url = 'http://www.huipay.com/huipaywater/';
+    var host = window.location.host;
+    var contextPath = document.location.pathname;
+    var index = contextPath.substr(1).indexOf("/");
+    contextPath = contextPath.substr(0, index + 1);
+
+    var url = "http://" + host + contextPath+'/';
     var postData = function(data,path){
         console.log(data);
         return $http({
