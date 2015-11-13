@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/9/18.
  */
-logIn.directive('dialog',function(){
+logIn.directive('dialoger',function(){
     function link($scope,ele){
         var window_width = window.screen.availWidth,
             dialog_left = (window_width - 235) / 2,
@@ -13,7 +13,7 @@ logIn.directive('dialog',function(){
             dialog_top = (window_height - dialog_height) / 2;
 
         console.log($('.dialog-center').css('height'));
-        ele.css({'left':dialog_left + 'px','top':dialog_top + 'px'});
+        $(ele).css({'left':dialog_left + 'px','top':dialog_top + 'px'});
 
     }
 

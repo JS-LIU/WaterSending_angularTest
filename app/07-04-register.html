@@ -1,5 +1,5 @@
-<div ng-controller="confirmPhonenum">
-    <dialog class="dialog" ng-show="ISSHOW">
+<div ng-controller="confirmPhonenum" style="z-index: 22">
+    <dialoger class="dialog" ng-show="ISSHOW">
         <div class="dialog-center tc">
             <p class="dialog-line1 pt10 f16">确认手机号</p>
             <p class="dialog-line2 pt5">我们将发送校验码短信到这个手机号码：</p>
@@ -9,7 +9,7 @@
             <a href="javascript:void(0)" class="fl tc dialog-bottom-btn cipblue" ng-click="cancel()">取消</a>
             <a href="#/fillCheckcode" class="fl tc dialog-bottom-btn2 cipblue" ng-click="ok()">好</a>
         </div>
-    </dialog>
+    </dialoger>
     <div id="shade-1" ng-show="ISSHOW"></div>
 </div>
 

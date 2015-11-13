@@ -21,7 +21,6 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pa
             payPost.postData(queryOrderData.getData({resubmit:false,code:$scope.code}),path).success(function(data){
                 var data = data;
                 function onBridgeReady(){
-                    alert('onBridgeReady');
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest', {
                             "appId" : data.wexinSpec.appid,                                 //  公众号名称，由商户传入
@@ -32,16 +31,14 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pa
                             "paySign" : data.wexinSpec.sign                                 //  微信签名
                         },
                         function(res){
-                            alert(JSON.stringify(queryOrderData.getData()));
                             if(res.err_msg == "get_brand_wcpay_request:ok" ) {              //  使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
                                 var path = "pay/query";
 
                                 payPost.postData(queryOrderData.getData(),path).success(function(data){
                                     var data = JSON.stringify(data);
-                                    alert(data);
+                                    window.location.href="http://www.huipay.com/huipaywater/app/06-main.html#/order";
                                 }).error(function(errData){
                                     var errData = JSON.stringify(errData);
-                                    alert(errData);
                                 });
 
                             }
@@ -49,20 +46,16 @@ pay.controller('orderModel',function($rootScope,$scope,$cookieStore,$location,pa
                     )
                 }
                 if (typeof WeixinJSBridge == "undefined"){
-                    alert('unde');
                     if( document.addEventListener ){
-                        alert('!IE--trigger');
                         document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
                     }else if (document.attachEvent){
                         document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
                         document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
                     }
                 }else{
-                    alert('defin');
                     onBridgeReady();
                 }
             }).error(function(errdata){
-                alert(errdata);
             });
         }
     }

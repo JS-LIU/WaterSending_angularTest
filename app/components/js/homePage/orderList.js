@@ -57,13 +57,30 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
 
     var clientOrderState = [1,2,3];
     function topay(item){
-        item.final_fee = (item.total_fee/100).toFixed(2);
+        item.final_fee = (item.total_fee / 100).toFixed(2);
         $cookieStore.put('orderId',item);
         window.location.href = this.url;
+    }
+    function confirmOrder(item){
+        var item = item;
+        var path = "user/recv";
+        var orderId = item.orderId;
+        var data = {
+            orderId:orderId,
+            sign:'sign',
+            accessInfo:getAccessInfo.loginAccessInfo()
+        }
+        mainPost.postData(data,path).success(function(){
+            $scope.orderList.splice($.inArray(item,$scope.orderList),1);
+        }).error(function(errorData){
+            console.log(errorData);
+        })
     }
     var actionsArr = [{
         url:"http://www.huipay.com/huipaywater/app/09-payPage.html",
         action: topay
+    },{
+        action:confirmOrder
     }];
 
     function covertState(state){

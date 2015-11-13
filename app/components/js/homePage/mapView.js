@@ -9,10 +9,9 @@ main.controller("cutView",function($scope,$rootScope){
     }
 });
 
-main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_location,mainPost,getAccessInfo,$http){
+main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_location,mainPost,getAccessInfo){
     $cookieStore.remove('lnglatXY');
     $cookieStore.remove('shopInfo');
-
 
     $rootScope.isshow = true;
     //  1.绘制地图 自动定位当前位置
@@ -22,6 +21,8 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
         //  获取最近商店
         $rootScope.$watch('LNGLAT',function(){
             if($rootScope.LNGLAT != undefined){
+                //  保存位置信息
+                $cookieStore.put('lnglatXY',$rootScope.LNGLAT);
                 postNearShops();
             }
         })
@@ -30,6 +31,8 @@ main.controller("mapView",function($rootScope,$scope,$cookieStore,$swipe,get_loc
     //  移动地图
     get_location.resetMyPosition(function(location){
         get_location.getCurAddress(location);
+        //  保存位置信息
+        $cookieStore.put('lnglatXY',$rootScope.LNGLAT);
         postNearShops();
     });
 

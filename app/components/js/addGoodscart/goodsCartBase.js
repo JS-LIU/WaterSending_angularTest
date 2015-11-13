@@ -2,23 +2,22 @@
  * Created by 殿麒 on 2015/9/21.
  */
 //  对话框
-purchase.directive('dialog',function(){
+purchase.directive('dialoger',function(){
     function link($scope,ele){
-        var window_width = window.screen.availWidth,
+        var window_width = window.innerWidth,
             dialog_left = (window_width - 235) / 2,
-            window_height = window.screen.availHeight,
-            dialog_header = parseFloat($('.dialog-header').css('height'))||0,
+            window_height = window.innerHeight,
+            dialog_header = parseFloat($('.dialog-header').css('height')) || 0,
             dialog_center =  parseFloat($('.dialog-center').css('height')) || 0,
             dialog_bottom =  parseFloat($('.dialog-bottom').css('height')) || 0,
             dialog_height = dialog_header + dialog_center + dialog_bottom,
             dialog_top = (window_height - dialog_height) / 2;
-
-        ele.css({'left':dialog_left + 'px','top':dialog_top + 'px'});
+        $(ele).css({'left':dialog_left + 'px','top':dialog_top + 'px'});
     }
 
     return {
         restrict:'E',
-        template:'<div class="dialog-main" ng-transclude></div>',
+        template:'<div ng-transclude></div>',
         transclude:true,
         link:link
     }

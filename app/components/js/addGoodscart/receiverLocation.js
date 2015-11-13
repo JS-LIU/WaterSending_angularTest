@@ -71,9 +71,7 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$location,$coo
         e = e || window.event;
         e.preventDefault();
         purchasePost.postData(data,path).success(function(){
-
             $scope.myAddress.splice($.inArray(item,$scope.myAddress),1);
-
         });
     }
     //  选择地址
