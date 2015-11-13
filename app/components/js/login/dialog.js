@@ -12,11 +12,8 @@ logIn.directive('dialoger',function(){
             dialog_height = dialog_header + dialog_center + dialog_bottom,
             dialog_top = (window_height - dialog_height) / 2;
 
-        console.log($('.dialog-center').css('height'));
         $(ele).css({'left':dialog_left + 'px','top':dialog_top + 'px'});
-
     }
-
 
     return {
         restrict:'E',
