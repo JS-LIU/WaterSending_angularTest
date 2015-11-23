@@ -4,12 +4,12 @@
 $('.J_cutIcon a').click(function(){
     var $_self = $(this);
     var $_index = $('.J_cutIcon a').index($_self);
-    var picArr = [{show:'mainf-ds-c',hide:'mainf-ds-n'},{show:'mainf-dd-c',hide:'mainf-dd-n'},{show:'mainf-wd-c',hide:'mainf-wd-n'}];
+    var picArr = [{showicon:'mainf-ds-c',hideicon:'mainf-ds-n'},{showicon:'mainf-dd-c',hideicon:'mainf-dd-n'},{showicon:'mainf-wd-c',hideicon:'mainf-wd-n'}];
     for(var i = 0;i < picArr.length; i++){
-        $('.J_cutIcon a').eq(i).removeClass(picArr[i]["show"]);
-        $('.J_cutIcon a').eq(i).addClass(picArr[i]["hide"]);
+        $('.J_cutIcon a').eq(i).removeClass(picArr[i].showicon);
+        $('.J_cutIcon a').eq(i).addClass(picArr[i].hideicon);
     }
-    $('.J_cutIcon a').eq($_index).removeClass(picArr[$_index]["hide"]);
-    $('.J_cutIcon a').eq($_index).addClass(picArr[$_index]["show"]);
 
+    $('.J_cutIcon a').eq($_index).removeClass(picArr[$_index].hideicon);
+    $('.J_cutIcon a').eq($_index).addClass(picArr[$_index].showicon);
 })

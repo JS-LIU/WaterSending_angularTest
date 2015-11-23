@@ -3,18 +3,18 @@
  */
 purchase.controller('receiverLocation',function($scope,$rootScope,$location,$cookieStore,$swipe,getAccessInfo,purchasePost){
     var myUrl = $location.absUrl();
-    var isFixed = false;
+    var isFixed = false;    //  默认是【新增地址】
     //  临时代码 判断是否需要修改地址
     for(var i = 0 ;i<myUrl.length;i++){
         if(myUrl[i] == "?"){
-            isFixed = true;
+            isFixed = true; //  【修改地址】
             break;
         }
     }
     $scope.lastPage = "06-main.html#/my";
     $scope.addAddress = true;
     var lnglatXY = $cookieStore.get('lnglatXY');
-    if(!isFixed){
+    if(!isFixed){   //  【新增地址】
         var position_x = lnglatXY.position_x;
         var position_y = lnglatXY.position_y;
         var addressInfo = lnglatXY.addressInfo;
@@ -39,18 +39,13 @@ purchase.controller('receiverLocation',function($scope,$rootScope,$location,$coo
     purchasePost.postData(data,path).success(function(data){
         if(data.length > 0){
             $scope.myAddress = data;
-            if(isFixed){
+            if(isFixed){    //  【修改地址】
                 for(var i = 0;i<$scope.myAddress.length;i++){
                     $scope.myAddress[i].canDeliever = true;
                 }
-            }else{
-                if($rootScope.SELECTADDRESS == undefined){
-                    $rootScope.SELECTADDRESS = $scope.myAddress[0];
-                    var defaultAddress = $scope.myAddress[0];
-                    myAddress(defaultAddress);
-                }else{
-                    myAddress($rootScope.SELECTADDRESS);
-                }
+            }else{          //  【新增地址】
+                var defaultAddress = $scope.myAddress[0];
+                myAddress(defaultAddress);
             }
         }
     });

@@ -116,7 +116,7 @@ purchase.factory("get_location",function($rootScope){
     }
 });
 
-purchase.controller('changeLocInfo',function($rootScope,$scope,get_location,$cookieStore){
+purchase.controller('changeLocInfo',function($rootScope,$scope,$cookieStore,get_location){
     var lnglat = $cookieStore.get('lnglatXY') || $rootScope.SELECTADDRESS;
     var d = [lnglat.position_x,lnglat.position_y];
     get_location.paintMap();
@@ -169,12 +169,12 @@ purchase.controller('new_receiveInfo',function($rootScope,$scope,getAccessInfo,p
     $scope.$watch('detailAddress',function(){
         detailsAddress = $scope.detailAddress;
     });
-    console.log($rootScope.SELECTADDRESS);
     if($rootScope.SELECTADDRESS){
         $scope.lastPage = "#/receiverAddress?fixed=address"
     }else{
         $scope.lastPage = "#/confirmOrder"
     }
+
     //  【保存】按钮事件
     $scope.saveNewLoc = function(){
 
