@@ -1,6 +1,32 @@
 /**
  * Created by 殿麒 on 2015/9/29.
  */
+
+(function(){
+    angular
+        .module('myApp')
+        .service('Map',Map);
+
+    //  地图显示
+    function Map(){
+        //  代码来源：http://lbs.amap.com/api/javascript-api/example/a/0101-2/
+        this.map = new AMap.Map('container', {
+            resizeEnable: true
+        });
+    };
+
+    //  浏览器定位
+    Map.prototype.nowLocation = function(){
+        //  代码来源：http://lbs.amap.com/api/javascript-api/example/g/0704-2/
+
+    }
+
+}());
+
+
+
+
+
 main.factory("get_location",function($rootScope){
     var geolocation,lnglatXY;
     function paintMap(){
