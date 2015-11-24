@@ -18,6 +18,24 @@
     //  浏览器定位
     Map.prototype.nowLocation = function(){
         //  代码来源：http://lbs.amap.com/api/javascript-api/example/g/0704-2/
+        this.map.plugin('AMap.Geolocation', function() {
+            this.geolocation = new AMap.Geolocation({
+                enableHighAccuracy: true,                       //是否使用高精度定位，默认:true
+                timeout: 10000,                                 //超过10秒后停止定位，默认：无穷大
+                buttonOffset: new AMap.Pixel(10, 20),           //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                zoomToAccuracy: true,                           //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                buttonPosition:'RB'
+            });
+            this.map.addControl(this.geolocation);
+            this.geolocation.getCurrentPosition();
+        });
+    }
+
+    Map.prototype.getLnglat = function(){
+        AMap.event.addListener(this.geolocation, 'complete', onComplete);//返回定位信息
+        function onComplete(data) {
+            console.log([data.position.getLng(),data.position.getLat()])
+        }
 
     }
 
@@ -50,6 +68,7 @@ main.factory("get_location",function($rootScope){
                 zoomToAccuracy: true     //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
             });
             $rootScope.map.addControl(geolocation);
+
             AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
 
             (function getCurrentPosition() {
