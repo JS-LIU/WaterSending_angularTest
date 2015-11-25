@@ -4,61 +4,61 @@
 </div>
 <div class="L-slide-center" ng-controller="mapView">
     <!--轮播页面-->
-    <div ng-show="SHOWMAP" ng-controller="carousel">
-        <div class="po temporary-title f20 cfff">
-            <p class="pl15">桶装水，一统天下！</p>
-            <p class="pl30">
-                <span>全国</span>
-                <span class="pl5 pr5"style="color:#f0fc50;">{{totalityShop}}</span>
-                <span>家水站</span>
-            </p>
-        </div>
-        <carousel class="L-carousel">
-            <img class="h fl" ng-repeat="img in imgs" src={{img.src}} style="width:{{img.width}};height:{{img.height}}"/>
-        </carousel>
-        <ul class="common-multyrow-1 mt10 ml15 mr15">
-            <li style="height: 48px;">
-                <a href="#/customLocation" class="clearfix map-myLocation pr rightArrow mr15">
-                    <p class="map-address-3 fl c333 fb">送水地址：</p>
-                    <p class="map-a fl pr15 po" style="color: #fe7a00;">{{ADDRESS||'正在定位...'}}</p>
-                </a>
-            </li>
-            <li>
-                <a href="#/shopList" class="map-shopinfo rightArrow mr15">
-                    <p class="map-address-2 map-shopname">
-                        <span class="fb c333">配送水站：</span>
-                        <span class="fb c333">{{NEARLIST_SHOP["merchantName"]||'正在寻找最近水站..'}}</span>
-                        <span class="fr pr30 cred">最近</span>
-                    </p>
-                    <p class="map-shopLocation pr">
-                        <span class="shopaddress po">{{NEARLIST_SHOP["address"]||'正在查询地理位置..'}}</span>
-                        <span class="fr pr30">{{(NEARLIST_SHOP["distance"]).toFixed(0)||'正在计算..'}}米</span>
-                    </p>
-                </a>
-            </li>
-        </ul>
-        <a href="javascript:void(0)" ng-click="postShopInfo()" class="common-btn-01 tc cfff blue f14 pr" style="margin-top: 10px;">我要订水</a>
-    </div>
+    <!--<div ng-show="SHOWMAP" ng-controller="carousel">-->
+        <!--<div class="po temporary-title f20 cfff">-->
+            <!--<p class="pl15">桶装水，一统天下！</p>-->
+            <!--<p class="pl30">-->
+                <!--<span>全国</span>-->
+                <!--<span class="pl5 pr5"style="color:#f0fc50;">{{totalityShop}}</span>-->
+                <!--<span>家水站</span>-->
+            <!--</p>-->
+        <!--</div>-->
+        <!--<carousel class="L-carousel">-->
+            <!--<img class="h fl" ng-repeat="img in imgs" src={{img.src}} style="width:{{img.width}};height:{{img.height}}"/>-->
+        <!--</carousel>-->
+        <!--<ul class="common-multyrow-1 mt10 ml15 mr15">-->
+            <!--<li style="height: 48px;">-->
+                <!--<a href="#/customLocation" class="clearfix map-myLocation pr rightArrow mr15">-->
+                    <!--<p class="map-address-3 fl c333 fb">送水地址：</p>-->
+                    <!--<p class="map-a fl pr15 po" style="color: #fe7a00;">{{ADDRESS||'正在定位...'}}</p>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a href="#/shopList" class="map-shopinfo rightArrow mr15">-->
+                    <!--<p class="map-address-2 map-shopname">-->
+                        <!--<span class="fb c333">配送水站：</span>-->
+                        <!--<span class="fb c333">{{NEARLIST_SHOP["merchantName"]||'正在寻找最近水站..'}}</span>-->
+                        <!--<span class="fr pr30 cred">最近</span>-->
+                    <!--</p>-->
+                    <!--<p class="map-shopLocation pr">-->
+                        <!--<span class="shopaddress po">{{NEARLIST_SHOP["address"]||'正在查询地理位置..'}}</span>-->
+                        <!--<span class="fr pr30">{{(NEARLIST_SHOP["distance"]).toFixed(0)||'正在计算..'}}米</span>-->
+                    <!--</p>-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <!--<a href="javascript:void(0)" ng-click="postShopInfo()" class="common-btn-01 tc cfff blue f14 pr" style="margin-top: 10px;">我要订水</a>-->
+    <!--</div>-->
 
     <!--地图页面-->
-    <div class="po mapBox w" ng-hide="SHOWMAP">
+    <div class="po mapBox w">
         <ul class="common-multyrow-1-spe po">
             <li style="height: 48px;">
                 <a href="#/customLocation" class="clearfix map-myLocation pr rightArrow mr15">
                     <p class="map-address-3 fl">送水地址：</p>
-                    <p class="map-a fl pr15 po">{{ADDRESS||'正在定位...'}}</p>
+                    <p class="map-a fl pr15 po"></p>
                 </a>
             </li>
             <li>
                 <a href="#/shopList" class="map-shopinfo rightArrow mr15">
                     <p class="map-address-3 map-shopname">
                         <span>配送水站：</span>
-                        <span>{{NEARLIST_SHOP["merchantName"] ||'正在寻找最近水站..'}}</span>
+                        <span></span>
                         <span class="fr pr30 cred">最近</span>
                     </p>
                     <p class="map-shopLocation pr">
-                        <span class="shopaddress po">{{NEARLIST_SHOP["address"] || '正在查询地理位置..'}}</span>
-                        <span class="fr pr30">{{NEARLIST_SHOP["distance"].toFixed(0) || '正在计算..'}}米</span>
+                        <span class="shopaddress po"></span>
+                        <span class="fr pr30"></span>
                     </p>
                 </a>
             </li>
@@ -66,5 +66,5 @@
         <div id="point" class="po"></div>
         <div id="mapContainer"></div>
     </div>
-    <a href="javascript:void(0)"ng-hide="SHOWMAP" ng-controller="mapView" ng-click="postShopInfo()" class="common-btn-01-spe tc cfff blue f14 po">我要订水</a>
+    <a href="javascript:void(0)"class="common-btn-01-spe tc cfff blue f14 po">我要订水</a>
 </div>
