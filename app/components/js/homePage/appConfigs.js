@@ -15,7 +15,9 @@ angular.module('myApp')
 
 function routeConfig($routeProvider){
     $routeProvider.when('/',{
-        templateUrl:'06-01-map.html'
+        templateUrl:'06-01-map.html',
+        controller:'mapCtrl',
+        controllerAs: 'map'
     }).when('/order',{
         templateUrl:'06-02-order.html',
     }).when('/my',{
@@ -26,3 +28,5 @@ function routeConfig($routeProvider){
         templateUrl:'06-05-shopList.html',
     })
 }
+
+
