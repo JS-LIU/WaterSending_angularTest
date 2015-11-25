@@ -7,9 +7,9 @@
         .module('myApp')
         .controller('mapCtrl',mapCtrl);
 
-    function mapCtrl(Map){
+    function mapCtrl(MyMap){
         //  画出地图
-        var map = new Map();
+        var map = MyMap;
         //  得到当前经纬度
         map.getNowLnglat();
     }

@@ -133,8 +133,8 @@
     -webkit-background-size: 15px;
     background-size: 15px;
 }
-#mapContainer{
-    height:100%;
+#container{
+    height:100%!important;
     overflow: hidden;
 }
 .common-list-09{
