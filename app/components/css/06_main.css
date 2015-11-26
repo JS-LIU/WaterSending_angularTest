@@ -215,13 +215,13 @@
     border-bottom:1px solid #E2E2E2;
 }
 #point{
-    margin-top: -28px;
+    margin-top: -25px;
     top: 50%;
     left: 48%;
-    width: 20px;
+    width: 17px;
     height: 28px;
     background: url("../images/address-03.png") no-repeat center center;
-    background-size: 20px;
+    background-size: 17px;
     z-index: 100;
 }
 .common-multyrow-1-spe{
@@ -237,9 +237,7 @@
     margin-top: -125px;
     background: #ffffff;
 }
-html,body{
-    position:static!important;
-}
+
 .whyCantSlideDown{
     height:50px;
 }
@@ -268,4 +266,9 @@ html,body{
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+}
+
+/*高德地图api css文件强行修改html body的定位 所以这里要重置回来*/
+html,body{
+    position:static!important;
 }

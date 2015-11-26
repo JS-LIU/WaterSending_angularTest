@@ -52,7 +52,13 @@ main.controller('orderListModel',function($scope,$cookieStore,mainPost,getAccess
             $scope.orderList = data["orderList"];
         });
     }else{
-        window.location.href = "http://www.huipay.com/huipaywater/app/07-log.html";
+        var host = window.location.host;
+        var contextPath = document.location.pathname;
+        var index = contextPath.substr(1).indexOf("/");
+        contextPath = contextPath.substr(0, index + 1);
+
+        var url = "http://" + host + contextPath + "/";
+        window.location.href = url+"app/07-log.html#/";
     }
 
     var clientOrderState = [1,2,3];
