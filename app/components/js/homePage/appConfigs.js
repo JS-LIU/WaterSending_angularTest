@@ -17,7 +17,7 @@ function routeConfig($routeProvider){
     $routeProvider.when('/',{
         templateUrl:'06-01-map.html',
         controller:'mapCtrl',
-        controllerAs: 'map'
+        controllerAs: 'mapView'
     }).when('/order',{
         templateUrl:'06-02-order.html',
     }).when('/my',{

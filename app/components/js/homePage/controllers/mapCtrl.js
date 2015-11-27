@@ -5,15 +5,26 @@
 (function(){
     angular
         .module('myApp')
-        .controller('mapCtrl',mapCtrl);
+        .directive('liu-carousel',carcousel)
+        .controller('mapCtrl',mapCtrl)
+
 
     function mapCtrl(MyMap){
+        var self = this;
         //  画出地图
         var map = MyMap;
         //  当前位置
         map.getPosition();
+
+        //  默认显示广告
+        self.isAD = true;
+
+        //  切换地图 轮播
+        self.changeBtn = function(){
+            self.isAD = !self.isAD;
+        }
     }
-}())
+}());
 
 
 

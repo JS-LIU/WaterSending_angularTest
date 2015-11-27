@@ -1,10 +1,10 @@
 <div class="L-header w pr blue slide-header">
     <p class="tc L-header-title cfff f16">海豹送水</p>
-    <div class="po my-cutMap" ng-click=""></div>
+    <div class="po my-cutMap" ng-click="mapView.changeBtn()"></div>
 </div>
 <div class="L-slide-center">
     <!--轮播页面-->
-    <div >
+    <div ng-show="mapView.isAD">
         <div class="po temporary-title f20 cfff">
             <p class="pl15">桶装水，一统天下！</p>
             <p class="pl30">
@@ -13,7 +13,7 @@
                 <span>家水站</span>
             </p>
         </div>
-        <carousel class="L-carousel">
+        <carousel>
             <img class="h fl" ng-repeat="img in imgs" src={{img.src}} style="width:{{img.width}};height:{{img.height}}"/>
         </carousel>
         <ul class="common-multyrow-1 mt10 ml15 mr15">
@@ -37,11 +37,10 @@
                 </a>
             </li>
         </ul>
-        <a href="javascript:void(0)" ng-click="postShopInfo()" class="common-btn-01 tc cfff blue f14 pr" style="margin-top: 10px;">我要订水</a>
     </div>
 
     <!--地图页面-->
-    <div class="po mapBox w">
+    <div class="po mapBox w" ng-show="!mapView.isAD">
         <ul class="common-multyrow-1-spe po">
             <li style="height: 48px;">
                 <a href="#/customLocation" class="clearfix map-myLocation pr rightArrow mr15">
@@ -66,5 +65,5 @@
         <div id="point" class="po"></div>
         <div id="container"></div>
     </div>
-    <a href="javascript:void(0)"class="common-btn-01-spe tc cfff blue f14 po">我要订水</a>
+    <a href="javascript:void(0)"class="common-btn-01-spe tc cfff blue f14 po" ng-click="postShopInfo()">我要订水</a>
 </div>

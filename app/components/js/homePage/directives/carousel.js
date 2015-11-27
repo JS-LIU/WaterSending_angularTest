@@ -3,6 +3,7 @@
  */
 //  改为factory 将directive注入进来
 //  轮播轨迹
+
 main.service('carouselTrack',function(){
     var self = this;
     var window_width = document.body.clientWidth;
