@@ -8,7 +8,6 @@
         .directive('liu-carousel',carcousel)
         .controller('mapCtrl',mapCtrl)
 
-
     function mapCtrl(MyMap){
         var self = this;
         //  画出地图

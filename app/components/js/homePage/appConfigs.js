@@ -2,15 +2,7 @@
  * Created by 殿麒 on 2015/8/23.
  */
 
-var main = angular.module('myApp', ['ngRoute','ngTouch','ngCookies']);
-
-//angular
-//    .module('myApp', ['ngRoute',
-//        'ngTouch',
-//        'ngCookies'
-//    ]);
-
-angular.module('myApp')
+angular.module('myApp',['ngRoute','huipayMap'])
     .config(routeConfig);
 
 function routeConfig($routeProvider){
@@ -28,5 +20,3 @@ function routeConfig($routeProvider){
         templateUrl:'06-05-shopList.html',
     })
 }
-
-

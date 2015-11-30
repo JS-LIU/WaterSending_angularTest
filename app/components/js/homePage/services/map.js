@@ -3,10 +3,9 @@
  */
 (function(){
     angular
-        .module('myApp')
+        .module('huipayMap',[])
         .service('MyMap',MyMap)
         .service('Regeocoder',Regeocoder);
-
     //  地图显示
     function MyMap(){
         //  代码来源：http://lbs.amap.com/api/javascript-api/example/a/0101-2/
@@ -64,5 +63,4 @@
             console.log(address);
         }
     }
-
 }());

@@ -1,5 +1,5 @@
 /**
- * Created by µочи on 2015/11/27.
+ * Created by LIU on 2015/11/27.
  */
 function carcousel(){
     var directive = {
