@@ -6,7 +6,14 @@ function carcousel(){
         restrict: 'EA',
         template:'<div class="clearfix carousel-animation" ng-transclude></div>',
         transclude:true,
+        scope:{img:'='},
+        link:link
+    }
+
+    function link(scope,iElement){
 
     }
+
+
     return directive;
 }

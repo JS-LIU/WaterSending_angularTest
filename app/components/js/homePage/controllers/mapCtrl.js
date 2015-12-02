@@ -8,7 +8,7 @@
         .directive('liu-carousel',carcousel)
         .controller('mapCtrl',mapCtrl)
 
-    function mapCtrl(MyMap){
+    function mapCtrl(MyMap,CarouselPic){
         var self = this;
         //  画出地图
         var map = MyMap;
@@ -18,10 +18,11 @@
         //  默认显示广告
         self.isAD = true;
 
-        //  切换地图 轮播
+        //  切换地图/轮播
         self.changeBtn = function(){
             self.isAD = !self.isAD;
         }
+
     }
 }());
 
