@@ -22,7 +22,7 @@
         self.changeBtn = function(){
             self.isAD = !self.isAD;
         }
-
+        //var carouslPic = CarouselPic
     }
 }());
 

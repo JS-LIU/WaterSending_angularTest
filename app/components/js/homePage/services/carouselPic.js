@@ -1,5 +1,5 @@
 /**
- * Created by µî÷è on 2015/12/1.
+ * Created by æ®¿éº’ on 2015/12/1.
  */
 (function(){
     angular
@@ -9,6 +9,7 @@
     function CarouselPic($resource,$cookieStore,Login){
         var logIn = Login;
         var x_dpi = document.body.clientWidth;
+
         $resource('/act/actList',{},{
             getPic:{
                 method:'POST',

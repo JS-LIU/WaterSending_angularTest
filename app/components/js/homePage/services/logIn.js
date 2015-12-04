@@ -12,6 +12,7 @@
         this.appKey = "cf385992c3fc46cbaebae2c1dae08653";
     }
     Login.prototype.isLogIn = function($cookieStore){
+        console.log($cookieStore);
         if($cookieStore.get('access_token') != undefined){
             return true;
         }else{
