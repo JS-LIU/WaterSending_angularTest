@@ -146,7 +146,7 @@ purchase.factory('ramdomStart',function(){
             var newscore = calcStar();
             saveInfo;
         }else{
-            var newscore = parseInt(score / 2);
+            var newscore = parseInt(score / 5);
         }
         var startArr = [];
         for(var i = 0,len = newscore;i < len;i++){

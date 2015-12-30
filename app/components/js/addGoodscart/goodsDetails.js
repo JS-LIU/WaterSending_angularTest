@@ -7,7 +7,7 @@ function GetQueryString(name)
     var r = window.location.search.substr(1).match(reg);
     if(r!=null)return  unescape(r[2]); return null;
 }
-purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieStore,goodsCartcookie,purchasePost,getAccessInfo){
+purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieStore,goodsCartcookie,purchasePost,getAccessInfo,log){
     var self_url = GetQueryString("productId");
 
     if(self_url!= undefined){
@@ -38,12 +38,17 @@ purchase.controller('goodsDetails',function($rootScope,$scope,$location,$cookieS
         console.log(data);
         $scope.goodsInfo = data.productInfo;
     });
-    $scope.addGoodscart = function(){
-        var goodscart_list = $cookieStore.get('goodscart_list');
-        $rootScope.GOODSCART_NUM += 1;
-        $rootScope.GOODSCART_MONEY += $scope.goodsInfo.price;
-        //  添加cookie
-        goodsCartcookie.add_goodsCart_cookie(goodscart_list,$scope.goodsInfo);
+    //  添加购物车
+    $scope.addGoodscart = function(item){
+        if(log.isLog()){
+            var goodscart_list = $cookieStore.get('goodscart_list');
+            $scope.goodscart_num += 1;
+            $scope.goodscart_money += item.price;
+            //  添加cookie
+            goodsCartcookie.add_goodsCart_cookie(goodscart_list,item);
+        }else{
+            window.location.href = "07-log.html";
+        }
     }
 });
 

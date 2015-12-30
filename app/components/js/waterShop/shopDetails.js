@@ -10,12 +10,11 @@ function GetQueryString(name)
     if(r!=null)return  unescape(r[2]); return null;
 }
 
-waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAccessInfo,shopDetailsPost){
+waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAccessInfo,shopDetailsPost,log){
 
     //  当前页面url后缀
     var self_url = GetQueryString("shopId");
     var shopInfo = $cookieStore.get('shopInfo');
-    console.log(shopInfo);
     if(self_url != undefined){
         var shopId = self_url;
     }else{
@@ -41,15 +40,19 @@ waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAcc
         $scope.imgs = [{src:data["big_image"]}];
         var isFavourite = data.isFavourite;
         $scope.isFaver = "components/images/header-star.png";
-        if(!isFavourite){
-            $scope.collected = function(){
-                var faverPath = "favourite/shop/new";
-                shopDetailsPost.postData(collectedData,faverPath).success(function(){
-                    $scope.isFaver = "components/images/order_collectSelect.png";
-                }).error(function(errorData){
-                    console.log(errorData);
-                })
+        if(log.isLog()){
+            if(!isFavourite){
+                $scope.collected = function(){
+                    var faverPath = "favourite/shop/new";
+                    shopDetailsPost.postData(collectedData,faverPath).success(function(){
+                        $scope.isFaver = "components/images/order_collectSelect.png";
+                    }).error(function(errorData){
+                        console.log(errorData);
+                    })
+                }
             }
+        }else{
+            $scope.isFaver = "components/images/header-star.png";
         }
     });
 
@@ -59,6 +62,7 @@ waterShop.controller('shopDetails',function($scope,$cookieStore,$location,getAcc
         sign:'sign',
         accessInfo:getAccessInfo.loginAccessInfo()
     }
+
 
 
 

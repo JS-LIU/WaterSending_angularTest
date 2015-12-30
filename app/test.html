@@ -48,6 +48,10 @@
     <div ng-controller="testNgModel">
         <input type="text" ng-model="myModel"/>
     </div>
+
+    <div class="testWeixin" style="width:100px;height:100px;background:RED;">
+        关闭
+    </div>
     <!--通用底部-->
     <div style="margin-bottom:50px;"></div>
     <div style="position:fixed;bottom:0px;height:50px;width:100%;border-top:1px solid #E2E2E2;z-index: 10;text-align: center;background:#FFF;">奶茶东</div>
@@ -61,7 +65,7 @@
         $scope.$watch('myModel',function(){
             console.log($scope.name);
         });
-        window.location.href = "https://mp.weixin.qq.com";
+//        window.location.href = "https://mp.weixin.qq.com";
     });
     a.controller('fuckModel',function($scope){
         $scope.$watch(['name','age',function(){
@@ -69,7 +73,10 @@
         }])
 
     });
-
+    $('.testWeixin').click(function(){
+//        alert(1);
+        WeixinJSBridge.call('closeWindow');
+    })
 
     a.controller('testrepeata',function($scope){
         $scope.location = [{loc:'adf'},{loc:'aa'},{loc:'dd'}];

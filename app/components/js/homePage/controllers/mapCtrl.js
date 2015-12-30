@@ -5,15 +5,13 @@
 (function(){
     angular
         .module('myApp')
-        .directive('liu-carousel',carcousel)
         .controller('mapCtrl',mapCtrl)
 
-    function mapCtrl(MyMap,CarouselPic){
+    function mapCtrl(MyMap,AdvertisePic){
         var self = this;
-        //  画出地图
-        var map = MyMap;
+
         //  当前位置
-        map.getPosition();
+        MyMap.paintCurrentPo();
 
         //  默认显示广告
         self.isAD = true;
@@ -22,7 +20,7 @@
         self.changeBtn = function(){
             self.isAD = !self.isAD;
         }
-        //var carouslPic = CarouselPic
+        var advertisePic = AdvertisePic
     }
 }());
 
