@@ -42,7 +42,6 @@
         var self = this;
         //  监听事件代码：http://lbs.amap.com/api/javascript-api/example/i/0905-2/
         AMap.event.addListener(self.geolocation, 'complete', onComplete);
-
         //  返回定位信息
         function onComplete(data){
             var lnglat = [data.position.getLng(),data.position.getLat()];

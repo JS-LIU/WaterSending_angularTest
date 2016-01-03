@@ -7,12 +7,11 @@
         .module('myApp')
         .controller('mapCtrl',mapCtrl)
 
-    function mapCtrl(MyMap,AdvertisePic){
+    function mapCtrl(MyMap,GetAdvertisePic){
         var self = this;
 
         //  当前位置
         MyMap.paintCurrentPo();
-
         //  默认显示广告
         self.isAD = true;
 
@@ -20,7 +19,9 @@
         self.changeBtn = function(){
             self.isAD = !self.isAD;
         }
-        var advertisePic = AdvertisePic
+        GetAdvertisePic.then(function(){
+            console.log(GetAdvertisePic);
+        });
     }
 }());
 

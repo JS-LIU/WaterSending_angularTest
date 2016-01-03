@@ -1,7 +1,7 @@
 /**
  * Created by 殿麒 on 2015/8/23.
  */
-angular.module('myApp',['ngRoute','ngResource','ngCookies','huipayMap','huipayLogIn','huipayCarcousel'])
+angular.module('myApp',['ngRoute','ngResource','ngCookies','huipayMap','huipayLogIn'])
     .config(routeConfig);
 
 function routeConfig($routeProvider){

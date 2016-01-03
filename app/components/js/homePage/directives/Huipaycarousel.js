@@ -10,8 +10,7 @@
     function Carcousel(){
         var directive = {
             restrict: 'EA',
-            template:'<div class="clearfix carousel-animation" ng-transclude></div>',
-            transclude:true,
+            template:'<div><img ng-repeat="" ng-src="{{}}" /></div>',
             scope:{img:'='},
             link:link
         }
