@@ -7,7 +7,7 @@
         .module('myApp')
         .controller('mapCtrl',mapCtrl)
 
-    function mapCtrl(MyMap,GetAdvertisePic){
+    function mapCtrl($scope,MyMap,GetAdvertisePic){
         var self = this;
 
         //  当前位置
@@ -19,8 +19,10 @@
         self.changeBtn = function(){
             self.isAD = !self.isAD;
         }
-        GetAdvertisePic.then(function(){
-            console.log(GetAdvertisePic);
+        //$scope.adsPics = [{pic:'images/Tem-water.png'}];
+        GetAdvertisePic.then(function(picArr){
+            //$scope.adsPics = picArr['activitys'].huipay_ArrStrToarrObj('pic');
+            $scope.adsPics = [{pic:'images/Tem-water.png'}];
         });
     }
 }());

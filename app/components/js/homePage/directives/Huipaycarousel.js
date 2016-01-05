@@ -4,19 +4,20 @@
 
 (function(){
     angular
-        .module('huipayCarcousel',[])
-        .directive('Carcousel',Carcousel);
+        .module('huipayCarcousel',['myApp'])
+        .directive('carcousel',carcousel)
 
-    function Carcousel(){
+    function carcousel(){
         var directive = {
             restrict: 'EA',
-            template:'<div><img ng-repeat="" ng-src="{{}}" /></div>',
-            scope:{img:'='},
+            template:'<div><img ng-repeat="adsPic in img" ng-src="{{adsPic.pic}}" /></div>',
+            replace: true,
+            scope:{img:'=adsPics'},
             link:link
         }
 
         function link(scope,iElement){
-
+            console.log(scope.adsPics);
         }
 
 
