@@ -20,13 +20,9 @@
             self.isAD = !self.isAD;
         }
         GetAdvertisePic.then(function(picArr){
-            //$scope.adsPics = picArr['activitys'].huipay_ArrStrToarrObj('pic');
-            console.log('getAdvPic');
-            $scope.adsPics = [{pic:'images/Tem-water.png'}];
-            $scope.$watch('adsPics',function(){
-                console.log($scope.adsPics + '-------second');
-            })
 
+            //$scope.adsPics = picArr.huipay_ArrStrToarrObj('pic');
+            $scope.adsPics = [{pic:'images/Tem-water.png'}];
         });
     }
 }());
