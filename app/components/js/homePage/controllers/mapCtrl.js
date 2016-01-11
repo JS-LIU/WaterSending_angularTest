@@ -19,10 +19,14 @@
         self.changeBtn = function(){
             self.isAD = !self.isAD;
         }
-        //$scope.adsPics = [{pic:'images/Tem-water.png'}];
         GetAdvertisePic.then(function(picArr){
             //$scope.adsPics = picArr['activitys'].huipay_ArrStrToarrObj('pic');
+            console.log('getAdvPic');
             $scope.adsPics = [{pic:'images/Tem-water.png'}];
+            $scope.$watch('adsPics',function(){
+                console.log($scope.adsPics + '-------second');
+            })
+
         });
     }
 }());

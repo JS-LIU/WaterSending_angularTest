@@ -10,14 +10,13 @@
     function carcousel(){
         var directive = {
             restrict: 'EA',
-            template:'<div><img ng-repeat="adsPic in img" ng-src="{{adsPic.pic}}" /></div>',
-            replace: true,
-            scope:{img:'=adsPics'},
+            template:'<ul ng-transclude></ul>',
+            transclude: true,
             link:link
         }
 
         function link(scope,iElement){
-            console.log(scope.adsPics);
+            return;
         }
 
 

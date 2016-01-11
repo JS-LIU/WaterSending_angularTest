@@ -13,7 +13,9 @@
                 <span>家水站</span>
             </p>
         </div>
-        <carcousel img="adsPics"></carcousel>
+        <carcousel>
+            <img ng-repeat="adsPic in adsPics" src="{{adsPic.pic}}" />
+        </carcousel>
 
         <ul class="common-multyrow-1 mt10 ml15 mr15">
             <li style="height: 48px;">
